@@ -1,0 +1,16 @@
+{
+  "name": "distinct-face-mix-kiooi",
+  "productName": "distinct-face-mix-kiooi",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "j",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "28.2.0"
+  }
+}
