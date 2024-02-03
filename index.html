@@ -1,19 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
     <link href="./styles.css" rel="stylesheet">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <title>Last.FM User Data Viewer</title>
+</head>
+<body>
+    <header>
+        <h1>Last.FM User Data</h1>
+    </header>
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+    <nav id="toolbar">
+        <ul>
+            <li><a href="#">Global Variables</a></li>
+            <li><a href="#">Enable Debug</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+
+    <aside id="sidebar">
+        <ul>
+            <li><a href="#">Main</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section>
+            <p>This application generates visual representations of last.fm data. To use this application, please enter your username:</p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <button id="searchButton">Authenticate with Last.FM</button>
+            <button id="themeToggle">Toggle Dark Mode</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Last.FM User Data Viewer</p>
+    </footer>
+
+    <script src="renderer.js"></script>
+</body>
 </html>

@@ -1,3 +1,146 @@
-/* styles.css */
+:root {
+    /* Light theme colors */
+    --primary-bg-color: #f4f4f4;
+    --primary-text-color: #333;
+    --header-bg-color: #007bff;
+    --header-text-color: #fff;
+    --footer-bg-color: #333;
+    --footer-text-color: #fff;
+    --sidebar-bg-color: #e9ecef;
+    --nav-bg-color: #333;
+    --nav-text-color: #fff;
+    --button-bg-color: #007bff;
+    --button-hover-bg-color: #0056b3;
+}
 
-/* Add styles here to customize the appearance of your app */
+[data-theme="dark"] {
+    /* Dark theme colors */
+    --primary-bg-color: #121212;
+    --primary-text-color: #e0e0e0;
+    --header-bg-color: #0d6efd;
+    --header-text-color: #fff;
+    --footer-bg-color: #1a1a1a;
+    --footer-text-color: #e0e0e0;
+    --sidebar-bg-color: #242424;
+    --nav-bg-color: #1a1a1a;
+    --nav-text-color: #e0e0e0;
+    --button-bg-color: #0d6efd;
+    --button-hover-bg-color: #004aad;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--header-bg-color);
+    color: var(--header-text-color);
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav#toolbar {
+    background-color: var(--nav-bg-color);
+    color: var(--nav-text-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+nav#toolbar ul {
+    list-style: none;
+    display: flex;
+}
+
+nav#toolbar ul li {
+    padding: 0 10px;
+}
+
+aside#sidebar {
+    background-color: var(--sidebar-bg-color);
+    padding: 20px;
+    width: 200px; /* Adjust width as needed */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    height: 100vh;
+    position: sticky; /* Keeps the sidebar in place on scroll */
+    top: 0;
+}
+
+aside#sidebar ul {
+    list-style: none;
+    line-height: 2;
+}
+
+main {
+    margin-left: 220px;
+    padding: 20px;
+    flex: 1;
+}
+
+footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    aside#sidebar {
+        width: 100%;
+        height: auto;
+        position: static; /* Resets the position in smaller screens */
+    }
+
+    main {
+        margin-left: 0;
+    }
+
+    nav#toolbar ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    nav#toolbar ul li {
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+button {
+    background-color: var(--button-bg-color);
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+}
