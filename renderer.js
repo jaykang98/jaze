@@ -25,8 +25,6 @@ function initializeEventListeners() {
 }
 
 function formatPageName(pageName) {
-    // Transform the page name to match the filename format, if necessary
-    // Example: transforms "Settings" to "settings" if your HTML filenames are lowercase
     return pageName.toLowerCase();
 }
 
@@ -41,12 +39,6 @@ async function loadContent(pageName) {
     }
 }
 
-// Your existing generatePage functionality
-function generatePage() {
-    // Implementation of generatePage
-}
-
-// Your existing updateUIWithUserData functionality
 function updateUIWithUserData(userData) {
     if (!userData) return;
 

@@ -13,16 +13,50 @@
 </header>
 <div class="flex-container">
     <aside id="sidebar">
-        <!-- Consider using <button> if these are not for navigation -->
         <a href="#" role="button">Main</a>
         <a href="#" role="button">Settings</a>
         <a href="#" role="button">About</a>
     </aside>
     <main>
-    <section>
-        <!-- Content goes here -->
-        H
-    </section>
+        <section>
+            <form>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>
+                            <label for="artist">Artist</label>
+                        </th>
+                        <td>
+                            <input id="artist" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="album">Album</label>
+                        </th>
+                        <td>
+                            <input id="album" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="track">Track</label>
+                        </th>
+                        <td>
+                            <input id="track" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <button id="test">Test</button>
+                            <button type="submit">Submit</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </section>
     </main>
 <script src="renderer.js"></script>
 </div>

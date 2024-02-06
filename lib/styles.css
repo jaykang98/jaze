@@ -1,16 +1,13 @@
 :root {
-    /* Updated dark theme colors for a modern look */
-    --primary-bg-color: #121212; /* Dark background */
-    --primary-text-color: #e0e0e0; /* Light text */
-    --header-bg-color: #0d6efd; /* Modern blue for the header */
+    --primary-bg-color: #121212;
+    --primary-text-color: #e0e0e0;
+    --header-bg-color: #0d6efd;
     --header-text-color: #fff;
-    --footer-bg-color: #1a1a1a; /* Dark footer background */
+    --footer-bg-color: #1a1a1a;
     --footer-text-color: #fff;
-    --sidebar-bg-color: #242424; /* Dark sidebar background */
-    --button-bg-color: #0d6efd; /* Modern blue for buttons */
-    --button-hover-bg-color: #004aad; /* Darker shade for button hover */
-
-    /* Common properties */
+    --sidebar-bg-color: #242424;
+    --button-bg-color: #0d6efd;
+    --button-hover-bg-color: #004aad;
     --font-family: 'Roboto', sans-serif;
     --default-padding: 20px;
     --default-margin: 10px;
@@ -27,17 +24,13 @@
     --button-hover-bg-color: var(--dark-button-hover-bg-color);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 html, body {
     font-family: var(--font-family);
     height: 100%;
     background-color: var(--primary-bg-color);
     color: var(--primary-text-color);
+    margin: 0;
+    padding: 0;
 }
 
 .flex-container {
@@ -51,39 +44,47 @@ aside#sidebar {
     padding: var(--default-padding);
     width: var(--sidebar-width);
     flex-shrink: 0;
-    height: 100vh; /* Full vertical height */
+    height: 100vh;
+    margin: 0;
 }
 
 main {
     padding: var(--default-padding);
     flex-grow: 1;
+    margin: 0;
 }
 
-header, footer {
+header {
     background-color: var(--header-bg-color);
     color: var(--header-text-color);
     padding: 1rem 0;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 footer {
     background-color: var(--footer-bg-color);
     color: var(--footer-text-color);
+    margin: 0;
 }
 
-/* Sidebar button styles */
-aside#sidebar a[role="button"] {
-    display: block; /* Make buttons block level for full width */
-    margin: var(--default-margin) 0; /* Increased vertical spacing */
+aside#sidebar a[role="button"], button, a[role="button"] {
+    display: block;
+    margin: var(--default-margin) 0;
     padding: var(--default-padding);
     text-decoration: none;
-    color: var(--header-text-color); /* Ensures text color is visible on buttons */
+    color: var(--header-text-color);
     background-color: var(--button-bg-color);
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-aside#sidebar a[role="button"]:hover {
+aside#sidebar a[role="button"]:hover, button:hover, a[role="button"]:hover {
     background-color: var(--button-hover-bg-color);
 }
 
@@ -97,24 +98,41 @@ aside#sidebar a[role="button"]:hover {
         flex: none;
     }
 }
-
-/* General button styles */
-button, a[role="button"] {
-    background-color: var(--button-bg-color);
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    text-align: center;
-    line-height: 40px;
+form {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-button:hover, a[role="button"]:hover {
-    background-color: var(--button-hover-bg-color);
+form label {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+form input[type="text"], form button {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+form input[type="text"]::placeholder {
+    color: #888;
+}
+
+form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+form::after {
+    content: "";
+    display: table;
+    clear: both;
 }
