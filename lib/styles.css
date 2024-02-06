@@ -1,26 +1,17 @@
 :root {
-    /* Theme colors */
-    --primary-bg-color: #f4f4f4;
-    --primary-text-color: #333;
-    --header-bg-color: #007bff;
+    /* Updated dark theme colors for a modern look */
+    --primary-bg-color: #121212; /* Dark background */
+    --primary-text-color: #e0e0e0; /* Light text */
+    --header-bg-color: #0d6efd; /* Modern blue for the header */
     --header-text-color: #fff;
-    --footer-bg-color: #333;
+    --footer-bg-color: #1a1a1a; /* Dark footer background */
     --footer-text-color: #fff;
-    --sidebar-bg-color: #e9ecef;
-    --button-bg-color: #007bff;
-    --button-hover-bg-color: #0056b3;
-
-    /* Dark theme colors */
-    --dark-primary-bg-color: #121212;
-    --dark-primary-text-color: #e0e0e0;
-    --dark-header-bg-color: #0d6efd;
-    --dark-footer-bg-color: #1a1a1a;
-    --dark-sidebar-bg-color: #242424;
-    --dark-button-bg-color: #0d6efd;
-    --dark-button-hover-bg-color: #004aad;
+    --sidebar-bg-color: #242424; /* Dark sidebar background */
+    --button-bg-color: #0d6efd; /* Modern blue for buttons */
+    --button-hover-bg-color: #004aad; /* Darker shade for button hover */
 
     /* Common properties */
-    --font-family: 'Arial', sans-serif;
+    --font-family: 'Roboto', sans-serif;
     --default-padding: 20px;
     --default-margin: 10px;
     --sidebar-width: 200px;
@@ -86,7 +77,7 @@ aside#sidebar a[role="button"] {
     margin: var(--default-margin) 0; /* Increased vertical spacing */
     padding: var(--default-padding);
     text-decoration: none;
-    color: var(--nav-text-color);
+    color: var(--header-text-color); /* Ensures text color is visible on buttons */
     background-color: var(--button-bg-color);
     border-radius: 5px;
     text-align: center;
