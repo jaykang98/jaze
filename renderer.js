@@ -1,43 +1,52 @@
-const { ipcRenderer } = require('electron');
-
-document.addEventListener('DOMContentLoaded', () => {
-    const searchButton = document.getElementById('searchButton');
-    searchButton.addEventListener('click', debounce(onUserSearch));
-
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', toggleDarkMode);
+document.addEventListener('DOMContentLoaded', function () {
+    loadShellContent();
 });
 
-async function onUserSearch(event) {
+async function loadShellContent() {
     try {
-        event.preventDefault(); 
-        const username = document.getElementById('username').value.trim();
-        const userData = await fetchLastFmData(username);
-        updateUIWithUserData(userData);
+        const response = await fetch('./index.html');
+        const html = await response.text();
+        document.body.innerHTML = html;
+        initializeEventListeners();
     } catch (error) {
-        console.error('Error in user search:', error);
+        console.error('Error loading shell content:', error);
     }
 }
 
-function toggleDarkMode(event) {
-    event.stopPropagation(); 
-    window.electronAPI.toggleDarkMode();
+function initializeEventListeners() {
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const pageName = formatPageName(event.target.innerText);
+            loadContent(pageName);
+        });
+    });
 }
 
+function formatPageName(pageName) {
+    // Transform the page name to match the filename format, if necessary
+    // Example: transforms "Settings" to "settings" if your HTML filenames are lowercase
+    return pageName.toLowerCase();
+}
 
-async function fetchLastFmData(username) {
-    if (!username) return;
-    const apiKey = 'YOUR_API_KEY';
-    const url = `http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${encodeURIComponent(username)}&api_key=${apiKey}&format=json`;
-
+async function loadContent(pageName) {
     try {
-        const response = await axios.get(url);
-        return response.data;
+        const response = await fetch(`./${pageName}.html`);
+        const html = await response.text();
+        document.querySelector('section').innerHTML = html;
+        // Optionally, sanitize the HTML content here
     } catch (error) {
-        console.error('Error fetching data from Last.FM:', error);
-        return null;
+        console.error('Error loading content:', error);
     }
 }
+
+// Your existing generatePage functionality
+function generatePage() {
+    // Implementation of generatePage
+}
+
+// Your existing updateUIWithUserData functionality
 function updateUIWithUserData(userData) {
     if (!userData) return;
 

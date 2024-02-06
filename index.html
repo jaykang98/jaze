@@ -3,45 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
-    <link href="./styles.css" rel="stylesheet">
+    <link href="./lib/styles.css" rel="stylesheet">
     <title>Last.FM User Data Viewer</title>
 </head>
 <body>
-    <header>
-        <h1>Last.FM User Data</h1>
-    </header>
-
-    <nav id="toolbar">
-        <ul>
-            <li><a href="#">Global Variables</a></li>
-            <li><a href="#">Enable Debug</a></li>
-            <li><a href="#">Settings</a></li>
-        </ul>
-    </nav>
-
+<header>
+    <h1>Last.FM User Data</h1>
+</header>
+<div class="flex-container">
     <aside id="sidebar">
-        <ul>
-            <li><a href="#">Main</a></li>
-            <li><a href="#">About Me</a></li>
-            <li><a href="#">Settings</a></li>
-        </ul>
+        <!-- Consider using <button> if these are not for navigation -->
+        <a href="#" role="button">Main</a>
+        <a href="#" role="button">Settings</a>
+        <a href="#" role="button">About</a>
     </aside>
-
     <main>
-        <section>
-            <p>This application generates visual representations of last.fm data. To use this application, please enter your username:</p>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <button id="searchButton">Authenticate with Last.FM</button>
-            <button id="themeToggle">Toggle Dark Mode</button>
-        </section>
+    <section>
+        <!-- Content goes here -->
+        H
+    </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Last.FM User Data Viewer</p>
-    </footer>
-
-    <script src="renderer.js"></script>
+<script src="renderer.js"></script>
+</div>
 </body>
+
 </html>

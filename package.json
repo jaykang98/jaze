@@ -1,7 +1,7 @@
 {
-  "name": "distinct-face-mix-kiooi",
-  "productName": "distinct-face-mix-kiooi",
-  "description": "My Electron application description",
+  "name": "jaze_data_visualizer",
+  "productName": "jaze",
+  "description": "jaze music visualizations",
   "keywords": [],
   "main": "./main.js",
   "version": "1.0.0",
