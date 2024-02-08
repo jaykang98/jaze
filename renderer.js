@@ -1,12 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
-    loadShellContent();
-});
+// /Renderer.js
+document.addEventListener('DOMContentLoaded', loadShellContent);
 
 async function loadShellContent() {
     try {
         const response = await fetch('./index.html');
-        const html = await response.text();
-        document.body.innerHTML = html;
+        document.body.innerHTML = await response.text();
         initializeEventListeners();
     } catch (error) {
         console.error('Error loading shell content:', error);
@@ -14,26 +12,31 @@ async function loadShellContent() {
 }
 
 function initializeEventListeners() {
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const pageName = formatPageName(event.target.innerText);
-            loadContent(pageName);
-        });
+    document.querySelectorAll(button).forEach(button => {
+        button.addEventListener('click', handleLinkClick);
     });
 }
 
+
+function handleLinkClick(event) {
+    event.preventDefault();
+    loadContent(formatPageName(event.target.innerText));
+}
+
+function handleAuthButtonClick(event) {
+    event.preventDefault();
+    const apiKey = '053905e1fc8b0de378dc341a24ec68c7';
+    window.electronAPI.openExternal(`http://www.last.fm/api/auth/?api_key=${apiKey}`);
+}
+
 function formatPageName(pageName) {
-    return pageName.toLowerCase();
+    return pageName.toLowerCase().replace(/\s+/g, '-');
 }
 
 async function loadContent(pageName) {
     try {
-        const response = await fetch(`./${pageName}.html`);
-        const html = await response.text();
-        document.querySelector('section').innerHTML = html;
-        // Optionally, sanitize the HTML content here
+        const response = await fetch(`/pgcontent/${pageName}.html`);
+        document.querySelector('section').innerHTML = await response.text();
     } catch (error) {
         console.error('Error loading content:', error);
     }

@@ -1,7 +1,7 @@
 {
-  "name": "jaze_data_visualizer",
-  "productName": "jaze",
-  "description": "jaze music visualizations",
+  "name": "Jze",
+  "productName": "Jze",
+  "description": "Jze: It does what it does",
   "keywords": [],
   "main": "./main.js",
   "version": "1.0.0",
@@ -10,7 +10,8 @@
     "start": "electron ."
   },
   "dependencies": {
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
     "electron": "28.2.0"
