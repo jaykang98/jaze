@@ -1,0 +1,38 @@
+/* Sidebar.module.css */
+:root {
+    /* Define the custom properties for the sidebar here */
+    --sidebar-button-bg-color: #00ffab;
+    --sidebar-button-hover-bg-color: #00856f;
+    --sidebar-button-padding: 15px 30px;
+    --sidebar-button-font-size: 1rem;
+    --sidebar-button-border-radius: 5px;
+    --sidebar-button-margin: 5px 0;
+}
+/* Sidebar.module.css adjustments */
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: var(--default-padding);
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg-color);
+    color: var(--header-text-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--hover-transition);
+    overflow-y: auto;
+    margin-top: 10px;
+    /* Removed position: absolute; and adjusted margins */
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    aside {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+}

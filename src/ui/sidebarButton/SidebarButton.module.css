@@ -1,0 +1,30 @@
+/* SidebarButton.module.css */
+:root {
+    --sidebar-button-bg-color: #00ffab; /* Adjust to a more blending color */
+    --sidebar-button-hover-bg-color: #00856f; /* Adjust to a more blending color */
+    --sidebar-button-padding: 10px 20px; /* Adjust padding to fit design */
+    --sidebar-button-font-size: 1rem;
+    --sidebar-button-border-radius: 0px; /* Optional: remove if you prefer no border-radius */
+    --sidebar-button-margin: 0px; /* Updated to ensure buttons fit snugly */
+    /* Other variables */
+}
+
+[role='button'] {
+    display: block;
+    width: 100%; /* Ensure the button expands to the full width of its container */
+    margin: 0; /* Adjusted to remove external spacing */
+    padding: var(--sidebar-button-padding, 10px 20px); /* Adjust padding as needed */
+    text-decoration: none;
+    color: var(--button-text-color, #FFFFFF); /* Ensure good contrast with the background */
+    background-color: var(--sidebar-button-bg-color); /* Use variable for easy theme adjustments */
+    border-radius: var(--button-border-radius, 0); /* Adjust if you want rounded corners */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color var(--hover-transition, 0.3s ease);
+    font-size: var(--sidebar-button-font-size, 1rem);
+    border: none;
+}
+
+    [role='button']:hover {
+        background-color: var(--sidebar-button-hover-bg-color);
+    }

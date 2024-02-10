@@ -1,19 +1,39 @@
 {
-  "name": "Jze",
-  "productName": "Jze",
-  "description": "Jze: It does what it does",
-  "keywords": [],
-  "main": "./main.js",
+  "name": "jaze",
   "version": "1.0.0",
-  "author": "j",
+  "description": "A thing that does a thing.",
+  "main": "src/App.tsx",
+  "private": true,
   "scripts": {
-    "start": "electron ."
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@types/react": "^18.2.55",
     "axios": "^1.6.7",
-    "fs": "^0.0.1-security"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "electron": "28.2.0"
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.2.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

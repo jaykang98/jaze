@@ -1,0 +1,14 @@
+/* Footer.module.css */
+footer {
+    background-color: var(--footer-bg-color, #333); /* Fallback color */
+    color: var(--footer-text-color, #fff); /* Fallback color */
+    text-align: center;
+    font-size: var(--footer-font-size, 0.625rem);
+    padding: var(--footer-padding, 1.25rem) 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: calc(2 * var(--footer-padding, 1.25rem) + var(--footer-font-size, 0.625rem));
+}
