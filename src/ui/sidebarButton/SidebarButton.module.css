@@ -20,11 +20,10 @@
 
 
     .button:hover {
-        background-color: darken(var(--sidebar-button-bg-color), 5%); /* Make background slightly darker on hover */
+        background-color: darken(var(--sidebar-button-bg-color), 50%); /* Make background slightly darker on hover */
         border-color: darken(var(--sidebar-button-bg-color), 50%); /* Optionally darken the border too */
     }
 
-/* Responsive adjustments for smaller screens */
 @media screen and (max-width: 768px) {
     .button {
         width: auto;
