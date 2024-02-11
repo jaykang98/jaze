@@ -1,11 +1,16 @@
 .header {
     background-color: var(--header-bg-color);
     color: var(--header-text-color);
-    padding: 1rem 0;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: var(--border-radius);
+    font-family: 'Roboto', sans-serif;
+    font-size:3vw;
+}
+h1 {
+    margin-top: 5vw;
+    margin-bottom: 5vw;
 }

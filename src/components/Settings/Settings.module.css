@@ -1,52 +1,32 @@
-/* Settings.module.css */
-:root {
-    --primary-bg-color: #1a1a1a;
-    --primary-text-color: #f4e4a2;
-    --header-bg-color: #ff4242;
-    --header-text-color: #fff;
-    --footer-bg-color: #212121;
-    --footer-text-color: #f4e4a2;
-    --sidebar-bg-color: #313131;
-    --button-bg-color: #00ffab;
-    --button-hover-bg-color: #00856f;
-    --font-family: 'Roboto', sans-serif;
-    --default-padding: 20px;
-    --default-margin: 10px;
-    --sidebar-width: 200px;
-    --border-radius: 8px;
-    --hover-transition: all 0.3s ease;
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 .settingsSection {
     background-color: var(--primary-bg-color);
     color: var(--primary-text-color);
     padding: var(--default-padding);
     border-radius: var(--border-radius);
-    margin-left: 10px;
-    margin-top: 10px;
-    min-height:100vh;
+    margin-left: var(--default-margin);
+    margin-top: var(--default-margin);
+    min-height: 100vh;
 }
 
 .settingsTable {
-    width: 100%;
+    width: 60%;
     border-collapse: collapse;
-    margin: var(--default-margin) auto;
-
+    margin: 0 auto;
 }
 
     .settingsTable td, .settingsTable th {
         padding: var(--default-padding);
-        border-bottom: 1px solid var(--footer-bg-color); /* A subtle border for separation */
+        border-bottom: 1px solid var(--footer-bg-color);
     }
 
 .button {
     background-color: var(--button-bg-color);
-    color: white; /* Ensuring high contrast text on the button */
+    color: var(--header-text-color);
     padding: 10px;
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background-color var(--hover-transition);
+    transition: var(--hover-transition);
 }
 
     .button:hover {
@@ -54,7 +34,7 @@
     }
 
 .label {
-    display: block; /* Makes the label take up the full width */
-    margin-bottom: 5px; /* Space below the label */
+    display: block;
+    margin-bottom: var(--default-margin);
     color: var(--primary-text-color);
 }

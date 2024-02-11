@@ -4,18 +4,19 @@ import styles from './Input.module.css';
 
 // Updated interface to include the 'label' prop
 interface InputProps {
+    id: string;
     label: string; // Add this line to include 'label' in the interface
     type: string;
     name: string;
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    placeholder: string;
 }
 
 // Input component definition
 const Input: React.FC<InputProps> = ({ label, type, name, value, onChange }) => {
     return (
         <div className={styles.inputContainer}>
-            <label htmlFor={name}>{label}</label>
             <input
                 id={name}
                 type={type}
