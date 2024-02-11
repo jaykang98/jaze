@@ -4,6 +4,7 @@ import styles from './About.module.css'; // Make sure this path is correct
 const About = ({ userID = '', author = 'J Kang', contact = 'kangjacob1@gmail.com' }) => {
     return (
         <section className={styles.aboutSection}>
+            <h2>About</h2>
             <p>This application generates visual representations of Last.FM data.</p>
             <table className={styles.aboutTable}>
                 <tbody>

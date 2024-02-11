@@ -1,16 +1,41 @@
+/* Keyframes for the gradient animation */
+@keyframes gradientLoop {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .header {
-    background-color: var(--header-bg-color);
-    color: var(--header-text-color);
+    /* Updated to use the animated gradient */
+    background: linear-gradient(45deg, #00A4CC, #8A2387, #E94057, #F27121);
+    background-size: 200% 200%; /* Essential for the moving effect */
+    animation: gradientLoop 10s ease infinite; /* Adjust timing as needed */
+
+    color: black;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: var(--border-radius);
-    font-family: 'Roboto', sans-serif;
-    font-size:3vw;
+    letter-spacing: 2px;
+    /* Prevent text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
+
 h1 {
-    margin-top: 5vw;
-    margin-bottom: 5vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    font: 500 6vw/1.5 'Roboto', sans-serif;
 }

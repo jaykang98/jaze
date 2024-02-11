@@ -1,6 +1,6 @@
 .button {
-    background-color: var(--button-bg-color);
-    color: var(--header-text-color);
+    background-color: var(--secondary-accent-color-1); /* Bright blue, ensures contrast */
+    color: var(--header-text-color); /* White, for readability */
     padding: var(--default-padding);
     border: none;
     border-radius: var(--border-radius);
@@ -9,7 +9,6 @@
     display: inline-block;
     margin-top: var(--default-margin);
 }
-
     .button:hover {
-        background-color: var(--button-hover-bg-color);
+        background-color: var(--secondary-accent-color-2); /* Different color on hover for visual feedback */
     }

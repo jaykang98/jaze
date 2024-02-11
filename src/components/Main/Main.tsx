@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styles from './Main.module.css';
-import Button from '../../ui/button/Button'; // Adjust the path as necessary
-import Input from '../../ui/input/Input'; // Adjust the path as necessary
+import Button from '../../ui/button/Button';
+import Input from '../../ui/input/Input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faCompactDisc, faMusic, faClock, faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
 
 const Main = () => {
     const [formData, setFormData] = useState({
@@ -26,68 +28,84 @@ const Main = () => {
     };
 
     return (
-        <section className={styles.formContainer}>
+        <section>
+            <h2>Home</h2>
             <form onSubmit={handleSubmit}>
                 <div className={styles.inputGroup}>
-                    <label htmlFor="artist">Artist</label>
+                    <label htmlFor="artist">
+                        <FontAwesomeIcon icon={faUser} />
+                        <span> Artist</span>
+                    </label>
                     <Input
                         id="artist"
                         type="text"
                         name="artist"
                         value={formData.artist}
                         onChange={handleChange}
-                        placeholder="Enter artist name" label={''}
+                        placeholder="Enter artist name"
                     />
                 </div>
                 <div className={styles.inputGroup}>
-                    <label htmlFor="album">Album</label>
+                    <label htmlFor="album">
+                        <FontAwesomeIcon icon={faCompactDisc} />
+                        <span> Album</span>
+                    </label>
                     <Input
                         id="album"
                         type="text"
                         name="album"
                         value={formData.album}
                         onChange={handleChange}
-                        placeholder="Enter album title" label={''}
+                        placeholder="Enter album title"
                     />
                 </div>
                 <div className={styles.inputGroup}>
-                    <label htmlFor="track">Track</label>
+                    <label htmlFor="track">
+                        <FontAwesomeIcon icon={faMusic} />
+                        <span> Track</span>
+                    </label>
                     <Input
                         id="track"
                         type="text"
                         name="track"
                         value={formData.track}
                         onChange={handleChange}
-                        placeholder="Enter track name" label={''}                    />
+                        placeholder="Enter track name"
+                    />
                 </div>
                 <div className={styles.inputGroup}>
-                    <label htmlFor="startTimestamp">Start Time</label>
+                    <label htmlFor="startTimestamp">
+                        <FontAwesomeIcon icon={faClock} />
+                        <span> Start Time</span>
+                    </label>
                     <Input
                         id="startTimestamp"
                         type="datetime-local"
                         name="startTimestamp"
                         value={formData.startTimestamp}
                         onChange={handleChange}
-                        placeholder="Start timestamp" label={''}                    />
+                        placeholder="Start timestamp"
+                    />
                 </div>
                 <div className={styles.inputGroup}>
-                    <label htmlFor="endTimestamp">End Time</label>
+                    <label htmlFor="endTimestamp">
+                        <FontAwesomeIcon icon={faHourglassEnd} />
+                        <span> End Time</span>
+                    </label>
                     <Input
                         id="endTimestamp"
                         type="datetime-local"
                         name="endTimestamp"
                         value={formData.endTimestamp}
                         onChange={handleChange}
-                        placeholder="End timestamp" label={''}                    />
+                        placeholder="End timestamp"
+                    />
                 </div>
                 <Button type="submit">Submit</Button>
             </form>
             <div id="results" className={styles.results}>
-                
             </div>
-
         </section>
-
     );
 };
 

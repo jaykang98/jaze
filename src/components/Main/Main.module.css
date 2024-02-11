@@ -1,43 +1,24 @@
-.formContainer {
-    background-color: var(--primary-bg-color);
-    color: var(--primary-text-color);
-    padding: var(--default-padding);
-    border-radius: var(--border-radius);
-    margin-left: var(--default-margin);
-    margin-top: var(--default-margin);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .inputGroup {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
+    column-gap: 10px; /* Adjust the space between labels and inputs */
     margin-bottom: 10px;
+    width: 100%; /* Ensure the input group takes up the full width of its container */
 }
 
     .inputGroup label {
-        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        white-space: nowrap; /* Prevent the label from wrapping */
     }
 
 .inputField {
-    background-color: var(--input-bg-color, #2c2c2c);
-    color: var(--primary-text-color);
+    width: 100%; /* Ensure the input takes up the remaining space */
     padding: 10px;
     margin: 5px 0;
     border: 1px solid var(--input-border-color, #555);
     border-radius: var(--border-radius);
-    width: calc(100% - 20px);
-}
-
-td, th {
-    text-align: center;
-    padding: 10px;
-}
-
-th {
-    color: var(--primary-text-color);
 }
 
 form {

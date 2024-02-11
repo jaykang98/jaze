@@ -7,6 +7,8 @@ footer {
     padding: var(--footer-padding, 1.25rem) 0;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom:0px;
-    margin-top:10px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    border-radius: var(--border-radius);
+    font-family: 'Roboto', sans-serif;
 }

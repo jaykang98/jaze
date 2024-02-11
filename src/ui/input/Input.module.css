@@ -1,13 +1,28 @@
-input {
+.inputContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.label {
+    flex-basis: 150px; /* Adjust based on your needs */
+    text-align: right;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligns icon and text to the right */
+    font-family: 'Roboto', sans-serif;
+}
+
+.inputGroup {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.inputField {
     width: 100%;
     padding: 5px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-}
-label {
-    display: inline-block;
-    width: 80px;
-    text-align: right;
-    margin-right: 10px;
-    font-family: 'Roboto', sans-serif;
 }

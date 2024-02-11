@@ -18,7 +18,8 @@ const Settings = () => {
     };
 
     return (
-        <section className={styles.settingsSection}>
+        <section>
+            <h2>Settings</h2>
             <table className={styles.settingsTable}>
                 <tbody>
                     <tr>
@@ -42,7 +43,7 @@ const Settings = () => {
                             <label htmlFor="getAuth" className={styles.label}>Auth</label>
                         </td>
                         <td>
-                            <button onClick={handleGetAuthorization}>Get Authorization</button>
+                            <Button onClick={handleGetAuthorization}>Get Authorization</Button>
                         </td>
                     </tr>
                 </tbody>
