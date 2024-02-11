@@ -28,51 +28,66 @@ const Main = () => {
     return (
         <section className={styles.formContainer}>
             <form onSubmit={handleSubmit}>
-                {/* Replace table with a more semantic structure if desired */}
-                <div>
+                <div className={styles.inputGroup}>
+                    <label htmlFor="artist">Artist</label>
                     <Input
-                        label="Artist"
+                        id="artist"
                         type="text"
                         name="artist"
                         value={formData.artist}
                         onChange={handleChange}
+                        placeholder="Enter artist name" label={''}
                     />
+                </div>
+                <div className={styles.inputGroup}>
+                    <label htmlFor="album">Album</label>
                     <Input
-                        label="Album"
+                        id="album"
                         type="text"
                         name="album"
                         value={formData.album}
                         onChange={handleChange}
+                        placeholder="Enter album title" label={''}
                     />
+                </div>
+                <div className={styles.inputGroup}>
+                    <label htmlFor="track">Track</label>
                     <Input
-                        label="Track"
+                        id="track"
                         type="text"
                         name="track"
                         value={formData.track}
                         onChange={handleChange}
-                    />
+                        placeholder="Enter track name" label={''}                    />
+                </div>
+                <div className={styles.inputGroup}>
+                    <label htmlFor="startTimestamp">Start Time</label>
                     <Input
-                        label="Start Time"
+                        id="startTimestamp"
                         type="datetime-local"
                         name="startTimestamp"
                         value={formData.startTimestamp}
                         onChange={handleChange}
-                    />
+                        placeholder="Start timestamp" label={''}                    />
+                </div>
+                <div className={styles.inputGroup}>
+                    <label htmlFor="endTimestamp">End Time</label>
                     <Input
-                        label="End Time"
+                        id="endTimestamp"
                         type="datetime-local"
                         name="endTimestamp"
                         value={formData.endTimestamp}
                         onChange={handleChange}
-                    />
-                    {/* Assuming Button component accepts an onClick prop for submit action */}
-                    <Button onClick={handleSubmit}>Generate</Button>
+                        placeholder="End timestamp" label={''}                    />
                 </div>
+                <Button type="submit">Submit</Button>
             </form>
             <div id="results" className={styles.results}>
-                {/* Results can be displayed here */}
+                
             </div>
+
         </section>
+
     );
 };
 

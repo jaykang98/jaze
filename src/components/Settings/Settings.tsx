@@ -1,22 +1,14 @@
 import React from 'react';
 import styles from './Settings.module.css';
-import Button from '../../ui/button/Button'; // Assuming Button is now designed for actions
+import Button from '../../ui/button/Button'; // Corrected path assuming Button is properly designed for actions
 
 const Settings = () => {
-    // Example onClick handlers for each button
-    const handleClearCache = () => {
-        console.log('Clear cache action');
-        // Implement the action, e.g., clearing cache or navigating
-    };
-
-    const handleChangeTheme = () => {
-        console.log('Change theme action');
-        // Implement the action, e.g., changing theme
-    };
-
+    const handleClearCache = () => console.log('Clear cache action');
+    const handleChangeTheme = () => console.log('Change theme action');
     const handleGetAuthorization = () => {
+        const url = "https://www.last.fm/api/auth?api_key=053905e1fc8b0de378dc341a24ec68c7";
+        window.open(url, "_blank"); // Opens the URL in a new tab or window
         console.log('Get authorization action');
-        // Implement the action, e.g., fetching authorization tokens
     };
 
     return (
@@ -28,7 +20,6 @@ const Settings = () => {
                             <label htmlFor="clearCache" className={styles.label}>Cache</label>
                         </td>
                         <td>
-                            {/* Updated Button usage with onClick */}
                             <Button onClick={handleClearCache}>Clear Cache</Button>
                         </td>
                     </tr>
@@ -45,7 +36,7 @@ const Settings = () => {
                             <label htmlFor="getAuth" className={styles.label}>Auth</label>
                         </td>
                         <td>
-                            <Button onClick={handleGetAuthorization}>Get Authorization</Button>
+                            <button onClick={handleGetAuthorization}>Get Authorization</button>
                         </td>
                     </tr>
                 </tbody>

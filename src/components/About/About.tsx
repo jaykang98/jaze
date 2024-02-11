@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './About.module.css'; // Make sure this path is correct
 
-// Assuming 'UserID', 'author', and 'contact' could be dynamic, props or context could be used to pass these values
 const About = ({ userID = '', author = 'J Kang', contact = 'kangjacob1@gmail.com' }) => {
     return (
         <section className={styles.aboutSection}>

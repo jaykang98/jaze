@@ -1,30 +1,37 @@
-/* SidebarButton.module.css */
-:root {
-    --sidebar-button-bg-color: #00ffab; /* Adjust to a more blending color */
-    --sidebar-button-hover-bg-color: #00856f; /* Adjust to a more blending color */
-    --sidebar-button-padding: 10px 20px; /* Adjust padding to fit design */
-    --sidebar-button-font-size: 1rem;
-    --sidebar-button-border-radius: 0px; /* Optional: remove if you prefer no border-radius */
-    --sidebar-button-margin: 0px; /* Updated to ensure buttons fit snugly */
-    /* Other variables */
-}
-
-[role='button'] {
-    display: block;
-    width: 100%; /* Ensure the button expands to the full width of its container */
-    margin: 0; /* Adjusted to remove external spacing */
-    padding: var(--sidebar-button-padding, 10px 20px); /* Adjust padding as needed */
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: var(--sidebar-button-margin, 0px);
+    padding: var(--sidebar-button-padding, 10px 20px);
     text-decoration: none;
-    color: var(--button-text-color, #FFFFFF); /* Ensure good contrast with the background */
-    background-color: var(--sidebar-button-bg-color); /* Use variable for easy theme adjustments */
-    border-radius: var(--button-border-radius, 0); /* Adjust if you want rounded corners */
+    font-family: 'Roboto', sans-serif;
+    color: var(--button-text-color, #FFFFFF);
+    background-color: var(--sidebar-button-bg-color);
+    border-radius: 10px;
     text-align: center;
     cursor: pointer;
-    transition: background-color var(--hover-transition, 0.3s ease);
-    font-size: var(--sidebar-button-font-size, 1rem);
-    border: none;
+    transition: background-color var(--hover-transition, 0.3s ease), border-color var(--hover-transition, 0.3s ease);
+    font-size: 2rem;
+    border: 1px solid transparent;
 }
 
-    [role='button']:hover {
-        background-color: var(--sidebar-button-hover-bg-color);
+
+    .button:hover {
+        background-color: darken(var(--sidebar-button-bg-color), 5%); /* Make background slightly darker on hover */
+        border-color: darken(var(--sidebar-button-bg-color), 50%); /* Optionally darken the border too */
     }
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .button {
+        width: auto;
+        margin: var(--sidebar-button-margin, 0px) 10px;
+        padding: 10px;
+        font-size: 1rem;
+        padding-top: 10px;
+        white-space: normal;
+    }
+}

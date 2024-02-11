@@ -1,12 +1,14 @@
 .aboutSection {
-    margin-top: var(--default-margin);
     background-color: var(--primary-bg-color);
     color: var(--primary-text-color);
     padding: var(--default-padding);
     border-radius: var(--border-radius);
     margin-left: var(--default-margin);
+    margin-top: var(--default-margin);
     min-height: 100vh;
-    font-family: var(--font-family); /* Ensures Roboto font is applied */
+    display: flex; /* This will allow you to use flexbox for alignment */
+    flex-direction: column; /* Organizes children vertically */
+    align-items: center; /* Centers children horizontally */
 }
 
 .aboutTable {

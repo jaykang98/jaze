@@ -22,7 +22,8 @@ function Container() {
                             <Route path="/settings" element={<Settings />} />
                         </Routes>
                     </div>
-                </div>
+            </div>
+
             <Footer />
         </div>
     );
