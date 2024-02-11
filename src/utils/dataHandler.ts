@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
 import { FetchDataParams } from './FetchDataParams';
 
-
 const useDataHandler = (initialData: any) => {
     const [data, setData] = useState(initialData);
     const apiToken: string = "053905e1fc8b0de378dc341a24ec68c7";
     const baseUrl: string = "http://ws.audioscrobbler.com/2.0/";
 
     const generateURL = (method: string, params: FetchDataParams) => {
-        const queryParams = new URLSearchParams({
-            ...Object.fromEntries(Object.entries(params).map(([key, value]) => [key, String(value)])),
-            api_key: apiToken,
-            format: 'json',
-        }).toString();
+        const filteredParams: Record<string, string> = Object.entries(params).reduce((acc, [key, value]) => {
+            if (value !== undefined) {
+                acc[key] = String(value);
+            }
+            return acc;
+        }, {});
+
+        filteredParams.api_key = apiToken;
+        filteredParams.format = 'json';
+
+        const queryParams = new URLSearchParams(filteredParams).toString();
         return `${baseUrl}?method=${method}&${queryParams}`;
     };
 
@@ -27,10 +32,7 @@ const useDataHandler = (initialData: any) => {
             console.error('Failed to fetch data:', error);
         }
     };
-
-    const getUserInfo = (username: string) => {
-        fetchData('user.getinfo', { user: encodeURIComponent(username) });
-    };
+    const getUserInfo = (username: string) => fetchData('user.getinfo', { user: username });
 
     const getAlbumInfo = (artist: string, album: string, username: string) => {
         fetchData('album.getInfo', { artist: encodeURIComponent(artist), album: encodeURIComponent(album), user: encodeURIComponent(username) });

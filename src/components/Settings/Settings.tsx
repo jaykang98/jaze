@@ -1,14 +1,20 @@
 import React from 'react';
 import styles from './Settings.module.css';
-import Button from '../../ui/button/Button'; // Corrected path assuming Button is properly designed for actions
+import Button from '../../ui/button/Button'; // Assuming Button is designed for actions
+
+// Import the encrypt function for demonstration purposes
+// You would likely use this elsewhere in a real application
+import { encrypt } from '../../utils/encryption';
 
 const Settings = () => {
     const handleClearCache = () => console.log('Clear cache action');
     const handleChangeTheme = () => console.log('Change theme action');
+
     const handleGetAuthorization = () => {
-        const url = "https://www.last.fm/api/auth?api_key=053905e1fc8b0de378dc341a24ec68c7";
-        window.open(url, "_blank"); // Opens the URL in a new tab or window
-        console.log('Get authorization action');
+        const apiKey = "053905e1fc8b0de378dc341a24ec68c7";
+        const url = `https://www.last.fm/api/auth/?api_key=${apiKey}&cb=#`;
+        window.open(url, "_blank");
+        console.log('Get authorization action initiated.');
     };
 
     return (

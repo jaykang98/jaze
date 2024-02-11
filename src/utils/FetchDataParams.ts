@@ -7,6 +7,6 @@ export interface FetchDataParams {
     page?: number;
     limit?: number;
     period?: string;
-    extended?: number; // Make sure this line is included
+    extended?: number; 
 }
 export { };
