@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
     "jsx": "react",
-    "esModuleInterop": true
-    // other options...
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": [ "src/*" ]
+    }
   }
 }

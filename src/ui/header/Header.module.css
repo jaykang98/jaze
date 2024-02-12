@@ -1,24 +1,17 @@
-/* Keyframes for the gradient animation */
 @keyframes gradientLoop {
-    0% {
+    0%, 100% {
         background-position: 0% 50%;
     }
 
     50% {
         background-position: 100% 50%;
     }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .header {
-    /* Updated to use the animated gradient */
     background: linear-gradient(45deg, #00A4CC, #8A2387, #E94057, #F27121);
-    background-size: 200% 200%; /* Essential for the moving effect */
-    animation: gradientLoop 10s ease infinite; /* Adjust timing as needed */
-
+    background-size: 200% 200%;
+    animation: gradientLoop 10s ease infinite;
     color: black;
     text-align: center;
     position: sticky;
@@ -27,11 +20,25 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: var(--border-radius);
     letter-spacing: 2px;
-    /* Prevent text selection */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    border: 2px solid transparent; /* Add this line */
+}
+
+.header:hover {
+    background: black;
+    border-color: white;
+}
+
+.header:hover h1 {
+    background: linear-gradient(45deg, #00A4CC, #8A2387, #E94057, #F27121);
+    background-size: 200% 200%;
+    animation: gradientLoop 10s ease infinite;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 h1 {

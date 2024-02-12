@@ -1,26 +1,44 @@
-.inputGroup {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    column-gap: 10px; /* Adjust the space between labels and inputs */
-    margin-bottom: 10px;
-    width: 100%; /* Ensure the input group takes up the full width of its container */
+.inputTable {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-    .inputGroup label {
-        display: flex;
-        align-items: center;
-        white-space: nowrap; /* Prevent the label from wrapping */
-    }
-
-.inputField {
-    width: 100%; /* Ensure the input takes up the remaining space */
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid var(--input-border-color, #555);
-    border-radius: var(--border-radius);
+.inputTable td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
 }
 
+.table__cell {
+    padding: var(--padding-small);
+    text-align: left;
+    vertical-align: middle;
+}
 form {
     width: 60%;
+}
+
+
+.inputGroup label {
+    white-space: nowrap;
+    font-family: var(--font-family);
+    margin-bottom: var(--margin-small);
+}
+
+.inputfield {
+    width: 100%;
+    padding: var(--padding-medium);
+    margin: var(--margin-small) 0;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+}
+@media screen and (max-width: 768px) {
+    .form {
+        width: 100%; /* Full width on smaller screens */
+    }
 }

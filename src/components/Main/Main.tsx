@@ -30,78 +30,89 @@ const Main = () => {
     return (
         <section>
             <h2>Home</h2>
-            <form onSubmit={handleSubmit}>
-                <div className={styles.inputGroup}>
-                    <label htmlFor="artist">
-                        <FontAwesomeIcon icon={faUser} />
-                        <span> Artist</span>
-                    </label>
-                    <Input
-                        id="artist"
-                        type="text"
-                        name="artist"
-                        value={formData.artist}
-                        onChange={handleChange}
-                        placeholder="Enter artist name"
-                    />
-                </div>
-                <div className={styles.inputGroup}>
-                    <label htmlFor="album">
-                        <FontAwesomeIcon icon={faCompactDisc} />
-                        <span> Album</span>
-                    </label>
-                    <Input
-                        id="album"
-                        type="text"
-                        name="album"
-                        value={formData.album}
-                        onChange={handleChange}
-                        placeholder="Enter album title"
-                    />
-                </div>
-                <div className={styles.inputGroup}>
-                    <label htmlFor="track">
-                        <FontAwesomeIcon icon={faMusic} />
-                        <span> Track</span>
-                    </label>
-                    <Input
-                        id="track"
-                        type="text"
-                        name="track"
-                        value={formData.track}
-                        onChange={handleChange}
-                        placeholder="Enter track name"
-                    />
-                </div>
-                <div className={styles.inputGroup}>
-                    <label htmlFor="startTimestamp">
-                        <FontAwesomeIcon icon={faClock} />
-                        <span> Start Time</span>
-                    </label>
-                    <Input
-                        id="startTimestamp"
-                        type="datetime-local"
-                        name="startTimestamp"
-                        value={formData.startTimestamp}
-                        onChange={handleChange}
-                        placeholder="Start timestamp"
-                    />
-                </div>
-                <div className={styles.inputGroup}>
-                    <label htmlFor="endTimestamp">
-                        <FontAwesomeIcon icon={faHourglassEnd} />
-                        <span> End Time</span>
-                    </label>
-                    <Input
-                        id="endTimestamp"
-                        type="datetime-local"
-                        name="endTimestamp"
-                        value={formData.endTimestamp}
-                        onChange={handleChange}
-                        placeholder="End timestamp"
-                    />
-                </div>
-                <Button type="submit">Submit</Button>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <table className={styles.inputTable}>
+                    <tbody>
+                        <tr>
+                            <td><FontAwesomeIcon icon={faUser} /></td>
+                            <td>Artist</td>
+                            <td>
+                                <Input
+                                    id="artist"
+                                    type="text"
+                                    name="artist"
+                                    value={formData.artist}
+                                    onChange={handleChange}
+                                    placeholder="Enter artist name"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><FontAwesomeIcon icon={faCompactDisc} /></td>
+                            <td>Album</td>
+                            <td>
+                                <Input
+                                    id="album"
+                                    type="text"
+                                    name="album"
+                                    value={formData.album}
+                                    onChange={handleChange}
+                                    placeholder="Enter album title"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><FontAwesomeIcon icon={faMusic} /></td>
+                            <td>Track</td>
+                            <td>
+                                <Input
+                                    id="track"
+                                    type="text"
+                                    name="track"
+                                    value={formData.track}
+                                    onChange={handleChange}
+                                    placeholder="Enter track name"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><FontAwesomeIcon icon={faClock} /></td>
+                            <td>Start Time</td>
+                            <td>
+                                <Input
+                                    id="startTimestamp"
+                                    type="datetime-local"
+                                    name="startTimestamp"
+                                    value={formData.startTimestamp}
+                                    onChange={handleChange}
+                                    placeholder="Start timestamp"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><FontAwesomeIcon icon={faHourglassEnd} /></td>
+                            <td>End Time</td>
+                            <td>
+                                <Input
+                                    id="endTimestamp"
+                                    type="datetime-local"
+                                    name="endTimestamp"
+                                    value={formData.endTimestamp}
+                                    onChange={handleChange}
+                                    placeholder="End timestamp"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <Button type="submit">Submit</Button>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </form>
             <div id="results" className={styles.results}>
             </div>

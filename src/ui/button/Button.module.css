@@ -1,14 +1,29 @@
 .button {
-    background-color: var(--secondary-accent-color-1); /* Bright blue, ensures contrast */
-    color: var(--header-text-color); /* White, for readability */
+    background-color: var(--secondary-accent-color-1);
+    color: var(--header-text-color);
     padding: var(--default-padding);
-    border: none;
+    border: 2px solid transparent; /* Add this line */
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: var(--hover-transition);
     display: inline-block;
-    margin-top: var(--default-margin);
+    outline: solid;
+    outline-color: black;
+    outline-width: 1px;
+    min-width: 200px;
+    min-height: 50px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font: 500 1vw/1.5 'Roboto', sans-serif;
 }
+
     .button:hover {
-        background-color: var(--secondary-accent-color-2); /* Different color on hover for visual feedback */
+        background: linear-gradient(45deg, #00A4CC, #8A2387, #E94057, #F27121);
+        background-size: 200% 200%;
+        animation: gradientLoop 2s ease infinite;
+        color: var(--button-text-color, #FFFFFF);
+        border-color: white; /* Update this line */
+        transition: none;
     }

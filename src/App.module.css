@@ -68,6 +68,12 @@
     --font-size-xl: 32px;
     --line-height-base: 1.5;
     --line-height-tight: 1.2;
+    --input-border-color: #555;
+    --border-radius: 4px; /* Example value, adjust as needed */
+    --font-family: 'Roboto', sans-serif;
+    --padding-small: 8px;
+    --padding-medium: 10px;
+    --margin-small: 5px;
 }
 
 @media (max-width: 768px) {
@@ -102,28 +108,20 @@ td, th {
     padding: var(--default-padding); /* General padding, can override if needed */
     border: none; /* Default no border, can be overridden */
     text-align: left; /* Default align, can override if needed */
-    vertical-align: bottom; /* Common vertical align */
+    vertical-align: middle; /* Align vertically in the middle */
+    font-family: 'Roboto', sans-serif;
+}
+
+td tr{
+    vertical-align:middle;
 }
 
 h2 {
     font: 300 50px/1.5 'Roboto', sans-serif;
-    margin: 20px 0 50px;
+    margin: 0px;
 }
 
 body {
     background-color: #000000; /* Jet black background */
     color: #ffffff; /* White text color for contrast */
-}
-@keyframes gradientLoop {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }

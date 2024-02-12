@@ -2,4 +2,5 @@
     display: block;
     margin-bottom: var(--default-margin);
     color: var(--primary-text-color);
+    font-family: 'Roboto', sans-serif;
 }
