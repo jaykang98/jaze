@@ -125,3 +125,16 @@ body {
     background-color: #000000; /* Jet black background */
     color: #ffffff; /* White text color for contrast */
 }
+.iconCell {
+    width: 50px; /* Adjust this width as needed */
+    text-align: center; /* Center the icon in the cell */
+    padding-right: 10px; /* Adds some space between the icon and the label */
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px; /* horizontal vertical */
+}
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

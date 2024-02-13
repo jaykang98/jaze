@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './About.module.css';
 import HandleAuth from '../../utils/HandleAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCertificate, faUser, faPenNib, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 interface AboutProps {
     author?: string;
@@ -8,7 +10,6 @@ interface AboutProps {
 }
 
 const About: React.FC<AboutProps> = ({ author = 'J Kang', contact = 'kangjacob1@gmail.com' }) => {
-    // Call the custom hook to manage authentication and user ID
     const { userID, error } = HandleAuth();
 
     return (
@@ -18,24 +19,23 @@ const About: React.FC<AboutProps> = ({ author = 'J Kang', contact = 'kangjacob1@
             <table>
                 <tbody>
                     <tr>
-                        <td>License:</td>
+                        <td><FontAwesomeIcon icon={faCertificate} /> License:</td>
                         <td>GPLv3</td>
                     </tr>
                     <tr>
-                        <td>Logged In User:</td>
+                        <td><FontAwesomeIcon icon={faUser} /> Logged In User:</td>
                         <td>{userID || 'Not logged in'}</td>
                     </tr>
                     <tr>
-                        <td>Author:</td>
+                        <td><FontAwesomeIcon icon={faPenNib} /> Author:</td>
                         <td>{author}</td>
                     </tr>
                     <tr>
-                        <td>Contact:</td>
+                        <td><FontAwesomeIcon icon={faEnvelope} /> Contact:</td>
                         <td>{contact}</td>
                     </tr>
                 </tbody>
             </table>
-            {/* Optionally display an error message if there was an error fetching the user ID */}
             {error && <p className={styles.errorMessage}>Error: {error.message}</p>}
         </section>
     );
