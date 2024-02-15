@@ -1,0 +1,7 @@
+.optionList {
+    display: flex;
+    flex-wrap: wrap; /* Allow options to wrap to the next line */
+    gap: 10px;
+    max-width: 100%; /* Ensure the container does not exceed the parent's width */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}

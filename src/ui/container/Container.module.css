@@ -1,20 +1,52 @@
-/* Co.module.css */
-
 .appContainer {
     display: flex;
     flex-direction: column;
-
+    min-height: 100vh; 
+    color: var(--primary-text-color); 
+    font-family: var(--font-family); 
 }
 
 .contentWrapper {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    overflow: hidden;
 
 }
-
 .mainContent {
     flex-grow: 1;
     overflow-y: auto;
     width: 100%;
+    padding: var(--default-padding);
+    align-items: flex-start;
+    text-align: left;
+    background-color: #1a1a1a;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: var(--border-radius);
+}
+
+h2 {
+    text-align: center; 
+    font-size: var(--font-size-l); 
+    font-weight: lighter; 
+    margin: var(--default-margin) 0;
+}
+
+.iconTable td {
+    padding-right: var(--default-padding); 
+    vertical-align: middle;
+
+}
+@media screen and (max-width: 768px) {
+    section {
+        padding: 0 var(--default-padding-small); /* Adjusts padding for smaller screens */
+    }
+}
+.flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px; /* Space between form and option list */
+
 }

@@ -1,6 +1,19 @@
-.label {
-    display: block;
-    margin-bottom: var(--default-margin);
-    color: var(--primary-text-color);
-    font-family: 'Roboto', sans-serif;
+.settingsTable {
+    width: 100%; /* Ensures the table uses the full width of its container */
+    border-collapse: collapse; /* Removes the space between borders */
 }
+
+.settingsTable td {
+    padding: var(--default-padding); /* Ensures consistent padding within table cells */
+}
+
+.settingsTable tr:hover {
+    background-color: var(--hover-bg-color); /* Optional: Adds a hover effect for table rows */
+}
+section {
+    max-width: 80%; /* Adjust this value based on your design preference */
+    margin: 0 auto; /* Centers the section in the viewport */
+    padding: 0 var(--default-padding); /* Adds padding on the sides */
+    width: 100%; /* Ensures the section occupies the full width of its container up to max-width */
+}
+

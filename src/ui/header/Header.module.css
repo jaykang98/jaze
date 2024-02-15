@@ -12,37 +12,36 @@
     background: linear-gradient(45deg, #00A4CC, #8A2387, #E94057, #F27121);
     background-size: 200% 200%;
     animation: gradientLoop 10s ease infinite;
-    color: black;
+    color: var(--primary-text-color, black); /* Use global variable with fallback */
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow); /* Use global variable */
+    border-radius: var(--border-radius); /* Use global variable */
     letter-spacing: 2px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 2px solid transparent; /* Add this line */
+    border: 2px solid transparent;
 }
 
-.header:hover {
-    background: black;
-    border-color: white;
-}
+    .header:hover {
+        background: var(--header-hover-bg-color, black); /* Introduce variable for hover background */
+        border-color: white;
+    }
 
-.header:hover h1 {
-    background: linear-gradient(45deg, #00A4CC, #8A2387, #E94057, #F27121);
-    background-size: 200% 200%;
-    animation: gradientLoop 10s ease infinite;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-}
+        .header:hover h1 {
+            background: linear-gradient(45deg, #00A4CC, #8A2387, #E94057, #F27121);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* Ensure text remains visible */
+            animation: gradientLoop 10s ease infinite;
+        }
 
 h1 {
     margin-top: 3vw;
     margin-bottom: 3vw;
-    font: 500 6vw/1.5 'Roboto', sans-serif;
+    font: 500 6vw/1.5 var(--font-family, 'Roboto'), sans-serif; /* Use global variable with fallback */
 }

@@ -1,0 +1,24 @@
+.aboutSection {
+    padding: 1rem;
+}
+
+.iconTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .iconTable td {
+        padding: 0.5rem;
+        vertical-align: middle;
+    }
+
+.errorMessage {
+    color: red;
+}
+section {
+    width: 60%; /* Adjust this value based on your design preference */
+    margin: 0 auto; /* Centers the section in the viewport */
+    padding: 0 var(--default-padding); /* Adds padding on the sides */
+    width: 100%; /* Ensures the section occupies the full width of its container up to max-width */
+}
+

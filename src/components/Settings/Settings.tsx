@@ -1,45 +1,33 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './Settings.module.css';
 import Button from '../../ui/button/Button';
-import { encrypt } from '../../utils/Encryption';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPalette, faKey } from '@fortawesome/free-solid-svg-icons';
+import HandleAuth from '../../utils/HandleAuth';
 
 const Settings = () => {
+    const clearCacheAction = () => {
+        console.log('Clear cache action');
+        localStorage.removeItem('yourItemKey'); 
+    };
+
+    const changeThemeAction = () => {
+        console.log('Change theme action');
+    };
+
+    const authenticationAction = () => {
+        const apiKey = '053905e1fc8b0de378dc341a24ec68c7'; 
+        const cbURL = encodeURIComponent(window.location.href);
+        const url = `https://www.last.fm/api/auth/?api_key=${apiKey}&cb=${cbURL}`;
+        window.location.href = url;
+        console.log('Get authorization action initiated.');
+    };
 
     const settingsOptions = [
-        {
-            id: 'clearCache',
-            label: 'Cache',
-            action: () => console.log('Clear cache action'),
-        },
-        {
-            id: 'themeSwap',
-            label: 'Theme',
-            action: () => console.log('Change theme action'),
-        },
-        {
-            id: 'getAuth',
-            label: 'Auth',
-            action: () => {
-                const apiKey = '053905e1fc8b0de378dc341a24ec68c7';
-                const cbURL = encodeURIComponent(window.location.href);
-                const url = `https://www.last.fm/api/auth/?api_key=${apiKey}&cb=${cbURL}`;
-                window.location.href = url;
-                console.log('Get authorization action initiated.');
-            },
-        }
+        { id: 'clearCache', label: 'Clear Cache', action: clearCacheAction, icon: faTrash },
+        { id: 'themeSwap', label: 'Change Theme', action: changeThemeAction, icon: faPalette },
+        { id: 'getAuth', label: 'Authentication', action: authenticationAction, icon: faKey },
     ];
-
-    // Check for token in URL on component load
-    useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const token = searchParams.get('token');
-        if (token) {
-            console.log('Token ID:', token);
-            console.log('Received authentication token:', token);
-            const encryptedToken = encrypt(token); // Use the encrypt function
-            sessionStorage.setItem('authToken', encryptedToken);
-        }
-    }, []); 
 
     return (
         <section>
@@ -48,12 +36,9 @@ const Settings = () => {
                 <tbody>
                     {settingsOptions.map(option => (
                         <tr key={option.id}>
-                            <td>
-                                <label htmlFor={option.id} className={styles.label}>{option.label}</label>
-                            </td>
-                            <td>
-                                <Button onClick={option.action}>{option.label}</Button>
-                            </td>
+                            <td><FontAwesomeIcon icon={option.icon} /></td>
+                            <td><label htmlFor={option.id} className={styles.label}>{option.label}</label></td>
+                            <td><Button onClick={option.action}>{option.label}</Button></td>
                         </tr>
                     ))}
                 </tbody>

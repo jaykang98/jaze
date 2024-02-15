@@ -1,14 +1,13 @@
-/* Footer.module.css */
-footer {
+.footer {
     background-color: var(--footer-bg-color, #333);
     color: var(--footer-text-color, #fff);
     text-align: center;
-    font-size: var(--footer-font-size, 0.625rem);
+    font-size: var(--font-size-base, 0.625rem); /* Adjust to use a base font size variable, if applicable */
     padding: var(--footer-padding, 1.25rem) 0;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 0px;
-    margin-top: 10px;
+    margin-top: var(--default-margin, 10px);
+    margin-bottom: var(--default-margin, 0);
     border-radius: var(--border-radius);
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family, 'Roboto'), sans-serif;
 }

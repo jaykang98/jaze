@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Main.module.css';
 import Button from '../../ui/button/Button';
 import Input from '../../ui/input/Input';
+import OptionList from '../../ui/optionList/OptionList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCompactDisc, faMusic, faClock, faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
+import TimeSelectionRow from '../../ui/timeSelectionRow/TimeSelectionRow';
 
-const Main = () => {
-    const [formData, setFormData] = useState({
+interface FormData {
+    artist: string;
+    album: string;
+    track: string;
+    startTimestamp: string;
+    endTimestamp: string;
+}
+
+interface Options {
+    artists: Array<{ name: string }>;
+    albums: Array<{ name: string }>;
+    tracks: Array<{ name: string }>;
+}
+
+const Main: React.FC = () => {
+    const [formData, setFormData] = useState<FormData>({
         artist: '',
         album: '',
         track: '',
@@ -14,19 +30,71 @@ const Main = () => {
         endTimestamp: '',
     });
 
-    const handleChange = (e) => {
+    const [options, setOptions] = useState<Options>({
+        artists: [],
+        albums: [],
+        tracks: [],
+    });
+
+    interface FetchAPIParams {
+        limit: number;
+    }
+
+    const fetchAPI = async (method: string, params: FetchAPIParams): Promise<any> => {
+        const apiKey = '053905e1fc8b0de378dc341a24ec68c7';
+        const user = localStorage.getItem('userID');
+        const url = `https://ws.audioscrobbler.com/2.0/?method=${method}&user=${user}&period=12month&limit=${params.limit}&api_key=${apiKey}&format=json`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Fetch error:', error);
+            return null;
+        }
+    };
+
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const artistsData = await fetchAPI('user.gettopartists', { limit: 4 });
+            const albumsData = await fetchAPI('user.gettopalbums', { limit: 4 });
+            const tracksData = await fetchAPI('user.gettoptracks', { limit: 4 });
+
+
+            setOptions({
+                artists: artistsData?.topartists?.artist ?? [],
+                albums: albumsData?.topalbums?.album ?? [],
+                tracks: tracksData?.toptracks?.track ?? [],
+            });
+        };
+
+        fetchData();
+    }, []);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
+        setFormData((prevState) => ({
             ...prevState,
             [name]: value,
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleOptionSelect = (type: keyof FormData, option: { name: string }) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [type]: option.name,
+        }));
+    };
+
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(formData);
     };
-
     return (
         <section>
             <h2>Home</h2>
@@ -46,6 +114,9 @@ const Main = () => {
                                     placeholder="Enter artist name"
                                 />
                             </td>
+                            <td>
+                                <OptionList options={options.artists} onSelect={(option) => handleOptionSelect('artist', option)} />
+                            </td>
                         </tr>
                         <tr>
                             <td><FontAwesomeIcon icon={faCompactDisc} /></td>
@@ -59,6 +130,9 @@ const Main = () => {
                                     onChange={handleChange}
                                     placeholder="Enter album title"
                                 />
+                            </td>
+                            <td>
+                                <OptionList options={options.albums} onSelect={(option) => handleOptionSelect('album', option)} />
                             </td>
                         </tr>
                         <tr>
@@ -74,6 +148,9 @@ const Main = () => {
                                     placeholder="Enter track name"
                                 />
                             </td>
+                            <td>
+                                <OptionList options={options.tracks} onSelect={(option) => handleOptionSelect('track', option)} />
+                            </td>
                         </tr>
                         <tr>
                             <td><FontAwesomeIcon icon={faClock} /></td>
@@ -86,6 +163,14 @@ const Main = () => {
                                     value={formData.startTimestamp}
                                     onChange={handleChange}
                                     placeholder="Start timestamp"
+                                />
+                            </td>
+                            <td>
+                                <TimeSelectionRow
+                                    label="Start Time"
+                                    timestamp={formData.startTimestamp}
+                                    onChange={handleChange}
+                                    onYearSelect={(year) => setFormData({ ...formData, startTimestamp: `${year}-01-01T00:00` })}
                                 />
                             </td>
                         </tr>
@@ -102,13 +187,20 @@ const Main = () => {
                                     placeholder="End timestamp"
                                 />
                             </td>
+                            <td>
+                                <TimeSelectionRow
+                                    label="End Time"
+                                    timestamp={formData.endTimestamp}
+                                    onChange={handleChange}
+                                    onYearSelect={(year) => setFormData({ ...formData, endTimestamp: `${year}-01-01T00:00` })}
+                                />
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                             <td>
                                 <Button type="submit">Submit</Button>
-
                             </td>
                         </tr>
                     </tbody>

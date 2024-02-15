@@ -1,4 +1,3 @@
-/* Sidebar.module.css */
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -11,7 +10,7 @@
     border-radius: var(--border-radius);
     text-align: center;
     transition: var(--hover-transition);
-    margin-top: 10px;
+    margin-top: var(--default-margin); /* Use variable for consistency */
     max-height: 100vh; /* Prevent sidebar from exceeding the viewport height */
 }
 

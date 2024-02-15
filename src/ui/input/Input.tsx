@@ -1,17 +1,17 @@
 import React from 'react';
 import styles from './Input.module.css';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core'; // Assuming you're using FontAwesome
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface InputProps {
     id: string;
-    label?: string; // This is already in your interface, shown here for context
+    label?: string;
     type: string;
     name: string;
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
-    icon?: IconDefinition; // Optional prop for an icon
+    icon?: IconDefinition;
 }
 
 const Input: React.FC<InputProps> = ({ id, label, type, name, value, onChange, placeholder, icon }) => {
@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = ({ id, label, type, name, value, onChange, p
         <div className={styles.inputContainer}>
             {label && (
                 <label htmlFor={id} className={styles.label}>
-                    {icon && <FontAwesomeIcon icon={icon} />}
+                    {icon && <FontAwesomeIcon icon={icon} style={{ marginRight: '5px' }} />}
                     {label}
                 </label>
             )}
@@ -37,6 +37,5 @@ const Input: React.FC<InputProps> = ({ id, label, type, name, value, onChange, p
         </div>
     );
 };
-
 
 export default Input;

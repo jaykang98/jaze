@@ -9,7 +9,6 @@ const HandleAuth = () => {
 
     useEffect(() => {
         const fetchUserName = async () => {
-            // Only proceed if userID is not already set
             if (userID) return;
 
             const encryptedToken = sessionStorage.getItem('authToken');
@@ -32,7 +31,7 @@ const HandleAuth = () => {
 
                     if (data.session && data.session.name) {
                         setUserID(data.session.name);
-                        localStorage.setItem('userID', data.session.name);
+                        localStorage.set(userID, data.session.name);
                     }
                 } catch (error) {
                     console.error("Failed to fetch session:", error);

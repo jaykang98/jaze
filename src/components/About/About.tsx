@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './About.module.css';
 import HandleAuth from '../../utils/HandleAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPenNib, faUser } from '@fortawesome/free-solid-svg-icons';
 
 interface AboutProps {
     author?: string;
@@ -8,35 +10,32 @@ interface AboutProps {
 }
 
 const About: React.FC<AboutProps> = ({ author = 'J Kang', contact = 'kangjacob1@gmail.com' }) => {
-    // Call the custom hook to manage authentication and user ID
     const { userID, error } = HandleAuth();
 
     return (
-        <section className={styles.aboutSection}>
-            <h2>About</h2>
-            <p>This application generates visual representations of Last.FM data. Developed by {author} and open for public use. For more information, feel free to contact at {contact}.</p>
-            <table>
+        <section className={styles.aboutSection} aria-labelledby="about-heading" aria-describedby="about-description">
+            <h2 id="about-heading">About</h2>
+            <p id="about-description">This application generates visual representations of Last.FM data. Developed by {author} and open for public use. For more information, feel free to contact at {contact}.</p>
+            <table className={styles.iconTable} aria-label="About information">
                 <tbody>
                     <tr>
-                        <td>License:</td>
-                        <td>GPLv3</td>
-                    </tr>
-                    <tr>
+                        <td><FontAwesomeIcon icon={faUser} aria-hidden="true" /></td>
                         <td>Logged In User:</td>
                         <td>{userID || 'Not logged in'}</td>
                     </tr>
                     <tr>
+                        <td><FontAwesomeIcon icon={faPenNib} aria-hidden="true" /></td>
                         <td>Author:</td>
                         <td>{author}</td>
                     </tr>
                     <tr>
+                        <td><FontAwesomeIcon icon={faEnvelope} aria-hidden="true" /></td>
                         <td>Contact:</td>
                         <td>{contact}</td>
                     </tr>
                 </tbody>
             </table>
-            {/* Optionally display an error message if there was an error fetching the user ID */}
-            {error && <p className={styles.errorMessage}>Error: {error.message}</p>}
+            {error && <p className={styles.errorMessage} role="alert">Error: {error.message}</p>}
         </section>
     );
 };
