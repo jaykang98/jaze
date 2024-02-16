@@ -31,7 +31,7 @@ const HandleAuth = () => {
 
                     if (data.session && data.session.name) {
                         setUserID(data.session.name);
-                        localStorage.set(userID, data.session.name);
+                        localStorage.setItem('userID', data.session.name);
                     }
                 } catch (error) {
                     console.error("Failed to fetch session:", error);
@@ -47,3 +47,4 @@ const HandleAuth = () => {
 };
 
 export default HandleAuth;
+
