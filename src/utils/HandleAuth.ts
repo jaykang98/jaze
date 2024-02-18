@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { decrypt } from './Encryption'; // Ensure this path is correct
+import { decrypt } from './encryption'; // Ensure this path is correct
 import CryptoJS from 'crypto-js';
 
 // Custom hook for handling authentication
@@ -41,7 +41,7 @@ const HandleAuth = () => {
         };
 
         fetchUserName();
-    }, [userID]); // Dependency array to prevent re-fetching if userID is already set
+    }, [userID]); 
 
     return { userID, error };
 };
