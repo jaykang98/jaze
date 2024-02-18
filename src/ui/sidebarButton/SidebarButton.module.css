@@ -1,53 +1,56 @@
 @keyframes gradientLoop {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
 
-    50% {
-        background-position: 100% 50%;
-    }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    width: 80%;
-    margin: var(--default-margin, 0px); 
-    padding: var(--default-padding, 10px 20px);
-    text-decoration: none;
-    font-family: var(--font-family);
-    color: var(--primary-text-color, #FFFFFF);
-    background-color: var(--sidebar-bg-color); 
-    border-radius: var(--border-radius, 10px);
-    text-align: center;
-    cursor: pointer;
-    transition: background-color var(--hover-transition, 0.3s ease), border-color var(--hover-transition, 0.3s ease);
-    font-size: var(--font-size-base, 2rem);
-    border: 2px solid transparent;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 80%;
+  margin: var(--default-margin, 0px);
+  padding: var(--default-padding, 10px 20px);
+  text-decoration: none;
+  font-family: var(--font-family);
+  color: var(--primary-text-color, #ffffff);
+  background-color: var(--sidebar-bg-color);
+  border-radius: var(--border-radius, 10px);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color var(--hover-transition, 0.3s ease),
+    border-color var(--hover-transition, 0.3s ease);
+  font-size: var(--font-size-base, 2rem);
+  border: 2px solid transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .button:hover {
-    background: linear-gradient(45deg, #00A4CC, #8A2387, #E94057, #F27121);
-    background-size: 200% 200%;
-    animation: gradientLoop 2s ease infinite;
-    color: var(--primary-text-color, #FFFFFF);
-    border-color: var(--primary-text-color);
-    transition: none;
-    opacity: 0.9;
+  background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
+  background-size: 200% 200%;
+  animation: gradientLoop 2s ease infinite;
+  color: var(--primary-text-color, #ffffff);
+  border-color: var(--primary-text-color);
+  transition: none;
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 768px) {
-    .button {
-        width: auto;
-        margin: var(--default-margin, 0px) 10px; 
-        padding: var(--default-padding, 10px);
-        font-size: var(--font-size-base, 1rem);
-        white-space: normal;
-    }
+  .button {
+    width: auto;
+    margin: var(--default-margin, 0px) 10px;
+    padding: var(--default-padding, 10px);
+    font-size: var(--font-size-base, 1rem);
+    white-space: normal;
+  }
 }

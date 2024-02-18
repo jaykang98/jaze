@@ -1,26 +1,26 @@
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: var(--default-padding);
-    width: var(--sidebar-width);
-    background-color: var(--sidebar-bg-color);
-    color: var(--primary-text-color);
-    border-radius: var(--border-radius);
-    text-align: center;
-    transition: var(--hover-transition);
-    margin-top: var(--default-margin); /* Use variable for consistency */
-    max-height: 100vh; /* Prevent sidebar from exceeding the viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: var(--default-padding);
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-bg-color);
+  color: var(--primary-text-color);
+  border-radius: var(--border-radius);
+  text-align: center;
+  transition: var(--hover-transition);
+  margin-top: var(--default-margin); /* Use variable for consistency */
+  max-height: 100vh; /* Prevent sidebar from exceeding the viewport height */
 }
 
 @media screen and (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        overflow-x: hidden; /* Keep for horizontal scrolling on small screens if needed */
-        padding: var(--default-padding) 0;
-        /* Ensure that elements within don't exceed the sidebar width */
-    }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    overflow-x: hidden; /* Keep for horizontal scrolling on small screens if needed */
+    padding: var(--default-padding) 0;
+    /* Ensure that elements within don't exceed the sidebar width */
+  }
 }

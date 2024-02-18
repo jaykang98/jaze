@@ -8,24 +8,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-<<<<<<< Updated upstream
-    "eject": "react-scripts eject"
-=======
     "eject": "react-scripts eject",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css}'"
->>>>>>> Stashed changes
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css}'",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/react": "^18.2.55",
     "axios": "^1.6.7",
-<<<<<<< Updated upstream
-=======
+    "crypto-js": "^4.2.0",
     "eslint": "^8.56.0",
-    "lint": "^0.8.19",
-    "prettier": "^3.2.5",
->>>>>>> Stashed changes
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
@@ -36,7 +29,8 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^14.2.0",
-    "@types/crypto-js": "^4.2.2"
+    "@types/crypto-js": "^4.2.2",
+    "prettier": "^3.2.5"
   },
   "browserslist": {
     "production": [
