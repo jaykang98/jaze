@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { decrypt } from "./encryption"; // Ensure this path is correct
+import { decrypt } from "./encryption"; 
 import CryptoJS from "crypto-js";
 
-// Custom hook for handling authentication
 const HandleAuth = () => {
   const [userID, setUserID] = useState(localStorage.getItem("userID") || null);
   const [error, setError] = useState(null);

@@ -10,8 +10,8 @@
   border-radius: var(--border-radius);
   text-align: center;
   transition: var(--hover-transition);
-  margin-top: var(--default-margin); /* Use variable for consistency */
-  max-height: 100vh; /* Prevent sidebar from exceeding the viewport height */
+  margin-top: var(--default-margin);
+  max-height: 100vh; 
 }
 
 @media screen and (max-width: 768px) {
@@ -19,8 +19,7 @@
     width: 100%;
     height: auto;
     flex-direction: row;
-    overflow-x: hidden; /* Keep for horizontal scrolling on small screens if needed */
+    overflow-x: hidden;
     padding: var(--default-padding) 0;
-    /* Ensure that elements within don't exceed the sidebar width */
   }
 }

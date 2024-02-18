@@ -1,20 +1,15 @@
 import React, { useRef, useState, useLayoutEffect } from "react";
 import Button from "../../ui/button/Button";
-import styles from "./TimeSelectionRow.module.css"; // Import the CSS module for styling
+import styles from "./TimeSelectionRow.module.css";
 
 interface YearButtonsProps {
   label: string;
-  timestamp: string; // Add this line
+  timestamp: string;
   onYearSelect: (year: number) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // Add this line if it's missing
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const YearButtons: React.FC<YearButtonsProps> = ({
-  label,
-  timestamp,
-  onYearSelect,
-  onChange,
-}) => {
+const YearButtons: React.FC<YearButtonsProps> = ({ onYearSelect }) => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 4 }, (_, i) => currentYear - i);
   const containerRef = useRef<HTMLDivElement>(null);

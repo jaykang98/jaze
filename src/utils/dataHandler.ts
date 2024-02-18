@@ -3,8 +3,8 @@ import { FetchDataParams } from "./FetchDataParams";
 
 const useDataHandler = (initialData: any) => {
   const [data, setData] = useState(initialData);
-  const apiToken: string = "053905e1fc8b0de378dc341a24ec68c7";
-  const baseUrl: string = "http://ws.audioscrobbler.com/2.0/";
+  const apiToken = "053905e1fc8b0de378dc341a24ec68c7";
+  const baseUrl = "http://ws.audioscrobbler.com/2.0/";
 
   const generateURL = (method: string, params: FetchDataParams) => {
     const filteredParams: Record<string, string> = Object.entries(
@@ -71,7 +71,7 @@ const useDataHandler = (initialData: any) => {
     artist: string,
     track: string,
     username: string,
-    autocorrect: number = 1,
+    autocorrect = 1,
   ) => {
     fetchData("track.getInfo", {
       artist: encodeURIComponent(artist),
@@ -84,7 +84,7 @@ const useDataHandler = (initialData: any) => {
   const getTrackTopTags = (
     artist: string,
     track: string,
-    autocorrect: number = 1,
+    autocorrect = 1,
   ) => {
     fetchData("track.getTopTags", {
       artist: encodeURIComponent(artist),
@@ -93,15 +93,15 @@ const useDataHandler = (initialData: any) => {
     });
   };
 
-  const getTopArtists = (page: number = 1, limit: number) => {
+  const getTopArtists = (page = 1, limit: number) => {
     fetchData("chart.getTopArtists", { page, limit });
   };
 
   const getUserRecentTracks = (
     username: string,
     limit: number,
-    page: number = 1,
-    extended: number = 1,
+    page = 1,
+    extended = 1,
   ) => {
     fetchData("user.getRecentTracks", {
       user: encodeURIComponent(username),
@@ -114,7 +114,7 @@ const useDataHandler = (initialData: any) => {
   const getUserTopAlbums = (
     username: string,
     limit: number,
-    period: string = "12month",
+    period = "12month",
   ) => {
     fetchData("user.getTopAlbums", {
       user: encodeURIComponent(username),

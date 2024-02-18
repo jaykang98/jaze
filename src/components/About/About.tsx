@@ -7,21 +7,12 @@ import {
   faPenNib,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import HandleAuth from "../../utils/HandleAuth";
-const { userID, error, isLoading } = HandleAuth();
 
-const renderUserInfo = () => {
-  if (isLoading) return "Loading...";
-  if (error) return error;
-  if (!userID) return "Not logged in";
-  return userID;
-};
-
-const About = () => {
-  const { userID, error } = HandleAuth();
-
+const About = ({ userID, error, onViewChange }) => {
+    React.useEffect(() => {
+        onViewChange("About");
+    }, [onViewChange]);
   const renderUserInfo = () => {
-    if (isLoading) return "Loading...";
     if (error) return error;
     if (!userID) return "Not logged in";
     return userID;
