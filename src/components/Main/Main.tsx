@@ -7,7 +7,8 @@ import OptionList from "../../ui/optionList/OptionList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faHourglassEnd } from "@fortawesome/free-solid-svg-icons";
 import TimeSelectionRow from "../../ui/timeSelectionRow/TimeSelectionRow";
-import { useAuth } from "../../utils/HandleAuth";
+import HandleAuth from "../../utils/HandleAuth";
+import { useAuth } from "../../utils/useAuth";
 
 interface FormData {
   artist: string;
@@ -67,7 +68,6 @@ const Main = () => {
   const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectionType(e.target.value as "artist" | "album" | "track");
   };
-
 
   return (
     <section>
