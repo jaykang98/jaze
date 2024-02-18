@@ -1,11 +1,11 @@
 .yearButtonsContainer {
-    display: flex;
-    flex-wrap: ; /* Allow options to wrap to the next line */
-    gap: 10px;
-    max-width: 100%; /* Ensure the container does not exceed the parent's width */
-    overflow-x: hidden; /* Hide horizontal overflow */
+  display: flex;
+  flex-wrap:; /* Allow options to wrap to the next line */
+  gap: 10px;
+  max-width: 100%; /* Ensure the container does not exceed the parent's width */
+  overflow-x: hidden; /* Hide horizontal overflow */
 }
 Button {
-    width: 160px; /* Adjust the width as needed */
-    height: 40px; /* Adjust the height as needed */
+  width: 160px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
 }
