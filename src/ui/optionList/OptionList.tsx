@@ -2,14 +2,19 @@
 import React from "react";
 import styles from "./OptionList.module.css";
 import Button from "../../ui/button/Button";
-
+interface OptionList {
+    artists: Array<{ name: string }>;
+    albums: Array<{ name: string }>;
+    tracks: Array<{ name: string }>;
+}
 interface Option {
-  name: string;
+    name: string;
 }
 
 interface OptionListProps {
-  options: Option[];
-  onSelect: (selectedOption: Option) => void; // Callback function for when an option is selected
+    options: Option[];
+    onSelect: (selectedOption: Option) => void;
+    userID: string;
 }
 
 const OptionList: React.FC<OptionListProps> = ({ options, onSelect }) => {

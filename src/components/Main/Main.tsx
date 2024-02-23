@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Main.module.css";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
@@ -6,24 +6,11 @@ import OptionList from "../../ui/optionList/OptionList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faHourglassEnd } from "@fortawesome/free-solid-svg-icons";
 import TimeSelectionRow from "../../ui/timeSelectionRow/TimeSelectionRow";
+import { FormData } from "./FormData";
+import Options from "../../ui/optionList/OptionList";
+import { MainProps } from "./MainProps";
 
-interface FormData {
-    artist: string;
-    album: string;
-    track: string;
-    startTimestamp: string;
-    endTimestamp: string;
-}
-
-interface Options {
-    artists: Array<{ name: string }>;
-    albums: Array<{ name: string }>;
-    tracks: Array<{ name: string }>;
-}
-const Main = ({ userID, error, onViewChange }) => {
-    React.useEffect(() => {
-        onViewChange("Main");
-    }, [onViewChange]);
+const Main: React.FC<MainProps> = ({ userID, error }) => {
     const [formData, setFormData] = useState<FormData>({
         artist: "",
         album: "",
@@ -32,7 +19,7 @@ const Main = ({ userID, error, onViewChange }) => {
         endTimestamp: "",
     });
 
-    const [options, setOptions] = useState<Options>({
+    const [options] = useState<Options>({
         artists: [],
         albums: [],
         tracks: [],
@@ -42,6 +29,7 @@ const Main = ({ userID, error, onViewChange }) => {
         e.preventDefault();
         console.log(formData);
     };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prevState) => ({
@@ -49,23 +37,22 @@ const Main = ({ userID, error, onViewChange }) => {
             [name]: value,
         }));
     };
-    const handleOptionSelect = (
-        type: keyof FormData,
-        option: { name: string },
-    ) => {
+
+    const handleOptionSelect = (type: keyof FormData, option: { name: string }) => {
         setFormData((prevState) => ({
             ...prevState,
             [type]: option.name,
         }));
     };
-    const [selectionType, setSelectionType] = useState<
-        "artist" | "album" | "track"
-    >("track");
+
+    const [selectionType, setSelectionType] = useState<"artist" | "album" | "track">("track");
 
     const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newType = e.target.value as "artist" | "album" | "track";
         setSelectionType(newType);
     };
+    
+
 
     return (
         <section>
@@ -94,10 +81,9 @@ const Main = ({ userID, error, onViewChange }) => {
                             </td>
                             <td>
                                 <OptionList
+                                    userID={userID}
                                     options={options[`${selectionType}s`]}
-                                    onSelect={(option) =>
-                                        handleOptionSelect(selectionType, option)
-                                    }
+                                    onSelect={(option) => handleOptionSelect(selectionType, option)}
                                 />
                             </td>
                         </tr>

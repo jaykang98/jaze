@@ -2,16 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+node_modules/
+
 /.vs
-/build
-/node_modules/.cache/babel-loader/1ef7ae2f13988831f62fba3a604347df34cc6bbb6104d81a464026696a66d8a1.json
-/.gitignore
-/node_modules/.cache/.eslintcache
-/node_modules/.cache/babel-loader/b7df85b91892742b972d048adf05d7adf282fceef8f59964cf7f1c2609b6e216.json
-/node_modules/.cache/babel-loader/f1b95b52dbff7395d52ee7b7d6e92838fbb59b5847c172fac321ee9060989ebc.json
-<<<<<<< HEAD
-/node_modules/.cache/default-development/6.pack_
-=======
-/node_modules/.bin
-/node_modules
->>>>>>> fix-attempt-1
