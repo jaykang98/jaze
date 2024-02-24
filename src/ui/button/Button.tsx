@@ -5,12 +5,8 @@ import styles from "./Button.module.css";
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-<<<<<<< Updated upstream
-  type?: "button" | "submit" | "reset"; 
-=======
   type?: "button" | "submit" | "reset";
   className?: string;
->>>>>>> Stashed changes
 }
 
 const Button: React.FC<ButtonProps> = ({

@@ -2,14 +2,10 @@
   background-color: var(--footer-bg-color, #333);
   color: var(--footer-text-color, #fff);
   text-align: center;
-<<<<<<< Updated upstream
   font-size: var(
     --font-size-base,
     0.625rem
   ); /* Adjust to use a base font size variable, if applicable */
-=======
-  font-size: var(--font-size-base, 0.625rem);
->>>>>>> Stashed changes
   padding: var(--footer-padding, 1.25rem) 0;
   width: 100%;
   box-sizing: border-box;

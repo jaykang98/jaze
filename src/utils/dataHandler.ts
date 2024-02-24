@@ -83,11 +83,7 @@ const useDataHandler = (initialData: any) => {
     });
   };
 
-  const getTrackTopTags = (
-    artist: string,
-    track: string,
-    autocorrect = 1,
-  ) => {
+  const getTrackTopTags = (artist: string, track: string, autocorrect = 1) => {
     fetchData("track.getTopTags", {
       artist: encodeURIComponent(artist),
       track: encodeURIComponent(track),

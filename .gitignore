@@ -2,16 +2,24 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+node_modules/
+
 /.vs
 /build
-/node_modules/.cache/babel-loader/1ef7ae2f13988831f62fba3a604347df34cc6bbb6104d81a464026696a66d8a1.json
-/.gitignore
-/node_modules/.cache/.eslintcache
-/node_modules/.cache/babel-loader/b7df85b91892742b972d048adf05d7adf282fceef8f59964cf7f1c2609b6e216.json
-/node_modules/.cache/babel-loader/f1b95b52dbff7395d52ee7b7d6e92838fbb59b5847c172fac321ee9060989ebc.json
-<<<<<<< HEAD
-/node_modules/.cache/default-development/6.pack_
-=======
-/node_modules/.bin
-/node_modules
->>>>>>> fix-attempt-1
+/build/asset-manifest.json
+/build/index.html
+/build/static
+/build/static/css
+/build/static/css/main.d2821374.css
+/build/static/css/main.d2821374.css.map
+/build/static/js
+/build/static/js/main.9a0824e2.js
+/build/static/js/main.9a0824e2.js.LICENSE.txt
+/build/static/js/main.9a0824e2.js.map
+/build/static/media
+/build/static/media/Roboto-Black.cf56c1b149d0a5e8d7c6.ttf
+/build/static/media/Roboto-Bold.f80816a5455d171f948d.ttf
+/build/static/media/Roboto-Italic.87f3afe16a8c3c370634.ttf
+/build/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf
+/build/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf
+/build/static/media/Roboto-Thin.a732a12eb07742232407.ttf
