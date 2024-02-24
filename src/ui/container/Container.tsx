@@ -16,6 +16,7 @@ const Container: React.FC = () => {
 
     useEffect(() => {
         const handleAuthentication = async () => {
+            if (userID) return;[]
             const urlParams = new URLSearchParams(window.location.search);
             const token = urlParams.get("token");
             if (token) {

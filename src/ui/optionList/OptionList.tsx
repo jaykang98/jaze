@@ -14,7 +14,7 @@ interface Option {
 interface OptionListProps {
     options: Option[];
     onSelect: (selectedOption: Option) => void;
-    userID: string;
+    userID:string|null;
 }
 
 const OptionList: React.FC<OptionListProps> = ({ options, onSelect }) => {
