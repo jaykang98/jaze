@@ -4,12 +4,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPenNib, faUser } from "@fortawesome/free-solid-svg-icons";
 import { AboutProps } from "./AboutProps"; 
 
+const About = ({ userID, error, onViewChange }) => {
+    React.useEffect(() => {
+        onViewChange("About");
+    }, [onViewChange]);
+  const renderUserInfo = () => {
+    if (error) return error;
+=======
+import { AboutProps } from "./AboutProps";
+
 const About: React.FC<AboutProps> = ({ userID, error }) => {
-    const renderUserInfo = () => {
-        if (error) return error.message; 
-        if (!userID) return "Not logged in";
-        return userID;
-    };
+  const renderUserInfo = () => {
+    if (error) return error.message;
+>>>>>>> Stashed changes
+    if (!userID) return "Not logged in";
+    return userID;
+  };
 
     return (
         <section className={styles.aboutSection} aria-labelledby="about-heading" aria-describedby="about-description">

@@ -1,40 +1,42 @@
-import React, { useRef, useState, useLayoutEffect } from "react";
-import Button from "../../ui/button/Button";
+import React from "react";
 import styles from "./TimeSelectionRow.module.css";
+import OptionList from "../optionList/OptionList";
+import Input from "../input/Input";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHourglassEnd } from "@fortawesome/free-solid-svg-icons";
 
-interface YearButtonsProps {
-  label: string;
-  timestamp: string;
-  onYearSelect: (year: number) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const YearButtons: React.FC<YearButtonsProps> = ({ onYearSelect }) => {
+const TimeSelectionRow = ({ label, timestamp, onChange, onYearSelect }) => {
   const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 4 }, (_, i) => currentYear - i);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [visibleButtons, setVisibleButtons] = useState(years.length);
+  const yearsOptions = Array.from({ length: 4 }, (_, i) => ({
+    name: `${currentYear - i}`,
+  }));
 
-  useLayoutEffect(() => {
-    if (containerRef.current) {
-      const containerWidth = containerRef.current.offsetWidth;
-      const buttonWidth = 60;
-      const numberOfButtons = Math.floor(containerWidth / buttonWidth);
-      setVisibleButtons(numberOfButtons);
-    }
-  }, []);
+  const handleSelect = (selectedOption) => {
+    const year = parseInt(selectedOption.name, 10);
+    onYearSelect(year);
+  };
 
   return (
-    <div>
-      <div className={styles.yearButtonsContainer} ref={containerRef}>
-        {years.slice(0, visibleButtons).map((year) => (
-          <Button key={year} onClick={() => onYearSelect(year)}>
-            {year}
-          </Button>
-        ))}
-      </div>
-    </div>
+    <tr>
+      <td>
+        <FontAwesomeIcon icon={faHourglassEnd} />
+      </td>
+      <td>End Time</td>
+      <td>
+        <Input
+          id="endTimestamp"
+          type="datetime-local"
+          name="endTimestamp"
+          value={timestamp}
+          onChange={onChange}
+          placeholder="End timestamp"
+        />
+      </td>
+      <td>
+        <OptionList options={yearsOptions} onSelect={handleSelect} />
+      </td>
+    </tr>
   );
 };
 
-export default YearButtons;
+export default TimeSelectionRow;

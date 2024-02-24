@@ -1,8 +1,9 @@
-import CryptoJS from 'crypto-js';
-import { useEffect } from 'react';
+// Authenticator.tsx
+import CryptoJS from "crypto-js";
+import { useEffect } from "react";
 
-const secretKey = 'a0c2b1ab664e5ea5ca735d57f4cdaaf8';
-const apiKey = '053905e1fc8b0de378dc341a24ec68c7';
+const secretKey = "a0c2b1ab664e5ea5ca735d57f4cdaaf8";
+const apiKey = "053905e1fc8b0de378dc341a24ec68c7";
 
 const encryptData = (data: string) => CryptoJS.AES.encrypt(data, secretKey).toString();
 const decryptData = (ciphertext: string) => {
@@ -30,20 +31,21 @@ export const fetchSession = async (token: string) => {
         }
         const data = await response.json();
         if (data.session) {
-            console.log('Session fetched successfully:', data.session);
+      console.log("Session fetched successfully:", data.session);
+      setUserID(data.session.name);
         }
     } catch (error) {
-        console.error('Fetching session failed:', error);
+    console.error("Fetching session failed:", error);
     }
 };
 
 
 export const setUserID = (userID: string) => {
-    localStorage.setItem('userID', encryptData(userID));
+  localStorage.setItem("userID", encryptData(userID));
 };
 
 export const getUserID = () => {
-    const encryptedUserID = localStorage.getItem('userID');
+  const encryptedUserID = localStorage.getItem("userID");
     return encryptedUserID ? decryptData(encryptedUserID) : null;
 };
 

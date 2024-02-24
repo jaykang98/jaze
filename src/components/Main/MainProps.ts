@@ -1,4 +1,4 @@
 export interface MainProps {
     userID: string | null;
-    error: Error | null;
+  error?: Error | null;
 }

@@ -1,4 +1,4 @@
 export interface SettingsProps {
-    userID: string | null;
-    error: Error | null;
+  userID?: string | null;
+  error?: Error | null;
 }

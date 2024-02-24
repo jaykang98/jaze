@@ -5,7 +5,7 @@
   font-size: var(
     --font-size-base,
     0.625rem
-  ); 
+  ); /* Adjust to use a base font size variable, if applicable */
   padding: var(--footer-padding, 1.25rem) 0;
   width: 100%;
   box-sizing: border-box;
