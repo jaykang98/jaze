@@ -7,6 +7,7 @@ import {
   faPenNib,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+<<<<<<< Updated upstream
 
 const About = ({ userID, error, onViewChange }) => {
     React.useEffect(() => {
@@ -14,6 +15,13 @@ const About = ({ userID, error, onViewChange }) => {
     }, [onViewChange]);
   const renderUserInfo = () => {
     if (error) return error;
+=======
+import { AboutProps } from "./AboutProps";
+
+const About: React.FC<AboutProps> = ({ userID, error }) => {
+  const renderUserInfo = () => {
+    if (error) return error.message;
+>>>>>>> Stashed changes
     if (!userID) return "Not logged in";
     return userID;
   };

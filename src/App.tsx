@@ -7,7 +7,10 @@ import ErrorBoundary from "./ErrorBoundary";
 import HandleAuth from "./utils/HandleAuth";
 
 function App() {
+<<<<<<< Updated upstream
     const { userID, error } = HandleAuth(); 
+=======
+>>>>>>> Stashed changes
   return (
     <ErrorBoundary>
       <div className={styles.appContainer}>

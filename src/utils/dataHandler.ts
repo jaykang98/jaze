@@ -1,72 +1,74 @@
-import { useState, useEffect } from "react";
-import { FetchDataParams } from "./FetchDataParams";
+import { useState } from "react";
+export const apiToken = "053905e1fc8b0de378dc341a24ec68c7";
+export const baseUrl = "http://ws.audioscrobbler.com/2.0/";
 
-const useDataHandler = (initialData: any) => {
-  const [data, setData] = useState(initialData);
-  const apiToken = "053905e1fc8b0de378dc341a24ec68c7";
-  const baseUrl = "http://ws.audioscrobbler.com/2.0/";
+interface FetchDataParams {
+    user?: string;
+    artist?: string;
+    album?: string;
+    track?: string;
+    autocorrect?: number;
+    page?: number;
+    limit?: number;
+    period?: string;
+    extended?: number;
+    api_key?: string;
+}
 
-  const generateURL = (method: string, params: FetchDataParams) => {
-    const filteredParams: Record<string, string> = Object.entries(
-      params,
-    ).reduce((acc, [key, value]) => {
-      if (value !== undefined) {
-        acc[key] = String(value);
-      }
-      return acc;
+const generateURL = (method: string, params: FetchDataParams): string => {
+    const filteredParams: Record<string, string> = Object.entries(params).reduce((acc, [key, value]) => {
+        if (value !== undefined) {
+            acc[key] = String(value);
+        }
+        return acc;
     }, {});
 
     filteredParams.api_key = apiToken;
     filteredParams.format = "json";
-
     const queryParams = new URLSearchParams(filteredParams).toString();
     return `${baseUrl}?method=${method}&${queryParams}`;
-  };
+};
 
-  const fetchData = async (method: string, params: FetchDataParams) => {
+export const fetchData = async (method: string, params: FetchDataParams) => {
     try {
-      const url = generateURL(method, params);
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Network response was not ok");
-      const jsonData = await response.json();
-      setData(jsonData);
+        const url = generateURL(method, { ...params, api_key: apiToken }); 
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const jsonData = await response.json();
+        return jsonData;
     } catch (error) {
-      console.error("Failed to fetch data:", error);
+        console.error("Failed to fetch data:", error);
+        return null;
     }
-  };
-  const getUserInfo = (username: string) =>
-    fetchData("user.getinfo", { user: username });
+};
 
-  const getAlbumInfo = (artist: string, album: string, username: string) => {
-    fetchData("album.getInfo", {
-      artist: encodeURIComponent(artist),
-      album: encodeURIComponent(album),
-      user: encodeURIComponent(username),
-    });
-  };
+const useDataHandler = (initialData: any) => {
+    const [data, setData] = useState(initialData);
 
-  const getAlbumTopTags = (artist: string, album: string, username: string) => {
-    fetchData("album.getTopTags", {
-      artist: encodeURIComponent(artist),
-      album: encodeURIComponent(album),
-      user: encodeURIComponent(username),
-    });
-  };
+    const fetchAndSetData = async (method: string, params: FetchDataParams) => {
+        const jsonData = await fetchData(method, params);
+        if (jsonData) setData(jsonData);
+        return jsonData;
+    };
 
-  const getArtistInfo = (artist: string, username: string) => {
-    fetchData("artist.getInfo", {
-      artist: encodeURIComponent(artist),
-      user: encodeURIComponent(username),
-    });
-  };
+    const getUserTopAlbums = async (username: string, period:'overall', limit:50, page:1) => {
+        const params: FetchDataParams = {
+            user: username,
+            api_key: apiToken, 
+            format: 'json',
+            method: 'user.gettopalbums',
+            period,
+            limit,
+            page
+        };
+        return await fetchData('user.getTopAlbums', params);
+    };
 
-  const getArtistTopTags = (artist: string, username: string) => {
-    fetchData("artist.getTopTags", {
-      artist: encodeURIComponent(artist),
-      user: encodeURIComponent(username),
-    });
-  };
+    const getUserInfo = async (username: string) => {
+        return await fetchAndSetData("user.getinfo", { user: username });
+    };
 
+<<<<<<< Updated upstream
   const getTrackInfo = (
     artist: string,
     track: string,
@@ -156,6 +158,13 @@ const useDataHandler = (initialData: any) => {
     getUserTopArtists,
     getUserTopTracks,
   };
+=======
+    return {
+        data,
+        getUserInfo,
+        getUserTopAlbums,
+    };
+>>>>>>> Stashed changes
 };
 
 export default useDataHandler;
