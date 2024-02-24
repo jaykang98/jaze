@@ -5,3 +5,21 @@
 node_modules/
 
 /.vs
+/build
+/build/asset-manifest.json
+/build/index.html
+/build/static
+/build/static/css
+/build/static/css/main.d2821374.css
+/build/static/css/main.d2821374.css.map
+/build/static/js
+/build/static/js/main.9a0824e2.js
+/build/static/js/main.9a0824e2.js.LICENSE.txt
+/build/static/js/main.9a0824e2.js.map
+/build/static/media
+/build/static/media/Roboto-Black.cf56c1b149d0a5e8d7c6.ttf
+/build/static/media/Roboto-Bold.f80816a5455d171f948d.ttf
+/build/static/media/Roboto-Italic.87f3afe16a8c3c370634.ttf
+/build/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf
+/build/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf
+/build/static/media/Roboto-Thin.a732a12eb07742232407.ttf
