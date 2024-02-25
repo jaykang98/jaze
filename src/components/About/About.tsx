@@ -1,25 +1,20 @@
+// FileName: About.tsx (This belongs in your React application's /src/components/ directory)
+
 import React from "react";
 import styles from "./About.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPenNib, faUser } from "@fortawesome/free-solid-svg-icons";
-import { AboutProps } from "./AboutProps"; 
+import { AboutProps } from "./AboutProps";
 
-const About = ({ userID, error, onViewChange }) => {
+const About: React.FC<AboutProps> = ({ userID, error, onViewChange }) => {
     React.useEffect(() => {
         onViewChange("About");
     }, [onViewChange]);
-  const renderUserInfo = () => {
-    if (error) return error;
-=======
-import { AboutProps } from "./AboutProps";
 
-const About: React.FC<AboutProps> = ({ userID, error }) => {
-  const renderUserInfo = () => {
-    if (error) return error.message;
->>>>>>> Stashed changes
-    if (!userID) return "Not logged in";
-    return userID;
-  };
+    const renderUserInfo = () => {
+        if (error) return <span>{error.message}</span>; 
+        return <span>{userID}</span>;
+    };
 
     return (
         <section className={styles.aboutSection} aria-labelledby="about-heading" aria-describedby="about-description">

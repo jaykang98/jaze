@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import styles from "./OptionList.module.css";
 import Button from "../button/Button"; 
-import Button from "../../ui/button/Button";
 
 interface Option {
   name: string;

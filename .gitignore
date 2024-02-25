@@ -31,3 +31,6 @@ node_modules/
 /node_modules/.cache/default-development/11.pack
 /node_modules/.cache/default-development/13.pack
 /node_modules/.cache/default-development/3.pack
+/node_modules/.cache/default-development/0.pack
+/node_modules/.cache/default-development/1.pack
+/node_modules/.cache/tsconfig.tsbuildinfo

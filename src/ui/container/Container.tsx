@@ -1,54 +1,37 @@
-import React, { useState, useEffect } from "react";
+// src/components/layout/Container.tsx
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
-import Main from "../../components/Main/Main";
-import About from "../../components/About/About";
-import Settings from "../../components/Settings/Settings";
 import Footer from "../footer/Footer";
 import styles from "./Container.module.css";
-
-import { fetchSession, getUserID } from "../../utils/Authenticator";
+import { getUserID } from "../../utils/Authenticator"
+// Lazy load the components for better performance on initial load
+const Main = lazy(() => import("../../components/Main/Main"));
+const About = lazy(() => import("../../components/About/About"));
+const Settings = lazy(() => import("../../components/Settings/Settings"));
 
 const Container: React.FC = () => {
-  const [userID, setUserID] = useState<string | null>(null);
+    const userID = getUserID();
 
-  useEffect(() => {
-    const handleAuthentication = async () => {
-      if (userID) return;
-      const urlParams = new URLSearchParams(window.location.search);
-      const token = urlParams.get("token");
-      if (token) {
-        try {
-          await fetchSession(token);
-          const fetchedUserID = getUserID();
-          setUserID(fetchedUserID);
-        } catch (error) {
-          console.error("Error fetching session:", error);
-        }
-      }
-    };
-    handleAuthentication();
-  }, [userID]);
-
-  return (
-    <div className={styles.appContainer}>
-      <Header />
-      <div className={styles.contentWrapper}>
-        <Sidebar />
-        <div className={styles.mainContent}>
-          <Routes>
-            <Route path="/main" element={<Main userID={userID} />} />
-            <Route path="/about" element={<About userID={userID} />} />
-            <Route path="/settings" element={<Settings userID={userID} />} />
-          </Routes>
+    return (
+        <div className={styles.appContainer}>
+            <Header />
+            <div className={styles.contentWrapper}>
+                <Sidebar />
+                <div className={styles.mainContent}>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Routes>
+                            <Route path="/main" element={<Main userID={userID} />} />
+                            <Route path="/about" element={<About userID={userID} />} />
+                            <Route path="/settings" element={<Settings userID={userID} />} />
+                        </Routes>
+                    </Suspense>
+                </div>
+            </div>
+            <Footer />
         </div>
-      </div>
-      <Footer />
-    </div>
-  );
+    );
 };
 
 export default Container;
-
-

@@ -37,6 +37,6 @@ export const fetchData = async (method: string, params: askFMParams): Promise<an
         return await response.json();
     } catch (error) {
         console.error("Failed to fetch data:", error);
-        throw error; // Allows error handling in the component using the fetchData
+        throw error; 
     }
 };

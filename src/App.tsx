@@ -1,10 +1,9 @@
 // App.tsx
-import React from "react";
+import React, { useReducer } from "react";
 import styles from "./App.module.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Container from "./ui/container/Container";
 import ErrorBoundary from "./ErrorBoundary";
-import HandleAuth from "./utils/HandleAuth";
 
 function App() {
     const { userID, error } = HandleAuth(); 

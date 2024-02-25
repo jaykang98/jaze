@@ -58,7 +58,7 @@ const InputSelection: React.FC<InputSelectionProps> = ({
                     label="Start Time"
                     timestamp={formData.startTimestamp}
                     onYearSelect={(year) => console.log(year)} // Adjust based on actual functionality
-                />
+                    onChange={undefined}                />
             </td>
         </tr>
         <tr>
@@ -68,7 +68,7 @@ const InputSelection: React.FC<InputSelectionProps> = ({
                     label="End Time"
                     timestamp={formData.endTimestamp}
                     onYearSelect={(year) => console.log(year)} // Adjust based on actual functionality
-                />
+                    onChange={undefined}                />
             </td>
         </tr>
 
