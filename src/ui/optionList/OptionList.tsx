@@ -1,7 +1,7 @@
-// OptionList.tsx
-import React from "react";
+// Filename: OptionList.tsx
+import React, { useState } from "react";
 import styles from "./OptionList.module.css";
-import Button from "../../ui/button/Button";
+import Button from "../button/Button"; 
 
 interface Option {
   name: string;
@@ -9,14 +9,26 @@ interface Option {
 
 interface OptionListProps {
   options: Option[];
-  onSelect: (selectedOption: Option) => void; // Callback function for when an option is selected
+  onSelect: (selectedOption: Option) => void;
+  userID?: string;
 }
 
-const OptionList: React.FC<OptionListProps> = ({ options, onSelect }) => {
+const OptionList: React.FC<OptionListProps> = ({ options = [], onSelect }) => {
+  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+
+  const handleSelect = (option: Option) => {
+    setSelectedOption(option);
+    onSelect(option);
+  };
+
   return (
     <div className={styles.optionList}>
       {options.map((option) => (
-        <Button key={option.name} onClick={() => onSelect(option)}>
+        <Button
+          key={option.name}
+          onClick={() => handleSelect(option)}
+          className={option === selectedOption ? styles.selected : ""}
+        >
           {option.name}
         </Button>
       ))}

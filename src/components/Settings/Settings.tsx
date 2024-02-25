@@ -1,76 +1,70 @@
+import React, { useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import Button from "../../ui/button/Button";
 import { faKey, faPalette, faTrash } from "@fortawesome/free-solid-svg-icons";
+import Button from "../../ui/button/Button";
 import styles from "./Settings.module.css";
+import { SettingsProps } from "./SettingsProps";
+import { startAuth } from "../../utils/Authenticator";
 
-const Settings = ({ userID, error, onViewChange }) => {
-    React.useEffect(() => {
-        onViewChange("Settings");
-    }, [onViewChange]);
+const Settings: React.FC<SettingsProps> = ({ userID }) => {
+  const initiateAuthentication = useCallback(() => {
+    startAuth();
+  }, []);
 
-    const clearCacheAction = () => {
-        console.log("Clear cache action");
-        localStorage.removeItem("userID");
-    };
+  const clearCacheAction = useCallback(() => {
+    alert("Cache cleared!");
+    localStorage.removeItem("userID");
+  }, []);
 
-    const changeThemeAction = () => {
-        console.log("Change theme action");
-    };
+  const changeThemeAction = useCallback(() => {
+    console.log("Theme changed");
+  }, []);
 
-    const authenticationAction = () => {
-        const apiKey = "053905e1fc8b0de378dc341a24ec68c7";
-        const cbURL = encodeURIComponent(window.location.href);
-        const url = `https://www.last.fm/api/auth/?api_key=${apiKey}&cb=${cbURL}`;
-        window.location.href = url;
-        console.log("Get authorization action initiated.");
-    };
+  const settingsOptions = [
+    {
+      id: "clearCache",
+      label: "Clear Cache",
+      action: clearCacheAction,
+      icon: faTrash,
+    },
+    {
+      id: "themeSwap",
+      label: "Change Theme",
+      action: changeThemeAction,
+      icon: faPalette,
+    },
+    {
+      id: "authenticate",
+      label: "Authenticate",
+      action: initiateAuthentication,
+      icon: faKey,
+    },
+  ];
 
-    const settingsOptions = [
-        {
-            id: "clearCache",
-            label: "Clear Cache",
-            action: clearCacheAction,
-            icon: faTrash,
-        },
-        {
-            id: "themeSwap",
-            label: "Change Theme",
-            action: changeThemeAction,
-            icon: faPalette,
-        },
-        {
-            id: "getAuth",
-            label: "Authentication",
-            action: authenticationAction,
-            icon: faKey,
-        },
-    ];
-
-    return (
-        <section>
-            <h2>Settings</h2>
-                <table className={styles.settingsTable}>
-                    <tbody>
-                        {settingsOptions.map((option) => (
-                            <tr key={option.id}>
-                                <td>
-                                    <FontAwesomeIcon icon={option.icon} />
-                                </td>
-                                <td>
-                                    <label htmlFor={option.id} className={styles.label}>
-                                        {option.label}
-                                    </label>
-                                </td>
-                                <td>
-                                    <Button onClick={option.action}>{option.label}</Button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-        </section>
-    );
+  return (
+    <section>
+      <h2>Settings</h2>
+      <table className={styles.settingsTable}>
+        <tbody>
+          {settingsOptions.map((option) => (
+            <tr key={option.id}>
+              <td>
+                <FontAwesomeIcon icon={option.icon} />
+              </td>
+              <td>
+                <label htmlFor={option.id} className={styles.label}>
+                  {option.label}
+                </label>
+              </td>
+              <td>
+                <Button onClick={option.action}>{option.label}</Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
 };
 
 export default Settings;

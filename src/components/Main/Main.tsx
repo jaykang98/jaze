@@ -1,47 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Main.module.css";
 import Button from "../../ui/button/Button";
 import Input from "../../ui/input/Input";
 import OptionList from "../../ui/optionList/OptionList";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faHourglassEnd } from "@fortawesome/free-solid-svg-icons";
-import TimeSelectionRow from "../../ui/timeSelectionRow/TimeSelectionRow";
+import { MainProps } from "./MainProps";
+import getUserData from "../../utils/getUserData";
+import {FormData } from "./FormData"
+const Main: React.FC<MainProps> = ({ userID, error }) => {
+    const [formData, setFormData] = useState<FormData>({ artist: '', album: '', track: '', startTimestamp: '', endTimestamp: '' });
+    const [options, setOptions] = useState<any>([]); // Consider defining a more specific type for options.
+    const [selectionType, setSelectionType] = useState<"artist" | "album" | "track">("track");
 
-interface FormData {
-    artist: string;
-    album: string;
-    track: string;
-    startTimestamp: string;
-    endTimestamp: string;
-}
+    const { userInfo, userTopAlbums, userTopArtists, userTopTracks } = getUserData(userID);
 
-interface Options {
-    artists: Array<{ name: string }>;
-    albums: Array<{ name: string }>;
-    tracks: Array<{ name: string }>;
-}
-const Main = ({ userID, error, onViewChange }) => {
-    React.useEffect(() => {
-        onViewChange("Main");
-    }, [onViewChange]);
-    const [formData, setFormData] = useState<FormData>({
-        artist: "",
-        album: "",
-        track: "",
-        startTimestamp: "",
-        endTimestamp: "",
-    });
-
-    const [options, setOptions] = useState<Options>({
-        artists: [],
-        albums: [],
-        tracks: [],
-    });
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(formData);
     };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prevState) => ({
@@ -49,23 +26,21 @@ const Main = ({ userID, error, onViewChange }) => {
             [name]: value,
         }));
     };
-    const handleOptionSelect = (
-        type: keyof FormData,
-        option: { name: string },
-    ) => {
+
+    const handleOptionSelect = (type: keyof FormData, option: { name: string }) => {
         setFormData((prevState) => ({
             ...prevState,
             [type]: option.name,
         }));
     };
-    const [selectionType, setSelectionType] = useState<
-        "artist" | "album" | "track"
-    >("track");
+
 
     const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newType = e.target.value as "artist" | "album" | "track";
         setSelectionType(newType);
     };
+    
+
 
     return (
         <section>
@@ -94,68 +69,9 @@ const Main = ({ userID, error, onViewChange }) => {
                             </td>
                             <td>
                                 <OptionList
+                                    userID={userID}
                                     options={options[`${selectionType}s`]}
-                                    onSelect={(option) =>
-                                        handleOptionSelect(selectionType, option)
-                                    }
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <FontAwesomeIcon icon={faClock} />
-                            </td>
-                            <td>Start Time</td>
-                            <td>
-                                <Input
-                                    id="startTimestamp"
-                                    type="datetime-local"
-                                    name="startTimestamp"
-                                    value={formData.startTimestamp}
-                                    onChange={handleChange}
-                                    placeholder="Start timestamp"
-                                />
-                            </td>
-                            <td>
-                                <TimeSelectionRow
-                                    label="Start Time"
-                                    timestamp={formData.startTimestamp}
-                                    onChange={handleChange}
-                                    onYearSelect={(year) =>
-                                        setFormData({
-                                            ...formData,
-                                            startTimestamp: `${year}-01-01T00:00`,
-                                        })
-                                    }
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <FontAwesomeIcon icon={faHourglassEnd} />
-                            </td>
-                            <td>End Time</td>
-                            <td>
-                                <Input
-                                    id="endTimestamp"
-                                    type="datetime-local"
-                                    name="endTimestamp"
-                                    value={formData.endTimestamp}
-                                    onChange={handleChange}
-                                    placeholder="End timestamp"
-                                />
-                            </td>
-                            <td>
-                                <TimeSelectionRow
-                                    label="End Time"
-                                    timestamp={formData.endTimestamp}
-                                    onChange={handleChange}
-                                    onYearSelect={(year) =>
-                                        setFormData({
-                                            ...formData,
-                                            endTimestamp: `${year}-01-01T00:00`,
-                                        })
-                                    }
+                                    onSelect={(option) => handleOptionSelect(selectionType, option)}
                                 />
                             </td>
                         </tr>

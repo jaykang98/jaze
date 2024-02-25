@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+// src/components/layout/Container.tsx
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "../../ui/header/Header";
-import Sidebar from "../../ui/sidebar/Sidebar";
-import Main from "../../components/Main/Main";
-import About from "../../components/About/About";
-import Settings from "../../components/Settings/Settings";
+import Header from "../header/Header";
+import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import styles from "./Container.module.css";
+import { getUserID } from "../../utils/Authenticator"
+// Lazy load the components for better performance on initial load
+const Main = lazy(() => import("../../components/Main/Main"));
+const About = lazy(() => import("../../components/About/About"));
+const Settings = lazy(() => import("../../components/Settings/Settings"));
 
-const Container = ({ userID, error }) => {
-    const [currentView, setCurrentView] = useState("");
+const Container: React.FC = () => {
+    const userID = getUserID();
 
     return (
         <div className={styles.appContainer}>
@@ -17,18 +20,18 @@ const Container = ({ userID, error }) => {
             <div className={styles.contentWrapper}>
                 <Sidebar />
                 <div className={styles.mainContent}>
-                    <Routes>
-                        <Route path="/main" element={<Main userID={userID} error={error} onViewChange={setCurrentView} />} />
-                        <Route path="/about" element={<About userID={userID} error={error} onViewChange={setCurrentView} />} />
-                        <Route path="/settings" element={<Settings userID={userID} error={error} onViewChange={setCurrentView} />} />
-                    </Routes>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Routes>
+                            <Route path="/main" element={<Main userID={userID} />} />
+                            <Route path="/about" element={<About userID={userID} />} />
+                            <Route path="/settings" element={<Settings userID={userID} />} />
+                        </Routes>
+                    </Suspense>
                 </div>
             </div>
             <Footer />
         </div>
     );
-}
+};
 
 export default Container;
-
-
