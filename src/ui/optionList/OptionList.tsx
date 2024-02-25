@@ -1,7 +1,7 @@
 // Filename: OptionList.tsx
 import React, { useState } from "react";
 import styles from "./OptionList.module.css";
-import Button from "../button/Button"; 
+import Button from "../button/Button";
 
 interface Option {
   name: string;

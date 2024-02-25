@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey, faPalette, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../ui/button/Button";
 import styles from "./Settings.module.css";
-import { SettingsProps } from "./SettingsProps";
 import { startAuth } from "../../utils/Authenticator";
+import { ViewProps } from "types";
 
-const Settings: React.FC<SettingsProps> = ({ userID }) => {
+const Settings: React.FC<ViewProps> = ({ userID }) => {
   const initiateAuthentication = useCallback(() => {
     startAuth();
   }, []);

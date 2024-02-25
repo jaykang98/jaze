@@ -1,93 +1,77 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.css";
 import Button from "../../ui/button/Button";
-import Input from "../../ui/input/Input";
-import OptionList from "../../ui/optionList/OptionList";
-import { MainProps } from "./MainProps";
+import { ViewProps, FormData, Options, OptionType } from "../../types"; // Ensure OptionType is imported
 import getUserData from "../../utils/getUserData";
-import {FormData } from "./FormData"
-const Main: React.FC<MainProps> = ({ userID, error }) => {
-    const [formData, setFormData] = useState<FormData>({ artist: '', album: '', track: '', startTimestamp: '', endTimestamp: '' });
-    const [options, setOptions] = useState<any>([]); // Consider defining a more specific type for options.
-    const [selectionType, setSelectionType] = useState<"artist" | "album" | "track">("track");
+import InputSelection from "../../ui/inputSelection/InputSelection"; // Ensure correct path
 
-    const { userInfo, userTopAlbums, userTopArtists, userTopTracks } = getUserData(userID);
+const Main: React.FC<ViewProps> = ({ userID, error, onViewChange }) => {
+  const [formData, setFormData] = useState<FormData>({
+    artist: "",
+    album: "",
+    track: "",
+    startTimestamp: "",
+    endTimestamp: "",
+  });
+  const [selectionType, setSelectionType] = useState<
+    "artist" | "album" | "track"
+  >("track");
+  const [options, setOptions] = useState<Options>({
+    artists: [],
+    albums: [],
+    tracks: [],
+  });
 
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(formData);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (userID) {
+        try {
+          const data = await getUserData(userID);
+        } catch (err) {
+          console.error("Failed to fetch user data:", err);
+        }
+      }
     };
+    fetchData();
+  }, [userID]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-    const handleOptionSelect = (type: keyof FormData, option: { name: string }) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [type]: option.name,
-        }));
-    };
+  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectionType(event.target.value as "artist" | "album" | "track");
+  };
 
+  const handleOptionSelect = (type: keyof FormData, option: OptionType) => {
+    setFormData((prev) => ({ ...prev, [type]: option.name }));
+  };
 
-    const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const newType = e.target.value as "artist" | "album" | "track";
-        setSelectionType(newType);
-    };
-    
-
-
-    return (
-        <section>
-            <h2>Home</h2>
-            <form onSubmit={handleSubmit} className={styles.form}>
-                <table className={styles.inputTable}>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <select value={selectionType} onChange={handleTypeChange}>
-                                    <option value="track">Track</option>
-                                    <option value="artist">Artist</option>
-                                    <option value="album">Album</option>
-                                </select>
-                            </td>
-                            <td>
-                                <Input
-                                    id={selectionType}
-                                    type="text"
-                                    name={selectionType}
-                                    value={formData[selectionType]}
-                                    onChange={handleChange}
-                                    placeholder={`Enter ${selectionType} name`}
-                                />
-                            </td>
-                            <td>
-                                <OptionList
-                                    userID={userID}
-                                    options={options[`${selectionType}s`]}
-                                    onSelect={(option) => handleOptionSelect(selectionType, option)}
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <Button type="submit">Submit</Button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-            <div id="results" className={styles.results}></div>
-        </section>
-    );
+  return (
+    <section>
+      <h2>Home</h2>
+      <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
+        <table className={styles.inputTable}>
+          <tbody>
+            <InputSelection
+              selectionType={selectionType}
+              formData={formData}
+              handleChange={handleChange}
+              handleTypeChange={handleTypeChange}
+              options={options}
+              handleOptionSelect={handleOptionSelect}
+            />
+            <tr>
+              <td colSpan={3}>
+                <Button type="submit">Submit</Button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </section>
+  );
 };
 
 export default Main;
