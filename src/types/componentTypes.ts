@@ -4,11 +4,6 @@ export interface ViewProps {
     error?: Error | null;
     onViewChange?: any;
 }
-export interface ContainerProps {
-    userID: string | null;
-    error?: Error | null;
-    onViewChange?: any;
-}
 export interface OptionType {
     name: string;
 }
@@ -36,3 +31,13 @@ export interface Options {
     albums: string[];
     tracks: string[];
 }
+export interface InputSelectionProps {
+    selectionType: SelectionType;
+    formData: FormData;
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    options: Options;
+    handleOptionSelect: (type: keyof FormData, option: { name: string }) => void;
+    userID?: string;
+}
+type SelectionType = "artist" | "album" | "track";

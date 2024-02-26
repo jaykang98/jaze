@@ -1,43 +1,30 @@
 .inputContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Adjust alignment for better structure */
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: var(--default-margin); 
 }
 
 .label {
-  margin-bottom: 8px; /* Ensure spacing between label and input for clarity */
-  display: flex;
-  align-items: center;
-  font-family: var(--font-family);
-  color: var(--primary-text-color); /* Use global variable for consistency */
-}
-
-.inputGroup {
-  width: 100%; /* Utilize full container width for input group */
-  display: flex;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    color: var(--primary-text-color);
 }
 
 .inputField {
-  width: 100%; /* Adjust input field to take full width of its container */
-  padding: var(--padding-small); /* Use global variable for padding */
-  margin-bottom: var(
-    --default-margin
-  ); /* Use global variable for consistent spacing */
-  border: 1px solid var(--input-border-color); /* Use global variable for border color */
-  border-radius: var(
-    --border-radius
-  ); /* Use global variable for consistent border-radius */
-  font-family: var(--font-family); /* Ensure consistency in font usage */
-  color: var(--primary-text-color); /* Text color for input content */
-  background-color: var(--input-bg-color); /* Background color for input */
+    width: 100%;
+    padding: var(--padding-small);
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    color: var(--primary-text-color);
+    background-color: var(--input-bg-color);
+    font-family: inherit; 
 }
 
-/* Add focus state for accessibility and visual feedback */
-.inputField:focus {
-  outline: none; /* Remove default focus outline */
-  border-color: var(
-    --secondary-accent-color-1
-  ); /* Highlight input border on focus */
-  box-shadow: 0 0 0 2px var(--secondary-accent-color-2); /* Add soft glow for visibility */
-}
+    .inputField:focus {
+        outline: none;
+        border-color: var(--secondary-accent-color-1);
+        box-shadow: 0 0 0 2px var(--secondary-accent-color-2);
+    }

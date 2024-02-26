@@ -1,56 +1,47 @@
 @keyframes gradientLoop {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
+    0%, 100% {
+        background-position: 0% 50%;
+    }
 
-  50% {
-    background-position: 100% 50%;
-  }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .header {
-  background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
-  background-size: 200% 200%;
-  animation: gradientLoop 10s ease infinite;
-  color: var(
-    --primary-text-color,
-    black
-  ); /* Use global variable with fallback */
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--box-shadow); /* Use global variable */
-  border-radius: var(--border-radius); /* Use global variable */
-  letter-spacing: 2px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border: 2px solid transparent;
+    background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
+    background-size: 200% 200%;
+    animation: gradientLoop 10s ease infinite;
+    color: var(--primary-text-color, black); /* Use global variable with fallback */
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
+    border-radius: var(--border-radius, 0); 
+    letter-spacing: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid transparent;
 }
 
-.header:hover {
-  background: var(
-    --header-hover-bg-color,
-    black
-  ); /* Introduce variable for hover background */
-  border-color: white;
-}
+    .header:hover {
+        background: var(--header-hover-bg-color, black); 
+        border-color: white;
+    }
 
-.header:hover h1 {
-  background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; /* Ensure text remains visible */
-  animation: gradientLoop 10s ease infinite;
-}
+        .header:hover h1 {
+            background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; 
+            animation: gradientLoop 10s ease infinite;
+        }
 
 h1 {
-  margin-top: 3vw;
-  margin-bottom: 3vw;
-  font:
-    500 6vw/1.5 var(--font-family, "Roboto"),
-    sans-serif; /* Use global variable with fallback */
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    font: 500 6vw/1.5 var(--font-family, "Roboto"), sans-serif;
 }

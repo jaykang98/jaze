@@ -5,46 +5,46 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SidebarButton = ({ label, path, icon }) => {
-  return (
-    <button>
-      <Link to={path} className={styles.button} role="button">
-        <FontAwesomeIcon icon={icon} /> {label}
-      </Link>
-    </button>
-  );
+    return (
+        <button>
+            <Link to={path} className={styles.button} role="button">
+                <FontAwesomeIcon icon={icon} /> {label}
+            </Link>
+        </button>
+    );
 };
 
 const Sidebar = () => {
-  const buttons = [
-    {
-      path: "/main",
-      label: "Main",
-      icon: faHome,
-    },
-    {
-      path: "/about",
-      label: "About",
-      icon: faUser,
-    },
-    {
-      path: "/settings",
-      label: "Settings",
-      icon: faCog,
-    },
-  ];
+    const buttons = [
+        {
+            path: "/main",
+            label: "Main",
+            icon: faHome,
+        },
+        {
+            path: "/about",
+            label: "About",
+            icon: faUser,
+        },
+        {
+            path: "/settings",
+            label: "Settings",
+            icon: faCog,
+        },
+    ];
 
-  return (
-    <aside className={styles.sidebar}>
-      {buttons.map((button, index) => (
-        <SidebarButton
-          key={index}
-          path={button.path}
-          icon={button.icon}
-          label={button.label}
-        />
-      ))}
-    </aside>
-  );
+    return (
+        <aside className={styles.sidebar}>
+            {buttons.map((button, index) => (
+                <SidebarButton
+                    key={index}
+                    path={button.path}
+                    icon={button.icon}
+                    label={button.label}
+                />
+            ))}
+        </aside>
+    );
 };
 
 export default Sidebar;

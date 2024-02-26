@@ -3,19 +3,9 @@ import React from "react";
 import Input from "../../components/input/Input";
 import OptionList from "../../components/optionList/OptionList";
 import TimeSelectionRow from "../../components/timeSelectionRow/TimeSelectionRow";
-import { FormData, Options } from "../../types/componentTypes";
+import { InputSelectionProps } from "types/componentTypes"
 
-type SelectionType = "artist" | "album" | "track";
 
-interface InputSelectionProps {
-  selectionType: SelectionType;
-  formData: FormData;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  options: Options;
-  handleOptionSelect: (type: keyof FormData, option: { name: string }) => void;
-  userID?: string;
-}
 
 const InputSelection: React.FC<InputSelectionProps> = ({
   selectionType,
@@ -57,7 +47,7 @@ const InputSelection: React.FC<InputSelectionProps> = ({
         <TimeSelectionRow
           label="Start Time"
           timestamp={formData.startTimestamp}
-          onYearSelect={(year) => console.log(year)} // Adjust based on actual functionality
+          onYearSelect={(year) => console.log(year)} 
           onChange={undefined}
         />
       </td>
@@ -68,7 +58,7 @@ const InputSelection: React.FC<InputSelectionProps> = ({
         <TimeSelectionRow
           label="End Time"
           timestamp={formData.endTimestamp}
-          onYearSelect={(year) => console.log(year)} // Adjust based on actual functionality
+          onYearSelect={(year) => console.log(year)} 
           onChange={undefined}
         />
       </td>

@@ -1,35 +1,43 @@
 .button {
-  background-color: var(--secondary-accent-color-1);
-  color: var(--header-text-color);
-  padding: var(--default-padding);
-  border: 2px solid transparent;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: var(--hover-transition);
-  display: inline-block;
-  outline: solid;
-  outline-color: black;
-  outline-width: 1px;
-  min-height: 30px;
-  -webkit-user-select: none;
-  user-select: none;
-  font:
-    500 1vw/1.5 "Roboto",
-    sans-serif;
-  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
-  line-height: 1.2;
-  height: 30px;
-  text-overflow: ellipsis; /* Will add '...' when the text overflows */
-  overflow: hidden; /* Ensures that the text is clipped */
-  align-items: center;
-  justify-content: center;
+    background-color: var(--secondary-accent-color-1);
+    color: var(--header-text-color);
+    padding: var(--default-padding);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--hover-transition);
+    display: inline-block;
+    outline: solid;
+    outline-color: black;
+    outline-width: 1px;
+    min-height: 30px;
+    -webkit-user-select: none;
+    user-select: none;
+    font: 500 1vw/1.5 "Roboto", sans-serif;
+    white-space: nowrap;
+    line-height: 1.2;
+    height: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 }
 
-.button:hover {
-  background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
-  background-size: 200% 200%;
-  animation: gradientLoop 2s ease infinite;
-  color: var(--button-text-color, #ffffff);
-  border-color: white;
-  transition: none;
+    .button:hover {
+        background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
+        background-size: 200% 200%;
+        animation: gradientLoop 2s ease infinite;
+        color: var(--button-text-color, #ffffff);
+        border-color: white;
+        transition: none;
+    }
+
+@keyframes gradientLoop {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
