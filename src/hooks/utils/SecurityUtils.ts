@@ -6,12 +6,16 @@ export const encryptData = (data: string): string => {
 };
 
 export const decryptData = (ciphertext: string): string | null => {
-  try {
-      const bytes = CryptoJS.AES.decrypt(ciphertext, process.env.REACT_APP_SECRETKEY);
-    const originalText = bytes.toString(CryptoJS.enc.Utf8);
-    return originalText !== "" ? originalText : null;
-  } catch (error) {
-    console.error("Error during decryption:", error);
-    return null;
-  }
+    try {
+        const bytes = CryptoJS.AES.decrypt(ciphertext, process.env.REACT_APP_SECRETKEY);
+        const originalText = bytes.toString(CryptoJS.enc.Utf8);
+        return originalText !== "" ? originalText : null;
+    } catch (error) {
+        console.error("Error during decryption:", error);
+        return null;
+    }
+};
+
+export const generateMD5 = (data: string): string => {
+    return CryptoJS.MD5(data).toString();
 };

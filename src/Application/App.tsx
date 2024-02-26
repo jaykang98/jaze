@@ -7,7 +7,7 @@ import ErrorBoundary from "./ErrorBoundary";
 import { useAuthenticator } from "../hooks/useAuthenticator";
 
 function App() {
-    const { startAuth, fetchSession } = useAuthenticator();
+    const { startAuth, fetchSession,getUserID } = useAuthenticator();
 
     const handleViewChange = (view: string) => {
         console.log("View changed to:", view);
@@ -16,7 +16,7 @@ function App() {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get('token');
-        if (token) {
+        if (token && !getUserID) {
             fetchSession(token);
         }
     }, [fetchSession, startAuth]); 
