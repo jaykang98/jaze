@@ -5,7 +5,7 @@ export async function fetchData(
 ): Promise<any> {
 
     params.api_key = process.env.REACT_APP_APIKEY;
-  params.format = "json";
+    params.format = "json";
 
   const query = new URLSearchParams(params).toString();
   const url = `${process.env.REACT_APP_BASEURL}?method=${method}&${query}`;

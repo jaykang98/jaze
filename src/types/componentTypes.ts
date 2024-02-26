@@ -1,7 +1,6 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export interface ViewProps {
-    userID: string | null;
     error?: Error | null;
     onViewChange?: any;
 }

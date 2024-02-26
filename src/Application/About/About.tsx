@@ -8,8 +8,10 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { ViewProps } from "../../types/componentTypes";
+import { useAuthenticator } from "../../hooks/useAuthenticator";
 
-const About: React.FC<ViewProps> = ({ userID, error }) => {
+const About: React.FC<ViewProps> = () => {
+    const { getUserID } = useAuthenticator();
   return (
     <section
       className={styles.aboutSection}
@@ -29,7 +31,7 @@ const About: React.FC<ViewProps> = ({ userID, error }) => {
               <FontAwesomeIcon icon={faUser} aria-hidden="true" />
             </td>
             <td>Logged In User:</td>
-            <td>{userID}</td>
+                      <td>{getUserID()}</td>
           </tr>
           <tr>
             <td>

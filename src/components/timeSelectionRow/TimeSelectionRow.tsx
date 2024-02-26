@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./TimeSelectionRow.module.css";
 import OptionList from "../optionList/OptionList";
 import Input from "../input/Input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -10,7 +10,7 @@ import Button from "../../components/button/Button";
 import { useAuthenticator } from "../../hooks/useAuthenticator";
 import { ViewProps } from "../../types/componentTypes";
 
-const Settings: React.FC<ViewProps> = ({ userID }) => {
+const Settings: React.FC<ViewProps> = () => {
   const { startAuth } = useAuthenticator();
   const initiateAuthentication = useCallback(() => {
     startAuth();

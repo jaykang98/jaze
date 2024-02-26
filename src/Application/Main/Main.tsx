@@ -4,7 +4,7 @@ import Button from "../../components/button/Button";
 import { ViewProps, FormData, Options, OptionType } from "../../types/componentTypes";
 import InputSelection from "../../components/input/InputSelection";
 
-const Main: React.FC<ViewProps> = ({ userID }) => {
+const Main: React.FC<ViewProps> = () => {
   const [formData, setFormData] = useState<FormData>({
     artist: "",
     album: "",
