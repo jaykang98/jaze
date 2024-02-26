@@ -3,27 +3,28 @@
     "browser": true,
     "es2021": true
   },
+  "parser": "@typescript-eslint/parser",
   "extends": [
-    "plugin:react/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
-  "rules": {
-  },
-  "overrides": [
-    {
-      "files": [ "**/*.ts", "**/*.tsx" ],
-      "rules": {
-        "react/prop-types": "off"
+    "plugins": [
+      "react",
+      "@typescript-eslint"
+    ],
+    "rules": {
+    },
+    "overrides": [
+      {
+        "files": [ "**/*.ts", "**/*.tsx" ],
+        "rules": {
+          "react/prop-types": "off"
+        }
       }
-    }
-  ]
-}
+    ]
+  }
