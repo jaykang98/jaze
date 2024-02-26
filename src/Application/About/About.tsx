@@ -1,4 +1,4 @@
-// FileName: About.tsx
+// About.tsx
 import React from "react";
 import styles from "./About.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,15 +7,9 @@ import {
   faPenNib,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { ViewProps } from "../../index.d";
+import { ViewProps } from "../../types/componentTypes";
 
 const About: React.FC<ViewProps> = ({ userID, error }) => {
-
-  const renderUserInfo = () => {
-    if (error) return <span>{error.message}</span>;
-    return <span>{userID}</span>;
-  };
-
   return (
     <section
       className={styles.aboutSection}
@@ -35,7 +29,7 @@ const About: React.FC<ViewProps> = ({ userID, error }) => {
               <FontAwesomeIcon icon={faUser} aria-hidden="true" />
             </td>
             <td>Logged In User:</td>
-            <td>{renderUserInfo()}</td>
+            <td>{userID}</td>
           </tr>
           <tr>
             <td>

@@ -1,10 +1,14 @@
+//   src/Application/Settings
 import React, { useCallback } from "react";
+import styles from "./Settings.module.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey, faPalette, faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import Button from "../../components/button/Button";
-import styles from "./Settings.module.css";
+
 import { useAuthenticator } from "../../hooks/useAuthenticator";
-import { ViewProps } from "../../index.d";
+import { ViewProps } from "../../types/componentTypes";
 
 const Settings: React.FC<ViewProps> = ({ userID }) => {
   const { startAuth } = useAuthenticator();

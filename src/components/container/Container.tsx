@@ -5,22 +5,19 @@ import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import styles from "./Container.module.css";
-import { ContainerProps } from "../../index.d";
+import { ViewProps } from "../../types/componentTypes";
 
 const Main = lazy(() => import("../../Application/Main/Main"));
 const About = lazy(() => import("../../Application/About/About"));
 const Settings = lazy(() => import("../../Application/Settings/Settings"));
 
-const Container: React.FC<ContainerProps> = ({
-  userID,
-}) => {
+const Container: React.FC<ViewProps> = ({ userID }) => {
   return (
     <div className={styles.appContainer}>
       <Header />
       <div className={styles.contentWrapper}>
         <Sidebar />
         <div className={styles.mainContent}>
-
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/main" element={<Main userID={userID} />} />

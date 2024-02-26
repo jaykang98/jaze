@@ -1,18 +1,7 @@
 import React from "react";
 import styles from "./Input.module.css";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-interface InputProps {
-  id: string;
-  label?: string;
-  type: string;
-  name: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-  icon?: IconDefinition;
-}
+import { InputProps } from "../../types/componentTypes";
 
 const Input: React.FC<InputProps> = ({
   id,

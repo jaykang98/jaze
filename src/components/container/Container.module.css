@@ -37,13 +37,14 @@ h2 {
   vertical-align: middle;
 }
 @media screen and (max-width: 768px) {
-  section {
-    padding: 0 var(--default-padding-small); /* Adjusts padding for smaller screens */
-  }
-}
-.flexContainer {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items at the top */
-  gap: 20px; /* Space between form and option list */
+    section {
+        padding: 0 var(--default-padding-small);
+    }
+
+    .flexContainer {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+    }
 }

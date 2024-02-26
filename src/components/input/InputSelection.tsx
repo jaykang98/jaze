@@ -3,7 +3,7 @@ import React from "react";
 import Input from "../../components/input/Input";
 import OptionList from "../../components/optionList/OptionList";
 import TimeSelectionRow from "../../components/timeSelectionRow/TimeSelectionRow";
-import { FormData, Options } from "../../index.d";
+import { FormData, Options } from "../../types/componentTypes";
 
 type SelectionType = "artist" | "album" | "track";
 

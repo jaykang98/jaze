@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Main.module.css";
 import Button from "../../components/button/Button";
-import { ViewProps, FormData, Options, OptionType } from "../../index.d"; // Ensure OptionType is imported
-import { useAuthenticator } from "../../hooks/useAuthenticator";
-import InputSelection from "../../components/input/InputSelection"; // Ensure correct path
+import { ViewProps, FormData, Options, OptionType } from "../../types/componentTypes";
+import InputSelection from "../../components/input/InputSelection";
 
-const Main: React.FC<ViewProps> = ({ userID, error, onViewChange }) => {
-  const { fetchSession } = useAuthenticator();
-
+const Main: React.FC<ViewProps> = ({ userID }) => {
   const [formData, setFormData] = useState<FormData>({
     artist: "",
     album: "",
@@ -18,24 +15,11 @@ const Main: React.FC<ViewProps> = ({ userID, error, onViewChange }) => {
   const [selectionType, setSelectionType] = useState<
     "artist" | "album" | "track"
   >("track");
-  const [options, setOptions] = useState<Options>({
+  const [options] = useState<Options>({
     artists: [],
     albums: [],
     tracks: [],
   });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (userID) {
-        try {
-          const data = await fetchSession(userID);
-        } catch (err) {
-          console.error("Failed to fetch user data:", err);
-        }
-      }
-    };
-    fetchData();
-  }, [userID]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
