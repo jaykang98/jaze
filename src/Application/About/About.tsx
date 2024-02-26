@@ -1,5 +1,4 @@
-// FileName: About.tsx (This belongs in your React application's /src/components/ directory)
-
+// FileName: About.tsx
 import React from "react";
 import styles from "./About.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +7,7 @@ import {
   faPenNib,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { ViewProps } from "types";
+import { ViewProps } from "../../index.d";
 
 const About: React.FC<ViewProps> = ({ userID, error, onViewChange }) => {
   React.useEffect(() => {

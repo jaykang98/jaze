@@ -1,12 +1,13 @@
 import React, { useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey, faPalette, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Button from "../../ui/button/Button";
+import Button from "../../components/button/Button";
 import styles from "./Settings.module.css";
-import { startAuth } from "../../utils/Authenticator";
-import { ViewProps } from "types";
+import { useAuthenticator } from "../../hooks/useAuthenticator";
+import { ViewProps } from "../../index.d";
 
 const Settings: React.FC<ViewProps> = ({ userID }) => {
+  const { startAuth } = useAuthenticator();
   const initiateAuthentication = useCallback(() => {
     startAuth();
   }, []);

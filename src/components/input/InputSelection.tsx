@@ -1,9 +1,9 @@
 // InputSelection.tsx
 import React from "react";
-import Input from "../../ui/input/Input";
-import OptionList from "../../ui/optionList/OptionList";
-import TimeSelectionRow from "../../ui/timeSelectionRow/TimeSelectionRow";
-import { FormData, Options } from "../../types";
+import Input from "../../components/input/Input";
+import OptionList from "../../components/optionList/OptionList";
+import TimeSelectionRow from "../../components/timeSelectionRow/TimeSelectionRow";
+import { FormData, Options } from "../../index.d";
 
 type SelectionType = "artist" | "album" | "track";
 

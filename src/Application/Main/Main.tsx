@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Main.module.css";
-import Button from "../../ui/button/Button";
-import { ViewProps, FormData, Options, OptionType } from "../../types"; // Ensure OptionType is imported
-import getUserData from "../../utils/getUserData";
-import InputSelection from "../../ui/inputSelection/InputSelection"; // Ensure correct path
+import Button from "../../components/button/Button";
+import { ViewProps, FormData, Options, OptionType } from "../../index.d"; // Ensure OptionType is imported
+import { useAuthenticator } from "../../hooks/useAuthenticator";
+import InputSelection from "../../components/input/InputSelection"; // Ensure correct path
 
 const Main: React.FC<ViewProps> = ({ userID, error, onViewChange }) => {
+  const { startAuth, fetchSession, setUserID, getUserID } = useAuthenticator();
+
   const [formData, setFormData] = useState<FormData>({
     artist: "",
     album: "",
@@ -26,7 +28,7 @@ const Main: React.FC<ViewProps> = ({ userID, error, onViewChange }) => {
     const fetchData = async () => {
       if (userID) {
         try {
-          const data = await getUserData(userID);
+          const data = await fetchSession(userID);
         } catch (err) {
           console.error("Failed to fetch user data:", err);
         }

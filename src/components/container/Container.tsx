@@ -1,30 +1,28 @@
 // src/components/layout/Container.tsx
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import styles from "./Container.module.css";
-import { getUserID } from "../../utils/Authenticator";
+import { ViewProps } from "../../index.d";
 
-const Main = lazy(() => import("../../components/Main/Main"));
-const About = lazy(() => import("../../components/About/About"));
-const Settings = lazy(() => import("../../components/Settings/Settings"));
+const Main = lazy(() => import("../../Application/Main/Main"));
+const About = lazy(() => import("../../Application/About/About"));
+const Settings = lazy(() => import("../../Application/Settings/Settings"));
 
-const Container: React.FC = () => {
-  const [userID, setUserID] = useState<string | null>(null);
-
-  useEffect(() => {
-    const id = getUserID();
-    setUserID(id);
-  }, []);
-
+const Container: React.FC<ViewProps> = ({
+  userID,
+  onViewChange,
+  error,
+}) => {
   return (
     <div className={styles.appContainer}>
       <Header />
       <div className={styles.contentWrapper}>
         <Sidebar />
         <div className={styles.mainContent}>
+
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/main" element={<Main userID={userID} />} />

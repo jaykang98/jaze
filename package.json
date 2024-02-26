@@ -2,7 +2,7 @@
   "name": "jaze",
   "version": "1.0.0",
   "description": "A thing that does a thing.",
-  "main": "src/App.tsx",
+  "main": "src/Applications/App.tsx",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -23,14 +23,21 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^14.2.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/babel__generator": "^7.6.8",
+    "@types/babel__template": "^7.4.4",
+    "@types/babel__traverse": "^7.20.5",
     "@types/crypto-js": "^4.2.2",
+    "@types/jest": "^29.5.12",
+    "@types/yargs": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "eslint": "^8.57.0",
