@@ -5,16 +5,14 @@ import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import styles from "./Container.module.css";
-import { ViewProps } from "../../index.d";
+import { ContainerProps } from "../../index.d";
 
 const Main = lazy(() => import("../../Application/Main/Main"));
 const About = lazy(() => import("../../Application/About/About"));
 const Settings = lazy(() => import("../../Application/Settings/Settings"));
 
-const Container: React.FC<ViewProps> = ({
+const Container: React.FC<ContainerProps> = ({
   userID,
-  onViewChange,
-  error,
 }) => {
   return (
     <div className={styles.appContainer}>

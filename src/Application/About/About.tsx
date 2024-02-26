@@ -9,10 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ViewProps } from "../../index.d";
 
-const About: React.FC<ViewProps> = ({ userID, error, onViewChange }) => {
-  React.useEffect(() => {
-    onViewChange("About");
-  }, [onViewChange]);
+const About: React.FC<ViewProps> = ({ userID, error }) => {
 
   const renderUserInfo = () => {
     if (error) return <span>{error.message}</span>;

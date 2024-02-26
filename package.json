@@ -2,7 +2,7 @@
   "name": "jaze",
   "version": "1.0.0",
   "description": "A thing that does a thing.",
-  "main": "src/Applications/App.tsx",
+  "main": "src/Application/App.tsx",
   "private": true,
   "scripts": {
     "start": "react-scripts start",

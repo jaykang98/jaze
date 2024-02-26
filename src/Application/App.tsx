@@ -18,7 +18,7 @@ function App() {
     <ErrorBoundary>
       <div className={styles.appContainer}>
         <Router>
-                    <Container userID={getUserID()} />
+         <Container userID={getUserID()} onViewChange/>
         </Router>
       </div>
     </ErrorBoundary>

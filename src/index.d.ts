@@ -30,12 +30,14 @@ export interface ViewProps {
     error?: Error | null;
     onViewChange?: any;
 }
-
+export interface ContainerProps {
+    userID: string | null;
+    error?: Error | null;
+    onViewChange?: any;
+}
 export interface OptionType {
     name: string;
 }
-
-// Newly added types and interfaces
 
 export interface UserData {
     user: {

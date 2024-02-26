@@ -6,7 +6,7 @@ import { useAuthenticator } from "../../hooks/useAuthenticator";
 import InputSelection from "../../components/input/InputSelection"; // Ensure correct path
 
 const Main: React.FC<ViewProps> = ({ userID, error, onViewChange }) => {
-  const { startAuth, fetchSession, setUserID, getUserID } = useAuthenticator();
+  const { fetchSession } = useAuthenticator();
 
   const [formData, setFormData] = useState<FormData>({
     artist: "",
