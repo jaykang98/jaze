@@ -7,29 +7,29 @@ import ErrorBoundary from "./ErrorBoundary";
 import { useAuthenticator } from "../hooks/useAuthenticator";
 
 function App() {
-    const { startAuth, fetchSession,getUserID } = useAuthenticator();
+  const { startAuth, fetchSession, getUserID } = useAuthenticator();
 
-    const handleViewChange = (view: string) => {
-        console.log("View changed to:", view);
-    };
+  const handleViewChange = (view: string) => {
+    console.log("View changed to:", view);
+  };
 
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const token = urlParams.get('token');
-        if (token && !getUserID) {
-            fetchSession(token);
-        }
-    }, [fetchSession, startAuth]); 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+    if (token && !getUserID) {
+      fetchSession(token);
+    }
+  }, [fetchSession, startAuth]);
 
-    return (
-        <ErrorBoundary>
-            <div className={styles.appContainer}>
-                <Router>
-                    <Container onViewChange={handleViewChange} />
-                </Router>
-            </div>
-        </ErrorBoundary>
-    );
+  return (
+    <ErrorBoundary>
+      <div className={styles.appContainer}>
+        <Router>
+          <Container onViewChange={handleViewChange} />
+        </Router>
+      </div>
+    </ErrorBoundary>
+  );
 }
 
 export default App;

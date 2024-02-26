@@ -3,9 +3,7 @@ import React from "react";
 import Input from "../../components/input/Input";
 import OptionList from "../../components/optionList/OptionList";
 import TimeSelectionRow from "../../components/timeSelectionRow/TimeSelectionRow";
-import { InputSelectionProps } from "types/componentTypes"
-
-
+import { InputSelectionProps } from "types/componentTypes";
 
 const InputSelection: React.FC<InputSelectionProps> = ({
   selectionType,
@@ -47,7 +45,7 @@ const InputSelection: React.FC<InputSelectionProps> = ({
         <TimeSelectionRow
           label="Start Time"
           timestamp={formData.startTimestamp}
-          onYearSelect={(year) => console.log(year)} 
+          onYearSelect={(year) => console.log(year)}
           onChange={undefined}
         />
       </td>
@@ -58,7 +56,7 @@ const InputSelection: React.FC<InputSelectionProps> = ({
         <TimeSelectionRow
           label="End Time"
           timestamp={formData.endTimestamp}
-          onYearSelect={(year) => console.log(year)} 
+          onYearSelect={(year) => console.log(year)}
           onChange={undefined}
         />
       </td>

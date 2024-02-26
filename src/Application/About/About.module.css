@@ -1,23 +1,8 @@
-.aboutSection {
-  padding: 1rem;
-}
-
-.iconTable {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 .iconTable td {
-  padding: 0.5rem;
+  padding: var(--padding-small);
   vertical-align: middle;
 }
 
 .errorMessage {
-  color: red;
-}
-section {
-  width: 60%;
-  margin: 0 auto;
-  padding: 0 var(--default-padding);
-  width: 100%;
+  color: var(--error-color);
 }

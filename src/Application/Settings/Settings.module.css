@@ -1,22 +1,7 @@
-.settingsTable {
-  width: 100%;
-  border-collapse: collapse; 
-}
-
 .settingsTable td {
-  padding: var(
-    --default-padding
-  );
+  padding: var(--default-padding);
 }
 
 .settingsTable tr:hover {
-  background-color: var(
-    --hover-bg-color
-  );
-}
-section {
-  max-width: 80%; 
-  margin: 0 auto;
-  padding: 0 var(--default-padding); 
-  width: 100%; 
+  background-color: var(--hover-bg-color);
 }

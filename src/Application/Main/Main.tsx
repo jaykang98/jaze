@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import styles from "./Main.module.css";
 import Button from "../../components/button/Button";
-import { ViewProps, FormData, Options, OptionType } from "../../types/componentTypes";
+import {
+  ViewProps,
+  FormData,
+  Options,
+  OptionType,
+} from "../../types/componentTypes";
 import InputSelection from "../../components/input/InputSelection";
 
 const Main: React.FC<ViewProps> = () => {

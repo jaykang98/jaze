@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Header.module.css";
 
 type HeaderProps = {
-    //No props for now
+  //No props for now
 };
 
 const Header: React.FC<HeaderProps> = () => {

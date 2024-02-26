@@ -20,12 +20,12 @@ const TimeSelectionRow = ({ label, timestamp, onChange, onYearSelect }) => {
       <td>
         <FontAwesomeIcon icon={faHourglassEnd} />
       </td>
-          <td>{label}</td>
+      <td>{label}</td>
       <td>
         <Input
           id=""
           type="datetime-local"
-                  name="${label}"
+          name="${label}"
           value={timestamp}
           onChange={onChange}
           placeholder="${label}"

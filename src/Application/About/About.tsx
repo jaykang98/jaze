@@ -11,10 +11,9 @@ import { ViewProps } from "../../types/componentTypes";
 import { useAuthenticator } from "../../hooks/useAuthenticator";
 
 const About: React.FC<ViewProps> = () => {
-    const { getUserID } = useAuthenticator();
+  const { getUserID } = useAuthenticator();
   return (
     <section
-      className={styles.aboutSection}
       aria-labelledby="about-heading"
       aria-describedby="about-description"
     >
@@ -31,7 +30,7 @@ const About: React.FC<ViewProps> = () => {
               <FontAwesomeIcon icon={faUser} aria-hidden="true" />
             </td>
             <td>Logged In User:</td>
-                      <td>{getUserID()}</td>
+            <td>{getUserID()}</td>
           </tr>
           <tr>
             <td>

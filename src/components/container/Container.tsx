@@ -22,7 +22,7 @@ const Container: React.FC<ViewProps> = () => {
             <Routes>
               <Route path="/main" element={<Main />} />
               <Route path="/about" element={<About />} />
-              <Route path="/settings" element={<Settings/>} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </Suspense>
         </div>

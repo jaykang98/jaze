@@ -1,3 +1,4 @@
+/* Filename: src/components/layout/Container.module.css */
 .appContainer {
   display: flex;
   flex-direction: column;
@@ -8,43 +9,26 @@
 
 .contentWrapper {
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
+  flex: 1;
   overflow: hidden;
 }
+
 .mainContent {
   flex-grow: 1;
   overflow-y: auto;
-  width: 100%;
   padding: var(--default-padding);
-  align-items: flex-start;
-  text-align: left;
-  background-color: #1a1a1a;
-  margin-top: 10px;
-  margin-left: 10px;
+  background-color: var(--primary-bg-color);
+  margin-top: var(--default-margin);
+  margin-left: var(--default-margin);
   border-radius: var(--border-radius);
 }
 
-h2 {
-  text-align: center;
-  font-size: var(--font-size-l);
-  font-weight: lighter;
-  margin: var(--default-margin) 0;
-}
-
-.iconTable td {
-  padding-right: var(--default-padding);
-  vertical-align: middle;
-}
 @media screen and (max-width: 768px) {
-    section {
-        padding: 0 var(--default-padding-small);
-    }
+  .contentWrapper {
+    flex-direction: column;
+  }
 
-    .flexContainer {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 20px;
-    }
+  .mainContent {
+    margin-left: 0;
+  }
 }
