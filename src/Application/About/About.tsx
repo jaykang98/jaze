@@ -1,5 +1,3 @@
-// FileName: About.tsx
-
 import React from 'react';
 import styles from './About.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,14 +8,16 @@ import { useAuthenticator } from '../../hooks/useAuthenticator';
 
 const About: React.FC<ViewProps> = () => {
     const { getUserID } = useAuthenticator();
-    const { userInfo } = useUserData(getUserID()); 
+    const { userInfo } = useUserData(getUserID());
 
     const renderUserInfo = () => {
         if (!userInfo || !userInfo.user) return null;
 
         const { user } = userInfo;
+        const image = user.image?.[0]['#text'];
+
         const userInfoArray = [
-            { label: 'Name', value: user.realname || user.name },
+            { label: 'Name', value: user.name, isImage: true, image: image },
             { label: 'Country', value: user.country },
             { label: 'Age', value: user.age?.toString() },
             { label: 'Playcount', value: user.playcount.toString() },
@@ -31,7 +31,16 @@ const About: React.FC<ViewProps> = () => {
                         <FontAwesomeIcon icon={index === 0 ? faUser : index === 1 ? faPenNib : faEnvelope} aria-hidden="true" />
                     </td>
                     <td>{info.label}:</td>
-                    <td>{info.value}</td>
+                    <td>
+                        {info.isImage ? (
+                            <div>
+                                <img src={info.image} alt="User" className={styles.userImage} />
+                                {info.value}
+                            </div>
+                        ) : (
+                            info.value
+                        )}
+                    </td>
                 </tr>
             );
         });

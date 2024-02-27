@@ -13,7 +13,7 @@ export interface InputProps {
   type: string;
   name: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   icon?: IconDefinition;
 }
@@ -34,7 +34,6 @@ export interface Options {
 export interface InputSelectionProps {
   selectionType: SelectionType;
   formData: FormData;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   options: Options;
   handleOptionSelect: (type: keyof FormData, option: { name: string }) => void;

@@ -15,8 +15,7 @@ function App() {
         if (token && !getUserID()) {
             fetchSession(token);
         }
-    }, [fetchSession, getUserID]); 
-
+    }, [fetchSession, getUserID]);
     return (
         <ErrorBoundary>
             <div className={styles.appContainer}>

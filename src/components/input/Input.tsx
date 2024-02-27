@@ -10,13 +10,12 @@ const Input: React.FC<InputProps> = ({
   type,
   name,
   value,
-  onChange,
   placeholder,
   icon,
 }) => {
   return (
     <div className={styles.inputContainer}>
-      {label && (
+      {(
         <label htmlFor={id} className={styles.label}>
           {icon && (
             <FontAwesomeIcon icon={icon} />
@@ -29,7 +28,6 @@ const Input: React.FC<InputProps> = ({
         type={type}
         name={name}
         value={value}
-        onChange={onChange}
         placeholder={placeholder}
         className={styles.inputField}
       />

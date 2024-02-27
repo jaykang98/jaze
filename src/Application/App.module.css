@@ -84,3 +84,34 @@
     --font-size-base: 14px;
   }
 }
+/* FileName: App.module.css */
+
+table {
+    border-collapse: separate; /* Allows spacing between rows */
+    border-spacing: 0 10px; /* Adjusts spacing between rows without affecting column spacing */
+    width: 100%; /* Adjust width as necessary */
+    margin: 20px 0; /* Adds some space around the table */
+}
+
+td, th {
+    padding: 15px; /* Increases padding inside cells for more space */
+    text-align: left; /* Ensures text alignment */
+    vertical-align: middle; /* Centers content vertically */
+    border: none; /* Removes cell borders for a cleaner look */
+}
+
+tr {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow to each row */
+    border-radius: 5px; /* Rounds the corners of each row */
+}
+
+/* Adjustments for responsiveness and aesthetics */
+@media (max-width: 768px) {
+    table {
+        border-spacing: 0 5px; /* Reduces row spacing on smaller screens */
+    }
+
+    td, th {
+        padding: 10px; /* Reduces padding in cells for smaller screens */
+    }
+}

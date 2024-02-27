@@ -93,7 +93,7 @@ const Settings: React.FC<ViewProps> = () => {
     return (
         <section>
             <h2>Settings</h2>
-            <table className={styles.settingsTable}>
+            <table>
                 <tbody>
                     {settingsOptions.map((option) => (
                         <tr key={option.id}>

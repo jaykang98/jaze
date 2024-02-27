@@ -1,10 +1,9 @@
 import React from "react";
 import OptionList from "../optionList/OptionList";
 import Input from "../input/Input";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHourglassEnd } from "@fortawesome/free-solid-svg-icons";
 
-const TimeSelectionRow = ({ label, timestamp, onChange, onYearSelect }) => {
+
+const TimeSelectionRow = ({ timestamp, onChange, onYearSelect }) => {
   const currentYear = new Date().getFullYear();
   const yearsOptions = Array.from({ length: 4 }, (_, i) => ({
     name: `${currentYear - i}`,
@@ -17,10 +16,6 @@ const TimeSelectionRow = ({ label, timestamp, onChange, onYearSelect }) => {
 
   return (
     <tr>
-      <td>
-        <FontAwesomeIcon icon={faHourglassEnd} />
-      </td>
-      <td>{label}</td>
       <td>
         <Input
           id=""

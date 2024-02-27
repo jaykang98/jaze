@@ -43,12 +43,11 @@ const Main: React.FC<ViewProps> = () => {
     <section>
       <h2>Home</h2>
       <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
-        <table className={styles.inputTable}>
+        <table>
           <tbody>
             <InputSelection
               selectionType={selectionType}
               formData={formData}
-              handleChange={handleChange}
               handleTypeChange={handleTypeChange}
               options={options}
               handleOptionSelect={handleOptionSelect}

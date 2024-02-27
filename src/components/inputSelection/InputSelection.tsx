@@ -8,7 +8,6 @@ import { InputSelectionProps } from "types/componentTypes";
 const InputSelection: React.FC<InputSelectionProps> = ({
   selectionType,
   formData,
-  handleChange,
   handleTypeChange,
   options,
   handleOptionSelect,
@@ -28,7 +27,6 @@ const InputSelection: React.FC<InputSelectionProps> = ({
           type="text"
           name={selectionType}
           value={formData[selectionType]}
-          onChange={handleChange}
           placeholder={`Enter ${selectionType} name`}
         />
       </td>
@@ -43,7 +41,6 @@ const InputSelection: React.FC<InputSelectionProps> = ({
       <td>Start Time</td>
       <td colSpan={2}>
         <TimeSelectionRow
-          label="Start Time"
           timestamp={formData.startTimestamp}
           onYearSelect={(year) => console.log(year)}
           onChange={undefined}
@@ -54,7 +51,6 @@ const InputSelection: React.FC<InputSelectionProps> = ({
       <td>End Time</td>
       <td colSpan={2}>
         <TimeSelectionRow
-          label="End Time"
           timestamp={formData.endTimestamp}
           onYearSelect={(year) => console.log(year)}
           onChange={undefined}
