@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = ({
       {label && (
         <label htmlFor={id} className={styles.label}>
           {icon && (
-            <FontAwesomeIcon icon={icon} style={{ marginRight: "5px" }} />
+            <FontAwesomeIcon icon={icon} />
           )}
           {label}
         </label>

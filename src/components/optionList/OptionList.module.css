@@ -1,7 +1,7 @@
 .optionList {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  max-width: 100%;
+  gap: 20px;
   overflow-x: hidden;
+  vertical-align:middle;
 }

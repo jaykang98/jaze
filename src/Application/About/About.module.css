@@ -1,8 +1,0 @@
-.iconTable td {
-  padding: var(--padding-small);
-  vertical-align: middle;
-}
-
-.errorMessage {
-  color: var(--error-color);
-}

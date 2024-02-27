@@ -7,7 +7,7 @@ import {
   Options,
   OptionType,
 } from "../../types/componentTypes";
-import InputSelection from "../../components/input/InputSelection";
+import InputSelection from "../../components/inputSelection/InputSelection";
 
 const Main: React.FC<ViewProps> = () => {
   const [formData, setFormData] = useState<FormData>({

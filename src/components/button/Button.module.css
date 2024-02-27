@@ -1,7 +1,6 @@
 .button {
   background-color: var(--secondary-accent-color-1);
   color: var(--header-text-color);
-  padding: var(--default-padding);
   border: 2px solid transparent;
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -10,7 +9,7 @@
   outline: solid;
   outline-color: black;
   outline-width: 1px;
-  min-height: 30px;
+  min-height: 40px;
   -webkit-user-select: none;
   user-select: none;
   font:
@@ -44,7 +43,6 @@
     background-position: 100% 50%;
   }
 }
-.button.disabled,
 .button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;

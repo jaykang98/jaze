@@ -1,7 +1,0 @@
-.settingsTable td {
-  padding: var(--default-padding);
-}
-
-.settingsTable tr:hover {
-  background-color: var(--hover-bg-color);
-}

@@ -14,13 +14,15 @@
 }
 
 .mainContent {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: var(--default-padding);
-  background-color: var(--primary-bg-color);
-  margin-top: var(--default-margin);
-  margin-left: var(--default-margin);
-  border-radius: var(--border-radius);
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: var(--default-padding);
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: var(--primary-bg-color);
+    margin-top: var(--default-margin);
+    margin-left: var(--default-margin);
+    border-radius: var(--border-radius);
 }
 
 @media screen and (max-width: 768px) {
