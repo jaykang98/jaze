@@ -1,6 +1,6 @@
 import React from "react";
-import OptionList from "../optionList/OptionList";
-import Input from "../input/Input";
+import OptionList from "../../../components/foundations/optionList/OptionList";
+import Input from "../../../components/foundations/input/Input"
 
 
 const TimeSelectionRow = ({ timestamp, onChange, onYearSelect }) => {
@@ -26,7 +26,8 @@ const TimeSelectionRow = ({ timestamp, onChange, onYearSelect }) => {
           placeholder="${label}"
         />
       </td>
-      <td>
+        <td>
+
         <OptionList options={yearsOptions} onSelect={handleSelect} />
       </td>
     </tr>

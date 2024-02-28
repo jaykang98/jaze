@@ -1,76 +1,80 @@
-// src/hooks/useUserData.ts
+// FileName: src/hooks/useUserData.ts
 import { useState, useEffect } from "react";
 import { fetchAndProcessData } from "./utils/dataHandler";
 
 export const useUserData = (username: string) => {
-  const [userInfo, setUserInfo] = useState<any | null>(null);
-  const [userTopAlbums, setUserTopAlbums] = useState<any | null>(null);
-  const [userTopArtists, setUserTopArtists] = useState<any | null>(null);
-  const [userTopTracks, setUserTopTracks] = useState<any | null>(null);
-  const [error, setError] = useState<string | null>(null);
+    const [userInfo, setUserInfo] = useState<any | null>(null);
+    const [userTopAlbums, setUserTopAlbums] = useState<any | null>(null);
+    const [userTopArtists, setUserTopArtists] = useState<any | null>(null);
+    const [userTopTracks, setUserTopTracks] = useState<any | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!username) return;
+    useEffect(() => {
+        if (!username) return;
 
-    const fetchUserInfo = async () => {
-      try {
-        const userInfo = await fetchAndProcessData("user.getinfo", {
-          user: username,
-        });
-        setUserInfo(userInfo);
-      } catch (error) {
-        setError("Failed to fetch user info");
-      }
+        const fetchData = async (method: string, params: object) => {
+            try {
+                // Debug: Print the request details if REACT_APP_IS_DEBUG is TRUE
+                if (process.env.REACT_APP_IS_DEBUG === 'TRUE') {
+                    console.log(`Fetching data with method: ${method}`, params);
+                }
+
+                const data = await fetchAndProcessData(method, params);
+
+                // Debug: Print the received data if REACT_APP_IS_DEBUG is TRUE
+                if (process.env.REACT_APP_IS_DEBUG === 'TRUE') {
+                    console.log(`Received data for method: ${method}`, data);
+                }
+
+                return data;
+            } catch (error) {
+                console.error(`Failed to fetch data for method: ${method}`, error);
+                setError(`Failed to fetch data for method: ${method}`);
+                return null; // Ensure we return null on error to maintain state consistency
+            }
+        };
+
+        const fetchUserInfo = async () => {
+            const userInfo = await fetchData("user.getinfo", { user: username });
+            setUserInfo(userInfo);
+        };
+
+        const fetchUserTopAlbums = async () => {
+            const userTopAlbums = await fetchData("user.getTopAlbums", {
+                user: username,
+                limit: 5,
+                period: "12month",
+            });
+            setUserTopAlbums(userTopAlbums);
+        };
+
+        const fetchUserTopArtists = async () => {
+            const userTopArtists = await fetchData("user.getTopArtists", {
+                user: username,
+                limit: 5,
+            });
+            setUserTopArtists(userTopArtists);
+        };
+
+        const fetchUserTopTracks = async () => {
+            const userTopTracks = await fetchData("user.getTopTracks", {
+                user: username,
+                limit: 5,
+            });
+            setUserTopTracks(userTopTracks);
+        };
+
+        fetchUserInfo();
+        fetchUserTopAlbums();
+        fetchUserTopArtists();
+        fetchUserTopTracks();
+    }, [username]);
+
+    return {
+        userInfo,
+        userTopAlbums,
+        userTopArtists,
+        userTopTracks,
+        error,
     };
-
-    const fetchUserTopAlbums = async () => {
-      try {
-        const userTopAlbums = await fetchAndProcessData("user.getTopAlbums", {
-          user: username,
-          limit: 5,
-          period: "12month",
-        });
-        setUserTopAlbums(userTopAlbums);
-      } catch (error) {
-        setError("Failed to fetch top albums");
-      }
-    };
-
-    const fetchUserTopArtists = async () => {
-      try {
-        const userTopArtists = await fetchAndProcessData("user.getTopArtists", {
-          user: username,
-          limit: 5,
-        });
-        setUserTopArtists(userTopArtists);
-      } catch (error) {
-        setError("Failed to fetch top artists");
-      }
-    };
-
-    const fetchUserTopTracks = async () => {
-      try {
-        const userTopTracks = await fetchAndProcessData("user.getTopTracks", {
-          user: username,
-          limit: 5,
-        });
-        setUserTopTracks(userTopTracks);
-      } catch (error) {
-        setError("Failed to fetch top tracks");
-      }
-    };
-
-    fetchUserInfo();
-    fetchUserTopAlbums();
-    fetchUserTopArtists();
-    fetchUserTopTracks();
-  }, [username]);
-
-  return {
-    userInfo,
-    userTopAlbums,
-    userTopArtists,
-    userTopTracks,
-    error,
-  };
 };

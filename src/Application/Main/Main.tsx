@@ -1,15 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import styles from "./Main.module.css";
-import Button from "../../components/button/Button";
+import Button from "../../components/foundations/button/Button";
 import {
   ViewProps,
   FormData,
   Options,
   OptionType,
 } from "../../types/componentTypes";
-import InputSelection from "../../components/inputSelection/InputSelection";
-
+import InputSelection from "../../components/ui/inputSelection/InputSelection";
+import { useUserData } from '../../hooks/useUserData';
+import { useAuthenticator } from "hooks/useAuthenticator"
 const Main: React.FC<ViewProps> = () => {
+    const { getUserID } = useAuthenticator();
+    const { userInfo, userTopAlbums, userTopArtists, userTopTracks, error } = useUserData(getUserID());
+
   const [formData, setFormData] = useState<FormData>({
     artist: "",
     album: "",

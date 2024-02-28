@@ -5,11 +5,11 @@ import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import styles from "./Container.module.css";
-import { ViewProps } from "../../types/componentTypes";
+import { ViewProps } from "../../../types/componentTypes";
 
-const Main = lazy(() => import("../../Application/Main/Main"));
-const About = lazy(() => import("../../Application/About/About"));
-const Settings = lazy(() => import("../../Application/Settings/Settings"));
+const Main = lazy(() => import("../../../Application/Main/Main"));
+const About = lazy(() => import("../../../Application/About/About"));
+const Settings = lazy(() => import("../../../Application/Settings/Settings"));
 
 const Container: React.FC<ViewProps> = () => {
   return (

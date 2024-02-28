@@ -3,18 +3,18 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: var(--default-margin);
+  margin-right: var(--default-margin);
 }
-
+input {
+    vertical-align: middle;
+}
 .label {
-  margin-bottom: 8px;
   display: flex;
   align-items: center;
   color: var(--primary-text-color);
 }
 
 .inputField {
-  width: 100%;
   padding: var(--padding-small);
   border: 1px solid var(--input-border-color);
   border-radius: var(--border-radius);

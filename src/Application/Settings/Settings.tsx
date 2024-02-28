@@ -1,73 +1,36 @@
 // FileName: Settings.tsx
 
-import React, { useCallback, useMemo } from "react";
-import styles from "./Settings.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useCallback, useEffect, useMemo } from 'react';
+import styles from './Settings.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faEnvelope,
     faKey,
     faPalette,
-    faTrash,
-    faUser,
     faPenNib,
-    faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
+    faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
-import Button from "../../components/button/Button";
-import { useAuthenticator } from "../../hooks/useAuthenticator";
-import { ViewProps } from "../../types/componentTypes";
+import Button from '../../components/foundations/button/Button';
+import { useAuthenticator } from '../../hooks/useAuthenticator';
+import { ViewProps } from '../../types/componentTypes';
 
-// Define a function to get the settings options outside the component
-const getSettingsOptions = (isAuthenticated, getUserID, actions) => {
-    const baseOptions = [
-        {
-            id: "clearCache",
-            label: "Clear Cache: Delete Local Data",
-            action: actions.clearCacheAction,
-            icon: faTrash,
-            disabled: false,
-        },
-        {
-            id: "themeSwap",
-            label: "Change Theme: Dark Mode",
-            action: actions.changeThemeAction,
-            icon: faPalette,
-            disabled: false,
-        },
-        {
-            id: "author",
-            label: "Author: J Kang",
-            icon: faPenNib,
-            action: () => console.log("Author: J Kang"),
-            disabled: true,
-        },
-        {
-            id: "contact",
-            label: "Contact: kangjacob1@gmail.com",
-            icon: faEnvelope,
-            action: () => console.log("Contact: kangjacob1@gmail.com"),
-            disabled: true,
-        },
-    ];
-
-    const authOption = isAuthenticated() ? {
-        id: "loggedInUser",
-        label: `Logged In: ${getUserID()}`,
-        action: () => { },
-        icon: faUser,
-        disabled: true,
-    } : {
-        id: "authenticate",
-        label: "Log In: Authenticate",
-        action: actions.initiateAuthentication,
-        icon: faKey,
-        disabled: false,
-    };
-
-    return [authOption, ...baseOptions];
-};
+interface SettingOption {
+    id: string;
+    displayLabel: string;
+    actionLabel?: string;
+    action: () => void;
+    icon: typeof faEnvelope;
+    disabled: boolean;
+}
 
 const Settings: React.FC<ViewProps> = () => {
-    const { isAuthenticated, getUserID, startAuth } = useAuthenticator();
+    const { isAuthenticated, getUserID, startAuth, subscribeToAuthChanges } = useAuthenticator();
+
+    useEffect(() => {
+        const unsubscribe = subscribeToAuthChanges(() => { });
+        return unsubscribe;
+    }, [subscribeToAuthChanges]);
 
     const initiateAuthentication = useCallback(() => {
         if (!isAuthenticated()) {
@@ -75,20 +38,61 @@ const Settings: React.FC<ViewProps> = () => {
         }
     }, [isAuthenticated, startAuth]);
 
-    const clearCacheAction = useCallback(() => {
-        alert("Cache cleared!");
-        localStorage.removeItem("userID");
+    const logOut = useCallback(() => {
+        alert('Logged out!');
+        localStorage.removeItem('userID');
     }, []);
 
     const changeThemeAction = useCallback(() => {
-        console.log("Theme changed");
+        console.log('Theme changed');
     }, []);
 
-    const settingsOptions = useMemo(() => getSettingsOptions(isAuthenticated, getUserID, {
-        initiateAuthentication,
-        clearCacheAction,
-        changeThemeAction,
-    }), [isAuthenticated, getUserID, initiateAuthentication, clearCacheAction, changeThemeAction]);
+    const settingsOptions = useMemo(() => {
+        const baseOptions: SettingOption[] = [
+            {
+                id: 'themeSwap',
+                displayLabel: 'Change Theme',
+                actionLabel: 'Dark Mode',
+                action: changeThemeAction,
+                icon: faPalette,
+                disabled: false,
+            },
+            {
+                id: 'author',
+                displayLabel: 'Author',
+                actionLabel: 'J Kang',
+                action: () => console.log('Author: J Kang'),
+                icon: faPenNib,
+                disabled: true,
+            },
+            {
+                id: 'contact',
+                displayLabel: 'Contact',
+                actionLabel: 'kangjacob1@gmail.com',
+                action: () => console.log('Contact: kangjacob1@gmail.com'),
+                icon: faEnvelope,
+                disabled: true,
+            },
+        ];
+
+        const authOption: SettingOption = isAuthenticated() ? {
+            id: 'loggedInUser',
+            displayLabel: 'Authentication',
+            actionLabel: `Log Out (${getUserID()})`,
+            action: logOut,
+            icon: faUser,
+            disabled: false,
+        } : {
+            id: 'authenticate',
+                displayLabel: 'Authentication',
+                actionLabel: 'Log in',
+            action: initiateAuthentication,
+            icon: faKey,
+            disabled: false,
+        };
+
+        return [authOption, ...baseOptions];
+    }, [isAuthenticated, getUserID, initiateAuthentication, changeThemeAction, logOut]);
 
     return (
         <section>
@@ -100,15 +104,15 @@ const Settings: React.FC<ViewProps> = () => {
                             <td>
                                 <FontAwesomeIcon icon={option.icon} aria-hidden="true" />
                                 <label htmlFor={option.id} className={styles.labelWithIcon}>
-                                    {option.label.split(": ")[0]}
+                                    {option.displayLabel}
                                 </label>
                             </td>
                             <td>
                                 {option.disabled ? (
-                                    <span>{option.label.split(": ")[1]}</span>
+                                    <span>{option.actionLabel}</span>
                                 ) : (
                                     <Button onClick={option.action} disabled={option.disabled}>
-                                        {option.label.split(": ")[1]}
+                                        {option.actionLabel}
                                     </Button>
                                 )}
                             </td>
