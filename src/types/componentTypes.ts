@@ -1,8 +1,9 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export interface ViewProps {
-  error?: Error | null;
-  onViewChange?: any;
+    error?: Error | null;
+    onViewChange?: any;
+    userID: string | null;
 }
 export interface OptionType {
   name: string;

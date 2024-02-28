@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './About.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPenNib, faUser } from '@fortawesome/free-solid-svg-icons';
-import { ViewProps } from '../../types/componentTypes';
+import { ViewProps } from 'types/componentTypes';
 import { useUserData } from '../../hooks/useUserData';
-import { useAuthenticator } from '../../hooks/useAuthenticator';
+import { useAuthenticator } from 'hooks/useAuthenticator';
 
 const About: React.FC<ViewProps> = () => {
     const { getUserID } = useAuthenticator();
