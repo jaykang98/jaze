@@ -14,7 +14,6 @@ const InputSelection: React.FC<InputSelectionProps> = ({
 }) => (
   <>
         <tr>
-            
       <td>
         <select value={selectionType} onChange={handleTypeChange}>
           <option value="track">Track</option>
