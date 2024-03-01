@@ -1,50 +1,34 @@
-// Filename: OptionList.tsx
+// TimeSelectionRow.tsx
 import React from "react";
-import styles from "./OptionList.module.css";
-import Button from "../button/Button";
-import { useUserData } from 'hooks/useUserData';
-interface Option {
-  name: string;
-}
+import OptionList from "../../../components/foundations/optionList/OptionList";
+import Input from "../../../components/foundations/input/Input";
 
-interface OptionListProps {
-    dataType: 'album' | 'artist' | 'track';
-    onSelect: (selectedOption: Option) => void;
-    userID: string;
-    options?:[];
-}
+const TimeSelectionRow = ({ timestamp, onChange }) => {
+    const currentYear = new Date().getFullYear();
+    const yearsOptions = Array.from({ length: 4 }, (_, i) => ({
+        key: `${currentYear - i}`, // Adding a key property
+        value: `${currentYear - i}`, // Renaming name to value
+    }));
 
-const OptionList: React.FC<OptionListProps> = ({ dataType, onSelect, userID }) => {
-    const { userTopAlbums, userTopArtists, userTopTracks } = useUserData(userID);
 
-    let dataToDisplay = [];
-    switch (dataType) {
-        case 'album':
-            dataToDisplay = userTopAlbums || [];
-            break;
-        case 'artist':
-            dataToDisplay = userTopArtists || [];
-            break;
-        case 'track':
-            dataToDisplay = userTopTracks || [];
-            break;
-        default:
-            break;
-    }
 
     return (
-        <div className={styles.optionList}>
-            {dataToDisplay.map((item) => (
-                <Button
-                    key={item.name}
-                    onClick={() => onSelect(item)}
-                    className=""
-                >
-                    {item.name}
-                </Button>
-            ))}
-        </div>
+        <tr>
+            <td>
+                <Input
+                    id=""
+                    type="datetime-local"
+                    name="timestamp" // Adjusted to use a valid name
+                    value={timestamp}
+                    onChange={onChange}
+                    placeholder="Select a time" // Adjusted to use a meaningful placeholder
+                />
+            </td>
+            <td>
+                <OptionList options={yearsOptions} />
+            </td>
+        </tr>
     );
 };
 
-export default OptionList;
+export default TimeSelectionRow;

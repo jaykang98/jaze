@@ -14,4 +14,3 @@ node_modules/
 /build/static/media
 
 /node_modules
-/main.env

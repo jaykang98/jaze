@@ -5,12 +5,11 @@ import Button from "../../components/foundations/button/Button";
 import {
   ViewProps,
   FormData,
-  Options,
-  OptionType,
 } from "../../types/componentTypes";
 import InputSelection from "../../components/ui/inputSelection/InputSelection";
 import { useUserData } from '../../hooks/useUserData';
-import { useAuthenticator } from "hooks/useAuthenticator"
+import { useAuthenticator } from "../../hooks/useAuthenticator"
+import { OptionType } from "../../types/dataStructures";
 const Main: React.FC<ViewProps> = () => {
     const { getUserID } = useAuthenticator();
     const { userInfo, userTopAlbums, userTopArtists, userTopTracks, error } = useUserData(getUserID());
@@ -25,11 +24,6 @@ const Main: React.FC<ViewProps> = () => {
   const [selectionType, setSelectionType] = useState<
     "artist" | "album" | "track"
   >("track");
-  const [options] = useState<Options>({
-    artists: [],
-    albums: [],
-    tracks: [],
-  });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

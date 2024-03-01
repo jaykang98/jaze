@@ -1,7 +1,6 @@
 // src/components/Input/Input.tsx
 import React from "react";
 import styles from "./Input.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { InputProps } from "../../../types/componentTypes";
 
 const Input: React.FC<InputProps> = ({
@@ -13,8 +12,6 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div className={styles.inputContainer}>
-          <td>
-          </td>
       <input
         id={id}
         type={type}

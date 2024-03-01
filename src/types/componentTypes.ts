@@ -5,9 +5,6 @@ export interface ViewProps {
     onViewChange?: any;
     userID: string | null;
 }
-export interface OptionType {
-  name: string;
-}
 export interface InputProps {
   id?: string;
   label?: string;
@@ -26,18 +23,20 @@ export interface FormData {
   startTimestamp: string;
   endTimestamp: string;
 }
-
-export interface Options {
-  artists: string[];
-  albums: string[];
-  tracks: string[];
+export type SelectionType = "artist" | "album" | "track";
+export interface Option {
+    key: string;
+    dataType: SelectionType;
+    value: string;
+}
+export interface OptionProps {
+    options: Option[];
 }
 export interface InputSelectionProps {
   selectionType: SelectionType;
   formData: FormData;
   handleTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  options: Options;
+  options: Option[];
   handleOptionSelect: (type: keyof FormData, option: { name: string }) => void;
   userID?: string;
 }
-type SelectionType = "artist" | "album" | "track";
