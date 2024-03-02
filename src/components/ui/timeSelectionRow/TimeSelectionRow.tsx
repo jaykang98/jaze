@@ -1,7 +1,7 @@
 import React from "react";
 import OptionList from "../../../components/foundations/optionList/OptionList";
 import Input from "../../../components/foundations/input/Input"
-import { SelectionType,OptionProps } from "../../../types/componentTypes"
+import { SelectionType, OptionListProps } from "../../../types/componentTypes"
 
 interface TimeSelectionRowProps {
     timestamp: string;
@@ -15,7 +15,7 @@ const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({ timestamp }) => {
         value: `${currentYear - i}`,
     }));
 
-    const optionProps: OptionProps = {
+    const optionProps: OptionListProps = {
         dataType: "year",
         options: yearsOptions,
     };

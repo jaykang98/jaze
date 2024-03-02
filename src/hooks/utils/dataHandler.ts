@@ -2,8 +2,8 @@
 import { fetchData } from "../api/API";
 
 export const fetchAndProcessData = async (
-  method: string,
-  params: Record<string, any>,
+    method: string,
+    params: Record<string, string | number | boolean>,
 ) => {
   try {
     const response = await fetchData(method, params);

@@ -14,6 +14,7 @@ import {
 import Button from '../../components/foundations/button/Button';
 import { useAuthenticator } from '../../hooks/useAuthenticator';
 import { ViewProps } from '../../types/componentTypes';
+import LoginCard from '../../components/ui/loginCard/LoginCard';
 
 interface SettingOption {
     id: string;
@@ -100,10 +101,14 @@ const Settings: React.FC<ViewProps> = ({ userID }) => {
                                     </Button>
                                 )}
                             </td>
+                            <td>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <LoginCard userID={userID}></LoginCard>
+
         </section>
     );
 };
