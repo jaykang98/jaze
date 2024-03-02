@@ -1,6 +1,6 @@
 // FileName: Settings.tsx
 
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styles from './Settings.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -24,24 +24,8 @@ interface SettingOption {
     disabled: boolean;
 }
 
-const Settings: React.FC<ViewProps> = () => {
-    const { isAuthenticated, getUserID, startAuth, subscribeToAuthChanges } = useAuthenticator();
-
-    useEffect(() => {
-        const unsubscribe = subscribeToAuthChanges(() => { });
-        return unsubscribe;
-    }, [subscribeToAuthChanges]);
-
-    const initiateAuthentication = useCallback(() => {
-        if (!isAuthenticated()) {
-            startAuth();
-        }
-    }, [isAuthenticated, startAuth]);
-
-    const logOut = useCallback(() => {
-        alert('Logged out!');
-        localStorage.removeItem('userID');
-    }, []);
+const Settings: React.FC<ViewProps> = ({ userID }) => {
+    const { isAuthenticated, startAuth, logOut } = useAuthenticator();
 
     const changeThemeAction = useCallback(() => {
         console.log('Theme changed');
@@ -75,24 +59,24 @@ const Settings: React.FC<ViewProps> = () => {
             },
         ];
 
-        const authOption: SettingOption = isAuthenticated() ? {
+        const authOptions: SettingOption = isAuthenticated() ? {
             id: 'loggedInUser',
             displayLabel: 'Authentication',
-            actionLabel: `Log Out (${getUserID()})`,
+            actionLabel: `Log Out (${userID})`,
             action: logOut,
             icon: faUser,
             disabled: false,
         } : {
             id: 'authenticate',
-                displayLabel: 'Authentication',
-                actionLabel: 'Log in',
-            action: initiateAuthentication,
+            displayLabel: 'Authentication',
+            actionLabel: 'Log in',
+            action: startAuth,
             icon: faKey,
             disabled: false,
         };
 
-        return [authOption, ...baseOptions];
-    }, [isAuthenticated, getUserID, initiateAuthentication, changeThemeAction, logOut]);
+        return [authOptions, ...baseOptions];
+    }, [isAuthenticated, startAuth, changeThemeAction, logOut]);
 
     return (
         <section>

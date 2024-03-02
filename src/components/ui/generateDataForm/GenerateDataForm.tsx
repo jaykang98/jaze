@@ -1,35 +1,49 @@
-// GenerateDataForm.tsx
-import React from "react";
+// FileName: GenerateDataForm.tsx
+import React, { useEffect } from "react";
 import Input from "../../foundations/input/Input";
 import OptionList from "../../foundations/optionList/OptionList";
 import TimeSelectionRow from "../timeSelectionRow/TimeSelectionRow";
 import { useUserData } from '../../../hooks/useUserData';
-import { SelectionType } from "../../../types/componentTypes";
+import { GenerateDataFormProps, SelectionType } from "../../../types/componentTypes";
 
-interface GenerateDataFormProps {
-    formData: FormData;
-    userID?: string;
-}
 const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
-    selectionType,
     formData,
-    handleTypeChange,
+    setFormData,
     userID,
+    selectionType,
 }) => {
-    const { AlbumData, ArtistData, TrackData } = useUserData(userID);
+    const { albumData, artistData, trackData } = useUserData(userID || '');
+
+    useEffect(() => {
+        if ((selectionType === 'album' && !albumData) ||
+            (selectionType === 'artist' && !artistData) ||
+            (selectionType === 'track' && !trackData)) {
+            setFormData({ ...formData, [selectionType]: '' });
+        }
+    }, [albumData, artistData, trackData, selectionType, setFormData, formData]);
+
+    const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const newSelectionType = event.target.value as SelectionType;
+        setFormData({ ...formData, selectionType: newSelectionType });
+    };
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [selectionType]: event.target.value });
+    };
 
     let dataToDisplay;
     switch (selectionType) {
         case 'album':
-            dataToDisplay = AlbumData || [];
+            dataToDisplay = albumData || [];
             break;
         case 'artist':
-            dataToDisplay = ArtistData || [];
+            dataToDisplay = artistData || [];
             break;
         case 'track':
-            dataToDisplay = TrackData || [];
+            dataToDisplay = trackData || [];
             break;
         default:
+            dataToDisplay = [];
             break;
     }
 
@@ -50,8 +64,9 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
                                 id={selectionType}
                                 type="text"
                                 name={selectionType}
-                                value={formData[selectionType]}
+                                value={formData[selectionType] || ''}
                                 placeholder={`Enter ${selectionType} name`}
+                                onChange={handleInputChange}
                             />
                         </td>
                         <td>
@@ -83,4 +98,4 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
     );
 };
 
-export default InputSelection;
+export default GenerateDataForm;

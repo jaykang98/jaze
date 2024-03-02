@@ -18,11 +18,9 @@ export interface InputProps {
 }
 
 export interface FormData {
-  artist: string;
-  album: string;
-  track: string;
-  startTimestamp: string;
-  endTimestamp: string;
+    startTimestamp?: string;
+    endTimestamp?: string;
+    selectionType: SelectionType; // Assuming this is the intended structure
 }
 export type SelectionType = "artist" | "album" | "track" | "year";
 export interface Option {
@@ -33,4 +31,10 @@ export interface Option {
 export interface OptionProps {
     dataType: string;
     options: Option[];
+}
+export interface GenerateDataFormProps {
+    formData: FormData;
+    setFormData: (formData: FormData) => void; // Ensure this is always provided
+    userID?: string;
+    selectionType: SelectionType;
 }
