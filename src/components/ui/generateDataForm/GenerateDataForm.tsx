@@ -1,30 +1,33 @@
-// InputSelection.tsx
+// GenerateDataForm.tsx
 import React from "react";
 import Input from "../../foundations/input/Input";
 import OptionList from "../../foundations/optionList/OptionList";
 import TimeSelectionRow from "../timeSelectionRow/TimeSelectionRow";
-import { InputSelectionProps } from "types/componentTypes";
 import { useUserData } from '../../../hooks/useUserData';
+import { SelectionType } from "../../../types/componentTypes";
 
-const InputSelection: React.FC<InputSelectionProps> = ({
+interface GenerateDataFormProps {
+    formData: FormData;
+    userID?: string;
+}
+const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
     selectionType,
     formData,
     handleTypeChange,
-    handleOptionSelect,
     userID,
 }) => {
-    const { userTopAlbums, userTopArtists, userTopTracks } = useUserData(userID);
+    const { AlbumData, ArtistData, TrackData } = useUserData(userID);
 
-    let dataToDisplay = [];
+    let dataToDisplay;
     switch (selectionType) {
         case 'album':
-            dataToDisplay = userTopAlbums || [];
+            dataToDisplay = AlbumData || [];
             break;
         case 'artist':
-            dataToDisplay = userTopArtists || [];
+            dataToDisplay = ArtistData || [];
             break;
         case 'track':
-            dataToDisplay = userTopTracks || [];
+            dataToDisplay = TrackData || [];
             break;
         default:
             break;
@@ -53,7 +56,8 @@ const InputSelection: React.FC<InputSelectionProps> = ({
                         </td>
                         <td>
                             <OptionList
-                                options={dataToDisplay.map(item => ({ key: item.id, value: item.name, dataType:item.dataType }))}
+                                options={dataToDisplay}
+                                dataType={selectionType}
                             />
                         </td>
                     </tr>
@@ -62,8 +66,6 @@ const InputSelection: React.FC<InputSelectionProps> = ({
                         <td colSpan={2}>
                             <TimeSelectionRow
                                 timestamp={formData.startTimestamp}
-                                onYearSelect={(year) => console.log(year)}
-                                onChange={(e) => console.log(e)} // Update with actual change handling
                             />
                         </td>
                     </tr>
@@ -72,8 +74,6 @@ const InputSelection: React.FC<InputSelectionProps> = ({
                         <td colSpan={2}>
                             <TimeSelectionRow
                                 timestamp={formData.endTimestamp}
-                                onYearSelect={(year) => console.log(year)}
-                                onChange={(e) => console.log(e)} // Update with actual change handling
                             />
                         </td>
                     </tr>

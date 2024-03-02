@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export interface ViewProps {
@@ -23,20 +24,13 @@ export interface FormData {
   startTimestamp: string;
   endTimestamp: string;
 }
-export type SelectionType = "artist" | "album" | "track";
+export type SelectionType = "artist" | "album" | "track" | "year";
 export interface Option {
     key: string;
     dataType: SelectionType;
     value: string;
 }
 export interface OptionProps {
+    dataType: string;
     options: Option[];
-}
-export interface InputSelectionProps {
-  selectionType: SelectionType;
-  formData: FormData;
-  handleTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  options: Option[];
-  handleOptionSelect: (type: keyof FormData, option: { name: string }) => void;
-  userID?: string;
 }

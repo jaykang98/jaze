@@ -9,10 +9,12 @@ import {
 import InputSelection from "../../components/ui/inputSelection/InputSelection";
 import { useUserData } from '../../hooks/useUserData';
 import { useAuthenticator } from "../../hooks/useAuthenticator"
-import { OptionType } from "../../types/dataStructures";
+import { Option } from "../../types/componentTypes";
+
 const Main: React.FC<ViewProps> = () => {
     const { getUserID } = useAuthenticator();
-    const { userInfo, userTopAlbums, userTopArtists, userTopTracks, error } = useUserData(getUserID());
+    const { UserData, AlbumData, ArtistData, TrackData } = useUserData(getUserID());
+    const [error, setError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState<FormData>({
     artist: "",
@@ -34,7 +36,7 @@ const Main: React.FC<ViewProps> = () => {
     setSelectionType(event.target.value as "artist" | "album" | "track");
   };
 
-  const handleOptionSelect = (type: keyof FormData, option: OptionType) => {
+  const handleOptionSelect = (type: keyof FormData, option: Option) => {
     setFormData((prev) => ({ ...prev, [type]: option.name }));
   };
 
@@ -49,7 +51,6 @@ const Main: React.FC<ViewProps> = () => {
               formData={formData}
               handleTypeChange={handleTypeChange}
               options={options}
-              handleOptionSelect={handleOptionSelect}
             />
             <tr>
               <td colSpan={3}>
