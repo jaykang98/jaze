@@ -1,8 +1,8 @@
 import React from "react";
 import OptionList from "../../../components/foundations/optionList/OptionList";
-import Input from "../../../components/foundations/input/Input"
-import { SelectionType, OptionListProps } from "../../../types/componentTypes"
-
+import Input from "../../../components/foundations/input/Input";
+import { SelectionType, OptionListProps } from "../../../types/componentTypes";
+import "./TimeSelectionRow.module.css"; 
 interface TimeSelectionRowProps {
     timestamp: string;
 }
@@ -21,20 +21,16 @@ const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({ timestamp }) => {
     };
 
     return (
-        <tr>
-            <td>
-                <Input
-                    id="datetime-local-input"
-                    type="datetime-local"
-                    name="timestamp"
-                    value={timestamp}
-                    placeholder="Select Date and Time"
-                />
-            </td>
-            <td>
-                <OptionList {...optionProps} />
-            </td>
-        </tr>
+        <div className='styles.TimeSelectionRow'>
+            <Input
+                id="datetime-local-input"
+                type="datetime-local"
+                name="timestamp"
+                value={timestamp}
+                placeholder="Select Date and Time"
+            />
+            <OptionList {...optionProps} />
+        </div>
     );
 };
 
