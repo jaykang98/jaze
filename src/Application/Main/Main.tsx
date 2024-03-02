@@ -19,7 +19,7 @@ const Main: React.FC<ViewProps> = ({ userID }) => {
                 <GenerateDataForm
                     formData={formData}
                     setFormData={handleSetFormData}
-                    selectionType={formData.selectionType} // Correctly pass selectionType
+                    selectionType={formData.selectionType} 
                     userID={userID}
                 />
                 <Button type="submit">Submit</Button>

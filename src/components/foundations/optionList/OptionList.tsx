@@ -1,14 +1,22 @@
 // OptionList.tsx
 import React from "react";
-import { OptionProps } from "types/componentTypes";
+import { OptionListProps } from "types/componentTypes";
+import Button from "../button/Button";
 
-const OptionList: React.FC<OptionProps> = ({ options }) => {
-    if (options) {
+const OptionList: React.FC<OptionListProps> = ({ dataType, options }) => {
+    if (!Array.isArray(options)) {
+        console.error('OptionList component expects "options" prop to be an array.');
+        return null;
+    }
+
+    const filteredOptions = options.filter(option => option.dataType === dataType);
+
+    if (filteredOptions.length) {
         return (
             <div>
-                {options.map((option, index) => (
+                {filteredOptions.map((option, index) => (
                     <div key={index}>
-                        <p>{option.key}</p>
+                        <Button>{option.key}</Button>
                     </div>
                 ))}
             </div>
