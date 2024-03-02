@@ -1,27 +1,25 @@
-// FileName: src/hooks/useUserData.ts
 import { useState, useEffect } from "react";
 import { fetchAndProcessData } from "./utils/dataHandler";
+import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
+import { FetchDataParams, fetchData } from "./api/API"
 
 export const useUserData = (username: string) => {
-    const [userInfo, setUserInfo] = useState<any | null>(null);
-    const [userTopAlbums, setUserTopAlbums] = useState<any | null>(null);
-    const [userTopArtists, setUserTopArtists] = useState<any | null>(null);
-    const [userTopTracks, setUserTopTracks] = useState<any | null>(null);
+    fetchData;
+    const [userData, setUserData] = useState<UserData | null>(null);
+    const [albumData, setAlbumData] = useState<AlbumData | null>(null);
+    const [artistData, setArtistData] = useState<ArtistData | null>(null);
+    const [trackData, setTrackData] = useState<TrackData | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         if (!username) return;
 
-        const fetchData = async (method: string, params: object) => {
+        const fetchData = async (method: string, params: FetchDataParams) => {
             try {
-                // Debug: Print the request details if REACT_APP_IS_DEBUG is TRUE
                 if (process.env.REACT_APP_IS_DEBUG === 'TRUE') {
                     console.log(`Fetching data with method: ${method}`, params);
                 }
-
                 const data = await fetchAndProcessData(method, params);
-
-                // Debug: Print the received data if REACT_APP_IS_DEBUG is TRUE
                 if (process.env.REACT_APP_IS_DEBUG === 'TRUE') {
                     console.log(`Received data for method: ${method}`, data);
                 }
@@ -30,13 +28,13 @@ export const useUserData = (username: string) => {
             } catch (error) {
                 console.error(`Failed to fetch data for method: ${method}`, error);
                 setError(`Failed to fetch data for method: ${method}`);
-                return null; // Ensure we return null on error to maintain state consistency
+                return null;
             }
         };
 
         const fetchUserInfo = async () => {
-            const userInfo = await fetchData("user.getinfo", { user: username });
-            setUserInfo(userInfo);
+            const userInfo = await fetchData("user.getinfo", { user: username }) as UserData;
+            setUserData(userInfo);
         };
 
         const fetchUserTopAlbums = async () => {
@@ -44,24 +42,24 @@ export const useUserData = (username: string) => {
                 user: username,
                 limit: 5,
                 period: "12month",
-            });
-            setUserTopAlbums(userTopAlbums);
+            }) as AlbumData;
+            setAlbumData(userTopAlbums);
         };
 
         const fetchUserTopArtists = async () => {
             const userTopArtists = await fetchData("user.getTopArtists", {
                 user: username,
                 limit: 5,
-            });
-            setUserTopArtists(userTopArtists);
+            }) as ArtistData;
+            setArtistData(userTopArtists);
         };
 
         const fetchUserTopTracks = async () => {
             const userTopTracks = await fetchData("user.getTopTracks", {
                 user: username,
                 limit: 5,
-            });
-            setUserTopTracks(userTopTracks);
+            }) as TrackData;
+            setTrackData(userTopTracks);
         };
 
         fetchUserInfo();
@@ -71,10 +69,10 @@ export const useUserData = (username: string) => {
     }, [username]);
 
     return {
-        userInfo,
-        userTopAlbums,
-        userTopArtists,
-        userTopTracks,
+        userData,
+        albumData,
+        artistData,
+        trackData,
         error,
     };
 };

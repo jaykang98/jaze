@@ -2,18 +2,16 @@ import React from 'react';
 import styles from './About.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPenNib, faUser } from '@fortawesome/free-solid-svg-icons';
-import { ViewProps } from '../../types/componentTypes';
+import { ViewProps } from 'types/componentTypes';
 import { useUserData } from '../../hooks/useUserData';
-import { useAuthenticator } from '../../hooks/useAuthenticator';
 
-const About: React.FC<ViewProps> = () => {
-    const { getUserID } = useAuthenticator();
-    const { userInfo } = useUserData(getUserID());
+const About: React.FC<ViewProps> = ({ userID }) => {
+    const { userData } = useUserData(userID);
 
     const renderUserInfo = () => {
-        if (!userInfo || !userInfo.user) return null;
+        if (!userData || !userData.user) return null;
 
-        const { user } = userInfo;
+        const { user } = userData;
         const image = user.image?.[0]['#text'];
 
         const userInfoArray = [

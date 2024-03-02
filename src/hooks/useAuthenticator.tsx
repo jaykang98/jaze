@@ -1,5 +1,5 @@
 // FileName: src/hooks/useAuthenticator.tsx
-import { useState, useEffect, useCallback } from 'react'; // Import React and useCallback
+import { useState, useEffect, useCallback } from 'react';
 import { decryptData, encryptData, generateMD5 } from './utils/SecurityUtils';
 
 export const useAuthenticator = () => {
@@ -46,7 +46,6 @@ export const useAuthenticator = () => {
 
         const sessionUrl = `https://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=${process.env.REACT_APP_APIKEY}&token=${token}&api_sig=${apiSig}&format=json`;
 
-        // Debug: Print the request details if REACT_APP_IS_DEBUG is TRUE
         if (process.env.REACT_APP_IS_DEBUG === 'TRUE') {
             console.log('Fetching session with request:', sessionUrl);
         }
@@ -65,7 +64,7 @@ export const useAuthenticator = () => {
                 const encryptedUserID = encryptData(userID);
                 localStorage.setItem('userID', encryptedUserID);
                 setUserIDState(userID);
-                notifySubscribers(); 
+                notifySubscribers();
             }
         } catch (error) {
             console.error('Fetching session failed:', error);
@@ -76,11 +75,17 @@ export const useAuthenticator = () => {
         const encryptedUserID = encryptData(userID);
         localStorage.setItem('userID', encryptedUserID);
         setUserIDState(userID);
-        notifySubscribers(); 
+        notifySubscribers();
+    }, []);
+
+    const logOut = useCallback(() => {
+        localStorage.removeItem('userID');
+        setUserIDState(null);
+        notifySubscribers();
     }, []);
 
     const getUserID = useCallback(() => userID, [userID]);
     const isAuthenticated = useCallback(() => userID !== null, [userID]);
 
-    return { subscribeToAuthChanges, startAuth, fetchSession, setUserID, getUserID, isAuthenticated };
+    return { subscribeToAuthChanges, startAuth, fetchSession, setUserID, getUserID, isAuthenticated, logOut };
 };

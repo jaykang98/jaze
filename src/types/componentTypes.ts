@@ -1,11 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export interface ViewProps {
-  error?: Error | null;
-  onViewChange?: any;
-}
-export interface OptionType {
-  name: string;
+    error?: Error | null;
+    onViewChange?: any;
+    userID: string | null;
 }
 export interface InputProps {
   id?: string;
@@ -19,24 +18,23 @@ export interface InputProps {
 }
 
 export interface FormData {
-  artist: string;
-  album: string;
-  track: string;
-  startTimestamp: string;
-  endTimestamp: string;
+    startTimestamp?: string;
+    endTimestamp?: string;
+    selectionType: SelectionType; // Assuming this is the intended structure
 }
-
-export interface Options {
-  artists: string[];
-  albums: string[];
-  tracks: string[];
+export type SelectionType = "artist" | "album" | "track" | "year";
+export interface Option {
+    key: string;
+    dataType: SelectionType;
+    value: string;
 }
-export interface InputSelectionProps {
-  selectionType: SelectionType;
-  formData: FormData;
-  handleTypeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  options: Options;
-  handleOptionSelect: (type: keyof FormData, option: { name: string }) => void;
-  userID?: string;
+export interface OptionProps {
+    dataType: string;
+    options: Option[];
 }
-type SelectionType = "artist" | "album" | "track";
+export interface GenerateDataFormProps {
+    formData: FormData;
+    setFormData: (formData: FormData) => void; // Ensure this is always provided
+    userID?: string;
+    selectionType: SelectionType;
+}
