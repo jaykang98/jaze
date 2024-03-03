@@ -8,8 +8,8 @@ const Input: React.FC<InputProps> = ({
   type,
   name,
   value,
-    placeholder,
-    onChange,
+  placeholder,
+  onChange,
 }) => {
   return (
     <div className={styles.inputContainer}>
@@ -19,8 +19,8 @@ const Input: React.FC<InputProps> = ({
         name={name}
         value={value}
         placeholder={placeholder}
-              className={styles.inputField}
-              onChange={onChange}
+        className={styles.inputField}
+        onChange={onChange}
       />
     </div>
   );

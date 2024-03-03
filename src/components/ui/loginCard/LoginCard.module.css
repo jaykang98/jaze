@@ -1,41 +1,47 @@
 /* LoginCard.module.css */
 .LoginCard {
-    background-color: orangered;
+    display: flex;
+    align-items: center;
+    background-color: black;
     text-align: right;
-    border: 1px solid #ddd;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 16px;
-    color: antiquewhite;
-    max-width: 20%;
-    display: flex; 
-    align-items: center;
-    border: 2px solid #000;
+    color: lightgrey; /* Updated font color to light grey */
+    border: 2px solid lightgrey; /* Updated border color to light grey */
+}
+
+.userHeader {
+    font-size: large;
 }
 
 .userImage {
-    border: 2px solid #000;
+    border: 2px solid lightgrey; /* Updated border color to light grey */
     width: 50px;
     height: 50px;
-    border-radius: 50%; 
-    margin-right: 10px; 
+    border-radius: 50%;
+    margin-right: 10px;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .userInfo {
     flex-grow: 1;
     text-align: right;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 @media screen and (max-width: 600px) {
     .LoginCard {
         padding: 15px;
-        flex-direction: column; 
+        flex-direction: column;
         align-items: flex-start;
     }
 
     .userInfo {
         text-align: left;
-        margin-top: 10px; 
+        margin-top: 10px;
     }
 }

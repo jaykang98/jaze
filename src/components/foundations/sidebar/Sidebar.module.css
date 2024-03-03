@@ -11,7 +11,7 @@
   transition: var(--hover-transition);
   margin-top: var(--default-margin);
   max-height: 100vh;
-  margin-right:10px;
+  margin-right: 10px;
 }
 
 @media screen and (max-width: 768px) {

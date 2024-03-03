@@ -2,9 +2,9 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export interface ViewProps {
-    error?: Error | null;
-    onViewChange?: any;
-    userID: string | null;
+  error?: Error | null;
+  onViewChange?: any;
+  userID: string | null;
 }
 export interface InputProps {
   id?: string;
@@ -18,23 +18,23 @@ export interface InputProps {
 }
 
 export interface FormData {
-    startTimestamp?: string;
-    endTimestamp?: string;
-    selectionType: SelectionType;
+  startTimestamp?: string;
+  endTimestamp?: string;
+  selectionType: SelectionType;
 }
 export type SelectionType = "artist" | "album" | "track" | "year";
 export interface Option {
-    key: string;
-    dataType: SelectionType;
-    value: string;
+  key: string;
+  dataType: SelectionType;
+  value: string;
 }
 export interface OptionListProps {
-    dataType: SelectionType;
-    options: Option[];
+  dataType: SelectionType;
+  options: Option[];
 }
 export interface GenerateDataFormProps {
-    formData: FormData;
-    setFormData: (formData: FormData) => void; // Ensure this is always provided
-    userID?: string;
-    selectionType: SelectionType;
+  formData: FormData;
+  setFormData: (formData: FormData) => void; // Ensure this is always provided
+  userID?: string;
+  selectionType: SelectionType;
 }
