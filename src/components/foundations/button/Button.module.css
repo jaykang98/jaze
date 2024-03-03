@@ -10,6 +10,7 @@
   outline-color: black;
   outline-width: 1px;
   min-height: 40px;
+  min-width:100px;
   -webkit-user-select: none;
   user-select: none;
   font:

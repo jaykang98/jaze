@@ -19,14 +19,14 @@ aside {
 }
 
 .mainContent {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: var(--default-padding);
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: var(--primary-bg-color);
-    margin-top: var(--default-margin);
-    border-radius: var(--border-radius);
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: var(--default-padding);
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: var(--primary-bg-color);
+  margin-top: var(--default-margin);
+  border-radius: var(--border-radius);
 }
 
 @media screen and (max-width: 768px) {
@@ -35,13 +35,11 @@ aside {
   }
 
   .sidebar {
-    width: 100%; 
+    width: 100%;
   }
 
   .mainContent {
-    padding-left: var(
-      --default-padding
-    ); 
+    padding-left: var(--default-padding);
     padding-right: var(--default-padding);
     margin-left: 0;
   }

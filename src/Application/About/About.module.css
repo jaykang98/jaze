@@ -1,0 +1,24 @@
+/* About.module.css */
+.aboutContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px 0 0;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.iconTable, .loginCardContainer {
+    flex-basis: 50%;
+}
+.aboutDescription {
+    margin-top: 30px;
+}
+.loginCardContainer {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.iconTable {
+    width: auto; 
+}

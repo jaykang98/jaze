@@ -6,7 +6,7 @@ import { FormData, ViewProps } from "../../types/componentTypes";
 
 const Main: React.FC<ViewProps> = ({ userID }) => {
   const [formData, setFormData] = useState<FormData>({
-    selectionType: "track", // Correct usage of selectionType within formData
+    selectionType: "track", 
   });
   const handleSetFormData = (newFormData: FormData) => {
     setFormData(newFormData);
