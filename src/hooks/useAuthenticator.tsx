@@ -71,7 +71,8 @@ export const useAuthenticator = () => {
         const encryptedUserID = encryptData(userID);
         localStorage.setItem("userID", encryptedUserID);
         setUserIDState(userID);
-        notifySubscribers();
+          notifySubscribers();
+          window.location.reload();
       }
     } catch (error) {
       console.error("Fetching session failed:", error);
@@ -88,7 +89,8 @@ export const useAuthenticator = () => {
   const logOut = useCallback(() => {
     localStorage.removeItem("userID");
     setUserIDState(null);
-    notifySubscribers();
+      notifySubscribers();
+      window.location.reload();
   }, []);
 
   const getUserID = useCallback(() => userID, [userID]);

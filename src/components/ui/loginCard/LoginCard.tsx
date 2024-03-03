@@ -1,7 +1,7 @@
-// LoginCard.tsx
 import React, { useState } from "react";
 import styles from "./LoginCard.module.css";
 import { useUserData } from "../../../hooks/useUserData";
+import { useAuthenticator } from "../../../hooks/useAuthenticator";
 
 interface LoginCardProps {
     userID?: string;
@@ -9,8 +9,13 @@ interface LoginCardProps {
 
 const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
     const { userData, loading } = useUserData(userID);
+    const { logOut } = useAuthenticator();
     const userImage = userData?.user?.image?.[0]["#text"];
     const [isHovered, setIsHovered] = useState(false);
+
+    const handleClick = () => {
+        logOut(); 
+    };
 
     if (loading) {
         return <div className={styles.LoginCard}>Loading...</div>;
@@ -18,10 +23,12 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
 
     return (
         <div
+            onClick={handleClick}
             className={styles.LoginCardContainer}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-        ><div className={styles.LoginCardOverlay}></div>
+        >
+            <div className={styles.LoginCardOverlay}></div>
             {userID ? (
                 <div className={styles.LoginCard}>
                     {userImage && (
@@ -39,7 +46,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
                     )}
                 </div>
             ) : (
-                <div className={styles.LoginCardPlaceholder}>
+                    <div className={styles.LoginCard}>
                     <span>No user</span>
                 </div>
             )}
