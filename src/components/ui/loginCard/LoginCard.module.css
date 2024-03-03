@@ -1,66 +1,53 @@
-/* LoginCard.module.css */
+.LoginCardContainer {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+}
+
 .LoginCard {
     display: flex;
     align-items: center;
-    background-color: black;
+    background: linear-gradient(to right, #0062E6, #33AEFF); /* More vibrant gradient */
     text-align: right;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 15px;
     font-size: 16px;
     color: lightgrey;
     border: 2px solid lightgrey;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 150px;
     align-self: start;
+    z-index: 0;
 }
 
+
 .userHeader {
-  font-size: large;
+    font-size: large;
 }
 
 .userImage {
-  border: 2px solid lightgrey; /* Updated border color to light grey */
-  width: 50px;
-  height: 50px;
-    border-radius:50%;
-  margin-right: 10px;
-  user-select: none;
-  -webkit-user-select: none;
-  align-self: end;
+    border: 2px solid lightgrey;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    align-self: end;
 }
 
 .userInfo {
-  flex-grow: 1;
-  text-align: right;
-  user-select: none;
-  -webkit-user-select: none;
-
+    flex-grow: 1;
+    text-align: right;
+    user-select: none;
+    -webkit-user-select: none;
+    color:white;
+    z-index:2;
 }
 
-@media screen and (max-width: 600px) {
-  .LoginCard {
-    padding: 15px;
-    flex-direction: column;
-    align-items: flex-start;
-
-  }
-
-  .userInfo {
-    text-align: left;
-    margin-top: 10px;
-  }
-}
 .SubText {
-  font-size: xx-small;
-  color: dimgrey;
-}
-.LoginCardContainer {
-    position: relative;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    font-size: xx-small;
+    color: dimgrey;
 }
 
 .LoginCardOverlay {
@@ -70,15 +57,12 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: 0; 
+    opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
-    border-radius:15px;
-}
-.LoginCard {
     border-radius: 15px;
-    background-color:darkblue;
 }
+
 .LoginCardContainer:hover .LoginCardOverlay {
     opacity: 1;
     border: 2px solid lightgrey;
@@ -87,18 +71,39 @@
 
 .logoutButton {
     position: absolute;
-    background-color:transparent;
-    color:white;
+    background-color: transparent;
+    color: white;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
-    opacity: 0; 
-    z-index: 2;
+    opacity: 0;
+    z-index: 2; 
     transition: opacity 0.3s ease;
-    font-size:x-large;
+    font-size: x-large;
+    pointer-events: none;
 }
 
+
 .LoginCardContainer:hover .logoutButton {
-    opacity: 1; 
+    opacity: 1;
+}
+
+
+.LoginCard span {
+    color: white;
+    z-index: 2; 
+    position: relative;
+}
+
+@media screen and (max-width: 600px) {
+    .LoginCard {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .userInfo {
+        text-align: left;
+        margin-top: 10px;
+    }
 }

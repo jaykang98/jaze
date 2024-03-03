@@ -14,44 +14,46 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleClick = () => {
-        logOut(); 
+        logOut();
     };
 
     if (loading) {
-        return <div className={styles.LoginCard}>Loading...</div>;
+        return <div className={styles.userInfo}>Loading...</div>;
     }
 
     return (
         <div
-            onClick={handleClick}
             className={styles.LoginCardContainer}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             <div className={styles.LoginCardOverlay}></div>
             {userID ? (
-                <div className={styles.LoginCard}>
-                    {userImage && (
-                        <img src={userImage} alt="User" className={styles.userImage} />
-                    )}
-                    <div className={styles.userInfo}>
-                        <span className={styles.userHeader}>{userID}</span>
-                        <br />
-                        <span>{userData?.user?.realname}</span>
-                        <br />
-                        <span className={styles.SubText}>Logged In!</span>
+                <>
+                    <div className={styles.LoginCard}>
+                        {userImage && (
+                            <img src={userImage} alt="User" className={styles.userImage} />
+                        )}
+                        <div className={styles.userInfo}>
+                            <span className={styles.userHeader}>{userID}</span>
+                            <br />
+                            <span>{userData?.user?.realname}</span>
+                            <br />
+                            <span className={styles.SubText}>Logged In!</span>
+                        </div>
                     </div>
                     {isHovered && (
-                        <div className={styles.logoutButton}>Log Out</div>
+                        <div className={styles.logoutButton} onClick={handleClick}>Log Out</div>
                     )}
-                </div>
+                </>
             ) : (
-                    <div className={styles.LoginCard}>
+                <div className={styles.LoginCard}>
                     <span>No user</span>
                 </div>
             )}
         </div>
     );
 };
+
 
 export default LoginCard;
