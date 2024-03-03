@@ -52,9 +52,8 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
       break;
   }
 
-  return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <table>
+  return ( 
+              <table>
         <tbody>
           <tr>
             <td>
@@ -91,8 +90,7 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
             </td>
           </tr>
         </tbody>
-      </table>
-    </div>
+              </table>
   );
 };
 
