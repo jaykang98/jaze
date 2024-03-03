@@ -2,7 +2,6 @@
 import CryptoJS from "crypto-js";
 
 export const encryptData = (data: string): string => {
-  // Check if DEBUG mode is enabled and return data as-is if true
   if (process.env.REACT_APP_IS_DEBUG === "TRUE") {
     console.log("DEBUG mode is enabled. Skipping encryption.");
     return data;
@@ -11,7 +10,6 @@ export const encryptData = (data: string): string => {
 };
 
 export const decryptData = (ciphertext: string): string | null => {
-  // Check if DEBUG mode is enabled and return data as-is if true
   if (process.env.REACT_APP_IS_DEBUG === "TRUE") {
     console.log("DEBUG mode is enabled. Skipping decryption.");
     return ciphertext;

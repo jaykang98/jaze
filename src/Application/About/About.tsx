@@ -19,12 +19,13 @@ const About: React.FC<ViewProps> = ({ userID }) => {
     const { user } = userData;
 
     const userInfoArray = [
-      { label: "Name", value: user.name },
-      { label: "Country", value: user.country },
-      { label: "Age", value: user.age?.toString() },
-    { label: "Playcount", value: user.playcount.toLocaleString() },
+        { label: "Name", value: user.name },
+        { label: "Country", value: user.country },
+        { label: "Age", value: user.age?.toString() },
+        { label: "First Scrobble", value: user.registered.unixtime.toLocaleString() },
+        { label: "Playcount", value: user.playcount },
     ];
-
+      
     return userInfoArray.map((info, index) => {
       if (!info.value) return null;
       return (
@@ -43,11 +44,9 @@ const About: React.FC<ViewProps> = ({ userID }) => {
   };
 
   return (
-    <section
-      aria-labelledby="about-heading"
-      aria-describedby="about-description">
-          <div className={styles.aboutContainer}>
-              <h2 id="about-heading">About You</h2>
+    <section aria-labelledby="about-heading" aria-describedby="about-description">
+        <div className={styles.aboutContainer}>
+              <h2 className={styles.aboutHeader} id="about-heading">About You</h2>
               <div className={styles.loginCardContainer}>
                   <LoginCard userID={userID} />
               </div>
@@ -55,12 +54,8 @@ const About: React.FC<ViewProps> = ({ userID }) => {
           <div id="about-description" className={styles.aboutDescription}>
           This application generates visual representations of Last.FM data.
           Here is some basic information about you, based on your Last.FM
-                  profile!
-
-                  
-        <table className={styles.iconTable} aria-label="About information">
-          <tbody>{renderUserInfo()}</tbody>
-        </table>
+              profile! const url = userData.user.url;
+            <table className={styles.icontable} aria-label="about information"><tbody>{renderUserInfo()}</tbody></table>
       </div>
     </section>
   );
