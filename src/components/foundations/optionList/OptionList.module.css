@@ -1,8 +1,8 @@
 /* OptionList.module.css */
 .optionList {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    overflow-x: auto; 
-    align-items: center; 
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+  align-items: center;
 }
