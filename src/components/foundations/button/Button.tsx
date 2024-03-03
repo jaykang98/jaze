@@ -3,21 +3,21 @@ import React from "react";
 import styles from "./Button.module.css";
 
 interface ButtonProps {
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    children: React.ReactNode;
-    type?: "button" | "submit" | "reset";
-    className?: string;
-    label?: string | null;
-    disabled?: boolean; 
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  children: React.ReactNode;
+  type?: "button" | "submit" | "reset";
+  className?: string;
+  label?: string | null;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
-    onClick,
-    children,
-    type = "button",
-    className,
-    label,
-    disabled = false,
+  onClick,
+  children,
+  type = "button",
+  className,
+  label,
+  disabled = false,
 }) => {
   return (
     <button
@@ -25,7 +25,8 @@ const Button: React.FC<ButtonProps> = ({
       className={`${styles.button} ${className || ""} ${disabled ? styles.disabled : ""}`}
       onClick={onClick}
       disabled={disabled}
-      >{label}
+    >
+      {label}
       {children}
     </button>
   );

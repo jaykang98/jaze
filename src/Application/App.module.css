@@ -84,26 +84,27 @@
 }
 
 table {
-    border-collapse: separate; 
-    border-spacing: 0 10px;
-    margin: 20px 0; 
-
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin: 20px 0;
 }
 
-td, th {
-    padding:5px;
-    text-align: left; 
-    vertical-align: middle;
-    border: none; 
-    justify-content:left;
+td,
+th {
+  padding: 5px;
+  text-align: left;
+  vertical-align: middle;
+  border: none;
+  justify-content: left;
 }
 
 @media (max-width: 768px) {
-    table {
-        border-spacing: 0 5px; /* Reduces row spacing on smaller screens */
-    }
+  table {
+    border-spacing: 0 5px; /* Reduces row spacing on smaller screens */
+  }
 
-    td, th {
-        padding: 10px; /* Reduces padding in cells for smaller screens */
-    }
+  td,
+  th {
+    padding: 10px; /* Reduces padding in cells for smaller screens */
+  }
 }

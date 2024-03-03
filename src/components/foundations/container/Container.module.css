@@ -1,48 +1,49 @@
 /* Filename: src/components/layout/Container.module.css */
 .appContainer {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    color: var(--primary-text-color);
-    font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--primary-text-color);
+  font-family: var(--font-family);
 }
 
 .contentWrapper {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
 }
 
 aside {
-    width: 250px; /* Fixed width for the sidebar */
-    flex-shrink: 0; /* Prevents the sidebar from shrinking */
-
+  width: 250px; /* Fixed width for the sidebar */
+  flex-shrink: 0; /* Prevents the sidebar from shrinking */
 }
 
 .mainContent {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: var(--default-padding);
-    padding-left: 100px; /* Adjusted based on the sidebar's width to ensure proper spacing */
-    padding-right: 100px;
-    background-color: var(--primary-bg-color);
-    margin-top: var(--default-margin);
-    /* Removed margin-left to rely on sidebar's width for spacing */
-    border-radius: var(--border-radius);
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: var(--default-padding);
+  padding-left: 100px; /* Adjusted based on the sidebar's width to ensure proper spacing */
+  padding-right: 100px;
+  background-color: var(--primary-bg-color);
+  margin-top: var(--default-margin);
+  /* Removed margin-left to rely on sidebar's width for spacing */
+  border-radius: var(--border-radius);
 }
 
 @media screen and (max-width: 768px) {
-    .contentWrapper {
-        flex-direction: column;
-    }
+  .contentWrapper {
+    flex-direction: column;
+  }
 
-    .sidebar {
-        width: 100%; /* Full width for the sidebar on smaller screens */
-    }
+  .sidebar {
+    width: 100%; /* Full width for the sidebar on smaller screens */
+  }
 
-    .mainContent {
-        padding-left: var(--default-padding); /* Adjust padding for smaller screens */
-        padding-right: var(--default-padding);
-        margin-left: 0; /* Ensure no extra margin on the left for smaller screens */
-    }
+  .mainContent {
+    padding-left: var(
+      --default-padding
+    ); /* Adjust padding for smaller screens */
+    padding-right: var(--default-padding);
+    margin-left: 0; /* Ensure no extra margin on the left for smaller screens */
+  }
 }

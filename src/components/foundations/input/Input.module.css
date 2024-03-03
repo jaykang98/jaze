@@ -6,7 +6,7 @@
   margin-right: var(--default-margin);
 }
 input {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 .label {
   display: flex;

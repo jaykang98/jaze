@@ -20,9 +20,9 @@ const Container: React.FC<ViewProps> = ({ userID }) => {
         <div className={styles.mainContent}>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-                <Route path="/main" element={<Main userID={userID } />} />
-                <Route path="/about" element={<About userID={userID} />} />
-                <Route path="/settings" element={<Settings userID={userID} />} />
+              <Route path="/main" element={<Main userID={userID} />} />
+              <Route path="/about" element={<About userID={userID} />} />
+              <Route path="/settings" element={<Settings userID={userID} />} />
             </Routes>
           </Suspense>
         </div>
