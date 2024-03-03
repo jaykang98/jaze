@@ -18,9 +18,10 @@ export interface InputProps {
 }
 
 export interface FormData {
-  startTimestamp?: string;
-  endTimestamp?: string;
-  selectionType: SelectionType;
+    selectionType: SelectionType;
+    startTimestamp?: string; // Add other form fields as necessary
+    endTimestamp?: string;
+    [key: string]: any;
 }
 export type SelectionType = "artist" | "album" | "track" | "year";
 export interface Option {
@@ -33,8 +34,14 @@ export interface OptionListProps {
     options: Option[];
 }
 export interface GenerateDataFormProps {
-  formData: FormData;
-  setFormData: (formData: FormData) => void; // Ensure this is always provided
-  userID?: string;
-  selectionType: SelectionType;
+    formData: GenerateDataFormState;
+    setFormData: (formData: GenerateDataFormState | ((prevState: GenerateDataFormState) => GenerateDataFormState)) => void;
+    userID?: string;
+    selectionType: SelectionType;
+}
+export interface GenerateDataFormState {
+    selectionType: SelectionType; // Assuming SelectionType is already defined elsewhere
+    startTimestamp?: string; // Assuming timestamp is stored as a string, adjust if necessary
+    endTimestamp?: string;
+    [key: string]: string | undefined; // To dynamically handle album, artist, track, etc.
 }

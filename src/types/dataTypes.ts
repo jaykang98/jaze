@@ -11,7 +11,7 @@ export interface UserData {
     playlists: number;
     bootstrap: number;
     registered: {
-      unixtime: string;
+      unixtime: number;
       text: string;
     };
     image: Array<{

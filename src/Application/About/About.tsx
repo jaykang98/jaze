@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./About.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faClock, faMusic, faPenNib, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faClock, faMusic, faPenNib, faUser, faHourglassStart } from "@fortawesome/free-solid-svg-icons";
 import { ViewProps } from "../../types/componentTypes";
 import { useUserData } from "../../hooks/useUserData";
 import TitleBar from "../../components/ui/titleBar/TitleBar";
@@ -13,12 +13,22 @@ const About: React.FC<ViewProps> = ({ userID }) => {
         if (!userData || !userData.user) return null;
         const { user } = userData;
 
+        // Calculate years since registration
+        const registrationDate = new Date(user.registered.unixtime * 1000);
+        const currentDate = new Date();
+        let yearsSinceRegistration = currentDate.getFullYear() - registrationDate.getFullYear();
+        const monthsDifference = currentDate.getMonth() - registrationDate.getMonth();
+        if (monthsDifference < 0 || (monthsDifference === 0 && currentDate.getDate() < registrationDate.getDate())) {
+            yearsSinceRegistration--;
+        }
+
         const userInfoArray = [
             { label: "Name", value: user.name, icon: faUser },
             { label: "Country", value: user.country, icon: faPenNib },
             { label: "Age", value: user.age?.toString(), icon: faCalendar },
-            { label: "First Scrobble", value: new Date(user.registered.unixtime * 1000).toLocaleString(), icon: faClock }, 
-            { label: "Playcount", value: Number(user.playcount).toLocaleString(), icon: faMusic }, 
+            { label: "User Since", value: registrationDate.toLocaleDateString(), icon: faClock },
+            { label: "Years Active", value: `${yearsSinceRegistration} years`, icon: faHourglassStart },
+            { label: "Playcount", value: Number(user.playcount).toLocaleString(), icon: faMusic },
         ];
 
         return userInfoArray.map((info, index) => {

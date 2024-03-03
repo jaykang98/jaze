@@ -6,6 +6,7 @@ import TimeSelectionRow from "../timeSelectionRow/TimeSelectionRow";
 import { useUserData } from "../../../hooks/useUserData";
 import {
   GenerateDataFormProps,
+  GenerateDataFormState,
   SelectionType,
 } from "../../../types/componentTypes";
 import Button from "../../foundations/button/Button";
@@ -26,7 +27,7 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
         };
 
         if (dataIsMissing[selectionType] && formData[selectionType]) {
-            setFormData((prevFormData: FormData) => ({
+            setFormData((prevFormData: GenerateDataFormState) => ({
                 ...prevFormData,
                 [selectionType]: ""
             }));

@@ -16,7 +16,7 @@
   color: var(
     --primary-text-color,
     black
-  ); /* Use global variable with fallback */
+  ); 
   text-align: center;
   position: sticky;
   top: 0;
@@ -29,6 +29,7 @@
   -ms-user-select: none;
   user-select: none;
   border: 2px solid transparent;
+  padding-top:100px;
 }
 
 .header:hover {
