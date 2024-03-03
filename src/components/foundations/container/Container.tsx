@@ -14,20 +14,22 @@ const Settings = lazy(() => import("../../../Application/Settings/Settings"));
 const Container: React.FC<ViewProps> = ({ userID }) => {
   return (
     <div className={styles.appContainer}>
+              <Suspense fallback={<div>Loading...</div>}>
+
       <Header />
       <div className={styles.contentWrapper}>
         <Sidebar />
         <div className={styles.mainContent}>
-          <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/main" element={<Main userID={userID} />} />
               <Route path="/about" element={<About userID={userID} />} />
               <Route path="/settings" element={<Settings userID={userID} />} />
             </Routes>
-          </Suspense>
+
         </div>
       </div>
-      <Footer />
+              <Footer />
+          </Suspense>
     </div>
   );
 };
