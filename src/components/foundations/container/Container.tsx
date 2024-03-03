@@ -16,16 +16,18 @@ const Container: React.FC<ViewProps> = ({ userID }) => {
     <div className={styles.appContainer}>
               <Suspense fallback={<div>Loading...</div>}>
 
-      <Header />
-      <div className={styles.contentWrapper}>
-        <Sidebar />
-        <div className={styles.mainContent}>
+              <Header />
+              
+              <div className={styles.contentWrapper}>
+                  
+                  <Sidebar />
+                  <div className={styles.mainContent}>
             <Routes>
               <Route path="/main" element={<Main userID={userID} />} />
               <Route path="/about" element={<About userID={userID} />} />
               <Route path="/settings" element={<Settings userID={userID} />} />
             </Routes>
-
+                      
         </div>
       </div>
               <Footer />

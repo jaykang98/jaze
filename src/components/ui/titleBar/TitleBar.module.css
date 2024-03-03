@@ -1,0 +1,16 @@
+.titleBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* This ensures vertical alignment */
+    padding: 20px;
+    height: 60px;
+}
+
+    .titleBar h2 {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+.loginCardContainer {
+}

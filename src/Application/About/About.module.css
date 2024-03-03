@@ -1,20 +1,14 @@
-/* About.module.css */
-.aboutHeader {
+/* File: src/components/About.module.css */
+.aboutContainer {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0 20px 0 0;
-}
-
-.iconTable, .loginCardContainer {
-    flex-basis: 50%;
-}
-
-.loginCardContainer {
-    display: flex;
-    justify-content: flex-end; 
+    flex-direction: column;
 }
 
 .iconTable {
-    width: auto; 
+    width: auto;
+}
+
+
+.aboutDescription {
+    max-width: 65%;
 }

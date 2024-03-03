@@ -11,7 +11,7 @@ import {
 import Button from "../../components/foundations/button/Button";
 import { useAuthenticator } from "../../hooks/useAuthenticator";
 import { ViewProps } from "../../types/componentTypes";
-import LoginCard from "../../components/ui/loginCard/LoginCard";
+import TitleBar from "../../components/ui/titleBar/TitleBar";
 
 interface SettingOption {
   id: string;
@@ -102,9 +102,9 @@ const Settings: React.FC<ViewProps> = ({ userID }) => {
 
   return (
     <section className={styles.settingsSection}>
-      <div className={styles.settingsContainer}>
         <div>
-          <h2>Settings</h2>
+                  <TitleBar userID={userID} title={"Settings"} />
+
           <table>
             <tbody>
               {settingsOptions.map((option) => (
@@ -132,10 +132,6 @@ const Settings: React.FC<ViewProps> = ({ userID }) => {
             </tbody>
           </table>
         </div>
-        <div className={styles.loginCardContainer}>
-          <LoginCard userID={userID} />
-        </div>
-      </div>
     </section>
   );
 };
