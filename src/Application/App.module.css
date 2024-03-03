@@ -105,8 +105,12 @@ th {
   }
 }
 
-h2{
-    font-size:30px;
+h2 {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 100px;
 }
 td {
     padding-right: 50px;

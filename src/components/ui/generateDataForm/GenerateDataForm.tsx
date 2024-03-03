@@ -8,6 +8,7 @@ import {
   GenerateDataFormProps,
   SelectionType,
 } from "../../../types/componentTypes";
+import Button from "../../foundations/button/Button";
 
 const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   formData,
@@ -93,6 +94,10 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
           <td colSpan={2}>
             <TimeSelectionRow timestamp={formData.endTimestamp} />
           </td>
+        </tr><tr>
+                  <td></td>
+                  <td>        <Button type="submit">Submit</Button>
+                  </td><td></td>
         </tr>
       </tbody>
     </table>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Main.module.css";
-import Button from "../../components/foundations/button/Button";
 import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
 import { FormData, ViewProps } from "../../types/componentTypes";
 import TitleBar from "../../components/ui/titleBar/TitleBar";
@@ -23,7 +22,6 @@ const Main: React.FC<ViewProps> = ({ userID }) => {
           selectionType={formData.selectionType}
           userID={userID}
         />
-        <Button type="submit">Submit</Button>
       </form>
     </section>
   );

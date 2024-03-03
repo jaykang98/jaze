@@ -1,14 +1,1 @@
 /* File: src/components/About.module.css */
-.aboutContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-.iconTable {
-    width: auto;
-}
-
-
-.aboutDescription {
-    max-width: 65%;
-}
