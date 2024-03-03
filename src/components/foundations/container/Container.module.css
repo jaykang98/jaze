@@ -5,6 +5,7 @@
   min-height: 100vh;
   color: var(--primary-text-color);
   font-family: var(--font-family);
+
 }
 
 .contentWrapper {
@@ -24,6 +25,7 @@ aside {
   padding: var(--default-padding);
   padding-left: 50px;
   padding-right: 50px;
+  padding-top:50px;
   background-color: var(--primary-bg-color);
   margin-top: var(--default-margin);
   border-radius: var(--border-radius);

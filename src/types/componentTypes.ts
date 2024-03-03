@@ -29,8 +29,8 @@ export interface Option {
   value: string;
 }
 export interface OptionListProps {
-  dataType: SelectionType;
-  options: Option[];
+    dataType: SelectionType;
+    options: Option[];
 }
 export interface GenerateDataFormProps {
   formData: FormData;

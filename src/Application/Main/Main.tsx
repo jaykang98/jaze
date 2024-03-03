@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Main.module.css";
-import Button from "../../components/foundations/button/Button";
 import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
 import { FormData, ViewProps } from "../../types/componentTypes";
+import TitleBar from "../../components/ui/titleBar/TitleBar";
 
 const Main: React.FC<ViewProps> = ({ userID }) => {
   const [formData, setFormData] = useState<FormData>({
@@ -14,7 +14,7 @@ const Main: React.FC<ViewProps> = ({ userID }) => {
 
   return (
     <section>
-      <h2>Home</h2>
+        <TitleBar userID={userID} title={"Main"} />
       <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
         <GenerateDataForm
           formData={formData}
@@ -22,7 +22,6 @@ const Main: React.FC<ViewProps> = ({ userID }) => {
           selectionType={formData.selectionType}
           userID={userID}
         />
-        <Button type="submit">Submit</Button>
       </form>
     </section>
   );
