@@ -14,18 +14,18 @@
   margin-right: 10px;
 }
 .sidebarLink {
-    text-decoration: inherit;
-    font-size: large;
+  text-decoration: inherit;
+  font-size: large;
 }
 .sidebarButton {
-    background-color: black;
-    margin-top: 20px;
-    width: 80%;
-    height: 10%;
+  background-color: black;
+  margin-top: 20px;
+  width: 80%;
+  height: 10%;
 }
 
 @media screen and (max-width: 768px) {
-    .sidebar {
+  .sidebar {
     width: 100%;
     height: auto;
     flex-direction: row;

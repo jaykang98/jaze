@@ -102,36 +102,33 @@ const Settings: React.FC<ViewProps> = ({ userID }) => {
 
   return (
     <section className={styles.settingsSection}>
-        <div>
-                  <TitleBar userID={userID} title={"Settings"} />
+      <div>
+        <TitleBar userID={userID} title={"Settings"} />
 
-          <table>
-            <tbody>
-              {settingsOptions.map((option) => (
-                <tr key={option.id}>
-                  <td>
-                    <FontAwesomeIcon icon={option.icon} aria-hidden="true" />
-                    <label htmlFor={option.id} className={styles.labelWithIcon}>
-                      {option.displayLabel}
-                    </label>
-                  </td>
-                  <td>
-                    {option.disabled ? (
-                      <span>{option.actionLabel}</span>
-                    ) : (
-                      <Button
-                        onClick={option.action}
-                        disabled={option.disabled}
-                      >
-                        {option.actionLabel}
-                      </Button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <table>
+          <tbody>
+            {settingsOptions.map((option) => (
+              <tr key={option.id}>
+                <td>
+                  <FontAwesomeIcon icon={option.icon} aria-hidden="true" />
+                  <label htmlFor={option.id} className={styles.labelWithIcon}>
+                    {option.displayLabel}
+                  </label>
+                </td>
+                <td>
+                  {option.disabled ? (
+                    <span>{option.actionLabel}</span>
+                  ) : (
+                    <Button onClick={option.action} disabled={option.disabled}>
+                      {option.actionLabel}
+                    </Button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 };

@@ -6,7 +6,7 @@ import TitleBar from "../../components/ui/titleBar/TitleBar";
 
 const Main: React.FC<ViewProps> = ({ userID }) => {
   const [formData, setFormData] = useState<FormData>({
-    selectionType: "track", 
+    selectionType: "track",
   });
   const handleSetFormData = (newFormData: FormData) => {
     setFormData(newFormData);
@@ -14,7 +14,7 @@ const Main: React.FC<ViewProps> = ({ userID }) => {
 
   return (
     <section>
-        <TitleBar userID={userID} title={"Main"} />
+      <TitleBar userID={userID} title={"Main"} />
       <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
         <GenerateDataForm
           formData={formData}

@@ -1,13 +1,13 @@
 /* TimeSelectionRow.module.css */
 .TimeSelectionRow {
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
-    gap: 10px; /* Add some space between the input and the option list */
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  gap: 10px; /* Add some space between the input and the option list */
 }
 
 .optionListContainer {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 10px; 
-    overflow-x: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: hidden;
 }

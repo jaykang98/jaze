@@ -106,16 +106,16 @@ th {
 }
 
 h2 {
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    vertical-align: middle;
-    font-size: 100px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 100px;
 }
 td {
-    padding-right: 50px;
-    padding-top: 20px;
+  padding-right: 50px;
+  padding-top: 20px;
 }
 td svg {
-    padding-right:20px;
+  padding-right: 20px;
 }

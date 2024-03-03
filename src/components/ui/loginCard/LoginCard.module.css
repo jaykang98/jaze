@@ -1,17 +1,17 @@
 /* LoginCard.module.css */
 .LoginCard {
-    display: flex;
-    align-items: center;
-    background-color: black;
-    text-align: right;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    color: lightgrey;
-    border: 2px solid lightgrey;
-    max-width:150px;
-    align-self:end;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  text-align: right;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: lightgrey;
+  border: 2px solid lightgrey;
+  max-width: 150px;
+  align-self: end;
 }
 
 .userHeader {
@@ -26,7 +26,7 @@
   margin-right: 10px;
   user-select: none;
   -webkit-user-select: none;
-  align-self:end;
+  align-self: end;
 }
 
 .userInfo {
@@ -41,7 +41,6 @@
     padding: 15px;
     flex-direction: column;
     align-items: flex-start;
-
   }
 
   .userInfo {
@@ -50,6 +49,6 @@
   }
 }
 .SubText {
-    font-size: xx-small;
-    color:dimgrey;
+  font-size: xx-small;
+  color: dimgrey;
 }

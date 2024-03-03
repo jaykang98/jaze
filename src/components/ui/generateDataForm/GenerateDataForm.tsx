@@ -17,31 +17,31 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   userID,
   selectionType,
 }) => {
-    const { albumData, artistData, trackData } = useUserData(userID || "");
+  const { albumData, artistData, trackData } = useUserData(userID || "");
 
-    useEffect(() => {
-        const dataIsMissing = {
-            album: !albumData,
-            artist: !artistData,
-            track: !trackData,
-        };
-
-        if (dataIsMissing[selectionType] && formData[selectionType]) {
-            setFormData((prevFormData: GenerateDataFormState) => ({
-                ...prevFormData,
-                [selectionType]: ""
-            }));
-        }
-    }, [albumData, artistData, trackData, selectionType, formData, setFormData]);
-
-    const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const newSelectionType = event.target.value as SelectionType;
-        setFormData({ ...formData, selectionType: newSelectionType });
+  useEffect(() => {
+    const dataIsMissing = {
+      album: !albumData,
+      artist: !artistData,
+      track: !trackData,
     };
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [selectionType]: event.target.value });
-    };
+    if (dataIsMissing[selectionType] && formData[selectionType]) {
+      setFormData((prevFormData: GenerateDataFormState) => ({
+        ...prevFormData,
+        [selectionType]: "",
+      }));
+    }
+  }, [albumData, artistData, trackData, selectionType, formData, setFormData]);
+
+  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSelectionType = event.target.value as SelectionType;
+    setFormData({ ...formData, selectionType: newSelectionType });
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [selectionType]: event.target.value });
+  };
 
   let dataToDisplay;
   switch (selectionType) {
@@ -95,10 +95,14 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
           <td colSpan={2}>
             <TimeSelectionRow timestamp={formData.endTimestamp} />
           </td>
-        </tr><tr>
-                  <td></td>
-                  <td>        <Button type="submit">Submit</Button>
-                  </td><td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            {" "}
+            <Button type="submit">Submit</Button>
+          </td>
+          <td></td>
         </tr>
       </tbody>
     </table>
