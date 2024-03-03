@@ -41,36 +41,38 @@
 }
 
 :root {
-  --primary-bg-color: #1a1a1a;
-  --primary-text-color: #f4e4a2;
-  --header-bg-color: #ff4242;
-  --header-text-color: #fff;
-  --footer-bg-color: #212121;
-  --footer-text-color: #f4e4a2;
-  --sidebar-bg-color: #313131;
-  --secondary-accent-color-1: #42a5f5;
-  --secondary-accent-color-2: #ba68c8;
-  --text-highlight-color: #ffeb3b;
-  --error-color: #e57373;
-  --warning-color: #ffb74d;
-  --success-color: #81c784;
-  --input-bg-color: #2c2c2c;
-  --input-border-color: #555;
-  --default-padding: 20px;
-  --default-margin: 10px;
-  --padding-small: 8px;
-  --padding-medium: 10px;
-  --margin-small: 5px;
-  --font-family: "Roboto", sans-serif;
-  --font-size-base: 16px;
-  --font-size-l: 24px;
-  --font-size-xl: 32px;
-  --line-height-base: 1.5;
-  --line-height-tight: 1.2;
-  --sidebar-width: 30vw;
-  --border-radius: 4px;
-  --hover-transition: all 0.3s ease;
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --primary-bg-color: #1a1a1a;
+    --primary-text-color: #f4e4a2;
+    --header-bg-color: #ff4242;
+    --header-text-color: #fff;
+    --footer-bg-color: #212121;
+    --footer-text-color: #f4e4a2;
+    --sidebar-bg-color: #313131;
+    --secondary-accent-color-1: #42a5f5;
+    --secondary-accent-color-2: #ba68c8;
+    --text-highlight-color: #ffeb3b;
+    --error-color: #e57373;
+    --warning-color: #ffb74d;
+    --success-color: #81c784;
+    --input-bg-color: #2c2c2c;
+    --input-border-color: #555;
+    --default-padding: 20px;
+    --default-margin: 10px;
+    --padding-small: 8px;
+    --padding-medium: 10px;
+    --margin-small: 5px;
+    --font-family: "Roboto", sans-serif;
+    --font-size-base: 16px;
+    --font-size-l: 24px;
+    --font-size-xl: 32px;
+    --line-height-base: 1.5;
+    --line-height-tight: 1.2;
+    --sidebar-width: 30vw;
+    --border-radius: 4px;
+    --hover-transition: all 0.3s ease;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --line-height-base: 1.8;
+    --line-height: 1.6;
 }
 
 @media (max-width: 768px) {
@@ -114,8 +116,15 @@ h2 {
 }
 td {
   padding-right: 50px;
-  padding-top: 20px;
+  padding-bottom: 20px;
 }
 td svg {
   padding-right: 20px;
+}
+.dark-mode {
+    background-color: black;
+}
+
+.light-mode {
+    background-color: grey;
 }

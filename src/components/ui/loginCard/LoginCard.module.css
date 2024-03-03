@@ -1,17 +1,17 @@
 /* LoginCard.module.css */
 .LoginCard {
-  display: flex;
-  align-items: center;
-  background-color: black;
-  text-align: right;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  color: lightgrey;
-  border: 2px solid lightgrey;
-  max-width: 150px;
-  align-self: end;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    text-align: right;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: lightgrey;
+    border: 2px solid lightgrey;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 150px;
+    align-self: start;
 }
 
 .userHeader {
@@ -22,7 +22,7 @@
   border: 2px solid lightgrey; /* Updated border color to light grey */
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+    border-radius:50%;
   margin-right: 10px;
   user-select: none;
   -webkit-user-select: none;
@@ -34,6 +34,7 @@
   text-align: right;
   user-select: none;
   -webkit-user-select: none;
+
 }
 
 @media screen and (max-width: 600px) {
@@ -41,6 +42,7 @@
     padding: 15px;
     flex-direction: column;
     align-items: flex-start;
+
   }
 
   .userInfo {
@@ -51,4 +53,52 @@
 .SubText {
   font-size: xx-small;
   color: dimgrey;
+}
+.LoginCardContainer {
+    position: relative;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.LoginCardOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    border-radius:15px;
+}
+.LoginCard {
+    border-radius: 15px;
+    background-color:darkblue;
+}
+.LoginCardContainer:hover .LoginCardOverlay {
+    opacity: 1;
+    border: 2px solid lightgrey;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logoutButton {
+    position: absolute;
+    background-color:transparent;
+    color:white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    opacity: 0; 
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    font-size:x-large;
+}
+
+.LoginCardContainer:hover .logoutButton {
+    opacity: 1; 
 }
