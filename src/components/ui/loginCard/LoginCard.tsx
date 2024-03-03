@@ -4,13 +4,17 @@ import styles from "./LoginCard.module.css";
 import { useUserData } from "../../../hooks/useUserData";
 
 interface LoginCardProps {
-    userID?: string;
+  userID?: string;
 }
 
 const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
-    const { userData } = useUserData(userID);
-    const userImage = userData?.user?.image?.[0]['#text'];
-
+    const { userData, loading } = useUserData(userID);
+  const userImage = userData?.user?.image?.[0]["#text"];
+    if (loading) {
+        return <div className={styles.LoginCard}>
+            Loading...
+        </div>
+    }
     return (
         <div className={styles.LoginCard}>
             {userImage && (

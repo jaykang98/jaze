@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ViewProps } from "types/componentTypes";
 import { useUserData } from "../../hooks/useUserData";
+import LoginCard from "../../components/ui/loginCard/LoginCard";
 
 const About: React.FC<ViewProps> = ({ userID }) => {
   const { userData } = useUserData(userID);
@@ -16,13 +17,12 @@ const About: React.FC<ViewProps> = ({ userID }) => {
     if (!userData || !userData.user) return null;
 
     const { user } = userData;
-    const image = user.image?.[0]["#text"];
 
     const userInfoArray = [
-      { label: "Name", value: user.name, isImage: true, image: image },
+      { label: "Name", value: user.name },
       { label: "Country", value: user.country },
       { label: "Age", value: user.age?.toString() },
-      { label: "Playcount", value: user.playcount.toString() },
+    { label: "Playcount", value: user.playcount.toLocaleString() },
     ];
 
     return userInfoArray.map((info, index) => {
@@ -36,16 +36,7 @@ const About: React.FC<ViewProps> = ({ userID }) => {
             />
           </td>
           <td>{info.label}:</td>
-          <td>
-            {info.isImage ? (
-              <div>
-                <img src={info.image} alt="User" className={styles.userImage} />
-                {info.value}
-              </div>
-            ) : (
-              info.value
-            )}
-          </td>
+          <td>{info.value}</td>
         </tr>
       );
     });
@@ -54,18 +45,23 @@ const About: React.FC<ViewProps> = ({ userID }) => {
   return (
     <section
       aria-labelledby="about-heading"
-      aria-describedby="about-description"
-    >
-      <h2 id="about-heading" className={styles.title}>
-        About You
-      </h2>
-      <p id="about-description">
-        This application generates visual representations of Last.FM data. Here
-        is some basic information about you, based on your Last.FM profile!
-      </p>
-      <table className={styles.iconTable} aria-label="About information">
-        <tbody>{renderUserInfo()}</tbody>
-      </table>
+      aria-describedby="about-description">
+          <div className={styles.aboutContainer}>
+              <h2 id="about-heading">About You</h2>
+              <div className={styles.loginCardContainer}>
+                  <LoginCard userID={userID} />
+              </div>
+          </div>
+          <div id="about-description" className={styles.aboutDescription}>
+          This application generates visual representations of Last.FM data.
+          Here is some basic information about you, based on your Last.FM
+                  profile!
+
+                  
+        <table className={styles.iconTable} aria-label="About information">
+          <tbody>{renderUserInfo()}</tbody>
+        </table>
+      </div>
     </section>
   );
 };

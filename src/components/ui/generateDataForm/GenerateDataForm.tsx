@@ -52,45 +52,45 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
       break;
   }
 
-  return ( 
-              <table>
-        <tbody>
-          <tr>
-            <td>
-              <select value={selectionType} onChange={handleTypeChange}>
-                <option value="track">Track</option>
-                <option value="artist">Artist</option>
-                <option value="album">Album</option>
-              </select>
-            </td>
-            <td>
-              <Input
-                id={selectionType}
-                type="text"
-                name={selectionType}
-                value={formData[selectionType] || ""}
-                placeholder={`Enter ${selectionType} name`}
-                onChange={handleInputChange}
-              />
-            </td>
-            <td>
-              <OptionList options={dataToDisplay} dataType={selectionType} />
-            </td>
-          </tr>
-          <tr>
-            <td>Start Time</td>
-            <td colSpan={2}>
-              <TimeSelectionRow timestamp={formData.startTimestamp} />
-            </td>
-          </tr>
-          <tr>
-            <td>End Time</td>
-            <td colSpan={2}>
-              <TimeSelectionRow timestamp={formData.endTimestamp} />
-            </td>
-          </tr>
-        </tbody>
-              </table>
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <select value={selectionType} onChange={handleTypeChange}>
+              <option value="track">Track</option>
+              <option value="artist">Artist</option>
+              <option value="album">Album</option>
+            </select>
+          </td>
+          <td>
+            <Input
+              id={selectionType}
+              type="text"
+              name={selectionType}
+              value={formData[selectionType] || ""}
+              placeholder={`Enter ${selectionType} name`}
+              onChange={handleInputChange}
+            />
+          </td>
+          <td>
+            <OptionList options={dataToDisplay} dataType={selectionType} />
+          </td>
+        </tr>
+        <tr>
+          <td>Start Time</td>
+          <td colSpan={2}>
+            <TimeSelectionRow timestamp={formData.startTimestamp} />
+          </td>
+        </tr>
+        <tr>
+          <td>End Time</td>
+          <td colSpan={2}>
+            <TimeSelectionRow timestamp={formData.endTimestamp} />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 
