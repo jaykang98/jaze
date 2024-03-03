@@ -21,7 +21,6 @@ const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({ timestamp }) => {
     options: yearsOptions,
   };
 
-  // Use the `styles` object to reference the class name
   return (
     <div className={styles.TimeSelectionRow}>
       <Input

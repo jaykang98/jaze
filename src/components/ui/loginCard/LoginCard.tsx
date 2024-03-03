@@ -48,7 +48,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
                 </>
             ) : (
                 <div className={styles.LoginCard}>
-                    <span>No user</span>
+                    <span>Nobody Logged in!</span>
                 </div>
             )}
         </div>

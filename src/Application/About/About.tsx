@@ -16,6 +16,7 @@ import DualView from "../../components/ui/dualView/DualView";
 
 const About: React.FC<ViewProps> = ({ userID }) => {
     const { userData } = useUserData(userID);
+
     const renderUserInfo = () => {
         if (!userData || !userData.user) return null;
         const { user } = userData;
@@ -39,35 +40,41 @@ const About: React.FC<ViewProps> = ({ userID }) => {
 
         return (
             <table className={styles.iconTable} aria-label="User Information">
-                <tbody>{userInfoArray.map((info, index) => (
-                    <tr key={index}>
-                        <td>
-                            <FontAwesomeIcon icon={info.icon} aria-hidden="true" />
-                        </td>
-                        <td>{info.label}:</td>
-                        <td>{info.value}</td>
-                    </tr>
-                ))}</tbody>
+                <tbody>
+                    {userInfoArray.map((info, index) => (
+                        <tr key={index}>
+                            <td>
+                                <FontAwesomeIcon icon={info.icon} aria-hidden="true" />
+                            </td>
+                            <td>{info.label}:</td>
+                            <td>{info.value}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
         );
     };
 
+    const userInfoElement = renderUserInfo();
+
     const descriptionElement = (
         <div className={styles.aboutBlurb}>
-            <h3>About You!</h3>This application generates visual representations of Last.FM data. Here is some basic information about you, based on your Last.FM profile!
+            <h3>About You!</h3>
+            This application generates visual representations of Last.FM data. Here is some basic information about you, based on your Last.FM profile!
         </div>
     );
 
-    const userInfoElement = renderUserInfo();
-
     return (
-                    <><TitleBar userID={userID} title={"About"} /><section>
-            <DualView splitPercentage={30}>
-                {descriptionElement}
-                {userInfoElement}
-            </DualView>
-        </section></>
-    );
+    <>
+            <TitleBar userID={userID} title={"About"} />
+            <section>
+                <DualView splitPercentage={50}>
+                    {descriptionElement}
+                    {userInfoElement}
+                  </DualView>
+                </section>
+            </>
+            );
 };
 
-export default About;
+            export default About;

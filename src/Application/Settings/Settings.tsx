@@ -86,14 +86,8 @@ const Settings: React.FC<ViewProps> = ({ userID }) => {
 
         return [authOptions, ...baseOptions];
     }, [isAuthenticated, startAuth, changeThemeAction, logOut, isDarkMode]);
-    const descriptionElement = (
-        <div className={styles.aboutBlurb}>
-            <h3>Settings Overview</h3>This application generates visual representations of Last.FM data. Here is some basic information about you, based on your Last.FM profile!
-        </div>
-    );
     const settingsContent = (
-        <section className={styles.settingsSection}>
-            {descriptionElement}
+            
             <table>
                 <tbody>
                     {settingsOptions.map((option) => (
@@ -117,16 +111,19 @@ const Settings: React.FC<ViewProps> = ({ userID }) => {
                     ))}
                 </tbody>
             </table>
-        </section>
     );
 
     return (
-        <>
+        <section>
+
             <TitleBar userID={userID} title={"Settings"} />
-            <DualView>
+            <DualView splitPercentage={70}>
+                <div className={styles.aboutBlurb}>
+                    <h3>Settings Overview</h3>This application generates visual representations of Last.FM data. Here is some basic information about you, based on your Last.FM profile!
+                </div>
                 {settingsContent}
             </DualView>
-        </>
+            </section>
     );
 };
 
