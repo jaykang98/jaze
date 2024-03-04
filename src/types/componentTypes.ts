@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
-export interface ViewProps {
+export interface ActivityFrameProps {
   error?: Error | null;
   onViewChange?: any;
   userID: string | null;

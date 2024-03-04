@@ -26,9 +26,8 @@
   -ms-user-select: none;
   user-select: none;
   border: 2px solid transparent;
-  padding-top: 100px;
+  max-height: 20vw;
 }
-
 .header:hover {
   background: var(--header-hover-bg-color, black);
   border-color: white;

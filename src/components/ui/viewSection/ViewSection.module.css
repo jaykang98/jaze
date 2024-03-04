@@ -1,5 +1,5 @@
 /* File: src/components/ui/viewSection/ViewSection.module.css */
-.childContainer {
+.viewSection {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,6 +8,6 @@
     flex-wrap: wrap;
 }
 
-    .childContainer:last-child {
+    .viewSection:last-child {
         padding-right: 0;
     }

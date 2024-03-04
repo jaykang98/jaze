@@ -10,9 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../components/foundations/button/Button";
 import { useAuthenticator } from "../../hooks/useAuthenticator";
-import { ViewProps } from "../../types/componentTypes";
-import TitleBar from "../../components/ui/titleBar/TitleBar";
-import DualView from "../../components/ui/dualView/DualView";
+import { ActivityFrameProps } from "../../types/componentTypes";
+import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
+import ViewFrame from "../../components/ui/viewFrame/ViewFrame";
 
 interface SettingOption {
     id: string;
@@ -23,7 +23,7 @@ interface SettingOption {
     disabled: boolean;
 }
 
-const Settings: React.FC<ViewProps> = ({ userID }) => {
+const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
     const { isAuthenticated, startAuth, logOut } = useAuthenticator();
     const [isDarkMode, setIsDarkMode] = useState<boolean>(
         () => document.body.classList.contains('dark-mode'),
@@ -114,16 +114,16 @@ const Settings: React.FC<ViewProps> = ({ userID }) => {
     );
 
     return (
-        <section>
-
+            <>
             <TitleBar userID={userID} title={"Settings"} />
-            <DualView splitPercentage={70}>
-                <div className={styles.aboutBlurb}>
-                    <h3>Settings Overview</h3>This application generates visual representations of Last.FM data. Here is some basic information about you, based on your Last.FM profile!
-                </div>
-                {settingsContent}
-            </DualView>
-            </section>
+                <ViewFrame splitPercentage={50}>
+                    <div>
+                        <h3>Settings Overview</h3>
+                        This application generates visual representations of Last.FM data. Here is some basic information about you, based on your Last.FM profile!
+                    </div>
+                    {settingsContent}
+                </ViewFrame>
+            </>
     );
 };
 

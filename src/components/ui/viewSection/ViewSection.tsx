@@ -9,7 +9,7 @@ interface ViewSectionProps {
 
 const ViewSection: React.FC<ViewSectionProps> = ({ children, style }) => {
     return (
-        <div className={styles.childContainer} style={style}>
+        <div className={styles.viewSection} style={style}>
             {children}
         </div>
     );

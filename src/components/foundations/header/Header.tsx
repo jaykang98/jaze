@@ -8,7 +8,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = () => {
   return (
     <header className={`${styles.header}`}>
-      <h1></h1>
+      <h1>Test</h1>
     </header>
   );
 };

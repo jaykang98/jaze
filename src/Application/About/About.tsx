@@ -9,12 +9,12 @@ import {
     faUser,
     faHourglassStart,
 } from "@fortawesome/free-solid-svg-icons";
-import { ViewProps } from "../../types/componentTypes";
+import { ActivityFrameProps } from "../../types/componentTypes";
 import { useUserData } from "../../hooks/useUserData";
-import TitleBar from "../../components/ui/titleBar/TitleBar";
-import DualView from "../../components/ui/dualView/DualView";
+import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
+import ViewFrame from "../../components/ui/viewFrame/ViewFrame";
 
-const About: React.FC<ViewProps> = ({ userID }) => {
+const About: React.FC<ActivityFrameProps> = ({ userID }) => {
     const { userData } = useUserData(userID);
 
     const renderUserInfo = () => {
@@ -58,7 +58,7 @@ const About: React.FC<ViewProps> = ({ userID }) => {
     const userInfoElement = renderUserInfo();
 
     const descriptionElement = (
-        <div className={styles.aboutBlurb}>
+        <div>
             <h3>About You!</h3>
             This application generates visual representations of Last.FM data. Here is some basic information about you, based on your Last.FM profile!
         </div>
@@ -68,13 +68,12 @@ const About: React.FC<ViewProps> = ({ userID }) => {
     <>
             <TitleBar userID={userID} title={"About"} />
             <section>
-                <DualView splitPercentage={50}>
+                <ViewFrame splitPercentage={50}>
                     {descriptionElement}
                     {userInfoElement}
-                  </DualView>
+                  </ViewFrame>
                 </section>
             </>
             );
-};
-
-            export default About;
+}
+export default About;
