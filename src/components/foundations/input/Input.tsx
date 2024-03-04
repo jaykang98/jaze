@@ -1,7 +1,7 @@
 // src/components/Input/Input.tsx
 import React from "react";
 import styles from "./Input.module.css";
-import { InputProps } from "../../../types/componentTypes";
+import { InputProps } from "../../../types/foundationTypes";
 
 const Input: React.FC<InputProps> = ({
   id,

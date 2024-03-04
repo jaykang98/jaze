@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { fetchAndProcessData } from "./utils/dataHandler";
+import { fetchAndProcessData } from "./fetchAndProcessData";
 import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
 
-export const useUserData = (username: string) => {
+export const fetchUserData = (username: string) => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [albumData, setAlbumData] = useState<AlbumData | null>(null);
   const [artistData, setArtistData] = useState<ArtistData | null>(null);

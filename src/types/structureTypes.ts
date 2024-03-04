@@ -1,20 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { SelectionType } from "./dataTypes";
 
 export interface ActivityFrameProps {
   error?: Error | null;
   onViewChange?: any;
+  activityName?: string;
   userID: string | null;
-}
-export interface InputProps {
-  id?: string;
-  label?: string;
-  type: string;
-  name: string;
-  value: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-  icon?: IconDefinition;
 }
 
 export interface FormData {
@@ -23,16 +15,7 @@ export interface FormData {
   endTimestamp?: string;
   [key: string]: any;
 }
-export type SelectionType = "artist" | "album" | "track" | "year";
-export interface Option {
-  key: string;
-  dataType: SelectionType;
-  value: string;
-}
-export interface OptionListProps {
-  dataType: SelectionType;
-  options: Option[];
-}
+
 export interface GenerateDataFormProps {
   formData: GenerateDataFormState;
   setFormData: (
@@ -48,4 +31,14 @@ export interface GenerateDataFormState {
   startTimestamp?: string;
   endTimestamp?: string;
   [key: string]: string | undefined;
+}
+
+export { SelectionType };
+export interface ViewSectionProps {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}
+export interface ViewFrameProps {
+  children: React.ReactNode;
+  splitPercentage?: number;
 }

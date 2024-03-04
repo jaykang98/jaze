@@ -1,6 +1,6 @@
 // FileName: src/hooks/useAuthenticator.tsx
 import { useState, useEffect, useCallback } from "react";
-import { decryptData, encryptData, generateMD5 } from "./utils/SecurityUtils";
+import { decryptData, encryptData, generateMD5 } from "./utils";
 
 export const useAuthenticator = () => {
   const [userID, setUserIDState] = useState<string | null>(null);
@@ -71,8 +71,8 @@ export const useAuthenticator = () => {
         const encryptedUserID = encryptData(userID);
         localStorage.setItem("userID", encryptedUserID);
         setUserIDState(userID);
-          notifySubscribers();
-          window.location.reload();
+        notifySubscribers();
+        window.location.reload();
       }
     } catch (error) {
       console.error("Fetching session failed:", error);
@@ -89,8 +89,8 @@ export const useAuthenticator = () => {
   const logOut = useCallback(() => {
     localStorage.removeItem("userID");
     setUserIDState(null);
-      notifySubscribers();
-      window.location.reload();
+    notifySubscribers();
+    window.location.reload();
   }, []);
 
   const getUserID = useCallback(() => userID, [userID]);

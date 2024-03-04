@@ -8,7 +8,10 @@ interface ActivityTitleBarProps {
   userID?: string;
 }
 
-const ActivityTitleBar: React.FC<ActivityTitleBarProps> = ({ title, userID }) => {
+const ActivityTitleBar: React.FC<ActivityTitleBarProps> = ({
+  title,
+  userID,
+}) => {
   return (
     <div className={styles.titleBar}>
       <div className={styles.title}>

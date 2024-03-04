@@ -1,16 +1,8 @@
 import React from "react";
 import styles from "./Header.module.css";
 
-type HeaderProps = {
-  //JaZe
-};
-
-const Header: React.FC<HeaderProps> = () => {
-  return (
-    <header className={`${styles.header}`}>
-      <h1>Test</h1>
-    </header>
-  );
+const Header: React.FC = () => {
+  return <header className={`${styles.header}`}>JaZe</header>;
 };
 
 export default Header;

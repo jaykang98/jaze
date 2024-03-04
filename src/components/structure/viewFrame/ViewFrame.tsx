@@ -1,12 +1,8 @@
 // File: src/components/DualView.tsx
 import React, { useRef, useEffect, useState } from "react";
 import styles from "src/components/structure/viewFrame/ViewFrame.module.css";
-import ViewSection from "../../structure/viewSection/ViewSection";
-
-interface ViewFrameProps {
-  children: React.ReactNode;
-  splitPercentage?: number;
-}
+import ViewSection from "../viewSection/ViewSection";
+import { ViewFrameProps } from "types/structureTypes";
 
 const ViewFrame: React.FC<ViewFrameProps> = ({
   children,

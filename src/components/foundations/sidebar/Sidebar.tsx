@@ -6,14 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SidebarButton = ({ label, path, icon }) => {
   return (
-    <Link to={path} className={styles.sidebarLink}>
-      <button className={styles.sidebarButton}>
-        <FontAwesomeIcon icon={icon} /> {label}
-      </button>
+    <Link to={path} className={styles.sidebarLinkContainer}>
+      <FontAwesomeIcon icon={icon} /> {label}
     </Link>
   );
 };
-
 
 const Sidebar = () => {
   const buttons = [

@@ -1,7 +1,9 @@
 import React from "react";
 import OptionList from "../../../components/foundations/optionList/OptionList";
 import Input from "../../../components/foundations/input/Input";
-import { SelectionType, OptionListProps } from "../../../types/componentTypes";
+import { SelectionType } from "../../../types/dataTypes";
+import { OptionListProps } from "../../../types/foundationTypes";
+
 import styles from "./TimeSelectionRow.module.css"; // Correctly import the CSS module
 
 interface TimeSelectionRowProps {

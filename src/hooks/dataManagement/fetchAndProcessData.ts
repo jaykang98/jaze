@@ -1,5 +1,5 @@
 // src/utils/DataHandler.tsx
-import { fetchData } from "../api/API";
+import { fetchData } from "./API";
 
 export const fetchAndProcessData = async (
   method: string,

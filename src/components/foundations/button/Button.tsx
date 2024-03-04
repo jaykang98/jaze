@@ -1,15 +1,7 @@
 // Filename: Button.tsx
 import React from "react";
 import styles from "./Button.module.css";
-
-interface ButtonProps {
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  children: React.ReactNode;
-  type?: "button" | "submit" | "reset";
-  className?: string;
-  label?: string | null;
-  disabled?: boolean;
-}
+import { ButtonProps } from "../../../types/foundationTypes";
 
 const Button: React.FC<ButtonProps> = ({
   onClick,
