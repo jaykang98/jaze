@@ -34,10 +34,6 @@ const About: React.FC<ActivityFrameProps> = ({ userID }) => {
       ["User Since", registrationDate.toLocaleDateString()],
       ["Years Active", `${yearsSinceRegistration} years`],
       ["Playcount", Number(user.playcount).toLocaleString()],
-      // Example of adding a link
-      ["Profile", <a href={`https://example.com/users/${userID}`} target="_blank" rel="noopener noreferrer">View Profile</a>],
-      // Example of adding an action button
-      ["Action", <button onClick={() => console.log("User action")}>Do Something</button>],
     ];
 
     return <DisplayTable data={dataForDisplay} />;

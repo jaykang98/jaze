@@ -1,5 +1,11 @@
+// File: Settings.tsx
 import React, { useCallback, useMemo, useState } from "react";
-import styles from "src/types/App.module.css";
+import DisplayTable from "../../components/structure/displayTable/DisplayTable"; // Ensure this is correctly pointing to your enhanced DisplayTable
+import Button from "../../components/foundations/button/Button";
+import { useAuthenticator } from "../../hooks/security/useAuthenticator";
+import { ActivityFrameProps } from "../../types/structureTypes";
+import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
+import ViewFrame from "../../components/structure/viewFrame/ViewFrame";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -8,11 +14,6 @@ import {
   faPenNib,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import Button from "../../components/foundations/button/Button";
-import { useAuthenticator } from "../../hooks/security/useAuthenticator";
-import { ActivityFrameProps } from "../../types/structureTypes";
-import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
-import ViewFrame from "../../components/structure/viewFrame/ViewFrame";
 
 interface SettingOption {
   id: string;
@@ -86,31 +87,18 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
 
     return [authOptions, ...baseOptions];
   }, [isAuthenticated, startAuth, changeThemeAction, logOut, isDarkMode]);
-  const settingsContent = (
-    <table>
-      <tbody>
-        {settingsOptions.map((option) => (
-          <tr key={option.id}>
-            <td>
-              <FontAwesomeIcon icon={option.icon} aria-hidden="true" />
-              <label htmlFor={option.id} className={styles.labelWithIcon}>
-                {option.displayLabel}
-              </label>
-            </td>
-            <td>
-              {option.disabled ? (
-                <span>{option.actionLabel}</span>
-              ) : (
-                <Button onClick={option.action} disabled={option.disabled}>
-                  {option.actionLabel}
-                </Button>
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+
+  const settingsData = settingsOptions.map((option) => [
+    <FontAwesomeIcon icon={option.icon} aria-hidden="true" />,
+    option.displayLabel,
+    option.disabled ? (
+      <span>{option.actionLabel}</span>
+    ) : (
+      <Button onClick={option.action} disabled={option.disabled}>
+        {option.actionLabel}
+      </Button>
+    ),
+  ]);
 
   return (
     <>
@@ -121,7 +109,7 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
           Many of these settings and properties are incredibly broken. Do not
           expect support for these use cases.
         </div>
-        {settingsContent}
+        <DisplayTable data={settingsData} />
       </ViewFrame>
     </>
   );

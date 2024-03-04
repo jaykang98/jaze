@@ -1,0 +1,40 @@
+/* File: DisplayTable.module.css */
+.table {
+    border-collapse: separate;
+    outline: 1px solid #ccc; /* Lighter outline */
+    width: 100%; /* Ensure table uses full container width */
+  }
+  
+  .cell,
+  .header {
+    text-align: left;
+    vertical-align: middle;
+    border: none;
+  }
+  
+  @media (max-width: 768px) {
+    .table {
+      border-spacing: 0 5px;
+    }
+  
+    .cell,
+    .header {
+      padding: 10px;
+    }
+  }
+  
+  .cell {
+    text-align: left;
+    vertical-align: middle;
+    border: none;
+    justify-content: left;
+    padding: 10px 10px 10px 10px; /* Adjusted padding for less cramped look */
+    overflow: hidden; /* Required for text-overflow to work */
+    white-space: nowrap; /* Keep content on a single line */
+    text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  }
+  
+  .cell svg {
+    padding-right: 20px;
+  }
+  

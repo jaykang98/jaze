@@ -1,5 +1,6 @@
 // File: DisplayTable.tsx
 import React from "react";
+import styles from "./DisplayTable.module.css"; // Ensure this path is correct
 
 type TableCell = string | JSX.Element;
 
@@ -13,12 +14,12 @@ const DisplayTable: React.FC<TableProps> = ({ data }) => {
   }
 
   return (
-    <table>
+    <table className={styles.table}>
       <tbody>
         {data.map((row, rowIndex) => (
           <tr key={`row-${rowIndex}`}>
             {row.map((cell, cellIndex) => (
-              <td key={`cell-${rowIndex}-${cellIndex}`}>
+              <td key={`cell-${rowIndex}-${cellIndex}`} className={styles.cell}>
                 {cell}
               </td>
             ))}

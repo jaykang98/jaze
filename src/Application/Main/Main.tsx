@@ -15,33 +15,39 @@ const Main: React.FC<ActivityFrameProps> = ({ userID }) => {
   };
 
   return (
-    <>
-      <TitleBar userID={userID} title={"Main"} />
-      <ViewFrame splitPercentage={30}>
-        {
-          <div>
-            <h3>JaZe: Does Things</h3>
-            <p className="styles.description">
-              This application helps you manage your music data effectively.
-              Explore various functionalities provided to enhance your
-              experience.
-            </p>
-          </div>
-        }
-
-        {
-          <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
-            <GenerateDataForm
-              formData={formData}
-              setFormData={handleSetFormData}
-              selectionType={formData.selectionType}
-              userID={userID}
-            />
-          </form>
-        }
-      </ViewFrame>
-    </>
-  );
-};
-
-export default Main;
+      <>
+        <TitleBar userID={userID} title={"Main"} />
+        <ViewFrame splitPercentage={30}>
+          {
+            process.env.REACT_APP_IS_DEBUG ? (
+              <>
+                <div>
+                  <h3>JaZe: Does Things</h3>
+                  <p className={styles.description}>
+                    This application helps you manage your music data effectively.
+                    Explore various functionalities provided to enhance your
+                    experience.
+                  </p>
+                </div>
+  
+                <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
+                  <GenerateDataForm
+                    formData={formData}
+                    setFormData={handleSetFormData}
+                    selectionType={formData.selectionType}
+                    userID={userID}
+                  />
+                </form>
+              </>
+            ) : (
+              <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <p>Under Construction</p>
+              </div>
+            )
+          }
+        </ViewFrame>
+      </>
+    );
+  };
+  
+  export default Main;
