@@ -1,6 +1,6 @@
 // File: Settings.tsx
 import React, { useCallback, useMemo, useState } from "react";
-import DisplayTable from "../../components/structure/displayTable/DisplayTable"; // Ensure this is correctly pointing to your enhanced DisplayTable
+import DisplayTable from "../../components/structure/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
 import { ActivityFrameProps } from "../../types/structureTypes";
@@ -89,8 +89,14 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
   }, [isAuthenticated, startAuth, changeThemeAction, logOut, isDarkMode]);
 
   const settingsData = settingsOptions.map((option) => [
-    <FontAwesomeIcon icon={option.icon} aria-hidden="true" />,
-    option.displayLabel,
+    <span>
+      <FontAwesomeIcon
+        icon={option.icon}
+        aria-hidden="true"
+        className="iconStyle"
+      />
+      <span className="boldText">{option.displayLabel}</span>
+    </span>,
     option.disabled ? (
       <span>{option.actionLabel}</span>
     ) : (

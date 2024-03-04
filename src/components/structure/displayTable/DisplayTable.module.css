@@ -1,8 +1,11 @@
-/* File: DisplayTable.module.css */
 .table {
     border-collapse: separate;
-    outline: 1px solid #ccc; /* Lighter outline */
-    width: 100%; /* Ensure table uses full container width */
+    outline: 1px solid var(--input-border-color); /* Updated to use variable for consistency */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: var(--sidebar-bg-color); /* Updated to use sidebar background color for harmony */
   }
   
   .cell,
@@ -24,17 +27,27 @@
   }
   
   .cell {
+    color:black;
     text-align: left;
     vertical-align: middle;
     border: none;
     justify-content: left;
-    padding: 10px 10px 10px 10px; /* Adjusted padding for less cramped look */
-    overflow: hidden; /* Required for text-overflow to work */
-    white-space: nowrap; /* Keep content on a single line */
-    text-overflow: ellipsis; /* Add ellipsis when text overflows */
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .cell span {
+    display: flex;
+    align-items: center;
   }
   
   .cell svg {
-    padding-right: 20px;
+    margin-right: 10px;
+  }
+  
+  .boldText {
+    font-weight: bold;
   }
   

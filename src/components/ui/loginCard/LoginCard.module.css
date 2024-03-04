@@ -1,3 +1,4 @@
+
 .LoginCardContainer {
   position: relative;
   display: flex;
@@ -9,16 +10,15 @@
   align-items: center;
   background: linear-gradient(
     to right,
-    #0062e6,
-    #33aeff
-  ); /* More vibrant gradient */
+    var(--secondary-accent-color-1), var(--secondary-accent-color-2)
+  ); /* Updated gradient to use accent colors */
   text-align: right;
   padding: 20px;
   border-radius: 15px;
   font-size: 16px;
-  color: lightgrey;
-  border: 2px solid lightgrey;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: black; /* Updated to use primary text color variable */
+  border: 2px solid var(--input-border-color); /* Updated to use input border color for consistency */
+  box-shadow: var(--box-shadow); /* Uses variable for box shadow */
   max-width: 150px;
   align-self: start;
   z-index: 0;

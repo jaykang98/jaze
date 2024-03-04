@@ -10,16 +10,16 @@
 }
 
 .header {
-  background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
+  background: linear-gradient(45deg, var(--secondary-accent-color-1), var(--secondary-accent-color-2), var(--primary-text-color), var(--sidebar-bg-color));
   background-size: 200% 200%;
   animation: gradientLoop 10s ease infinite;
-  color: var(--primary-text-color, black);
+  color: black;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
-  border-radius: var(--border-radius, 0);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
   letter-spacing: 2px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -28,13 +28,14 @@
   border: 2px solid transparent;
   max-height: 20vw;
 }
+
 .header:hover {
-  background: var(--header-hover-bg-color, black);
-  border-color: white;
+  background: var(--header-hover-bg-color, var(--input-bg-color));
+  border-color: var(--input-border-color);
 }
 
 .header:hover h1 {
-  background: linear-gradient(45deg, #00a4cc, #8a2387, #e94057, #f27121);
+  background: linear-gradient(45deg, var(--secondary-accent-color-1), var(--secondary-accent-color-2), var(--primary-text-color), var(--sidebar-bg-color));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -44,7 +45,5 @@
 h1 {
   margin-top: 3vw;
   margin-bottom: 3vw;
-  font:
-    500 6vw/1.5 var(--font-family, "Roboto"),
-    sans-serif;
+  font: 500 6vw/1.5 var(--font-family), sans-serif;
 }

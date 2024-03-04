@@ -5,6 +5,13 @@ import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
 import ViewFrame from "../../components/structure/viewFrame/ViewFrame";
 import DisplayTable from "../../components/structure/displayTable/DisplayTable"; // Ensure this is correctly pointing to your enhanced DisplayTable
 import { ActivityFrameProps } from "../../types/structureTypes";
+import {
+  faGlobeAmericas,
+    faCalendarAlt,
+  faUserCircle,
+  faMusic,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const About: React.FC<ActivityFrameProps> = ({ userID }) => {
   const { userData } = fetchUserData(userID);
@@ -21,19 +28,44 @@ const About: React.FC<ActivityFrameProps> = ({ userID }) => {
       currentDate.getMonth() - registrationDate.getMonth();
     if (
       monthsDifference < 0 ||
-      (monthsDifference === 0 && currentDate.getDate() < registrationDate.getDate())
+      (monthsDifference === 0 &&
+        currentDate.getDate() < registrationDate.getDate())
     ) {
       yearsSinceRegistration--;
     }
 
     // Prepare data for DisplayTable with JSX elements for flexibility
     const dataForDisplay = [
-      ["Name", user.name],
-      ["Country", user.country],
-      ["Age", user.age?.toString() || ""],
-      ["User Since", registrationDate.toLocaleDateString()],
-      ["Years Active", `${yearsSinceRegistration} years`],
-      ["Playcount", Number(user.playcount).toLocaleString()],
+      [
+        <span>
+          <FontAwesomeIcon icon={faUserCircle} /> Name
+        </span>,
+        user.name,
+      ],
+      [
+        <span>
+          <FontAwesomeIcon icon={faGlobeAmericas} /> Country
+        </span>,
+        user.country,
+      ],
+      [
+        <span>
+          <FontAwesomeIcon icon={faCalendarAlt} /> User Since
+        </span>,
+        registrationDate.toLocaleDateString(),
+      ],
+      [
+        <span>
+          <FontAwesomeIcon icon={faCalendarAlt} /> Years Active
+        </span>,
+        `${yearsSinceRegistration} years`,
+      ],
+      [
+        <span>
+          <FontAwesomeIcon icon={faMusic} /> Playcount
+        </span>,
+        Number(user.playcount).toLocaleString(),
+      ],
     ];
 
     return <DisplayTable data={dataForDisplay} />;
