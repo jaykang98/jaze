@@ -1,9 +1,9 @@
+// Settings.tsx
 import React, { useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faKey, faPalette, faPenNib, faUser, faBug, faTools } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faKey, faPalette, faPenNib, faUser, faBug, faTools, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
 import { ActivityFrameProps } from "../../types/structureTypes";
-
 import DisplayPage from "../../components/structure/displayPage/DisplayPage";
 import DisplayTable from "../../components/structure/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
@@ -43,12 +43,12 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
         disabled: true,
       },
       {
-        id: "contact",
-        displayLabel: "Contact",
-        actionLabel: "kangjacob1@gmail.com",
-        action: () => console.log("Contact: kangjacob1@gmail.com"),
-        icon: faEnvelope,
-        disabled: true,
+        id: "coffee",
+        displayLabel: "Buy me a coffee",
+        actionLabel: "Pay me",
+        action: () => window.location.href = 'https://paypal.me/jklmnopea?country.x=US&locale.x=en_US',
+        icon: faCoffee,
+        disabled: false,
       },
     ];
 
@@ -94,7 +94,14 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
     ],
     [
       <span><FontAwesomeIcon icon={faTools} /> Fix Bug</span>,
-      <Button onClick={() => window.location.href = 'https://google.com'}>Fix</Button>
+      <Button onClick={() => window.location.href = 'https://github.com/jaykang98/jaze'}>Fix</Button>
+    ],
+  ];
+
+  const versionData = [
+    [
+      <span>Version</span>,
+      <span>{process.env.REACT_APP_VER}</span>,
     ],
   ];
 
@@ -111,8 +118,16 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
   );
   const secondaryContent = (
     <>
-      <h3>Misc</h3>
-      <DisplayTable data={bugReportData} />
+      <DisplayTable data={[...bugReportData, ...versionData]} />
+    </>
+  );
+  const secondaryContentAnc = (
+    <>
+      I sincerely appreciate your participation as a beta tester for my application. 
+      Your feedback and insights have been invaluable in shaping and improving the product. 
+      Thanks to your contributions, I've been able to identify and fix bugs, as well as 
+      enhance the overall user experience. Your dedication and willingness to explore new features 
+      and provide honest feedback have played a crucial role in the development process.
     </>
   );
 
@@ -123,6 +138,7 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
       primaryContent={primaryContent}
       primaryContentAnc={primaryContentAnc}
       secondaryContent={secondaryContent}
+      secondaryContentAnc={secondaryContentAnc}
     />
   );
 };

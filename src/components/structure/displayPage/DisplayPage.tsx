@@ -7,10 +7,11 @@ interface DisplayPageProps extends ActivityFrameProps {
       primaryContent: React.ReactNode;
   primaryContentAnc?: React.ReactNode;
   secondaryContent?: React.ReactNode;
+  secondaryContentAnc?: React.ReactNode;
   title?:string;
 }
 
-const DisplayPage: React.FC<DisplayPageProps> = ({ userID, primaryContent, primaryContentAnc, secondaryContent, title }) => {
+const DisplayPage: React.FC<DisplayPageProps> = ({ userID, primaryContent, primaryContentAnc, secondaryContent, secondaryContentAnc, title }) => {
   return (
     <>
       <TitleBar userID={userID} title={title} />
@@ -21,6 +22,7 @@ const DisplayPage: React.FC<DisplayPageProps> = ({ userID, primaryContent, prima
         </ViewFrame>
         <ViewFrame>
           {secondaryContent}
+          {secondaryContentAnc}
         </ViewFrame>
       </section>
     </>
