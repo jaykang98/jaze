@@ -26,22 +26,16 @@ interface SettingOption {
 
 const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
   const { isAuthenticated, startAuth, logOut } = useAuthenticator();
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(() =>
-    document.body.classList.contains("dark-mode"),
-  );
 
-  const changeThemeAction = useCallback(() => {
-    const bodyClass = document.body.classList;
-    bodyClass.toggle("dark-mode", !isDarkMode);
-    bodyClass.toggle("light-mode", isDarkMode);
-    setIsDarkMode(!isDarkMode);
-  }, [isDarkMode]);
+  const changeThemeAction = () => {
+    document.body.style.backgroundColor = "Black";
+  };
 
   const settingsOptions = useMemo(() => {
     const themeOption: SettingOption = {
       id: "themeSwap",
       displayLabel: "Change Theme",
-      actionLabel: isDarkMode ? "Light Mode" : "Dark Mode",
+      actionLabel: "Dark Mode",
       action: changeThemeAction,
       icon: faPalette,
       disabled: false,
@@ -86,7 +80,7 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
         };
 
     return [authOptions, ...baseOptions];
-  }, [isAuthenticated, startAuth, changeThemeAction, logOut, isDarkMode]);
+  }, [isAuthenticated, startAuth, changeThemeAction, logOut]);
 
   const settingsData = settingsOptions.map((option) => [
     <span>

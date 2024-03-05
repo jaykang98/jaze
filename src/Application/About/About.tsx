@@ -3,11 +3,11 @@ import React from "react";
 import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
 import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
 import ViewFrame from "../../components/structure/viewFrame/ViewFrame";
-import DisplayTable from "../../components/structure/displayTable/DisplayTable"; // Ensure this is correctly pointing to your enhanced DisplayTable
+import DisplayTable from "../../components/structure/displayTable/DisplayTable";
 import { ActivityFrameProps } from "../../types/structureTypes";
 import {
   faGlobeAmericas,
-    faCalendarAlt,
+  faCalendarAlt,
   faUserCircle,
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
@@ -34,7 +34,6 @@ const About: React.FC<ActivityFrameProps> = ({ userID }) => {
       yearsSinceRegistration--;
     }
 
-    // Prepare data for DisplayTable with JSX elements for flexibility
     const dataForDisplay = [
       [
         <span>
@@ -81,7 +80,14 @@ const About: React.FC<ActivityFrameProps> = ({ userID }) => {
       profile!
     </div>
   );
-
+  const secondary = (
+    <div>
+      <h3>Old Favorites to Revisit</h3>
+      This application generates visual representations of Last.FM data that you
+      have scrobbled over time. Here are some basic facts from your Last.FM
+      profile!
+    </div>
+  );
   return (
     <>
       <TitleBar userID={userID} title={"About"} />
@@ -90,6 +96,7 @@ const About: React.FC<ActivityFrameProps> = ({ userID }) => {
           {aboutDescription}
           {userInfoElement}
         </ViewFrame>
+        <ViewFrame>{secondary}</ViewFrame>
       </section>
     </>
   );

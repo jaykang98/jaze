@@ -10,7 +10,13 @@
 }
 
 .header {
-  background: linear-gradient(45deg, var(--secondary-accent-color-1), var(--secondary-accent-color-2), var(--primary-text-color), var(--sidebar-bg-color));
+  background: linear-gradient(
+    45deg,
+    var(--secondary-accent-color-1),
+    var(--secondary-accent-color-2),
+    var(--primary-text-color),
+    var(--sidebar-bg-color)
+  );
   background-size: 200% 200%;
   animation: gradientLoop 10s ease infinite;
   color: black;
@@ -35,7 +41,13 @@
 }
 
 .header:hover h1 {
-  background: linear-gradient(45deg, var(--secondary-accent-color-1), var(--secondary-accent-color-2), var(--primary-text-color), var(--sidebar-bg-color));
+  background: linear-gradient(
+    45deg,
+    var(--secondary-accent-color-1),
+    var(--secondary-accent-color-2),
+    var(--primary-text-color),
+    var(--sidebar-bg-color)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -45,5 +57,7 @@
 h1 {
   margin-top: 3vw;
   margin-bottom: 3vw;
-  font: 500 6vw/1.5 var(--font-family), sans-serif;
+  font:
+    500 6vw/1.5 var(--font-family),
+    sans-serif;
 }

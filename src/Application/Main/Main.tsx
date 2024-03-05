@@ -1,13 +1,15 @@
 // src/components/Main.tsx
 import React, { useState } from "react";
-import styles from "../../types/App.module.css"; // Adjusted import path for consistency
-import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm"; // Adjusted for consistency and clarity
-import ViewFrame from "../../components/structure/viewFrame/ViewFrame"; // Adjusted for consistency and clarity
-import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar"; // Adjusted for consistency and clarity
-import { FormData, ActivityFrameProps } from "../../types/structureTypes"; // Adjusted import path for consistency
+import styles from "../../types/App.module.css";
+import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
+import ViewFrame from "../../components/structure/viewFrame/ViewFrame";
+import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
+import { FormData, ActivityFrameProps } from "../../types/structureTypes";
 
 const Main: React.FC<ActivityFrameProps> = ({ userID }) => {
-  const [formData, setFormData] = useState<FormData>({ selectionType: "track" });
+  const [formData, setFormData] = useState<FormData>({
+    selectionType: "track",
+  });
 
   const handleSetFormData = (newFormData: FormData) => setFormData(newFormData);
 
@@ -18,7 +20,9 @@ const Main: React.FC<ActivityFrameProps> = ({ userID }) => {
           <div>
             <h3>JaZe: Does Things</h3>
             <p className={styles.description}>
-              This application helps you manage your music data effectively. Explore various functionalities provided to enhance your experience.
+              This application helps you manage your music data effectively.
+              Explore various functionalities provided to enhance your
+              experience.
             </p>
           </div>
           <form onSubmit={(e) => e.preventDefault()} className={styles.form}>

@@ -22,7 +22,11 @@
 }
 
 .button:hover {
-  background: linear-gradient(45deg, var(--secondary-accent-color-2), var(--primary-bg-color));
+  background: linear-gradient(
+    45deg,
+    var(--secondary-accent-color-2),
+    var(--primary-bg-color)
+  );
   background-size: 200% 200%;
   animation: gradientLoop 2s ease infinite;
   color: var(--button-hover-text-color);
@@ -31,7 +35,8 @@
 }
 
 @keyframes gradientLoop {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -40,7 +45,10 @@
 }
 
 .button:disabled {
-  background-color: var(--button-disabled-bg-color, #cccccc); /* Added variable for disabled background color */
+  background-color: var(
+    --button-disabled-bg-color,
+    #cccccc
+  ); /* Added variable for disabled background color */
   cursor: not-allowed;
   opacity: 0.7;
 }
