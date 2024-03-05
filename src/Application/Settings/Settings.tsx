@@ -1,19 +1,14 @@
 // File: Settings.tsx
-import React, { useCallback, useMemo, useState } from "react";
-import DisplayTable from "../../components/structure/displayTable/DisplayTable";
-import Button from "../../components/foundations/button/Button";
+import React, { useMemo } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faKey, faPalette, faPenNib, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
 import { ActivityFrameProps } from "../../types/structureTypes";
-import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
+
 import ViewFrame from "../../components/structure/viewFrame/ViewFrame";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faKey,
-  faPalette,
-  faPenNib,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
+import DisplayTable from "../../components/structure/displayTable/DisplayTable";
+import Button from "../../components/foundations/button/Button";
 
 interface SettingOption {
   id: string;

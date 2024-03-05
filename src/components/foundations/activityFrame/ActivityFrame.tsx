@@ -1,9 +1,11 @@
 // src/components/layout/Container.tsx
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import Sidebar from "../sidebar/Sidebar";
-import styles from "./ActivityFrame.module.css";
 import { ActivityFrameProps } from "../../../types/structureTypes";
+
+import Sidebar from "../sidebar/Sidebar";
+
+import styles from "./ActivityFrame.module.css";
 
 const Main = lazy(() => import("../../../application/Main/Main"));
 const About = lazy(() => import("../../../application/About/About"));

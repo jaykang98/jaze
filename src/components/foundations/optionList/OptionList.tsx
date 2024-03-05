@@ -31,7 +31,6 @@ const OptionList: React.FC<OptionListProps> = ({ dataType, options }) => {
 
     updateVisibleOptions();
 
-    // Create a resize observer to update visible options on container resize
     const resizeObserver = new ResizeObserver(updateVisibleOptions);
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current);

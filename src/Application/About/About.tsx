@@ -1,25 +1,21 @@
 // File: About.tsx
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobeAmericas, faCalendarAlt, faUserCircle, faMusic} from "@fortawesome/free-solid-svg-icons";
+import { ActivityFrameProps } from "../../types/structureTypes";
 import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
+
 import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
 import ViewFrame from "../../components/structure/viewFrame/ViewFrame";
 import DisplayTable from "../../components/structure/displayTable/DisplayTable";
-import { ActivityFrameProps } from "../../types/structureTypes";
-import {
-  faGlobeAmericas,
-  faCalendarAlt,
-  faUserCircle,
-  faMusic,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import getMap  from "../../components/ui/getMap/getMap";
 
 const About: React.FC<ActivityFrameProps> = ({ userID }) => {
-  const { userData } = fetchUserData(userID);
+  const { userData, artistData } = fetchUserData(userID);
 
   const renderUserInfo = () => {
     if (!userData || !userData.user) return null;
     const { user } = userData;
-
     const registrationDate = new Date(user.registered.unixtime * 1000);
     const currentDate = new Date();
     let yearsSinceRegistration =
@@ -71,7 +67,7 @@ const About: React.FC<ActivityFrameProps> = ({ userID }) => {
   };
 
   const userInfoElement = renderUserInfo();
-
+  getMap();
   const aboutDescription = (
     <div>
       <h3>About You!</h3>

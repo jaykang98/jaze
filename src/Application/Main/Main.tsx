@@ -1,10 +1,12 @@
 // src/components/Main.tsx
 import React, { useState } from "react";
-import styles from "../../types/App.module.css";
+import { FormData, ActivityFrameProps } from "../../types/structureTypes";
+
 import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
 import ViewFrame from "../../components/structure/viewFrame/ViewFrame";
 import TitleBar from "../../components/ui/activityTitleBar/ActivityTitleBar";
-import { FormData, ActivityFrameProps } from "../../types/structureTypes";
+
+import styles from "../../types/App.module.css";
 
 const Main: React.FC<ActivityFrameProps> = ({ userID }) => {
   const [formData, setFormData] = useState<FormData>({
