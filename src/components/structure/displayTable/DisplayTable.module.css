@@ -1,11 +1,12 @@
 .table {
     border-collapse: separate;
-    outline: 1px solid var(--input-border-color); /* Updated to use variable for consistency */
+    outline: 1px solid var(--input-border-color); 
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: var(--sidebar-bg-color); /* Updated to use sidebar background color for harmony */
+    background-color: var(--sidebar-bg-color);
+    border-radius:10px;
   }
   
   .cell,
