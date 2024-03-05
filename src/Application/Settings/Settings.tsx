@@ -1,7 +1,6 @@
-// File: Settings.tsx
 import React, { useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faKey, faPalette, faPenNib, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faKey, faPalette, faPenNib, faUser, faBug, faTools } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
 import { ActivityFrameProps } from "../../types/structureTypes";
 
@@ -9,13 +8,12 @@ import DisplayPage from "../../components/structure/displayPage/DisplayPage";
 import DisplayTable from "../../components/structure/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 
-// Defining SettingOption type outside of the component to clean up the component body
 type SettingOption = {
   id: string;
   displayLabel: string;
   actionLabel?: string;
   action: () => void;
-  icon: typeof faEnvelope | typeof faKey | typeof faPalette | typeof faPenNib | typeof faUser;
+  icon: typeof faEnvelope | typeof faKey | typeof faPalette | typeof faPenNib | typeof faUser | typeof faBug | typeof faTools;
   disabled: boolean;
 };
 
@@ -89,22 +87,41 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
     ),
   ]);
 
+  const bugReportData = [
+    [
+      <span><FontAwesomeIcon icon={faBug} /> Report Bug</span>,
+      <Button onClick={() => window.open('mailto:admin@jklmnopea.com?subject=Bug Report')}>Report</Button>
+    ],
+    [
+      <span><FontAwesomeIcon icon={faTools} /> Fix Bug</span>,
+      <Button onClick={() => window.location.href = 'https://google.com'}>Fix</Button>
+    ],
+  ];
+
   const primaryContent = (
     <>
       <h3>Modify Properties</h3>
       <p>Many of these settings and properties are incredibly broken. Do not expect support for these use cases.</p>
+    </>
+  );
+  const primaryContentAnc = (
+    <>
       <DisplayTable data={settingsData} />
     </>
   );
-    const secondaryContent = (
-      <>
-      </>
-    );
+  const secondaryContent = (
+    <>
+      <h3>Misc</h3>
+      <DisplayTable data={bugReportData} />
+    </>
+  );
+
   return (
     <DisplayPage
       title="Settings"
       userID={userID}
       primaryContent={primaryContent}
+      primaryContentAnc={primaryContentAnc}
       secondaryContent={secondaryContent}
     />
   );
