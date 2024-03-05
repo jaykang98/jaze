@@ -38,6 +38,7 @@ const Main: React.FC<ActivityFrameProps> = ({ userID }) => {
 
   return (
     <DisplayPage
+      title={'Main'}
       userID={userID}
       primaryContent={renderContent}
       secondaryContent={formContent}
