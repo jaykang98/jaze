@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./Header.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRadio } from "@fortawesome/free-solid-svg-icons";
 
 const Header: React.FC = () => {
   return (
     <header className={`${styles.header}`}>
-      <h1>JaZe</h1>
+      <h1><FontAwesomeIcon icon={faRadio} /> JaZe</h1>
     </header>
   );
 };

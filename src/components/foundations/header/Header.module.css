@@ -33,6 +33,7 @@
   user-select: none;
   border: 2px solid transparent;
   max-height: 20vw;
+  justify-content: space-between;
 }
 
 .header:hover {

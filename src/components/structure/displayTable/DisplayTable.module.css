@@ -1,10 +1,7 @@
 .table {
   border-collapse: separate;
-  outline: 1px solid var(--input-border-color);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  width: calc(100% - 20px);
+  margin: 10px;
   background-color: var(--sidebar-bg-color);
   border-radius: 10px;
 }
@@ -13,12 +10,24 @@
 .header {
   text-align: left;
   vertical-align: middle;
-  border: none;
+  position: relative; 
+}
+
+.cell:first-child:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 80%;
+  height: 2px;
+  background-color: var(--input-border-color);
+  transform: translateX(-50%); 
 }
 
 @media (max-width: 768px) {
   .table {
-    border-spacing: 0 5px;
+    width: calc(100% - 10px);
+    margin: 5px;
   }
 
   .cell,
@@ -31,21 +40,11 @@
   color: black;
   text-align: left;
   vertical-align: middle;
-  border: none;
   justify-content: left;
   padding: 10px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.cell span {
-  display: flex;
-  align-items: center;
-}
-
-.cell svg {
-  margin-right: 10px;
 }
 
 .boldText {
