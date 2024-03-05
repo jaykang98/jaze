@@ -1,7 +1,7 @@
 // Settings.tsx
 import React, { useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faKey, faPalette, faPenNib, faUser, faBug, faTools, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faKey, faPalette, faPenNib, faUser, faBug, faTools, faCoffee, faRobot, faMemory } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
 import { ActivityFrameProps } from "../../types/structureTypes";
 import DisplayPage from "../../components/structure/displayPage/DisplayPage";
@@ -20,10 +20,22 @@ type SettingOption = {
 const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
   const { isAuthenticated, startAuth, logOut } = useAuthenticator();
 
+  const confirmAction = (message: string, action: () => void) => {
+    if (window.confirm(message)) {
+      action();
+    }
+  };
+
   const settingsOptions: SettingOption[] = useMemo(() => {
     const changeThemeAction = () => {
       document.body.style.backgroundColor = "Black";
     };
+
+    const clearCacheAction = () => {
+      confirmAction("Are you sure you want to clear the local cache?", () => localStorage.clear());
+    };
+
+    const authAction = isAuthenticated() ? () => confirmAction("Are you sure you want to log out?", logOut) : () => confirmAction("Are you sure you want to log in?", startAuth);
 
     const baseOptions: SettingOption[] = [
       {
@@ -50,6 +62,14 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
         icon: faCoffee,
         disabled: false,
       },
+      {
+        id: "clearCache",
+        displayLabel: "Privacy Setting",
+        actionLabel: "Clear Local Cache",
+        action: clearCacheAction,
+        icon: faMemory,
+        disabled: false,
+      },
     ];
 
     const authOption: SettingOption = isAuthenticated()
@@ -57,7 +77,7 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
           id: "loggedInUser",
           displayLabel: "Authentication",
           actionLabel: "Log Out",
-          action: logOut,
+          action: authAction,
           icon: faUser,
           disabled: false,
         }
@@ -65,7 +85,7 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
           id: "authenticate",
           displayLabel: "Authentication",
           actionLabel: "Log In",
-          action: startAuth,
+          action: authAction,
           icon: faKey,
           disabled: false,
         };
@@ -96,14 +116,12 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
       <span><FontAwesomeIcon icon={faTools} /> Fix Bug</span>,
       <Button onClick={() => window.location.href = 'https://github.com/jaykang98/jaze'}>Fix</Button>
     ],
-  ];
-
-  const versionData = [
     [
-      <span>Version</span>,
+      <span><FontAwesomeIcon icon={faRobot} />Version</span>,
       <span>{process.env.REACT_APP_VER}</span>,
     ],
   ];
+
 
   const primaryContent = (
     <>
@@ -118,7 +136,7 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
   );
   const secondaryContent = (
     <>
-      <DisplayTable data={[...bugReportData, ...versionData]} />
+      <DisplayTable data={[...bugReportData]} />
     </>
   );
   const secondaryContentAnc = (
