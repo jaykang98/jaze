@@ -4,15 +4,16 @@ import ViewFrame from '../../structure/viewFrame/ViewFrame';
 import { ActivityFrameProps } from 'types/structureTypes';
 
 interface DisplayPageProps extends ActivityFrameProps {
-  primaryContent: React.ReactNode;
+      primaryContent: React.ReactNode;
   primaryContentAnc?: React.ReactNode;
   secondaryContent?: React.ReactNode;
+  title?:string;
 }
 
-const DisplayPage: React.FC<DisplayPageProps> = ({ userID, primaryContent, primaryContentAnc, secondaryContent }) => {
+const DisplayPage: React.FC<DisplayPageProps> = ({ userID, primaryContent, primaryContentAnc, secondaryContent, title }) => {
   return (
     <>
-      <TitleBar userID={userID} title={'About'} />
+      <TitleBar userID={userID} title={title} />
       <section>
         <ViewFrame splitPercentage={50}>
           {primaryContent}

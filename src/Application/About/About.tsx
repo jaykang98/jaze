@@ -64,6 +64,7 @@ const About: React.FC<ActivityFrameProps> = ({ userID }) => {
 
   return (
     <DisplayPage
+      title='About'
       userID={userID}
       primaryContent={aboutDescription}
       primaryContentAnc={userInfoElement}
