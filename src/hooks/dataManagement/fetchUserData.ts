@@ -18,32 +18,18 @@ export const fetchUserData = (username: string) => {
 
     const fetchData = async () => {
       setLoading(true);
-
       try {
-        const userInfoPromise = fetchAndProcessData("user.getinfo", {
-          user: username,
-        });
-        const userTopAlbumsPromise = fetchAndProcessData("user.getTopAlbums", {
-          user: username,
-          limit: 5,
-          period: "12month",
-        });
-        const userTopArtistsPromise = fetchAndProcessData(
-          "user.getTopArtists",
-          { user: username, limit: 5 },
-        );
-        const userTopTracksPromise = fetchAndProcessData("user.getTopTracks", {
-          user: username,
-          limit: 5,
-        });
+        const userInfoPromise = fetchAndProcessData("user.getinfo", { user: username });
+        const userTopAlbumsPromise = fetchAndProcessData("user.getTopAlbums", { user: username, limit: 5, period: "12month" });
+        const userTopArtistsPromise = fetchAndProcessData("user.getTopArtists", { user: username, limit: 5 });
+        const userTopTracksPromise = fetchAndProcessData("user.getTopTracks", { user: username, limit: 5 });
 
-        const [userInfo, userTopAlbums, userTopArtists, userTopTracks] =
-          await Promise.all([
-            userInfoPromise,
-            userTopAlbumsPromise,
-            userTopArtistsPromise,
-            userTopTracksPromise,
-          ]);
+        const [userInfo, userTopAlbums, userTopArtists, userTopTracks] = await Promise.all([
+          userInfoPromise,
+          userTopAlbumsPromise,
+          userTopArtistsPromise,
+          userTopTracksPromise,
+        ]);
 
         setUserData(userInfo as UserData);
         setAlbumData(userTopAlbums as AlbumData);
@@ -60,12 +46,5 @@ export const fetchUserData = (username: string) => {
     fetchData();
   }, [username]);
 
-  return {
-    userData,
-    albumData,
-    artistData,
-    trackData,
-    error,
-    loading,
-  };
+  return { userData, albumData, artistData, trackData, error, loading };
 };

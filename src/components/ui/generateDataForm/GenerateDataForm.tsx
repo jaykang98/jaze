@@ -15,8 +15,22 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   setFormData,
   userID,
 }) => {
-  const { albumData, artistData, trackData } = fetchUserData(userID || "");
+  const [albumData, setAlbumData] = useState({});
+  const [artistData, setArtistData] = useState({});
+  const [trackData, setTrackData] = useState({});
   const [selectionType, setSelectionType] = useState<SelectionType>("artist");
+
+  useEffect(() => {
+    const loadData = async () => {
+      if (userID) {
+        const data = await fetchUserData(userID);
+        setAlbumData(data.albumData);
+        setArtistData(data.artistData);
+        setTrackData(data.trackData);
+      }
+    };
+    loadData();
+  }, [userID]);
 
   useEffect(() => {
     const dataIsMissing = {
@@ -24,7 +38,6 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
       artist: !artistData,
       track: !trackData,
     };
-
     if (dataIsMissing[selectionType] && formData[selectionType]) {
       setFormData((prevFormData: GenerateDataFormState) => ({
         ...prevFormData,
