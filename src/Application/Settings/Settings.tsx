@@ -141,6 +141,7 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
   );
   const secondaryContentAnc = (
     <>
+      <h3>Thank YOU!</h3>
       I appreciate your participation as a beta tester for my application. 
       Your feedback has been invaluable in improving JaZe over titme. 
       Thanks to your contributions, I've been able to identify and fix bugs, as well as 

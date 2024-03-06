@@ -1,27 +1,27 @@
 // Filename: Button.tsx
-import React from "react";
-import styles from "./Button.module.css";
-import { ButtonProps } from "../../../types/foundationTypes";
+import React, { forwardRef } from 'react';
+import styles from './Button.module.css';
+import { ButtonProps } from '../../../types/foundationTypes';
 
-const Button: React.FC<ButtonProps> = ({
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   onClick,
   children,
-  type = "button",
+  type = 'button',
   className,
   label,
   disabled = false,
-}) => {
+}, ref) => {
   return (
     <button
+      ref={ref}
       type={type}
-      className={`${styles.button} ${className || ""} ${disabled ? styles.disabled : ""}`}
+      className={`${styles.button} ${className || ''} ${disabled ? styles.disabled : ''}`}
       onClick={onClick}
       disabled={disabled}
     >
-      {label}
       {children}
     </button>
   );
-};
+});
 
 export default Button;
