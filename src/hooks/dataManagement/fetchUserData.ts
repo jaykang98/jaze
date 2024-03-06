@@ -1,8 +1,8 @@
 // FileName: useFetchUserData.tsx
 
 import { useState, useEffect } from "react";
-import { fetchAndProcessData } from "./fetchAndProcessData"; // Adjust the import path as needed
-import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes"; // Adjust the import path as needed
+import { fetchAndProcessData } from "./fetchAndProcessData"; 
+import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
 
 export const fetchUserData = (username: string) => {
   const [userData, setUserData] = useState<UserData | null>(null);

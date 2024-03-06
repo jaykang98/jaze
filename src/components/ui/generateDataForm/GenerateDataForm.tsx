@@ -7,11 +7,10 @@ import TimeSelectionRow from '../timeSelectionRow/TimeSelectionRow';
 import { fetchUserData } from '../../../hooks/dataManagement/fetchUserData';
 import {
   GenerateDataFormProps,
-  GenerateDataFormState,
   SelectionType,
-} from '../../../types/structureTypes'; // Adjust import based on your file structure
+} from '../../../types/structureTypes'; 
 import Button from '../../foundations/button/Button';
-import { Option } from 'types/foundationTypes'; // Adjust import based on your file structure
+import { Option } from 'types/foundationTypes';
 
 const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   formData,

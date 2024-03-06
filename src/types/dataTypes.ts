@@ -12,7 +12,7 @@ export type AlbumData = {
         size: string;
         "#text": string;
       }>;
-      listeners?: string; // Optional based on actual data availability
+      listeners?: string;
       playcount: string;
     }>;
     "@attr": {
@@ -58,14 +58,14 @@ export type TrackData = {
         "#text": string;
         fulltrack: string;
       };
-      listeners?: string; // Optional based on actual data availability
+      listeners?: string; 
       playcount: string;
       artist: {
         name: string;
-        mbid?: string; // Optional based on actual data availability
+        mbid?: string;
         url: string;
       };
-      image?: Array<{ // Optional based on actual data availability
+      image?: Array<{ 
         size: string;
         "#text": string;
       }>;
