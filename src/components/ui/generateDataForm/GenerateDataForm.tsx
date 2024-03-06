@@ -1,122 +1,87 @@
-import React, { useEffect, useState } from "react";
-import Input from "../../foundations/input/Input";
-import OptionList from "../../foundations/optionList/OptionList";
-import TimeSelectionRow from "../timeSelectionRow/TimeSelectionRow";
-import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData";
+// FileName: GenerateDataForm.tsx
+
+import React, { useEffect, useState } from 'react';
+import Input from '../../foundations/input/Input';
+import OptionList from '../../foundations/optionList/OptionList';
+import TimeSelectionRow from '../timeSelectionRow/TimeSelectionRow';
+import { fetchUserData } from '../../../hooks/dataManagement/fetchUserData';
 import {
   GenerateDataFormProps,
   GenerateDataFormState,
   SelectionType,
-} from "../../../types/structureTypes";
-import Button from "../../foundations/button/Button";
-import { Option } from "types/foundationTypes";
+} from '../../../types/structureTypes'; // Adjust import based on your file structure
+import Button from '../../foundations/button/Button';
+import { Option } from 'types/foundationTypes'; // Adjust import based on your file structure
+
 const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   formData,
   setFormData,
   userID,
 }) => {
-  const { albumData, artistData, trackData } = fetchUserData(userID);
-  const [selectionType, setSelectionType] = useState<SelectionType>("artist");
+  const { userData, albumData, artistData, trackData, error, loading } = fetchUserData(userID);
+  const [selectionType, setSelectionType] = useState<SelectionType>('artist');
+  const [options, setOptions] = useState<Option[]>([]);
 
   useEffect(() => {
-    const dataIsMissing = {
-      album: !albumData,
-      artist: !artistData,
-      track: !trackData,
-    };
-    if (dataIsMissing[selectionType] && formData[selectionType]) {
-      setFormData((prevFormData: GenerateDataFormState) => ({
-        ...prevFormData,
-        [selectionType]: "",
-      }));
+    let newOptions: Option[] = [];
+    switch (selectionType) {
+      case 'album':
+        newOptions = albumData?.topalbums.album.map((album) => ({
+          value: album.url,
+          key: `${album.artist.name} - ${album.name}`,
+          dataType: 'album',
+        })) || [];
+        break;
+      case 'artist':
+        newOptions = artistData?.topartists.artist.map((artist) => ({
+          value: artist.url,
+          key: artist.name,
+          dataType: 'artist',
+        })) || [];
+        break;
+      case 'track':
+        newOptions = trackData?.toptracks.track.map((track) => ({
+          value: track.url,
+          key: `${track.artist.name} - ${track.name}`,
+          dataType: 'track',
+        })) || [];
+        break;
     }
-  }, [albumData, artistData, trackData, selectionType, formData, setFormData]);
+    setOptions(newOptions);
+  }, [albumData, artistData, trackData, selectionType]);
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newSelectionType = event.target.value as SelectionType;
-    setSelectionType(newSelectionType);
-    setFormData({ ...formData, selectionType: newSelectionType });
+    const newType = event.target.value as SelectionType;
+    setSelectionType(newType);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [selectionType]: event.target.value });
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  let dataToDisplay;
-  switch (selectionType) {
-    case "album":
-      if (albumData && Array.isArray(albumData)) {
-        dataToDisplay = albumData.map((album, index) => ({
-          key: `${index}: ${album.title}`,
-          dataType: 'album',
-        }));
-      }
-      break;
-    case "artist":
-      if (artistData && Array.isArray(artistData)) {
-        dataToDisplay = artistData.map((artist, index) => ({
-          key: `${index}: ${artist.name}`,
-          dataType: 'artist',
-        }));
-      }
-      break;
-    case "track":
-      if (trackData && Array.isArray(trackData)) {
-        dataToDisplay = trackData.map((track, index) => ({
-          key: `${index}: ${track.name}`,
-          dataType:'track',        }));
-      }
-      break;
-    default:
-      break;
-  }
-
   return (
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <select value={selectionType} onChange={handleTypeChange}>
-              <option value="track">Track</option>
-              <option value="artist">Artist</option>
-              <option value="album">Album</option>
-            </select>
-          </td>
-          <td>
-            <Input
-              id={selectionType}
-              type="text"
-              name={selectionType}
-              value={formData[selectionType] || ""}
-              placeholder={`Enter ${selectionType} name`}
-              onChange={handleInputChange}
-            />
-          </td>
-          <td>
-            <OptionList options={dataToDisplay} dataType={selectionType} />
-          </td>
-        </tr>
-        <tr>
-          <td>Start Time</td>
-          <td colSpan={2}>
-            <TimeSelectionRow timestamp={formData.startTimestamp} />
-          </td>
-        </tr>
-        <tr>
-          <td>End Time</td>
-          <td colSpan={2}>
-            <TimeSelectionRow timestamp={formData.endTimestamp} />
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <Button type="submit">Submit</Button>
-          </td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <select value={selectionType} onChange={handleTypeChange}>
+        {['artist', 'album', 'track'].map((type) => (
+          <option key={type} value={type}>
+            {type.charAt(0).toUpperCase() + type.slice(1)}
+          </option>
+        ))}
+      </select>
+      <Input
+        id="selectionInput"
+        type="text"
+        name={selectionType}
+        value={formData[selectionType] || ''}
+        onChange={handleInputChange}
+        placeholder={`Enter ${selectionType}`}
+      />
+      <OptionList options={options} dataType={selectionType} />
+      <TimeSelectionRow timestamp={formData.startTimestamp} />
+      <TimeSelectionRow timestamp={formData.endTimestamp} />
+      <Button type="submit">Submit</Button>
+    </div>
   );
 };
 
