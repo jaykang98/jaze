@@ -9,28 +9,14 @@ import {
   SelectionType,
 } from "../../../types/structureTypes";
 import Button from "../../foundations/button/Button";
-
+import { Option } from "types/foundationTypes";
 const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   formData,
   setFormData,
   userID,
 }) => {
-  const [albumData, setAlbumData] = useState({});
-  const [artistData, setArtistData] = useState({});
-  const [trackData, setTrackData] = useState({});
+  const { albumData, artistData, trackData } = fetchUserData(userID);
   const [selectionType, setSelectionType] = useState<SelectionType>("artist");
-
-  useEffect(() => {
-    const loadData = async () => {
-      if (userID) {
-        const data = await fetchUserData(userID);
-        setAlbumData(data.albumData);
-        setArtistData(data.artistData);
-        setTrackData(data.trackData);
-      }
-    };
-    loadData();
-  }, [userID]);
 
   useEffect(() => {
     const dataIsMissing = {
@@ -59,34 +45,29 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   let dataToDisplay;
   switch (selectionType) {
     case "album":
-      if (albumData && typeof albumData === "object") {
-        dataToDisplay = Object.entries(albumData).map(([index, album]) => ({
+      if (albumData && Array.isArray(albumData)) {
+        dataToDisplay = albumData.map((album, index) => ({
           key: `${index}: ${album.title}`,
+          dataType: 'album',
         }));
-      } else {
-        dataToDisplay = [];
       }
       break;
     case "artist":
-      if (artistData && typeof artistData === "object") {
-        dataToDisplay = Object.entries(artistData).map(([index, artist]) => ({
+      if (artistData && Array.isArray(artistData)) {
+        dataToDisplay = artistData.map((artist, index) => ({
           key: `${index}: ${artist.name}`,
+          dataType: 'artist',
         }));
-      } else {
-        dataToDisplay = [];
       }
       break;
     case "track":
-      if (trackData && typeof trackData === "object") {
-        dataToDisplay = Object.entries(trackData).map(([index, track]) => ({
+      if (trackData && Array.isArray(trackData)) {
+        dataToDisplay = trackData.map((track, index) => ({
           key: `${index}: ${track.name}`,
-        }));
-      } else {
-        dataToDisplay = [];
+          dataType:'track',        }));
       }
       break;
     default:
-      dataToDisplay = [];
       break;
   }
 

@@ -141,11 +141,10 @@ const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
   );
   const secondaryContentAnc = (
     <>
-      I sincerely appreciate your participation as a beta tester for my application. 
-      Your feedback and insights have been invaluable in shaping and improving the product. 
+      I appreciate your participation as a beta tester for my application. 
+      Your feedback has been invaluable in improving JaZe over titme. 
       Thanks to your contributions, I've been able to identify and fix bugs, as well as 
-      enhance the overall user experience. Your dedication and willingness to explore new features 
-      and provide honest feedback have played a crucial role in the development process.
+      enhance the overall user experience. 
     </>
   );
 
