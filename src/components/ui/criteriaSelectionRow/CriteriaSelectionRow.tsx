@@ -6,6 +6,8 @@ import OptionList from '../../foundations/optionList/OptionList';
 import { SelectionType } from '../../../types/structureTypes';
 import { Option } from 'types/foundationTypes';
 
+import styles from "./CriteriaSelectionRow.module.css"; 
+
 interface CriteriaSelectionRowProps {
   selectionType: SelectionType;
   setSelectionType: (value: SelectionType) => void;
@@ -72,12 +74,10 @@ const CriteriaSelectionRow: React.FC<CriteriaSelectionRowProps> = ({
         </option>
       ))}
     </select>
-  );
-  // Factored out selection element
-  
+  );  
 
   return (
-    <div className="CriteriaSelectionRow">
+    <div className="styles.CriteriaSelectionRow">
       {selectionElement}
       <Input
         id="selectionInput"

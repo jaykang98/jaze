@@ -1,6 +1,6 @@
 // File: src/components/DualView.tsx
 import React, { useRef, useEffect, useState } from "react";
-import ViewSection from "../../structure/viewSection/ViewSection";
+import ViewSection from "../../ui/viewSection/ViewSection";
 
 interface ViewFrameProps {
   children: React.ReactNode;

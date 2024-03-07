@@ -1,6 +1,5 @@
 // File: src/components/ui/viewSection/ViewSection.tsx
 import React from "react";
-import styles from "src/components/structure/viewSection/ViewSection.module.css";
 
 interface ViewSectionProps {
   children: React.ReactNode;
@@ -9,7 +8,7 @@ interface ViewSectionProps {
 
 const ViewSection: React.FC<ViewSectionProps> = ({ children, style }) => {
   return (
-    <div className={styles.viewSection} style={style}>
+    <div style={style}>
       {children}
     </div>
   );
