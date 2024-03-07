@@ -5,8 +5,7 @@ import Input from '../../foundations/input/Input';
 import OptionList from '../../foundations/optionList/OptionList';
 import { SelectionType } from '../../../types/structureTypes';
 import { Option } from 'types/foundationTypes';
-
-import styles from "./CriteriaSelectionRow.module.css"; 
+import styles from "./CriteriaSelectionRow.module.css" 
 
 interface CriteriaSelectionRowProps {
   selectionType: SelectionType;
@@ -77,7 +76,8 @@ const CriteriaSelectionRow: React.FC<CriteriaSelectionRowProps> = ({
   );  
 
   return (
-    <div className="styles.CriteriaSelectionRow">
+    <>
+    <div className={styles.criteriaSelectionRow}>
       {selectionElement}
       <Input
         id="selectionInput"
@@ -89,6 +89,7 @@ const CriteriaSelectionRow: React.FC<CriteriaSelectionRowProps> = ({
       />
       <OptionList options={options} dataType={selectionType}/>
     </div>
+    </>
   );
 };
 
