@@ -1,9 +1,10 @@
 {
   "name": "jaze",
-  "version": "0.4.1a",
-  "description": "A thing that does a thing.",
+  "version": "0.5.1a",
+  "description": "JaZe visualizes your Last.fm data!",
   "main": "src/Application/App.tsx",
   "private": true,
+  "homepage":"https://jkang98.github.io/jaze",
   "scripts": {
     "start": "env-cmd -f ./main.env react-scripts start",
     "build": "env-cmd -f ./main.env react-scripts build",

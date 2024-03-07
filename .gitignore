@@ -3,17 +3,6 @@
 ################################################################################
 
 node_modules/
+build/
+main.env
 
-/.vs
-/build
-/build/asset-manifest.json
-/build/index.html
-/build/static
-/build/static/css
-/build/static/js
-/build/static/media
-
-/node_modules
-node_modules
-node_modules/.cache/default-development/2.pack
-node_modules/.cache/default-development/5.pack
