@@ -1,6 +1,6 @@
 import React from 'react';
 import TitleBar from '../../ui/activityTitleBar/ActivityTitleBar';
-import ViewFrame from '../../../components/ui/viewFrame/ViewFrame';
+import ViewFrame from '../../structure/viewFrame/ViewFrame';
 import { ActivityConstructorProps } from 'types/structureTypes';
 
 interface DisplayGridProps extends ActivityConstructorProps {

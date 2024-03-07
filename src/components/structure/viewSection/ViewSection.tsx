@@ -1,5 +1,6 @@
 // File: src/components/ui/viewSection/ViewSection.tsx
 import React from "react";
+import styles from "./ViewSection.module.css"
 
 interface ViewSectionProps {
   children: React.ReactNode;

@@ -1,7 +1,7 @@
 // File: src/components/DualView.tsx
 import React, { useRef, useEffect, useState } from "react";
-import ViewSection from "../../ui/viewSection/ViewSection";
-
+import ViewSection from "../viewSection/ViewSection";
+import styles from "./ViewFrame.module.css"
 interface ViewFrameProps {
   children: React.ReactNode;
   splitPercentage?: number;
