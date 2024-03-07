@@ -52,7 +52,23 @@ const OptionList: React.FC<OptionListProps> = ({ dataType, options,id }) => {
     return (
       <div ref={containerRef} className={styles.optionList} id={id}>
         {visibleOptions.map((option, index) => (
-          <Button key={index}>{option.key}</Button>
+          <Button
+          key={index}
+          onClick={(e) => {
+            const parentRow = e.currentTarget.closest('.TimeSelectionRow, .CriteriaSelectionRow');
+            
+            if (parentRow) {
+              const input = parentRow.querySelector('input');
+              
+              if (input) {
+                input.value = option.value;
+              }
+            }
+          }}
+        >
+          {option.key}
+        </Button>
+        
         ))}
       </div>
     );

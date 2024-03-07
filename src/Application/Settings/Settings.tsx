@@ -40,7 +40,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
     const baseOptions: SettingOption[] = [
       {
         id: "themeSwap",
-        displayLabel: "Change Theme",
+        displayLabel: " Change Theme",
         actionLabel: "Dark Mode",
         action: changeThemeAction,
         icon: faPalette,
@@ -48,34 +48,18 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
       },
       {
         id: "author",
-        displayLabel: "Author",
+        displayLabel: " Author",
         actionLabel: "J Kang",
         action: () => console.log("Author: J Kang"),
         icon: faPenNib,
         disabled: true,
-      },
-      {
-        id: "coffee",
-        displayLabel: "Buy me a coffee",
-        actionLabel: "Pay me",
-        action: () => window.location.href = 'https://paypal.me/jklmnopea?country.x=US&locale.x=en_US',
-        icon: faCoffee,
-        disabled: false,
-      },
-      {
-        id: "clearCache",
-        displayLabel: "Privacy Setting",
-        actionLabel: "Clear Local Cache",
-        action: clearCacheAction,
-        icon: faMemory,
-        disabled: false,
       },
     ];
 
     const authOption: SettingOption = isAuthenticated()
       ? {
           id: "loggedInUser",
-          displayLabel: "Authentication",
+          displayLabel: " Authentication",
           actionLabel: "Log Out",
           action: authAction,
           icon: faUser,
@@ -109,24 +93,33 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
 
   const bugReportData = [
     [
-      <span><FontAwesomeIcon icon={faBug} /> Report Bug</span>,
-      <Button onClick={() => window.open('mailto:admin@jklmnopea.com?subject=Bug Report')}>Report</Button>
+      <span><FontAwesomeIcon icon={faRobot} /> Current Version</span>,
+      <span>Jaze {process.env.REACT_APP_VER}</span>,
+    ], 
+    [
+      <span><FontAwesomeIcon icon={faBug} /> Report A Bug</span>,
+      <Button onClick={() => window.open('mailto:admin@jklmnopea.com?subject=Bug Report')}>Send Email</Button>
     ],
     [
-      <span><FontAwesomeIcon icon={faTools} /> Fix Bug</span>,
-      <Button onClick={() => window.location.href = 'https://github.com/jaykang98/jaze'}>Fix</Button>
+      <span><FontAwesomeIcon icon={faTools} /> Contribute Code</span>,
+      <Button onClick={() => window.location.href = 'https://github.com/jaykang98/jaze'}>Launch GitHub</Button>
+    ],
+       
+    [
+      <span><FontAwesomeIcon icon={faMemory} /> Forget Me (Delete Local Data)</span>,
+      <Button onClick={() => confirmAction("Are you sure you want to clear the local cache?", () => localStorage.clear())}>Delete Data</Button>
     ],
     [
-      <span><FontAwesomeIcon icon={faRobot} />Version</span>,
-      <span>{process.env.REACT_APP_VER}</span>,
+      <span><FontAwesomeIcon icon={faCoffee} /> Support Open Source Software</span>,
+      <Button onClick={() => window.location.href = 'https://paypal.me/jklmnopea?country.x=US&locale.x=en_US'}>Donate</Button>
     ],
   ];
 
 
   const primaryContent = (
     <>
-      <h3>Modify Properties</h3>
-      <p>Many of these settings and properties are incredibly broken. Do not expect support for these use cases.</p>
+      <h3>User Customization</h3>
+      <p>Log out, Log in, Enable dark mode. That's pretty much it. Have ideas to improve the feature? Report a bug below!</p>
     </>
   );
   const primaryContentAnc = (
@@ -134,16 +127,16 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
       <DisplayTable data={settingsData} />
     </>
   );
-  const secondaryContent = (
+  const secondaryContentAnc = (
     <>
       <DisplayTable data={[...bugReportData]} />
     </>
   );
-  const secondaryContentAnc = (
+  const secondaryContent = (
     <>
-      <h3>Thank YOU!</h3>
+      <h3>Technical Links & Settings</h3>
       I appreciate your participation as a beta tester for my application. 
-      Your feedback has been invaluable in improving JaZe over titme. 
+      Your feedback has been invaluable in improving JaZe over time. 
       Thanks to your contributions, I've been able to identify and fix bugs, as well as 
       enhance the overall user experience. 
     </>
