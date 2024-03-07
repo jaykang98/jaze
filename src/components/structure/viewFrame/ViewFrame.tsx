@@ -16,8 +16,8 @@ const ViewFrame: React.FC<ViewFrameProps> = ({
     const adjustSplitPercentage = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        const minChildWidth = 200;
-        const maxChildWidth = 500;
+        const minChildWidth = 100;
+        const maxChildWidth = 1800;
         let newSplit = splitPercentage;
 
         if (containerWidth * (splitPercentage / 100) < minChildWidth) {

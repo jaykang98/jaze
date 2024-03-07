@@ -9,4 +9,5 @@
   padding: 20px;
   overflow: hidden;
   margin-bottom: 10px;
+  justify-content: flex-start;
 }

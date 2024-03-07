@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FormData, ActivityConstructorProps } from "../../types/structureTypes";
 
 import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
-import DisplayPage from "../../components/views/displayGrid/DisplayGrid"; 
+import DisplayGrid from "../../components/views/displayGrid/DisplayGrid"; 
 import styles from "../../types/App.module.css";
 
 const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
@@ -37,11 +37,13 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const renderContent = process.env.REACT_APP_IS_DEBUG ? mainContent : <div style={{ textAlign: "center", marginTop: "20px" }}><p>Under Construction</p></div>;
 
   return (
-    <DisplayPage
+    <DisplayGrid
       title={'Main'}
       userID={userID}
       primaryContent={renderContent}
       secondaryContent={formContent}
+      primaryWidth={100}
+      secondaryWidth={100}
     />
   );
 };
