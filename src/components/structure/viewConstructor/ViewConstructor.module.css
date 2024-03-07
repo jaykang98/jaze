@@ -4,7 +4,7 @@
 .viewShellConstructor {
   color: var(--primary-text-color);
   font-family: var(--font-family);
-  width:70vw;
+  width: 70vw;
   flex-grow: 1;
   overflow-y: auto;
   padding: var(--default-padding);

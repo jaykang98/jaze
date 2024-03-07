@@ -10,18 +10,18 @@
 .header {
   text-align: left;
   vertical-align: middle;
-  position: relative; 
+  position: relative;
 }
 
 .cell:first-child:not(:last-child)::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   bottom: -10px;
   width: 80%;
   height: 2px;
   background-color: var(--input-border-color);
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
 }
 
 @media (max-width: 768px) {

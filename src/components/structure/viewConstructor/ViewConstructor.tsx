@@ -20,7 +20,10 @@ const ViewConstructor: React.FC<ViewConstructorProps> = ({ userID }) => {
               <Routes>
                 <Route path="/main" element={<Main userID={userID} />} />
                 <Route path="/about" element={<About userID={userID} />} />
-                <Route path="/settings" element={<Settings userID={userID} />}/>
+                <Route
+                  path="/settings"
+                  element={<Settings userID={userID} />}
+                />
               </Routes>
             </div>
           </Suspense>

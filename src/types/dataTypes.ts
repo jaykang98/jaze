@@ -21,7 +21,7 @@ export type AlbumData = {
       page: string;
       total: string;
       perPage: string;
-    }
+    };
   };
 };
 
@@ -43,7 +43,7 @@ export type ArtistData = {
       page: string;
       total: string;
       perPage: string;
-    }
+    };
   };
 };
 
@@ -58,14 +58,14 @@ export type TrackData = {
         "#text": string;
         fulltrack: string;
       };
-      listeners?: string; 
+      listeners?: string;
       playcount: string;
       artist: {
         name: string;
         mbid?: string;
         url: string;
       };
-      image?: Array<{ 
+      image?: Array<{
         size: string;
         "#text": string;
       }>;
@@ -76,7 +76,7 @@ export type TrackData = {
       page: string;
       total: string;
       perPage: string;
-    }
+    };
   };
 };
 

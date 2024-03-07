@@ -21,7 +21,7 @@ const DisplayTable: React.FC<TableProps> = ({ data }) => {
             {row.map((cell, cellIndex) => (
               <td
                 key={`cell-${rowIndex}-${cellIndex}`}
-                className={`${styles.cell} ${cellIndex === 0 ? styles.boldText : ''}`}
+                className={`${styles.cell} ${cellIndex === 0 ? styles.boldText : ""}`}
               >
                 {cell}
               </td>

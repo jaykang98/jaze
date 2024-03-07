@@ -4,7 +4,7 @@ import { OptionListProps } from "../../../types/foundationTypes";
 import Button from "../button/Button";
 import styles from "./OptionList.module.css";
 
-const OptionList: React.FC<OptionListProps> = ({ dataType, options,id }) => {
+const OptionList: React.FC<OptionListProps> = ({ dataType, options, id }) => {
   const [visibleOptions, setVisibleOptions] = useState(options);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -53,22 +53,23 @@ const OptionList: React.FC<OptionListProps> = ({ dataType, options,id }) => {
       <div ref={containerRef} className={styles.optionList} id={id}>
         {visibleOptions.map((option, index) => (
           <Button
-          key={index}
-          onClick={(e) => {
-            const parentRow = e.currentTarget.closest('.TimeSelectionRow, .CriteriaSelectionRow');
-            
-            if (parentRow) {
-              const input = parentRow.querySelector('input');
-              
-              if (input) {
-                input.value = option.value;
+            key={index}
+            onClick={(e) => {
+              const parentRow = e.currentTarget.closest(
+                ".TimeSelectionRow, .CriteriaSelectionRow",
+              );
+
+              if (parentRow) {
+                const input = parentRow.querySelector("input");
+
+                if (input) {
+                  input.value = option.value;
+                }
               }
-            }
-          }}
-        >
-          {option.key}
-        </Button>
-        
+            }}
+          >
+            {option.key}
+          </Button>
         ))}
       </div>
     );

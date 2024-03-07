@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FormData, ActivityConstructorProps } from "../../types/structureTypes";
 
 import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
-import DisplayGrid from "../../components/views/displayGrid/DisplayGrid"; 
+import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import styles from "../../types/App.module.css";
 
 const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
@@ -24,19 +24,25 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   );
 
   const formContent = (
-      <GenerateDataForm
-        formData={formData}
-        setFormData={handleSetFormData}
-        selectionType={formData.selectionType}
-        userID={userID}
-      />
+    <GenerateDataForm
+      formData={formData}
+      setFormData={handleSetFormData}
+      selectionType={formData.selectionType}
+      userID={userID}
+    />
   );
 
-  const renderContent = process.env.REACT_APP_IS_DEBUG ? mainContent : <div style={{ textAlign: "center", marginTop: "20px" }}><p>Under Construction</p></div>;
+  const renderContent = process.env.REACT_APP_IS_DEBUG ? (
+    mainContent
+  ) : (
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <p>Under Construction</p>
+    </div>
+  );
 
   return (
     <DisplayGrid
-      title={'Main'}
+      title={"Main"}
       userID={userID}
       primaryContent={renderContent}
       secondaryContent={formContent}

@@ -1,7 +1,7 @@
 // FileName: useFetchUserData.tsx
 
 import { useState, useEffect } from "react";
-import { fetchAndProcessData } from "./fetchAndProcessData"; 
+import { fetchAndProcessData } from "./fetchAndProcessData";
 import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
 
 export const fetchUserData = (username: string) => {
@@ -22,7 +22,8 @@ export const fetchUserData = (username: string) => {
     const storedData = localStorage.getItem(localStorageKey);
 
     if (storedData) {
-      const { userData, albumData, artistData, trackData } = JSON.parse(storedData);
+      const { userData, albumData, artistData, trackData } =
+        JSON.parse(storedData);
       setUserData(userData);
       setAlbumData(albumData);
       setArtistData(artistData);
@@ -32,24 +33,44 @@ export const fetchUserData = (username: string) => {
       const fetchData = async () => {
         setLoading(true);
         try {
-          const userInfoPromise = fetchAndProcessData("user.getinfo", { user: username });
-          const userTopAlbumsPromise = fetchAndProcessData("user.getTopAlbums", { user: username, limit: 5 });
-          const userTopArtistsPromise = fetchAndProcessData("user.getTopArtists", { user: username, limit: 5 });
-          const userTopTracksPromise = fetchAndProcessData("user.getTopTracks", { user: username, limit: 5 });
+          const userInfoPromise = fetchAndProcessData("user.getinfo", {
+            user: username,
+          });
+          const userTopAlbumsPromise = fetchAndProcessData(
+            "user.getTopAlbums",
+            { user: username, limit: 5 },
+          );
+          const userTopArtistsPromise = fetchAndProcessData(
+            "user.getTopArtists",
+            { user: username, limit: 5 },
+          );
+          const userTopTracksPromise = fetchAndProcessData(
+            "user.getTopTracks",
+            { user: username, limit: 5 },
+          );
 
-          const [userInfo, userTopAlbums, userTopArtists, userTopTracks] = await Promise.all([
-            userInfoPromise,
-            userTopAlbumsPromise,
-            userTopArtistsPromise,
-            userTopTracksPromise,
-          ]);
+          const [userInfo, userTopAlbums, userTopArtists, userTopTracks] =
+            await Promise.all([
+              userInfoPromise,
+              userTopAlbumsPromise,
+              userTopArtistsPromise,
+              userTopTracksPromise,
+            ]);
 
           setUserData(userInfo as UserData);
           setAlbumData(userTopAlbums as AlbumData);
           setArtistData(userTopArtists as ArtistData);
           setTrackData(userTopTracks as TrackData);
 
-          localStorage.setItem(localStorageKey, JSON.stringify({ userData: userInfo, albumData: userTopAlbums, artistData: userTopArtists, trackData: userTopTracks }));
+          localStorage.setItem(
+            localStorageKey,
+            JSON.stringify({
+              userData: userInfo,
+              albumData: userTopAlbums,
+              artistData: userTopArtists,
+              trackData: userTopTracks,
+            }),
+          );
         } catch (error) {
           console.error("Failed to fetch user data", error);
           setError("Failed to fetch user data");

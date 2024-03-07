@@ -4,14 +4,17 @@ import Input from "../../../components/foundations/input/Input";
 import { SelectionType } from "../../../types/dataTypes";
 import { OptionListProps } from "../../../types/foundationTypes";
 
-import styles from "./TimeSelectionRow.module.css"; 
+import styles from "./TimeSelectionRow.module.css";
 
 interface TimeSelectionRowProps {
   timestamp: string;
-  label:string;
+  label: string;
 }
 
-const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({ timestamp,label }) => {
+const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({
+  timestamp,
+  label,
+}) => {
   const currentYear = new Date().getFullYear();
   const yearsOptions = Array.from({ length: 4 }, (_, i) => ({
     key: `${currentYear - i}`,
