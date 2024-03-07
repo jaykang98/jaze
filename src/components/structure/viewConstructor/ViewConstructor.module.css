@@ -1,0 +1,15 @@
+.viewConstructor {
+  display: flex;
+}
+.viewShellConstructor {
+  color: var(--primary-text-color);
+  font-family: var(--font-family);
+  width:70vw;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: var(--default-padding);
+  background-color: var(--primary-bg-color);
+  border-radius: var(--border-radius);
+  min-height: 100vw;
+  margin-top: var(--default-margin);
+}

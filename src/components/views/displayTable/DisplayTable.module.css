@@ -1,0 +1,52 @@
+.table {
+  border-collapse: separate;
+  width: calc(100% - 20px);
+  margin: 10px;
+  background-color: var(--sidebar-bg-color);
+  border-radius: 10px;
+}
+
+.cell,
+.header {
+  text-align: left;
+  vertical-align: middle;
+  position: relative; 
+}
+
+.cell:first-child:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 80%;
+  height: 2px;
+  background-color: var(--input-border-color);
+  transform: translateX(-50%); 
+}
+
+@media (max-width: 768px) {
+  .table {
+    width: calc(100% - 10px);
+    margin: 5px;
+  }
+
+  .cell,
+  .header {
+    padding: 10px;
+  }
+}
+
+.cell {
+  color: black;
+  text-align: left;
+  vertical-align: middle;
+  justify-content: left;
+  padding: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.boldText {
+  font-weight: bold;
+}

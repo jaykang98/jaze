@@ -1,12 +1,12 @@
 // src/components/Main.tsx
 import React, { useState } from "react";
-import { FormData, ActivityFrameProps } from "../../types/structureTypes";
+import { FormData, ActivityConstructorProps } from "../../types/structureTypes";
 
 import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
-import DisplayPage from "../../components/structure/displayPage/DisplayPage"; 
+import DisplayPage from "../../components/views/displayGrid/DisplayGrid"; 
 import styles from "../../types/App.module.css";
 
-const Main: React.FC<ActivityFrameProps> = ({ userID }) => {
+const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const [formData, setFormData] = useState<FormData>({
     selectionType: "track",
   });

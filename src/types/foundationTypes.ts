@@ -19,6 +19,7 @@ export interface Option {
 export interface OptionListProps {
   dataType: SelectionType;
   options: Option[];
+  id?:string;
 }
 export interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;

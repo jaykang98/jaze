@@ -2,7 +2,14 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { SelectionType } from "./dataTypes";
 
-export interface ActivityFrameProps {
+export interface ViewConstructorProps {
+  error?: Error | null;
+  onViewChange?: any;
+  activityName?: string;
+  userID: string | null;
+}
+
+export interface ActivityConstructorProps {
   error?: Error | null;
   onViewChange?: any;
   activityName?: string;

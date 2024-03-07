@@ -1,6 +1,5 @@
 // File: src/components/DualView.tsx
 import React, { useRef, useEffect, useState } from "react";
-import styles from "src/components/structure/viewFrame/ViewFrame.module.css";
 import ViewSection from "../../structure/viewSection/ViewSection";
 
 interface ViewFrameProps {
@@ -43,7 +42,7 @@ const ViewFrame: React.FC<ViewFrameProps> = ({
   }, [splitPercentage]);
 
   return (
-    <div ref={containerRef} className={styles.viewFrame}>
+    <div ref={containerRef}>
       <ViewSection style={{ width: `${adjustedSplit}%` }}>
         {validChildren[0]}
       </ViewSection>

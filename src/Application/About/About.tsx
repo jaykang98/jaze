@@ -2,13 +2,13 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeAmericas, faCalendarAlt, faUserCircle, faMusic } from "@fortawesome/free-solid-svg-icons";
-import { ActivityFrameProps } from "../../types/structureTypes";
+import { ActivityConstructorProps } from "../../types/structureTypes";
 import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
 
-import DisplayTable from "../../components/structure/displayTable/DisplayTable";
-import DisplayPage from "../../components/structure/displayPage/DisplayPage";
+import DisplayTable from "../../components/views/displayTable/DisplayTable";
+import DisplayPage from "../../components/views/displayGrid/DisplayGrid";
 
-const About: React.FC<ActivityFrameProps> = ({ userID }) => {
+const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const { userData, artistData } = fetchUserData(userID);
 
   const renderUserInfo = () => {

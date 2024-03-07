@@ -4,7 +4,7 @@ import { OptionListProps } from "../../../types/foundationTypes";
 import Button from "../button/Button";
 import styles from "./OptionList.module.css";
 
-const OptionList: React.FC<OptionListProps> = ({ dataType, options }) => {
+const OptionList: React.FC<OptionListProps> = ({ dataType, options,id }) => {
   const [visibleOptions, setVisibleOptions] = useState(options);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -50,7 +50,7 @@ const OptionList: React.FC<OptionListProps> = ({ dataType, options }) => {
 
   if (options.length) {
     return (
-      <div ref={containerRef} className={styles.optionList}>
+      <div ref={containerRef} className={styles.optionList} id={id}>
         {visibleOptions.map((option, index) => (
           <Button key={index}>{option.key}</Button>
         ))}

@@ -14,7 +14,7 @@ const ActivityTitleBar: React.FC<ActivityTitleBarProps> = ({
 }) => {
   return (
     <div className={styles.titleBar}>
-      <div className={styles.title}>
+      <div>
         <h2>{title}</h2>
       </div>
       <div className={styles.loginCardContainer}>

@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import styles from "src/types/App.module.css";
 import { BrowserRouter as Router } from "react-router-dom";
-import ActivityFrame from "./activityFrame/ActivityFrame";
+import ViewConstructor from "./viewConstructor/ViewConstructor";
 import ErrorBoundary from "./ErrorBoundary";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
 import Header from "../foundations/header/Header";
@@ -21,9 +21,9 @@ function App() {
   return (
     <ErrorBoundary>
       <Header />
-      <div className={styles.appContainer}>
+      <div className={styles.app}>
         <Router>
-          <ActivityFrame userID={getUserID()} onViewChange={() => {}} />
+          <ViewConstructor userID={getUserID()} onViewChange={() => {}} />
         </Router>
       </div>
       <Footer />

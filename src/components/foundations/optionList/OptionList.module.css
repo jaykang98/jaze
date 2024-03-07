@@ -1,6 +1,5 @@
 /* OptionList.module.css */
 .optionList {
-  display: flex;
   flex-wrap: nowrap;
   gap: 20px;
   overflow-x: auto;

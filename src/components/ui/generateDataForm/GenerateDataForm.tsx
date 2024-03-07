@@ -60,23 +60,25 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   };
 
   return (
-    <div>
-      <select value={selectionType} onChange={handleTypeChange}>
-        {['artist', 'album', 'track'].map((type) => (
-          <option key={type} value={type}>
-            {type.charAt(0).toUpperCase() + type.slice(1)}
-          </option>
-        ))}
-      </select>
-      <Input
-        id="selectionInput"
-        type="text"
-        name={selectionType}
-        value={formData[selectionType] || ''}
-        onChange={handleInputChange}
-        placeholder={`Enter ${selectionType}`}
-      />
-      <OptionList options={options} dataType={selectionType} />
+    <div className="misc">
+      <div className="optionContainer">
+        <select value={selectionType} onChange={handleTypeChange} id="selectionInput">
+          {['artist', 'album', 'track'].map((type) => (
+            <option key={type} value={type}>
+              {type.charAt(0).toUpperCase() + type.slice(1)}
+            </option>
+          ))}
+        </select>
+        <Input
+          id="selectionInput"
+          type="text"
+          name={selectionType}
+          value={formData[selectionType] || ''}
+          onChange={handleInputChange}
+          placeholder={`Enter ${selectionType}`}
+        />
+        <OptionList options={options} dataType={selectionType} id="selectionInput"/>
+      </div>
       <TimeSelectionRow timestamp={formData.startTimestamp} />
       <TimeSelectionRow timestamp={formData.endTimestamp} />
       <Button type="submit">Submit</Button>

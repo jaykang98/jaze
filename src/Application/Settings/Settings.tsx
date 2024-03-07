@@ -3,9 +3,9 @@ import React, { useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faKey, faPalette, faPenNib, faUser, faBug, faTools, faCoffee, faRobot, faMemory } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
-import { ActivityFrameProps } from "../../types/structureTypes";
-import DisplayPage from "../../components/structure/displayPage/DisplayPage";
-import DisplayTable from "../../components/structure/displayTable/DisplayTable";
+import { ActivityConstructorProps } from "../../types/structureTypes";
+import DisplayPage from "../../components/views/displayGrid/DisplayGrid";
+import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 
 type SettingOption = {
@@ -17,7 +17,7 @@ type SettingOption = {
   disabled: boolean;
 };
 
-const Settings: React.FC<ActivityFrameProps> = ({ userID }) => {
+const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const { isAuthenticated, startAuth, logOut } = useAuthenticator();
 
   const confirmAction = (message: string, action: () => void) => {
