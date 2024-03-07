@@ -4,13 +4,14 @@ import Input from "../../../components/foundations/input/Input";
 import { SelectionType } from "../../../types/dataTypes";
 import { OptionListProps } from "../../../types/foundationTypes";
 
-import styles from "./TimeSelectionRow.module.css"; // Correctly import the CSS module
+import styles from "./TimeSelectionRow.module.css"; 
 
 interface TimeSelectionRowProps {
   timestamp: string;
+  label:string;
 }
 
-const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({ timestamp }) => {
+const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({ timestamp,label }) => {
   const currentYear = new Date().getFullYear();
   const yearsOptions = Array.from({ length: 4 }, (_, i) => ({
     key: `${currentYear - i}`,
@@ -25,6 +26,7 @@ const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({ timestamp }) => {
 
   return (
     <div className={styles.TimeSelectionRow}>
+      <span>{label}</span>
       <Input
         id="datetime-local-input"
         type="datetime-local"

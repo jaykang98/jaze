@@ -1,8 +1,9 @@
-/* TimeSelectionRow.module.css */
-.TimeSelectionRow {
+/* CriteriaSelectionRow.module.css */
+.CriteriaSelectionRow {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+  
 }

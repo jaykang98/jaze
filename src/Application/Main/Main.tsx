@@ -24,14 +24,12 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   );
 
   const formContent = (
-    <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
       <GenerateDataForm
         formData={formData}
         setFormData={handleSetFormData}
         selectionType={formData.selectionType}
         userID={userID}
       />
-    </form>
   );
 
   const renderContent = process.env.REACT_APP_IS_DEBUG ? mainContent : <div style={{ textAlign: "center", marginTop: "20px" }}><p>Under Construction</p></div>;

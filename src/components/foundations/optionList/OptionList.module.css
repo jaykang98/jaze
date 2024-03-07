@@ -5,4 +5,9 @@
   overflow-x: auto;
   align-items: center;
   min-width:300px;
+  flex-direction: row;
+}
+.optionList Button {
+  margin-left:10px;
+
 }
