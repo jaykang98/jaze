@@ -1,0 +1,12 @@
+.viewSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+    flex-wrap: wrap;
+    padding:5px;
+  }
+  
+  .viewSection:last-child {
+    padding-right: 0;
+  }
