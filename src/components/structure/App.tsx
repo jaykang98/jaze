@@ -1,6 +1,7 @@
 // FileName: src/App.tsx
 import React, { useEffect } from "react";
-import styles from "src/globals/globalStyles.css";
+import "src/globals/globalStyles.css";
+import "src/globals/textStyles.css"; // Import textStyles.css
 import { BrowserRouter as Router } from "react-router-dom";
 import ViewConstructor from "./viewConstructor/ViewConstructor";
 import ErrorBoundary from "./ErrorBoundary";
@@ -18,10 +19,11 @@ function App() {
       fetchSession(token);
     }
   }, [fetchSession, getUserID]);
+  
   return (
     <ErrorBoundary>
       <Header />
-      <div className={styles.app}>
+      <div className="app">
         <Router>
           <ViewConstructor userID={getUserID()} onViewChange={() => {}} />
         </Router>

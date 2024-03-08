@@ -4,7 +4,7 @@ import { FormData, ActivityConstructorProps } from "../../types/structureTypes";
 
 import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
-import styles from "../../types/App.module.css";
+import styles from "src/globals/globalStyles.css";
 
 const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const [formData, setFormData] = useState<FormData>({
