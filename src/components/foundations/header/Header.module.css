@@ -34,31 +34,40 @@
   border: 2px solid transparent;
   max-height: 20vw;
   justify-content: space-between;
-}
 
-.header:hover {
-  background: var(--header-hover-bg-color, var(--input-bg-color));
-  border-color: var(--input-border-color);
-}
+  & h1 {
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    font: 500 6vw/1.5 var(--font-family), sans-serif;
+    background: linear-gradient(
+      45deg,
+      var(--secondary-accent-color-1),
+      var(--secondary-accent-color-2),
+      var(--primary-text-color),
+      var(--sidebar-bg-color)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: white;
+    animation: gradientLoop 10s ease infinite;
+  }
 
-.header:hover h1 {
-  background: linear-gradient(
-    45deg,
-    var(--secondary-accent-color-1),
-    var(--secondary-accent-color-2),
-    var(--primary-text-color),
-    var(--sidebar-bg-color)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradientLoop 10s ease infinite;
-}
+  &:hover {
+    background: var(--header-hover-bg-color, var(--input-bg-color));
+    border-color: var(--input-border-color);
+  }
 
-h1 {
-  margin-top: 3vw;
-  margin-bottom: 3vw;
-  font:
-    500 6vw/1.5 var(--font-family),
-    sans-serif;
+  &:hover h1 {
+    background: linear-gradient(
+      45deg,
+      var(--secondary-accent-color-1),
+      var(--secondary-accent-color-2),
+      var(--primary-text-color),
+      var(--sidebar-bg-color)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientLoop 10s ease infinite;
+  }
 }

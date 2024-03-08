@@ -11,6 +11,11 @@
   text-align: left;
   vertical-align: middle;
   position: relative;
+  padding: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color:white;
 }
 
 .cell:first-child:not(:last-child)::after {
@@ -29,22 +34,6 @@
     width: calc(100% - 10px);
     margin: 5px;
   }
-
-  .cell,
-  .header {
-    padding: 10px;
-  }
-}
-
-.cell {
-  color: black;
-  text-align: left;
-  vertical-align: middle;
-  justify-content: left;
-  padding: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .boldText {

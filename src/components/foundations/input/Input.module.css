@@ -4,9 +4,11 @@
   align-items: flex-start;
   margin-right: var(--default-margin);
 }
+
 input {
   vertical-align: middle;
 }
+
 .label {
   display: flex;
   align-items: center;

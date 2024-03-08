@@ -1,19 +1,19 @@
 :root {
-  --primary-bg-color: #172d13;
-  --primary-text-color: #ffd1ad;
-  --header-bg-color: #825d8b;
-  --header-text-color: #fff;
-  --footer-bg-color: #cadcfc;
-  --footer-text-color: #1a2238;
-  --sidebar-bg-color: #a7beae;
-  --secondary-accent-color-1: #f96167;
-  --secondary-accent-color-2: #fff2d7;
-  --text-highlight-color: #f9e795;
-  --error-color: #e57373;
-  --warning-color: #ffb74d;
-  --success-color: #81c784;
-  --input-bg-color: #2c2c2c;
-  --input-border-color: #555;
+  --primary-bg-color: #264653;
+  --primary-text-color: #e9c46a;
+  --header-bg-color: #2a9d8f;
+  --header-text-color: #ffffff;
+  --footer-bg-color: #f4a261;
+  --footer-text-color: #264653;
+  --sidebar-bg-color: #e76f51;
+  --secondary-accent-color-1: #8ecae6;
+  --secondary-accent-color-2: #219ebc;
+  --text-highlight-color: #ffcb69;
+  --error-color: #e63946;
+  --warning-color: #f77f00;
+  --success-color: #2a9d8f;
+  --input-bg-color: #f0efeb;
+  --input-border-color: #ced4da;
   --default-padding: 20px;
   --default-margin: 10px;
   --padding-small: 8px;
@@ -24,6 +24,7 @@
   --hover-transition: all 0.3s ease;
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 @media (max-width: 768px) {
   :root {

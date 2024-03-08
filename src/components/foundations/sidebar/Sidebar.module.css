@@ -10,7 +10,7 @@
   text-align: center;
   transition: var(--hover-transition);
   margin-top: var(--default-margin);
-  width: 30vw;
+  width: var(--sidebar-width);
   max-height: 100%;
   margin-right: var(--default-margin);
 }
@@ -21,13 +21,13 @@
   width: 90%;
   padding: 10px;
   color: white;
+  background-color: transparent;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
 .sidebarLinkContainer:hover {
   background-color: black;
-  color: white;
   opacity: 0.5;
-  align-content: center;
 }
 
 @media screen and (max-width: 768px) {

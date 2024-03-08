@@ -35,11 +35,11 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
               <img src={userImage} alt="User" className={styles.userImage} />
             )}
             <div className={styles.userInfo}>
+            <span>{userData?.user?.realname}</span>
+              <br />
               <span className={styles.userHeader}>{userID}</span>
               <br />
-              <span>{userData?.user?.realname}</span>
-              <br />
-              <span className={styles.SubText}>Logged In!</span>
+              <span className={styles.subText}>Logged In!</span>
             </div>
           </div>
           {isHovered && (
