@@ -11,7 +11,7 @@ import { ActivityConstructorProps } from "../../types/structureTypes";
 import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
 
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
-import DisplayPage from "../../components/views/displayGrid/DisplayGrid";
+import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 
 const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const { userData, artistData } = fetchUserData(userID);
@@ -88,7 +88,7 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
   );
 
   return (
-    <DisplayPage
+    <DisplayGrid
       title="About"
       userID={userID}
       primaryContent={aboutDescription}

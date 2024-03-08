@@ -1,7 +1,7 @@
 /* Button base styles */
 .button {
   background-color: var(--secondary-accent-color-1);
-  color: var(--header-text-color);
+  color: rgb(51, 51, 51);
   border: 2px solid transparent;
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -31,7 +31,7 @@
   );
   background-size: 200% 200%;
   animation: gradientLoop 2s ease infinite;
-  color: var(--button-hover-text-color, var(--header-text-color)); 
+  color: white; 
   border-color: var(--button-hover-border-color, var(--input-border-color)); 
   transition: none;
 }

@@ -38,7 +38,7 @@
   & h1 {
     margin-top: 3vw;
     margin-bottom: 3vw;
-    font: 500 6vw/1.5 var(--font-family), sans-serif;
+    font: 900 6vw/1.5 var(--font-family), sans-serif;
     background: linear-gradient(
       45deg,
       var(--secondary-accent-color-1),
