@@ -57,7 +57,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
 
     const authAction = isAuthenticated()
       ? () => confirmAction("Are you sure you want to log out?", logOut)
-      : () => confirmAction("Are you sure you want to log in?", startAuth);
+      : () => confirmAction("Now Launching an External Site (Last.FM)", startAuth);
 
     const baseOptions: SettingOption[] = [
       {

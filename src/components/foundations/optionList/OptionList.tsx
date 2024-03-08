@@ -56,9 +56,8 @@ const OptionList: React.FC<OptionListProps> = ({ dataType, options, id }) => {
             key={index}
             onClick={(e) => {
               const parentRow = e.currentTarget.closest(
-                ".TimeSelectionRow, .CriteriaSelectionRow",
+                "div.timeSelectionRow, div.criteriaSelectionRow",
               );
-
               if (parentRow) {
                 const input = parentRow.querySelector("input");
 

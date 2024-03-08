@@ -1,6 +1,6 @@
 // FileName: src/App.tsx
 import React, { useEffect } from "react";
-import styles from "src/types/App.module.css";
+import styles from "src/globals/globalStyles.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import ViewConstructor from "./viewConstructor/ViewConstructor";
 import ErrorBoundary from "./ErrorBoundary";

@@ -28,7 +28,7 @@ const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({
   };
 
   return (
-    <div className={styles.TimeSelectionRow}>
+    <div className={styles.timeSelectionRow}>
       <span>{label}</span>
       <Input
         id="datetime-local-input"
