@@ -19,7 +19,7 @@ function App() {
       fetchSession(token);
     }
   }, [fetchSession, getUserID]);
-  
+
   return (
     <ErrorBoundary>
       <Header />

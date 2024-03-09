@@ -1,16 +1,15 @@
 .dataNode {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .dataNode h2 {
-    text-align: left; 
-    align-self: left;
-  }
-  
-  h2 {
-    text-align: left; 
-  }
-  
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dataNode h2 {
+  text-align: left;
+  align-self: left;
+}
+
+h2 {
+  text-align: left;
+}

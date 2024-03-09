@@ -10,7 +10,8 @@
   h1 {
     border-radius: var(--border-radius);
     letter-spacing: 2px;
-    font: 500 6vw/1.5 var(--font-family), sans-serif;
+    font:
+      500 6vw/1.5 var(--font-family),
+      sans-serif;
   }
-  
 }

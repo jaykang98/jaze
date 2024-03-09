@@ -1,5 +1,10 @@
 import React from "react";
-import { faHome, faUser, faCog, faAward } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHome,
+  faUser,
+  faCog,
+  faAward,
+} from "@fortawesome/free-solid-svg-icons";
 import styles from "./Sidebar.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,7 +39,6 @@ const Sidebar = () => {
       label: "Settings",
       icon: faCog,
     },
-
   ];
 
   return (
