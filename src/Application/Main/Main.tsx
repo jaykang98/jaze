@@ -35,9 +35,7 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const renderContent = process.env.REACT_APP_IS_DEBUG ? (
     mainContent
   ) : (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
-      <p>Under Construction</p>
-    </div>
+    mainContent
   );
 
   return (
