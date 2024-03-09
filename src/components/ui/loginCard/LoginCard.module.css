@@ -1,3 +1,4 @@
+/* FileName: src/components/LoginCard.module.css */
 .LoginCardContainer {
   position: relative;
   display: flex;
@@ -8,21 +9,24 @@
 .LoginCard {
   display: flex;
   align-items: center;
+  justify-content: center; 
   background: linear-gradient(
     to right,
     var(--secondary-accent-color-1),
     var(--secondary-accent-color-2)
   );
-  text-align: right;
+  text-align: center;
   padding: 20px;
   border-radius: 15px;
   font-size: 16px;
   color: black;
   border: 2px solid var(--input-border-color);
   box-shadow: var(--box-shadow);
-  max-width: 150px;
+  min-width: 150px;
+  min-height:75px;
   align-self: start;
   z-index: 0;
+  position: relative;
 }
 
 .userHeader {
@@ -42,7 +46,7 @@
 
 .userInfo {
   flex-grow: 1;
-  text-align: right;
+  text-align: center; 
   user-select: none;
   -webkit-user-select: none;
   color: white;
@@ -55,57 +59,49 @@
 }
 
 .LoginCardOverlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--secondary-accent-color-1);
+  background-color: rgba(var(--secondary-accent-color-1-rgb), 0.9); /* Use RGBA for better visibility */
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1;
   border-radius: 15px;
+  color: white;
+  min-width: 150px;
+  min-height:75px;
+  overflow-x:hidden;
+  overflow-wrap: break-word;
 }
 
 .LoginCardContainer:hover .LoginCardOverlay {
   opacity: 1;
-  border: 2px solid lightgrey;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
-.logoutButton {
-  position: absolute;
-  background-color: transparent;
-  color: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  z-index: 2;
-  transition: opacity 1.2s ease;
-  font-size: x-large;
-  pointer-events: none;
-}
-
-.LoginCardContainer:hover .logoutButton {
-  opacity: 1;
-}
-
-.LoginCard span {
-  color: black;
-  z-index: 2;
-  position: relative;
+.overlayContent {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {
   .LoginCard {
     padding: 15px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; 
   }
 
   .userInfo {
-    text-align: left;
+    text-align: center;
     margin-top: 10px;
   }
 }

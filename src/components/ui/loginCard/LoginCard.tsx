@@ -1,7 +1,8 @@
+// FileName: src/components/LoginCard.tsx
 import React, { useState } from "react";
 import styles from "./LoginCard.module.css";
-import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData";
-import { useAuthenticator } from "../../../hooks/security/useAuthenticator";
+import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData"; // Ensure this import path is correct
+import { useAuthenticator } from "../../../hooks/security/useAuthenticator"; // Ensure this import path is correct
 
 interface LoginCardProps {
   userID?: string;
@@ -9,17 +10,37 @@ interface LoginCardProps {
 
 const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
   const { userData, loading } = fetchUserData(userID);
-  const { logOut } = useAuthenticator();
+  const { logOut, startAuth, isAuthenticated } = useAuthenticator();
   const userImage = userData?.user?.image?.[0]["#text"];
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleClick = () => {
-    logOut();
+  const handleAuthAction = () => {
+    isAuthenticated() ? logOut() : startAuth();
   };
 
-  if (loading) {
-    return <div className={styles.userInfo}>Loading...</div>;
-  }
+  const handleCreateAccount = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation(); 
+    window.location.href = "https://www.last.fm/join";
+  };
+
+  const overlayContent = () => {
+    if (loading) {
+      return "Loading...";
+    }
+
+    if (userID) {
+      return isHovered ? (
+        <><div onClick={handleAuthAction} className={styles.overlayContent}>Log Out</div><span className={styles.subText}>and send your SSN</span></>
+      ) : null; 
+    } else {
+      return (
+        <>
+          <div onClick={handleAuthAction} className={styles.overlayContent}>Log In</div>
+          <div onClick={handleCreateAccount} className={styles.overlayContent}>Create an Account</div>
+        </>
+      );
+    }
+  };
 
   return (
     <div
@@ -27,32 +48,30 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={styles.LoginCardOverlay}></div>
-      {userID ? (
-        <>
-          <div className={styles.LoginCard}>
-            {userImage && (
-              <img src={userImage} alt="User" className={styles.userImage} />
-            )}
+      <div className={styles.LoginCard}>
+        {userID && !isHovered && (
+          <>
+            <img src={userImage} alt="User" className={styles.userImage} />
             <div className={styles.userInfo}>
               <span>{userData?.user?.realname}</span>
               <br />
               <span className={styles.userHeader}>{userID}</span>
               <br />
-              <span className={styles.subText}>Logged In!</span>
+              <span className={styles.subText}>Logged In</span>
             </div>
-          </div>
-          {isHovered && (
-            <div className={styles.logoutButton} onClick={handleClick}>
-              Log Out
+          </>
+        )}
+        {!userID && !isHovered && (
+          <>
+            <div className={styles.userInfo}>
+              <span>More fun Logged In!</span>
             </div>
-          )}
-        </>
-      ) : (
-        <div className={styles.LoginCard}>
-          <span>Nobody Logged in!</span>
+          </>
+        )}
+        <div className={styles.LoginCardOverlay}>
+          {overlayContent()}
         </div>
-      )}
+      </div>
     </div>
   );
 };
