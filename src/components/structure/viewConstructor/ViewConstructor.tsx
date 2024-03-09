@@ -10,7 +10,6 @@ const About = lazy(() => import("../../../application/About/About"));
 const Settings = lazy(() => import("../../../application/Settings/Settings"));
 const Tops = lazy(() => import("../../../application/Tops/Tops"));
 
-
 const ViewConstructor: React.FC<ViewConstructorProps> = ({ userID }) => {
   return (
     <>
@@ -22,9 +21,11 @@ const ViewConstructor: React.FC<ViewConstructorProps> = ({ userID }) => {
               <Routes>
                 <Route path="/main" element={<Main userID={userID} />} />
                 <Route path="/about" element={<About userID={userID} />} />
-                <Route path="/settings" element={<Settings userID={userID} />} />
+                <Route
+                  path="/settings"
+                  element={<Settings userID={userID} />}
+                />
                 <Route path="/tops" element={<Tops userID={userID} />} />
-
               </Routes>
             </div>
           </Suspense>

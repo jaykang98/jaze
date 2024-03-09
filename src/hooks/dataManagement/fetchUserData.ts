@@ -38,15 +38,15 @@ export const fetchUserData = (username: string) => {
           });
           const userTopAlbumsPromise = fetchAndProcessData(
             "user.getTopAlbums",
-            { user: username, limit: 5 },
+            { user: username, limit: 10 },
           );
           const userTopArtistsPromise = fetchAndProcessData(
             "user.getTopArtists",
-            { user: username, limit: 5 },
+            { user: username, limit: 10 },
           );
           const userTopTracksPromise = fetchAndProcessData(
             "user.getTopTracks",
-            { user: username, limit: 5 },
+            { user: username, limit: 10 },
           );
 
           const [userInfo, userTopAlbums, userTopArtists, userTopTracks] =
