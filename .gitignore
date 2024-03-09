@@ -6,3 +6,8 @@ node_modules/
 build/
 main.env
 
+node_modules/.cache/default-development/2.pack
+node_modules/.cache/default-development/5.pack
+node_modules/.cache/default-development/2.pack
+node_modules/.cache/default-development/5.pack
+.DS_Store
