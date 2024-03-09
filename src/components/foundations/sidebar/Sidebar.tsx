@@ -25,15 +25,16 @@ const Sidebar = () => {
       icon: faUser,
     },
     {
-      path: "/settings",
-      label: "Settings",
-      icon: faCog,
-    },
-    {
       path: "/tops",
       label: "Tops",
       icon: faAward,
     },
+    {
+      path: "/settings",
+      label: "Settings",
+      icon: faCog,
+    },
+
   ];
 
   return (
