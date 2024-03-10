@@ -76,6 +76,7 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
       This application generates visual representations of Last.FM data that you
       have scrobbled over time. Here are some basic facts from your Last.FM
       profile!
+      {userInfoElement}
     </div>
   );
   const secondaryContent = (
@@ -94,9 +95,6 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
       viewFrames={[
         {
           content:aboutDescription
-        },
-        {
-          content:userInfoElement
         },
         {
           content:secondaryContent

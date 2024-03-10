@@ -12,17 +12,6 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   });
 
   const handleSetFormData = (newFormData: FormData) => setFormData(newFormData);
-
-  const mainContent = (
-    <div>
-      <h3>JaZe: Does Things</h3>
-      <p className={styles.description}>
-        This application helps you manage your music data effectively. Explore
-        various functionalities provided to enhance your experience.
-      </p>
-    </div>
-  );
-
   const formContent = (
     <MainForm
       formData={formData}
@@ -31,12 +20,19 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
       userID={userID}
     />
   );
-
-  const renderContent = process.env.REACT_APP_IS_DEBUG ? (
-    mainContent
-  ) : (
-    mainContent
+  const mainContent = (
+    <div>
+      <h3>JaZe: Does Things</h3>
+      <p className={styles.description}>
+        This application helps you manage your music data effectively. Explore
+        various functionalities provided to enhance your experience.
+        {formContent}
+      </p>
+      
+    </div>
   );
+
+
 
   return (
     <DisplayGrid
@@ -44,11 +40,8 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
       userID={userID}
       viewFrames={[
         {
-          content:renderContent
-        },
-        {
-          content:formContent
-
+          content:mainContent,
+          viewWidth:100,
         },
       ]}
     />

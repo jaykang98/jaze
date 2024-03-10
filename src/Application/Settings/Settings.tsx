@@ -190,16 +190,17 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
         Log out, Log in, Enable dark mode. That's pretty much it. Have ideas to
         improve the feature? Report a bug below!
       </p>
+      <DisplayTable data={settingsData} />
     </>
   );
   const primaryContentAnc = (
     <>
-      <DisplayTable data={settingsData} />
+      
     </>
   );
   const secondaryContentAnc = (
     <>
-      <DisplayTable data={[...bugReportData]} />
+      
     </>
   );
   const secondaryContent = (
@@ -208,6 +209,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
       beta tester for my application. Your feedback has been invaluable in
       improving JaZe over time. Thanks to your contributions, I've been able to
       identify and fix bugs, as well as enhance the overall user experience.
+      <DisplayTable data={[...bugReportData]} />
     </>
   );
 
@@ -220,13 +222,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
             content:primaryContent
         },
         {
-          content:primaryContentAnc
-        },
-        {
           content:secondaryContent
-        },
-        {
-          content:secondaryContentAnc
         },
       ]}
     />
