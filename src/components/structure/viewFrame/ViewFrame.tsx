@@ -5,7 +5,7 @@ import { ViewFrameProps } from "types/structureTypes";
 
 const ViewFrame: React.FC<ViewFrameProps> = ({
   children,
-  splitPercentage = 50,
+  splitPercentage = 100,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [adjustedSplit, setAdjustedSplit] = useState(splitPercentage);
@@ -15,7 +15,7 @@ const ViewFrame: React.FC<ViewFrameProps> = ({
     const adjustSplitPercentage = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        const minChildWidth = 100;
+        const minChildWidth = 0;
         const maxChildWidth = 1800;
         let newSplit = splitPercentage;
 

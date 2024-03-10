@@ -15,9 +15,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
 import { ActivityConstructorProps } from "../../types/structureTypes";
-import DisplayPage from "../../components/views/displayGrid/DisplayGrid";
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
+import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 
 type SettingOption = {
   id: string;
@@ -49,16 +49,9 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
       document.body.style.backgroundColor = "Black";
     };
 
-    const clearCacheAction = () => {
-      confirmAction("Are you sure you want to clear the local cache?", () =>
-        localStorage.clear(),
-      );
-    };
-
     const authAction = isAuthenticated()
       ? () => confirmAction("Are you sure you want to log out?", logOut)
-      : () =>
-          confirmAction("Now Launching an External Site (Last.FM)", startAuth);
+      : () => confirmAction("Now Launching an External Site (Last.FM)", startAuth);
 
     const baseOptions: SettingOption[] = [
       {
@@ -127,7 +120,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
       <span>
         <FontAwesomeIcon icon={faRobot} /> Current Version
       </span>,
-      <span>Jaze {process.env.REACT_APP_VER}</span>,
+      <span>JaZe {process.env.REACT_APP_VER}</span>,
     ],
     [
       <span>
@@ -193,16 +186,6 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
       <DisplayTable data={settingsData} />
     </>
   );
-  const primaryContentAnc = (
-    <>
-      
-    </>
-  );
-  const secondaryContentAnc = (
-    <>
-      
-    </>
-  );
   const secondaryContent = (
     <>
       <h3>Technical Links & Settings</h3>I appreciate your participation as a
@@ -214,15 +197,17 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
   );
 
   return (
-    <DisplayPage
+    <DisplayGrid
       title="Settings"
       userID={userID}
       viewFrames={[
         {
-            content:primaryContent
+          content:primaryContent,
+          viewWidth:100,
         },
         {
-          content:secondaryContent
+          content:secondaryContent,
+          viewWidth:100,
         },
       ]}
     />

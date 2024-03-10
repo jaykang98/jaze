@@ -94,10 +94,12 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
       userID={userID}
       viewFrames={[
         {
-          content:aboutDescription
+          content:aboutDescription,
+          viewWidth:100,
         },
         {
-          content:secondaryContent
+          content:secondaryContent,
+          viewWidth:100,
         },
       ]}
     />
