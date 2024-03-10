@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SidebarButton = ({ label, path, icon }) => {
   return (
-    <Link to={path} className={styles.sidebarLinkContainer}>
+    <Link to={path} className={styles.sidebarButton}>
       <FontAwesomeIcon icon={icon} /> {label}
     </Link>
   );
@@ -42,7 +42,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={styles.sidebarContainer}>
       {buttons.map((button, index) => (
         <SidebarButton
           key={index}

@@ -1,5 +1,5 @@
 // src/utils/DataHandler.tsx
-import { fetchData } from "./API";
+import { fetchData } from "./lastFM_API";
 
 export const fetchAndProcessData = async (
   method: string,

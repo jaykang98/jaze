@@ -1,16 +1,15 @@
 // FileName: GenerateDataForm.tsx
-
 import React, { useState } from "react";
-import TimeSelectionRow from "../timeSelectionRow/TimeSelectionRow";
+import TimeStampSelector from "components/jaze/timestampSelector/TimestampSelector";
 import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData";
 import {
-  GenerateDataFormProps,
+  MainFormProps,
   SelectionType,
 } from "../../../types/structureTypes";
-import Button from "../../foundations/button/Button";
-import CriteriaSelectionRow from "../../ui/criteriaSelectionRow/CriteriaSelectionRow";
+import Button from "components/foundations/button/Button";
+import CriteriaSelector from "../criteriaSelector/CriteriaSelector";
 
-const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
+const MainForm: React.FC<MainFormProps> = ({
   formData,
   setFormData,
   userID,
@@ -21,7 +20,7 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
   return (
     <form onSubmit={(e) => e.preventDefault()} id="GenerateVisForm">
       <div className="misc">
-        <CriteriaSelectionRow
+        <CriteriaSelector
           selectionType={selectionType}
           setSelectionType={setSelectionType}
           formData={formData}
@@ -30,15 +29,15 @@ const GenerateDataForm: React.FC<GenerateDataFormProps> = ({
           artistData={artistData}
           trackData={trackData}
         />
-        <TimeSelectionRow
+        <TimeStampSelector
           timestamp={formData.startTimestamp}
           label="Start Time"
         />
-        <TimeSelectionRow timestamp={formData.endTimestamp} label="End Time" />
+        <TimeStampSelector timestamp={formData.endTimestamp} label="End Time" />
         <Button type="submit">Submit</Button>
       </div>
     </form>
   );
 };
 
-export default GenerateDataForm;
+export default MainForm;

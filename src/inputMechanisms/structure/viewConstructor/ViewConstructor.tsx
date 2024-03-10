@@ -1,7 +1,7 @@
 // src/components/layout/Container.tsx
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import Sidebar from "../../foundations/sidebar/Sidebar";
+import Sidebar from "components/foundations/sidebar/Sidebar";
 import styles from "./ViewConstructor.module.css";
 import { ViewConstructorProps } from "../../../types/structureTypes";
 

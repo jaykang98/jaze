@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FormData, ActivityConstructorProps } from "../../types/structureTypes";
 
-import GenerateDataForm from "../../components/ui/generateDataForm/GenerateDataForm";
+import MainForm from "../../components/ui/mainForm/MainForm";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import styles from "src/globals/globalStyles.css";
 
@@ -24,7 +24,7 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   );
 
   const formContent = (
-    <GenerateDataForm
+    <MainForm
       formData={formData}
       setFormData={handleSetFormData}
       selectionType={formData.selectionType}
@@ -42,10 +42,15 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
     <DisplayGrid
       title={"Main"}
       userID={userID}
-      primaryContent={renderContent}
-      secondaryContent={formContent}
-      primaryWidth={100}
-      secondaryWidth={100}
+      viewFrames={[
+        {
+          content:renderContent
+        },
+        {
+          content:formContent
+
+        },
+      ]}
     />
   );
 };

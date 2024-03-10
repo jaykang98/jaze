@@ -215,10 +215,20 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
     <DisplayPage
       title="Settings"
       userID={userID}
-      primaryContent={primaryContent}
-      primaryContentAnc={primaryContentAnc}
-      secondaryContent={secondaryContent}
-      secondaryContentAnc={secondaryContentAnc}
+      viewFrames={[
+        {
+            content:primaryContent
+        },
+        {
+          content:primaryContentAnc
+        },
+        {
+          content:secondaryContent
+        },
+        {
+          content:secondaryContentAnc
+        },
+      ]}
     />
   );
 };

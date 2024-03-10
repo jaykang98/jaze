@@ -64,7 +64,8 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
         {!userID && !isHovered && (
           <>
             <div className={styles.userInfo}>
-              <span>More fun Logged In!</span>
+              <span>JaZe is more</span><br></br>
+              <span>fun logged in!</span>
             </div>
           </>
         )}

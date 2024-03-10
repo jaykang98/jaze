@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { fetchAndProcessData } from "./fetchAndProcessData";
 import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
+import { decryptData, encryptData } from "../security/utils";
 
 export const fetchUserData = (username: string) => {
   const [userData, setUserData] = useState<UserData | null>(null);
@@ -11,6 +12,7 @@ export const fetchUserData = (username: string) => {
   const [trackData, setTrackData] = useState<TrackData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const numOptions = 10;
 
   useEffect(() => {
     if (!username) {
@@ -23,7 +25,7 @@ export const fetchUserData = (username: string) => {
 
     if (storedData) {
       const { userData, albumData, artistData, trackData } =
-        JSON.parse(storedData);
+      JSON.parse(storedData);
       setUserData(userData);
       setAlbumData(albumData);
       setArtistData(artistData);
@@ -38,15 +40,15 @@ export const fetchUserData = (username: string) => {
           });
           const userTopAlbumsPromise = fetchAndProcessData(
             "user.getTopAlbums",
-            { user: username, limit: 10 },
+            { user: username, limit: numOptions },
           );
           const userTopArtistsPromise = fetchAndProcessData(
             "user.getTopArtists",
-            { user: username, limit: 10 },
+            { user: username, limit: numOptions },
           );
           const userTopTracksPromise = fetchAndProcessData(
             "user.getTopTracks",
-            { user: username, limit: 10 },
+            { user: username, limit: numOptions },
           );
 
           const [userInfo, userTopAlbums, userTopArtists, userTopTracks] =

@@ -1,17 +1,17 @@
 import React from "react";
-import OptionList from "../../../components/foundations/optionList/OptionList";
-import Input from "../../../components/foundations/input/Input";
+import OptionList from "../../foundations/optionList/OptionList";
+import Input from "../../foundations/input/Input";
 import { SelectionType } from "../../../types/dataTypes";
 import { OptionListProps } from "../../../types/foundationTypes";
 
-import styles from "./TimeSelectionRow.module.css";
+import styles from "./TimestampSelector.module.css";
 
-interface TimeSelectionRowProps {
+interface TimestampSelectorProps {
   timestamp: string;
   label: string;
 }
 
-const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({
+const TimestampSelector: React.FC<TimestampSelectorProps> = ({
   timestamp,
   label,
 }) => {
@@ -28,7 +28,7 @@ const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({
   };
 
   return (
-    <div className={styles.timeSelectionRow}>
+    <div className={styles.timestampSelector}>
       <span>{label}</span>
       <Input
         id="datetime-local-input"
@@ -42,4 +42,4 @@ const TimeSelectionRow: React.FC<TimeSelectionRowProps> = ({
   );
 };
 
-export default TimeSelectionRow;
+export default TimestampSelector;

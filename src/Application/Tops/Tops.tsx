@@ -73,23 +73,19 @@ const Tops: React.FC<ActivityConstructorProps> = ({ userID }) => {
     <DisplayGrid
       userID={userID}
       title="Top Stats"
-      primaryContent={
-        <>
-          <h2>Top Artists</h2>
-          {dataToJSX(artistData, "artist")}
-          <h2>Top Albums</h2>
-          {dataToJSX(albumData, "album")}
-        </>
-      }
-      primaryWidth={50}
-      secondaryContent={
-        <>
-          <h2>Top Tracks</h2>
-          {dataToJSX(trackData, "track")}
-        </>
-      }
-      primaryContentAnc={renderLargeImage(albumData, "album")}
-      secondaryContentAnc={renderLargeImage(trackData, "track")}
+      viewFrames={[
+        {
+          content:dataToJSX(artistData, "artist")
+        },
+        {
+          content:dataToJSX(albumData, "album")
+        },
+        { 
+          content:dataToJSX(trackData, "track")
+        },
+      ]}
+      //primaryContentAnc={renderLargeImage(albumData, "album")}
+      //secondaryContentAnc={renderLargeImage(trackData, "track")}
     />
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { faHome, faUser, faCog } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Sidebar.module.css";
-import Button from "../button/Button"
+import styles from "../Sidebar.module.css";
+import Button from "components/foundations/button/Button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ToolbarButton = ({ label, onClick, icon }) => {

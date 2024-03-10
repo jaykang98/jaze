@@ -59,7 +59,7 @@
     border-color: var(--input-border-color);
   }
 
-  &:hover h1 {
+  &:hover h1,:hover .icon  {
     background: linear-gradient(
       45deg,
       var(--secondary-accent-color-1),

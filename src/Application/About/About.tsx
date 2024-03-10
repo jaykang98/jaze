@@ -91,9 +91,17 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
     <DisplayGrid
       title="About"
       userID={userID}
-      primaryContent={aboutDescription}
-      primaryContentAnc={userInfoElement}
-      secondaryContent={secondaryContent}
+      viewFrames={[
+        {
+          content:aboutDescription
+        },
+        {
+          content:userInfoElement
+        },
+        {
+          content:secondaryContent
+        },
+      ]}
     />
   );
 };

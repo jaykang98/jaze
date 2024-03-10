@@ -4,7 +4,7 @@ import { OptionListProps } from "../../../types/foundationTypes";
 import Button from "../button/Button";
 import styles from "./OptionList.module.css";
 
-const OptionList: React.FC<OptionListProps> = ({ dataType, options, id }) => {
+const OptionList: React.FC<OptionListProps> = ({ options, id }) => {
   const [visibleOptions, setVisibleOptions] = useState(options);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -41,7 +41,7 @@ const OptionList: React.FC<OptionListProps> = ({ dataType, options, id }) => {
     };
   }, [options]);
 
-  if (!Array.isArray(options)) {
+  if (!Array.isArray(options) && process.env.REACT_APP_IS_DEBUG) {
     console.error(
       'OptionList component expects "options" prop to be an array.',
     );

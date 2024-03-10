@@ -23,17 +23,17 @@ export interface FormData {
   [key: string]: any;
 }
 
-export interface GenerateDataFormProps {
-  formData: GenerateDataFormState;
+export interface MainFormProps {
+  formData: MainFormState;
   setFormData: (
     formData:
-      | GenerateDataFormState
-      | ((prevState: GenerateDataFormState) => GenerateDataFormState),
+      | MainFormState
+      | ((prevState: MainFormState) => MainFormState),
   ) => void;
   userID?: string;
   selectionType: SelectionType;
 }
-export interface GenerateDataFormState {
+export interface MainFormState {
   selectionType: SelectionType;
   startTimestamp?: string;
   endTimestamp?: string;

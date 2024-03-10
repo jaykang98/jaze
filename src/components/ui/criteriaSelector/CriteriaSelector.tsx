@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import Input from "../../foundations/input/Input";
 import OptionList from "../../foundations/optionList/OptionList";
 import { SelectionType } from "../../../types/structureTypes";
-import { Option } from "types/foundationTypes";
-import styles from "./CriteriaSelectionRow.module.css";
+import { Option } from "../../../types/foundationTypes";
+import styles from "./CriteriaSelector.module.css";
 
-interface CriteriaSelectionRowProps {
+interface CriteriaSelectorProps {
   selectionType: SelectionType;
   setSelectionType: (value: SelectionType) => void;
   formData: { [key: string]: any };
@@ -17,7 +17,7 @@ interface CriteriaSelectionRowProps {
   trackData: any;
 }
 
-const CriteriaSelectionRow: React.FC<CriteriaSelectionRowProps> = ({
+const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
   selectionType,
   setSelectionType,
   formData,
@@ -80,7 +80,7 @@ const CriteriaSelectionRow: React.FC<CriteriaSelectionRowProps> = ({
 
   return (
     <>
-      <div className={styles.criteriaSelectionRow}>
+      <div className={styles.criteriaSelector}>
         {selectionElement}
         <Input
           id="selectionInput"
@@ -96,4 +96,4 @@ const CriteriaSelectionRow: React.FC<CriteriaSelectionRowProps> = ({
   );
 };
 
-export default CriteriaSelectionRow;
+export default CriteriaSelector;

@@ -4,17 +4,6 @@ import { decryptData, encryptData, generateMD5 } from "./utils";
 
 export const useAuthenticator = () => {
   const [userID, setUserIDState] = useState<string | null>(null);
-  const subscribers = new Set<() => void>();
-
-  const notifySubscribers = () => {
-    subscribers.forEach((callback) => callback());
-  };
-
-  const subscribeToAuthChanges = useCallback((callback: () => void) => {
-    subscribers.add(callback);
-    return () => subscribers.delete(callback);
-  }, []);
-
   useEffect(() => {
     const storedUserID = localStorage.getItem("userID");
     if (storedUserID) {
@@ -71,7 +60,6 @@ export const useAuthenticator = () => {
         const encryptedUserID = encryptData(userID);
         localStorage.setItem("userID", encryptedUserID);
         setUserIDState(userID);
-        notifySubscribers();
         window.location.reload();
       }
     } catch (error) {
@@ -83,13 +71,11 @@ export const useAuthenticator = () => {
     const encryptedUserID = encryptData(userID);
     localStorage.setItem("userID", encryptedUserID);
     setUserIDState(userID);
-    notifySubscribers();
   }, []);
 
   const logOut = useCallback(() => {
     localStorage.removeItem("userID");
     setUserIDState(null);
-    notifySubscribers();
     window.location.reload();
   }, []);
 
@@ -97,7 +83,6 @@ export const useAuthenticator = () => {
   const isAuthenticated = useCallback(() => userID !== null, [userID]);
 
   return {
-    subscribeToAuthChanges,
     startAuth,
     fetchSession,
     setUserID,

@@ -1,7 +1,7 @@
 .viewConstructor {
   display: flex;
 }
-.viewShellConstructor {
+.viewModuleConstructor {
   color: var(--primary-text-color);
   font-family: var(--font-family);
   width: 70vw;
