@@ -4,7 +4,7 @@
   "description": "JaZe visualizes your Last.fm data!",
   "main": "src/Application/App.tsx",
   "private": true,
-  "homepage":"https://jkang98.github.io/jaze",
+  "homepage": "https://jkang98.github.io/jaze",
   "scripts": {
     "start": "env-cmd -f ./testing.env react-scripts start",
     "build": "env-cmd -f ./testing.env react-scripts build",
@@ -21,6 +21,7 @@
     "@types/react": "^18.2.55",
     "axios": "^1.6.7",
     "ci": "^2.3.0",
+    "classnames": "^2.5.1",
     "crypto-js": "^4.2.0",
     "env-cmd": "^10.1.0",
     "gh-pages": "^6.1.1",
