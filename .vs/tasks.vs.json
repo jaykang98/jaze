@@ -1,0 +1,55 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-jaze",
+      "appliesTo": "/",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-.eslintrc",
+      "appliesTo": ".eslintrc.json",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-.eslintrc",
+      "appliesTo": ".eslintrc.json",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-package",
+      "appliesTo": "package.json",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-tsconfig",
+      "appliesTo": "tsconfig.json",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-Index",
+      "appliesTo": "public/Index.html",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-jaze",
+      "appliesTo": "/",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-jaze",
+      "appliesTo": "/",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-.eslintrc",
+      "appliesTo": ".eslintrc.json",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-jaze",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}
