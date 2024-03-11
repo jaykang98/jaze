@@ -72,19 +72,19 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const userInfoElement = renderUserInfo();
   const aboutDescription = (
     <div className="about">
-      <h3>About You!</h3>
+          <h3>About You!</h3><p>
       This application generates visual representations of Last.FM data that you
       have scrobbled over time. Here are some basic facts from your Last.FM
-      profile!
+          profile!</p>
       {userInfoElement}
     </div>
   );
   const secondaryContent = (
     <div>
-      <h3>Old Favorites to Revisit</h3>
+      <h3>Old Favorites to Revisit</h3><p>
       This application generates visual representations of Last.FM data that you
       have scrobbled over time. Here are some basic facts from your Last.FM
-      profile!
+          profile!</p>
     </div>
   );
 

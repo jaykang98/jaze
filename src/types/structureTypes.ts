@@ -13,7 +13,7 @@ export interface ActivityConstructorProps {
   error?: Error | null;
   onViewChange?: any;
   activityName?: string;
-  userID: string | null;
+  userID?: string | null;
 }
 
 export interface FormData {

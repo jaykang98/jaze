@@ -1,5 +1,5 @@
 // Settings.tsx
-import React, { useMemo } from "react";
+import React, { useState, useMemo, KeyboardEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -18,7 +18,6 @@ import { ActivityConstructorProps } from "../../types/structureTypes";
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
-import Input from "../../components/foundations/input/Input"
 type SettingOption = {
   id: string;
   displayLabel: string;
@@ -36,7 +35,21 @@ type SettingOption = {
 };
 
 const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
-  const { isAuthenticated, startAuth, logOut } = useAuthenticator();
+    const { startAuth, logOut, setUserID, isAuthenticated } = useAuthenticator();
+    const [debugUsername, setDebugUsername] = useState("");
+
+    const handleDebugInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setDebugUsername(e.target.value);
+    };
+
+    const handleDebugInputSubmit = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter" && debugUsername.trim() !== "") {
+            setUserID(debugUsername.trim());
+            alert(`Debug mode: Last.fm data set for username: ${debugUsername.trim()}`);
+            setDebugUsername(""); 
+        }
+    };
+
 
   const confirmAction = (message: string, action: () => void) => {
     if (window.confirm(message)) {
@@ -124,6 +137,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
       </Button>
     ),
   ]);
+    const isDebugEnabled = process.env.REACT_APP_IS_DEBUG === 'true';
 
   const bugReportData = [
     [
@@ -184,40 +198,50 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
         Donate
       </Button>,
     ],
-    [
-      <span>
-        <FontAwesomeIcon icon={faBug} /> DEBUG_MODE
-      </span>,
-        <Input
-        id="debugger"
-        type="text"
-        name="Debugger"
-        placeholder={`Enter username`}
-      />,
-    ],
-  ];
- //if (Input.value){
+        ...(isDebugEnabled
+            ? [
+                [
+                    <span>
+                        <FontAwesomeIcon icon={faBug} /> DEBUG_MODE
+                    </span>,
+                    <input
+                        id="debugger"
+                        type="text"
+                        value={debugUsername}
+                        onChange={handleDebugInputChange}
+                        onKeyDown={handleDebugInputSubmit}
+                        name="Debugger"
+                        placeholder="Enter username"
+                        style={{}}
+                    />,
+                ],
+            ]
+            : []),]
 
-  //}
-  const primaryContent = (
-    <>
-      <h3>User Customization</h3>
-      <p>
-        Log out, Log in, Enable dark mode. That's pretty much it. Have ideas to
-        improve the feature? Report a bug below!
-      </p>
-      <DisplayTable data={settingsData} />
-    </>
-  );
-  const secondaryContent = (
-    <>
-      <h3>Technical Links & Settings</h3>I appreciate your participation as a
-      beta tester for my application. Your feedback has been invaluable in
-      improving JaZe over time. Thanks to your contributions, I've been able to
-      identify and fix bugs, as well as enhance the overall user experience.
-      <DisplayTable data={[...bugReportData]} />
-    </>
-  );
+const primaryContent = (
+        <>
+            <h3>User Customization</h3>
+            <p>
+                Log out, Log in, Enable dark mode. That's pretty much it. Have ideas to
+                improve the feature? Report a bug below!
+            </p>
+            <DisplayTable data={settingsData} />
+        </>
+    );
+
+    const secondaryContent = (
+        <>
+            <h3>Technical Links & Settings</h3>
+            <p>
+            I appreciate your participation as a beta tester for my application. Your
+            feedback has been invaluable in improving JaZe over time. Thanks to your
+            contributions, I've been able to identify and fix bugs, as well as enhance
+                the overall user experience.
+            </p>
+            <DisplayTable data={bugReportData} />
+        </>
+    );
+
 
   return (
     <DisplayGrid

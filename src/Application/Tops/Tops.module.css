@@ -1,15 +1,17 @@
-.dataNode {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.imageContainer {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.dataNode h2 {
-  text-align: left;
-  align-self: left;
+.caption{
+    padding-top:10px;
+    font-size:large;
 }
+.largeImage{
 
-h2 {
-  text-align: left;
 }

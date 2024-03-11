@@ -1,14 +1,17 @@
 .viewFrame {
-  display: flex;
-  outline: 1px solid #ccc;
-  box-sizing: border-box;
-  border-radius: 25px;
-  padding: 10px;
-  overflow: hidden;
-  margin: 10px;
-  justify-content: flex-start;
-  width:100%;
-  box-shadow:
-    0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    outline: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 25px;
+    padding: 10px;
+    overflow: hidden;
+    margin: 10px;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.empty {
+    outline: none;
+    box-shadow: none;
 }
