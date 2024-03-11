@@ -37,12 +37,10 @@ export const useSpotifyClient = (config: SpotifyApiConfig) => {
         });
     };
 
-    // Automatically fetch the access token when the hook is used
     useEffect(() => {
         fetchAccessToken();
     }, []);
 
-    // Function to make authenticated requests to the Spotify Web API
     const spotifyApiRequest = async <T = any>(endpoint: string, options: RequestInit = {}): Promise<T> => {
         if (!accessToken) {
             throw new Error('Access token is not available');

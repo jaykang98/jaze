@@ -71,20 +71,24 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
 
   const userInfoElement = renderUserInfo();
   const aboutDescription = (
-    <div className="about">
-          <h3>About You!</h3><p>
-      This application generates visual representations of Last.FM data that you
-      have scrobbled over time. Here are some basic facts from your Last.FM
-          profile!</p>
+    <div>
+          <h3>About You!</h3>
+          <p>This application generates visual representations of Last.FM data that you have scrobbled over time. Here are some basic facts from your Last.FM profile!</p>
       {userInfoElement}
     </div>
   );
-  const secondaryContent = (
+  const features = (
     <div>
-      <h3>Old Favorites to Revisit</h3><p>
-      This application generates visual representations of Last.FM data that you
-      have scrobbled over time. Here are some basic facts from your Last.FM
-          profile!</p>
+          <h3>JaZe Features</h3>
+          <p>Features in the current release of JaZe</p>
+          <ul>
+              <li>Use the Last.FM Authentication Framework to view data about your music</li>
+              <li>Store some of the data locally and securely to save on query requests</li>
+              <li>View your top ten musicians, albums, and tracks of all time. AND the number of scrobbles!</li>
+              <li>Create a Last.FM account from the click of a button </li>
+              <li>Enable DEBUG_MODE to view more information and disable encryption</li>
+              <li>Quick links for quick actions!</li>
+          </ul>
     </div>
   );
 
@@ -98,7 +102,7 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
           viewWidth:100,
         },
         {
-          content:secondaryContent,
+            content: features,
           viewWidth:100,
         },
       ]}

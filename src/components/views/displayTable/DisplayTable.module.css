@@ -1,34 +1,25 @@
 .table {
   border-collapse: separate;
   width: calc(100% - 20px);
-  margin: 10px;
+  padding: 20px;
   background-color: var(--sidebar-bg-color);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.cell,
-.header {
+.cell {
   text-align: left;
   vertical-align: middle;
-  position: relative;
-  padding: 10px;
+  position: center;
+  padding: 5px;
+  padding-top:15px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: white;
 }
 
-.cell:first-child:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -10px;
-  width: 80%;
-  height: 2px;
-  background-color: var(--input-border-color);
-  transform: translateX(-50%);
-}
+
 
 @media (max-width: 768px) {
   .table {
