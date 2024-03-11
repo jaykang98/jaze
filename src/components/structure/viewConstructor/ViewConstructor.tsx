@@ -5,10 +5,10 @@ import Sidebar from "../../foundations/sidebar/Sidebar";
 import styles from "./ViewConstructor.module.css";
 import { ViewConstructorProps } from "../../../types/structureTypes";
 
-const Main = lazy(() => import("../../../application/Main/Main"));
-const About = lazy(() => import("../../../application/About/About"));
-const Settings = lazy(() => import("../../../application/Settings/Settings"));
-const Tops = lazy(() => import("../../../application/Tops/Tops"));
+const Main = lazy(() => import("../../../Application/Main/Main"));
+const About = lazy(() => import("../../../Application/About/About"));
+const Settings = lazy(() => import("../../../Application/Settings/Settings"));
+const Tops = lazy(() => import("../../../Application/Tops/Tops"));
 
 const ViewConstructor: React.FC<ViewConstructorProps> = ({ userID }) => {
   return (
