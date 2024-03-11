@@ -43,7 +43,9 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
       action();
     }
   };
-
+  const disableEncryptionAction = () => {
+    
+  }
   const settingsOptions: SettingOption[] = useMemo(() => {
     const changeThemeAction = () => {
       document.body.style.backgroundColor = "Black";
@@ -67,6 +69,14 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
         displayLabel: " Author",
         actionLabel: "J Kang",
         action: () => console.log("Author: J Kang"),
+        icon: faPenNib,
+        disabled: true,
+      },
+      {
+        id: "disableEnc",
+        displayLabel: " Disable Encryption",
+        actionLabel: "Disable",
+        action: () => disableEncryptionAction,
         icon: faPenNib,
         disabled: true,
       },
