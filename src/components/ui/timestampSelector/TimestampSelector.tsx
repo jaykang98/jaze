@@ -3,8 +3,7 @@ import OptionList from "../../foundations/optionList/OptionList";
 import Input from "../../foundations/input/Input";
 import { SelectionType } from "../../../types/dataTypes";
 import { OptionListProps } from "../../../types/foundationTypes";
-
-import styles from "../TimestampSelector.module.css";
+import styles from "./TimestampSelector.module.css";
 
 interface TimestampSelectorProps {
   timestamp: string;
@@ -28,8 +27,9 @@ const TimestampSelector: React.FC<TimestampSelectorProps> = ({
   };
 
   return (
-    <div className={styles.timeSelectionRow}>
-      <span>{label}</span>
+    <>
+    <div className={styles.timestampSelector}>
+      {label}
       <Input
         id="datetime-local-input"
         type="datetime-local"
@@ -39,6 +39,7 @@ const TimestampSelector: React.FC<TimestampSelectorProps> = ({
       />
       <OptionList {...optionProps} />
     </div>
+    </>
   );
 };
 

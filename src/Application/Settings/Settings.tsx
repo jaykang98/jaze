@@ -18,7 +18,7 @@ import { ActivityConstructorProps } from "../../types/structureTypes";
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
-
+import Input from "../../components/foundations/input/Input"
 type SettingOption = {
   id: string;
   displayLabel: string;
@@ -174,8 +174,21 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
         Donate
       </Button>,
     ],
+    [
+      <span>
+        <FontAwesomeIcon icon={faBug} /> DEBUG_MODE
+      </span>,
+        <Input
+        id="debugger"
+        type="text"
+        name="Debugger"
+        placeholder={`Enter username`}
+      />,
+    ],
   ];
+ //if (Input.value){
 
+  //}
   const primaryContent = (
     <>
       <h3>User Customization</h3>
