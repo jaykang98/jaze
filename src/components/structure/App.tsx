@@ -8,6 +8,7 @@ import ErrorBoundary from "./ErrorBoundary";
 import { useAuthenticator } from "../../hooks/security/useAuthenticator";
 import Header from "../foundations/header/Header";
 import Footer from "../foundations/footer/Footer";
+import { ViewTitleProvider } from '../../contexts/ViewTitleContexts'; 
 
 function App() {
   const { fetchSession, getUserID } = useAuthenticator();
@@ -20,7 +21,8 @@ function App() {
     }
   }, [fetchSession, getUserID]);
 
-  return (
+    return (
+      <ViewTitleProvider>
     <ErrorBoundary>
       <Header />
       <div className="app">
@@ -29,7 +31,8 @@ function App() {
         </Router>
       </div>
       <Footer />
-    </ErrorBoundary>
+            </ErrorBoundary>
+        </ViewTitleProvider>
   );
 }
 

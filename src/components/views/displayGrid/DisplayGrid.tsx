@@ -14,8 +14,6 @@ interface DisplayGridProps extends ActivityConstructorProps {
 }
 
 const DisplayGrid: React.FC<DisplayGridProps> = ({
-  userID,
-  title,
   viewFrames,
 }) => {
   const totalSpecifiedWidth = viewFrames.reduce((acc, {viewWidth}) => acc + (viewWidth || 0), 0);
@@ -24,7 +22,6 @@ const DisplayGrid: React.FC<DisplayGridProps> = ({
 
   return (
     <>
-      <TitleBar userID={userID} title={title} />
       <section style={{ display: 'flex', flexDirection: 'row' }}> 
         {viewFrames.map((frame, index) => (
           <ViewFrame key={index} splitPercentage={frame.viewWidth || remainingWidthPerFrame}>

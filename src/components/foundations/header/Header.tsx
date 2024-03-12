@@ -6,9 +6,7 @@ import { faRadio } from "@fortawesome/free-solid-svg-icons";
 const Header: React.FC = () => {
   return (
     <header className={`${styles.header}`}>
-      <h1>
-        <FontAwesomeIcon icon={faRadio} className={styles.icon} /> JaZe
-      </h1>
+      <h1><FontAwesomeIcon icon={faRadio} className={styles.icon} /> JaZe</h1>
     </header>
   );
 };

@@ -3,7 +3,7 @@
   color: var(--footer-text-color, #fff);
   text-align: center;
   font-size: var(--font-size-base, 0.625rem);
-  padding: var(--footer-padding, 1.25rem) 0;
+  padding: var(--footer-padding, 1rem) 0;
   width: 100%;
   box-sizing: border-box;
   margin-top: var(--default-margin, 10px);

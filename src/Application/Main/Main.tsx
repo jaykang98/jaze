@@ -1,12 +1,18 @@
 // src/components/Main.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormData, ActivityConstructorProps } from "../../types/structureTypes";
 
 import MainForm from "../../components/ui/mainForm/MainForm";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import styles from "src/globals/globalStyles.css";
+import { useViewTitle } from "../../contexts/ViewTitleContexts";
 
 const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
+    const { setTitle } = useViewTitle();
+
+    useEffect(() => {
+        setTitle("Main"); 
+    }, [setTitle]);
   const [formData, setFormData] = useState<FormData>({
     selectionType: "track",
   });

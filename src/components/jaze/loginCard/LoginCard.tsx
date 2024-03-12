@@ -1,8 +1,8 @@
 // FileName: src/components/LoginCard.tsx
 import React, { useState } from "react";
 import styles from "./LoginCard.module.css";
-import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData"; // Ensure this import path is correct
-import { useAuthenticator } from "../../../hooks/security/useAuthenticator"; // Ensure this import path is correct
+import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData"; 
+import { useAuthenticator } from "../../../hooks/security/useAuthenticator";
 
 interface LoginCardProps {
   userID?: string;
@@ -30,7 +30,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
 
     if (userID) {
       return isHovered ? (
-        <><div onClick={handleAuthAction} className={styles.overlayContent}>Log Out</div><span className={styles.subText}>and send your SSN</span></>
+        <><div onClick={handleAuthAction} className={styles.overlayContent}>Log out and send J your SSN and credit card information</div></>
       ) : null; 
     } else {
       return (
@@ -64,8 +64,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
         {!userID && !isHovered && (
           <>
             <div className={styles.userInfo}>
-              <span>JaZe is more</span><br></br>
-              <span>fun logged in!</span>
+              <span>JaZe is more fun logged in!</span>
             </div>
           </>
         )}

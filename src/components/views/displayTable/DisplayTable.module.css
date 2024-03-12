@@ -1,10 +1,10 @@
 .table {
-  border-collapse: separate;
-  width: calc(100% - 20px);
-  padding: 20px;
-  background-color: var(--sidebar-bg-color);
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-collapse: separate;
+    width: calc(100% - 20px);
+    padding: 20px;
+    background-color: var(--secondary-accent-color-2);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cell {
