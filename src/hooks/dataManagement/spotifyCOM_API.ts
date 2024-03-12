@@ -14,7 +14,6 @@ interface SpotifyAccessToken {
 export const useSpotifyClient = (config: SpotifyApiConfig) => {
     const [accessToken, setAccessToken] = useState<SpotifyAccessToken | null>(null);
 
-    // Function to fetch the access token
     const fetchAccessToken = async () => {
         const authString = btoa(`${config.clientId}:${config.clientSecret}`);
         const response = await fetch('https://accounts.spotify.com/api/token', {

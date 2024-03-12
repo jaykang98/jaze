@@ -1,29 +1,16 @@
-// fetchUserData.ts
-
 import { useState, useEffect } from "react";
 import { fetchAndProcessData } from "./fetchAndProcessData";
 import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
 import { decryptData, encryptData } from "../security/utils";
 
-interface GlobalSettings {
-    isDecryptMode: boolean;
-}
-
-const settings: GlobalSettings = {
-    isDecryptMode: false, 
+const settings = {
+    isDecryptMode: false,
 };
 
 export const getIsDecryptMode = () => settings.isDecryptMode;
 export const setIsDecryptMode = (mode: boolean) => {
     settings.isDecryptMode = mode;
 };
-
-interface StoredUserData {
-    userData?: UserData;
-    albumData?: AlbumData;
-    artistData?: ArtistData;
-    trackData?: TrackData;
-}
 
 export const fetchUserData = (username: string) => {
     const [userData, setUserData] = useState<UserData | null>(null);
@@ -32,32 +19,36 @@ export const fetchUserData = (username: string) => {
     const [trackData, setTrackData] = useState<TrackData | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-
-    const isDebugMode = process.env.REACT_APP_IS_DEBUG === "TRUE";
-    const isDecryptMode = getIsDecryptMode(); 
+    const [spotifyAccessToken, setSpotifyAccessToken] = useState<string | null>(null);
 
     useEffect(() => {
+        const fetchSpotifyAccessToken = async () => {
+            // Your backend should handle this part securely
+        };
+
+        const fetchSpotifyData = async () => {
+            if (!spotifyAccessToken) return;
+            // Use spotifyAccessToken to fetch data from Spotify
+        };
+
         const localStorageKey = `userData_${username}`;
         const fetchData = async () => {
             setLoading(true);
             try {
                 const storedDataStr = localStorage.getItem(localStorageKey);
-                let storedData: StoredUserData = {};
-
+                let storedData = {};
 
                 if (storedDataStr) {
-                    try {
-                        const processedDataStr = isDebugMode || !isDecryptMode ? storedDataStr : decryptData(storedDataStr);
-                        storedData = JSON.parse(processedDataStr);
-                    } catch (parseError) {
-                        console.error("Error parsing or decrypting stored user data", parseError);
-                    }
+                    const processedDataStr = settings.isDecryptMode ? decryptData(storedDataStr) : storedDataStr;
+                    storedData = JSON.parse(processedDataStr);
                 }
 
-                const userInfo = await fetchAndProcessData("user.getinfo", { user: username });
-                const userTopAlbums = await fetchAndProcessData("user.getTopAlbums", { user: username, limit: 10 });
-                const userTopArtists = await fetchAndProcessData("user.getTopArtists", { user: username, limit: 10 });
-                const userTopTracks = await fetchAndProcessData("user.getTopTracks", { user: username, limit: 10 });
+                const [userInfo, userTopAlbums, userTopArtists, userTopTracks] = await Promise.all([
+                    fetchAndProcessData("user.getinfo", { user: username }),
+                    fetchAndProcessData("user.getTopAlbums", { user: username, limit: 10 }),
+                    fetchAndProcessData("user.getTopArtists", { user: username, limit: 10 }),
+                    fetchAndProcessData("user.getTopTracks", { user: username, limit: 10 }),
+                ]);
 
                 setUserData(userInfo as UserData);
                 setAlbumData(userTopAlbums as AlbumData);
@@ -68,10 +59,10 @@ export const fetchUserData = (username: string) => {
                     userData: userInfo,
                     albumData: userTopAlbums,
                     artistData: userTopArtists,
-                    trackData: userTopTracks
+                    trackData: userTopTracks,
                 });
 
-                localStorage.setItem(localStorageKey, isDebugMode || !isDecryptMode ? dataToStore : encryptData(dataToStore));
+                localStorage.setItem(localStorageKey, settings.isDecryptMode ? encryptData(dataToStore) : dataToStore);
             } catch (error) {
                 console.error("Failed to fetch user data", error);
                 setError("Failed to fetch user data");
@@ -80,12 +71,18 @@ export const fetchUserData = (username: string) => {
             }
         };
 
-        if (username) {
-            fetchData();
-        } else {
-            setLoading(false);
-        }
-    }, [username, isDebugMode]);
+        const initSpotifyAuthFlow = async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            if (code) {
+                await fetchSpotifyAccessToken();
+                await fetchSpotifyData();
+            }
+        };
+
+        fetchData();
+        initSpotifyAuthFlow();
+    }, [username]);
 
     return { userData, albumData, artistData, trackData, error, loading };
 };

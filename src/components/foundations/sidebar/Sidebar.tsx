@@ -25,11 +25,6 @@ const Sidebar = () => {
       icon: faHome,
     },
     {
-      path: "/about",
-      label: "About",
-      icon: faUser,
-    },
-    {
       path: "/tops",
       label: "Tops",
       icon: faAward,
