@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchAndProcessData } from "./fetchAndProcessData";
 import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
 import { decryptData, encryptData } from "../security/utils";
+import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 const settings = {
     isDecryptMode: false,
@@ -20,6 +21,7 @@ export const fetchUserData = (username: string) => {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [spotifyAccessToken, setSpotifyAccessToken] = useState<string | null>(null);
+    const localStorageKey = `userData_${username}`;
 
     useEffect(() => {
         const fetchSpotifyAccessToken = async () => {

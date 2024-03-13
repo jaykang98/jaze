@@ -1,6 +1,5 @@
-// useSpotifyClient.ts
 import { useState, useEffect } from 'react';
-
+import { SpotifyUserProfile } from 'types/dataTypes'
 interface SpotifyApiConfig {
     clientId: string;
     clientSecret: string;
@@ -15,7 +14,7 @@ export const useSpotifyClient = (config: SpotifyApiConfig) => {
     const [accessToken, setAccessToken] = useState<SpotifyAccessToken | null>(null);
 
     const fetchAccessToken = async () => {
-        const authString = btoa(`${config.clientId}:${config.clientSecret}`);
+        const authString = btoa(`${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`);
         const response = await fetch('https://accounts.spotify.com/api/token', {
             method: 'POST',
             headers: {
@@ -60,5 +59,9 @@ export const useSpotifyClient = (config: SpotifyApiConfig) => {
         return response.json();
     };
 
-    return { spotifyApiRequest };
+    const fetchCurrentUserProfile = async (): Promise<SpotifyUserProfile> => {
+        return spotifyApiRequest<SpotifyUserProfile>('/me');
+    };
+
+    return { spotifyApiRequest, fetchCurrentUserProfile };
 };

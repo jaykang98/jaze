@@ -11,21 +11,17 @@ let globalIsDecryptMode = false;
 
 const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
     const { setTitle } = useViewTitle();
-    const { startAuth, isAuthenticated } = useAuthenticator();
+    const { startAuth, isAuthenticated, logOut } = useAuthenticator();
 
     useEffect(() => {
         setTitle("Settings");
     }, [setTitle]);
 
-    const isAuthenticatedSpot = () => {
-        return false;
-    };
-
     const startAuthSpot = () => {
-        const clientId = 'your_spotify_client_id'; 
-        const redirectUri = encodeURIComponent(window.location.href); 
+        const clientId = process.env.REACT_APP_SPOTIFY_CLIENTID; 
+        const redirectUri = encodeURIComponent('http://localhost:3000/jaze'); 
         const scope = encodeURIComponent('user-read-private user-read-email');
-        const spotifyAuthUrl = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENTID}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}`;
+        const spotifyAuthUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}`;
         window.location.href = spotifyAuthUrl;
     };
 
@@ -38,17 +34,16 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
 const settingsOptions = useMemo(() => [
     {
         displayLabel: "Enable Last.FM Integration",
-        action: isAuthenticated() ? () => { } : startAuth,
-        actionLabel: isAuthenticated() ? "Enabled" : "Enable",
+        action: isAuthenticated ? startAuth : logOut,
+        actionLabel: isAuthenticated ? "Log In" : "Log Out",
         icon: faUser,
-        disabled: isAuthenticated(),
+        disabled: false,
     },
     {
         displayLabel: "Enable Spotify Integration",
-        action: isAuthenticatedSpot() ? () => { } : startAuthSpot,
-        actionLabel: isAuthenticatedSpot() ? "Enabled" : "Enable",
+        action : startAuthSpot,
+        actionLabel: "Enabled", 
         icon: faCompactDisc,
-        disabled: isAuthenticatedSpot(),
     },
     {
         displayLabel: "Toggle Local Encryption",
