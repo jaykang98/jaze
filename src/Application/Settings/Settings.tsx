@@ -34,8 +34,8 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
 const settingsOptions = useMemo(() => [
     {
         displayLabel: "Enable Last.FM Integration",
-        action: isAuthenticated ? startAuth : logOut,
-        actionLabel: isAuthenticated ? "Log In" : "Log Out",
+        action: isAuthenticated() ? logOut : startAuth,
+        actionLabel: !isAuthenticated() ? "Log In" : "Log Out",
         icon: faUser,
         disabled: false,
     },
