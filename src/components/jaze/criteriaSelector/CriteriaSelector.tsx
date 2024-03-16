@@ -35,7 +35,7 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
         newOptions =
           albumData?.topalbums.album.map((album) => ({
             value: album.url,
-            key: `${album.artist.name} - ${album.name}`,
+            key: album.name,
             dataType: "album",
           })) || [];
         break;
@@ -51,7 +51,7 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
         newOptions =
           trackData?.toptracks.track.map((track) => ({
             value: track.url,
-              key: `${track.artist.name} - ${track.name}`,
+              key: track.name,
             dataType: "track",
           })) || [];
         break;
@@ -85,20 +85,18 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
     };
 
   return (
-    <>
       <div className={styles.criteriaSelector}>
         {selectionElement}
         <Input
-          id="selectionInput"
+                  id={selectionType }
           type="text"
           name={selectionType}
           value={formData[selectionType] || ""}
           onChange={handleInputChange}
-          placeholder={`Enter ${selectionType}`}
+                  placeholder={`Enter ${selectionType}`}
         />
         <OptionList options={options} dataType={selectionType} />
       </div>
-    </>
   );
 };
 

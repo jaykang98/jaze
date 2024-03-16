@@ -7,29 +7,35 @@ import styles from "./TimestampSelector.module.css";
 
 interface TimestampSelectorProps {
   timestamp: string;
-  label: string;
+    label: string;
 }
 
 const TimestampSelector: React.FC<TimestampSelectorProps> = ({
   timestamp,
-  label,
+    label,
 }) => {
   const currentYear = React.useMemo(() => new Date().getFullYear(), []);
 
-  const yearsOptions = React.useMemo(
-    () =>
-      Array.from({ length: 10 }, (_, i) => ({
-        key: `${currentYear - i}`,
-        dataType: "year" as SelectionType,
-        value: `${currentYear - i}`,
-      })),
-    [currentYear],
-  );
+    const yearsOptions = React.useMemo(() => {
+        return Array.from({ length: 10 }, (_, i) => {
+            const year = currentYear - i;
+            const date = new Date(`${year}-01-01T00:00:00Z`);
+            const timestamp = date.getTime();
+
+            return {
+                key: `${year}`,
+                dataType: "year" as SelectionType,
+                value: `${year}`,
+                label: `${timestamp}`, 
+            };
+        });
+    }, [currentYear]);
 
   const optionProps: OptionListProps = React.useMemo(
     () => ({
       dataType: "year",
-      options: yearsOptions,
+          options: yearsOptions,
+          key: "",
     }),
     [yearsOptions],
   );
@@ -41,7 +47,8 @@ const TimestampSelector: React.FC<TimestampSelectorProps> = ({
         id="datetime-local-input"
         type="datetime-local"
         name="timestamp"
-        value={timestamp}
+              value={timestamp}
+              label={timestamp}
         placeholder="Select Date and Time"
       />
       <OptionList {...optionProps} />

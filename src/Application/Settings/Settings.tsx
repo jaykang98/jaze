@@ -38,37 +38,37 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const settingsOptions = useMemo(
     () => [
       {
-        displayLabel: "Enable Last.FM Integration",
+        displayLabel: "Last.FM Account",
         action: isFMAuthenticated() ? logFMOut : startAuthFM,
         actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
         icon: faUser,
         disabled: false,
       },
       {
-        displayLabel: "Enable Spotify Integration",
+        displayLabel: "Spotify Account",
         action: startAuthSpotify,
-        actionLabel: "Enabled",
+        actionLabel: "Log In",
         icon: faCompactDisc,
       },
       {
-        displayLabel: "Toggle Local Encryption",
+        displayLabel: "Store Data Securely",
         action: toggleGlobalIsDecryptMode,
-        actionLabel: "Toggle Encryption",
+        actionLabel: "Encrypt Data",
         icon: faKey,
         disabled: false,
       },
       {
-        displayLabel: "Delete Local Data",
+        displayLabel: "Delete Local History",
         action: () =>
           window.confirm(
             "Are you sure you want to clear the local cache? This will log you out and force reload the page.",
           ) && localStorage.clear(),
-        actionLabel: "Delete",
+        actionLabel: "Forget Me",
         icon: faMemory,
         disabled: false,
       },
       {
-        displayLabel: "Change Theme",
+        displayLabel: "Current Theme Mode",
         action: () => (document.body.style.backgroundColor = "Black"),
         actionLabel: "Dark Mode",
         icon: faPalette,
@@ -95,7 +95,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
   ]);
 
   const bugReportData = [
-    [<FontAwesomeIcon icon={faPenNib} />, "Author", "J Kang"],
+    [<FontAwesomeIcon icon={faPenNib} />, "Author Name", "J Kang"],
     [
       <FontAwesomeIcon icon={faCoffee} />,
       "Current Version",
@@ -109,12 +109,12 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
           window.open("mailto:admin@jklmnopea.com?subject=Bug Report")
         }
       >
-        Send Email
+        Report
       </Button>,
     ],
     [
       <FontAwesomeIcon icon={faTools} />,
-      "Contribute Code",
+      "Make Contributions",
       <Button
         onClick={() =>
           (window.location.href = "https://github.com/jaykang98/jaze")
@@ -132,7 +132,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
             "https://paypal.me/jklmnopea?country.x=US&locale.x=en_US")
         }
       >
-        Donate
+        $ Donate
       </Button>,
     ],
   ];
@@ -178,7 +178,7 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
         {
           content: (
             <>
-              <h3>Features and More Information</h3>
+              <h3>Customize JaZe</h3>
               <DisplayTable data={settingsTableData} />
               <DisplayTable data={bugReportData} />
             </>

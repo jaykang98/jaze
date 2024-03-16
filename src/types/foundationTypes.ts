@@ -12,6 +12,7 @@ export interface InputProps {
   icon?: IconDefinition;
 }
 export interface Option {
+  label: string;
   key: string;
   dataType: SelectionType;
   value: string;
@@ -19,7 +20,7 @@ export interface Option {
 export interface OptionListProps {
   dataType: SelectionType;
   options: Option[];
-  id?: string;
+    id?: string;
 }
 export interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;

@@ -17,7 +17,7 @@ export const useSpotifyClient = (config: SpotifyApiConfig) => {
 
   const fetchAccessToken = async () => {
     const authString = btoa(
-      `${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`,
+        `${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`,
     );
     const response = await fetch("https://accounts.spotify.com/api/token", {
       method: "POST",
