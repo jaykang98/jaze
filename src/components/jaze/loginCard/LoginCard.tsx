@@ -10,12 +10,12 @@ interface LoginCardProps {
 
 const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
   const { userData, loading } = fetchUserData(userID);
-  const { logOut, startAuth, isAuthenticated } = useAuthenticator();
+    const { logFMOut, startAuthFM, isFMAuthenticated } = useAuthenticator();
   const userImage = userData?.user?.image?.[0]["#text"];
   const [isHovered, setIsHovered] = useState(false);
 
   const handleAuthAction = () => {
-    isAuthenticated() ? logOut() : startAuth();
+      isFMAuthenticated() ? logFMOut() : startAuthFM();
   };
 
   const handleCreateAccount = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

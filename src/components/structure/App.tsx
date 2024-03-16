@@ -10,17 +10,17 @@ import Footer from "../foundations/footer/Footer";
 import { ViewTitleProvider } from '../../contexts/ViewTitleContexts';
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 function App() {
-    const { fetchSession, getUserID, handleSpotifyAuthCode } = useAuthenticator();
+    const { fetchFM, getLastFMUserID, handleSpotifyAuthCode } = useAuthenticator();
     const { getItem } = useLocalStorage('spotifyUserID');
     const spotID = { getItem };
     useEffect(() => {
 
             const urlParams = new URLSearchParams(window.location.search);
 
-            if (!getUserID()) {
+            if (!getLastFMUserID()) {
                 const token = urlParams.get("token");
                 if (token) {
-                    fetchSession(token);
+                    fetchFM(token);
                 }
             }
 
@@ -30,7 +30,7 @@ function App() {
                     handleSpotifyAuthCode(code);
                 }
             }
-    }, [fetchSession, getUserID, handleSpotifyAuthCode]);
+    }, [fetchFM, getLastFMUserID, handleSpotifyAuthCode]);
 
     return (
         <ViewTitleProvider>
@@ -38,7 +38,7 @@ function App() {
                 <Header />
                 <div className="app">
                     <Router>
-                        <ViewConstructor userID={getUserID()} onViewChange={() => { }} />
+                        <ViewConstructor userID={getLastFMUserID()} onViewChange={() => { }} />
                     </Router>
                 </div>
                 <Footer />

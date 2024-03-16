@@ -11,19 +11,11 @@ let globalIsDecryptMode = false;
 
 const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
     const { setTitle } = useViewTitle();
-    const { startAuth, isAuthenticated, logOut } = useAuthenticator();
+    const { startAuthFM, isFMAuthenticated, logFMOut, startAuthSpotify } = useAuthenticator();
 
     useEffect(() => {
         setTitle("Settings");
     }, [setTitle]);
-
-    const startAuthSpot = () => {
-        const clientId = process.env.REACT_APP_SPOTIFY_CLIENTID; 
-        const redirectUri = encodeURIComponent('http://localhost:3000/jaze'); 
-        const scope = encodeURIComponent('user-read-private user-read-email');
-        const spotifyAuthUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}`;
-        window.location.href = spotifyAuthUrl;
-    };
 
     const toggleGlobalIsDecryptMode = () => {
 
@@ -34,14 +26,14 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
 const settingsOptions = useMemo(() => [
     {
         displayLabel: "Enable Last.FM Integration",
-        action: isAuthenticated() ? logOut : startAuth,
-        actionLabel: !isAuthenticated() ? "Log In" : "Log Out",
+        action: isFMAuthenticated() ? logFMOut : startAuthFM,
+        actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
         icon: faUser,
         disabled: false,
     },
     {
         displayLabel: "Enable Spotify Integration",
-        action : startAuthSpot,
+        action: startAuthSpotify,
         actionLabel: "Enabled", 
         icon: faCompactDisc,
     },
@@ -66,7 +58,7 @@ const settingsOptions = useMemo(() => [
         icon: faPalette,
         disabled: false,
     },
-], [isAuthenticated, startAuth]);
+], [isFMAuthenticated, startAuthFM]);
 
 const settingsTableData = settingsOptions.map(option => ([
     <FontAwesomeIcon key={`${option.displayLabel}-icon`} icon={option.icon} aria-hidden="true" />,
