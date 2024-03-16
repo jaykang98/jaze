@@ -12,7 +12,7 @@ const Settings = lazy(() => import("../../../Application/Settings/Settings"));
 const Tops = lazy(() => import("../../../Application/Tops/Tops"));
 
 const ViewConstructor: React.FC<ViewConstructorProps> = ({ userID }) => {
-    const { title } = useViewTitle();
+  const { title } = useViewTitle();
 
   return (
     <>
@@ -21,10 +21,13 @@ const ViewConstructor: React.FC<ViewConstructorProps> = ({ userID }) => {
         <div>
           <Suspense fallback={<div>Loading...</div>}>
             <div className={styles.viewModuleConstructor}>
-                          <ViewTitleBar title={title} userID={userID} />
+              <ViewTitleBar title={title} userID={userID} />
               <Routes>
                 <Route path="/main" element={<Main userID={userID} />} />
-                <Route path="/settings" element={<Settings userID={userID} />} />
+                <Route
+                  path="/settings"
+                  element={<Settings userID={userID} />}
+                />
                 <Route path="/tops" element={<Tops userID={userID} />} />
               </Routes>
             </div>

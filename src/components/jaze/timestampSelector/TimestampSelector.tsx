@@ -3,7 +3,6 @@ import OptionList from "../../foundations/optionList/OptionList";
 import Input from "../../foundations/input/Input";
 import { SelectionType } from "../../../types/dataTypes";
 import { OptionListProps } from "../../../types/foundationTypes";
-
 import styles from "./TimestampSelector.module.css";
 
 interface TimestampSelectorProps {
@@ -15,21 +14,29 @@ const TimestampSelector: React.FC<TimestampSelectorProps> = ({
   timestamp,
   label,
 }) => {
-  const currentYear = new Date().getFullYear();
-  const yearsOptions = Array.from({ length: 4 }, (_, i) => ({
-    key: `${currentYear - i}`,
-    dataType: "year" as SelectionType,
-    value: `${currentYear - i}`,
-  }));
+  const currentYear = React.useMemo(() => new Date().getFullYear(), []);
 
-  const optionProps: OptionListProps = {
-    dataType: "year",
-    options: yearsOptions,
-  };
+  const yearsOptions = React.useMemo(
+    () =>
+      Array.from({ length: 10 }, (_, i) => ({
+        key: `${currentYear - i}`,
+        dataType: "year" as SelectionType,
+        value: `${currentYear - i}`,
+      })),
+    [currentYear],
+  );
+
+  const optionProps: OptionListProps = React.useMemo(
+    () => ({
+      dataType: "year",
+      options: yearsOptions,
+    }),
+    [yearsOptions],
+  );
 
   return (
     <div className={styles.timestampSelector}>
-      <span>{label}</span>
+      <span className={styles.timeLabel}>{label}</span>
       <Input
         id="datetime-local-input"
         type="datetime-local"

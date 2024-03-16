@@ -72,15 +72,18 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const userInfoElement = renderUserInfo();
   const aboutDescription = (
     <div>
-          <h3>About You!</h3>
-          <p>This application generates visual representations of Last.FM data that you have scrobbled over time. Here are some basic facts from your Last.FM profile!</p>
+      <h3>About You!</h3>
+      <p>
+        This application generates visual representations of Last.FM data that
+        you have scrobbled over time. Here are some basic facts from your
+        Last.FM profile!
+      </p>
       {userInfoElement}
     </div>
   );
   const features = (
     <div>
-          <h3>JaZe Features</h3>
-
+      <h3>JaZe Features</h3>
     </div>
   );
 
@@ -90,12 +93,12 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
       userID={userID}
       viewFrames={[
         {
-          content:aboutDescription,
-          viewWidth:100,
+          content: aboutDescription,
+          viewWidth: 100,
         },
         {
-            content: features,
-          viewWidth:100,
+          content: features,
+          viewWidth: 100,
         },
       ]}
     />

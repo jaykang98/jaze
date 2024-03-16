@@ -94,12 +94,12 @@ const LandingPage: React.FC<ActivityConstructorProps> = ({ userID }) => {
       userID={userID}
       viewFrames={[
         {
-          content:aboutDescription,
-          viewWidth:100,
+          content: aboutDescription,
+          viewWidth: 100,
         },
         {
-          content:secondaryContent,
-          viewWidth:100,
+          content: secondaryContent,
+          viewWidth: 100,
         },
       ]}
     />

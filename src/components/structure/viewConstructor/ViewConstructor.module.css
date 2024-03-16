@@ -2,7 +2,7 @@
   display: flex;
 }
 .viewModuleConstructor {
-  color: var(--primary-text-color);
+  color: black;
   font-family: var(--font-family);
   width: 70vw;
   flex-grow: 1;

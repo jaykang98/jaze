@@ -1,18 +1,17 @@
-/* Button base styles */
 .button {
   background-color: var(--secondary-accent-color-1);
   color: rgb(51, 51, 51);
-  border: 2px solid transparent;
-  border-radius: var(--border-radius);
+  border: 2px solid;
+  border-radius: 50px;
   cursor: pointer;
   transition: var(--hover-transition);
   display: inline-block;
-  outline: 1px solid var(--outline-color, black);
   min-height: 40px;
   min-width: 100px;
+  max-width: 150px;
   -webkit-user-select: none;
   user-select: none;
-  font: 500 1vw/1.5 var(--font-family);
+  font: 500 1vw/1 var(--font-family);
   white-space: nowrap;
   line-height: var(--line-height, 1.2);
   height: 30px;
@@ -22,7 +21,6 @@
   justify-content: center;
 }
 
-/* Button hover styles */
 .button:hover {
   background: linear-gradient(
     45deg,

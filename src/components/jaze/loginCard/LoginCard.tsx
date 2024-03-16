@@ -1,7 +1,7 @@
 // FileName: src/components/LoginCard.tsx
 import React, { useState } from "react";
 import styles from "./LoginCard.module.css";
-import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData"; 
+import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData";
 import { useAuthenticator } from "../../../hooks/security/useAuthenticator";
 
 interface LoginCardProps {
@@ -10,16 +10,18 @@ interface LoginCardProps {
 
 const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
   const { userData, loading } = fetchUserData(userID);
-    const { logFMOut, startAuthFM, isFMAuthenticated } = useAuthenticator();
+  const { logFMOut, startAuthFM, isFMAuthenticated } = useAuthenticator();
   const userImage = userData?.user?.image?.[0]["#text"];
   const [isHovered, setIsHovered] = useState(false);
 
   const handleAuthAction = () => {
-      isFMAuthenticated() ? logFMOut() : startAuthFM();
+    isFMAuthenticated() ? logFMOut() : startAuthFM();
   };
 
-  const handleCreateAccount = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    event.stopPropagation(); 
+  const handleCreateAccount = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    event.stopPropagation();
     window.location.href = "https://www.last.fm/join";
   };
 
@@ -30,13 +32,21 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
 
     if (userID) {
       return isHovered ? (
-        <><div onClick={handleAuthAction} className={styles.overlayContent}>Log out and send J your SSN and credit card information</div></>
-      ) : null; 
+        <>
+          <div onClick={handleAuthAction} className={styles.overlayContent}>
+            Log out and send J your SSN and credit card information
+          </div>
+        </>
+      ) : null;
     } else {
       return (
         <>
-          <div onClick={handleAuthAction} className={styles.overlayContent}>Log In</div>
-          <div onClick={handleCreateAccount} className={styles.overlayContent}>Create an Account</div>
+          <div onClick={handleAuthAction} className={styles.overlayContent}>
+            Log In
+          </div>
+          <div onClick={handleCreateAccount} className={styles.overlayContent}>
+            Create an Account
+          </div>
         </>
       );
     }
@@ -68,9 +78,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
             </div>
           </>
         )}
-        <div className={styles.LoginCardOverlay}>
-          {overlayContent()}
-        </div>
+        <div className={styles.LoginCardOverlay}>{overlayContent()}</div>
       </div>
     </div>
   );

@@ -26,9 +26,7 @@ export interface FormData {
 export interface MainFormProps {
   formData: MainFormState;
   setFormData: (
-    formData:
-      | MainFormState
-      | ((prevState: MainFormState) => MainFormState),
+    formData: MainFormState | ((prevState: MainFormState) => MainFormState),
   ) => void;
   userID?: string;
   selectionType: SelectionType;

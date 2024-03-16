@@ -51,7 +51,7 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
         newOptions =
           trackData?.toptracks.track.map((track) => ({
             value: track.url,
-            key: `${track.artist.name} - ${track.name}`,
+              key: `${track.artist.name} - ${track.name}`,
             dataType: "track",
           })) || [];
         break;
@@ -76,7 +76,13 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
         </option>
       ))}
     </select>
-  );
+    );
+    const handleClick = (optionValue: string) => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            [selectionType]: optionValue 
+        }));
+    };
 
   return (
     <>

@@ -13,5 +13,9 @@
     font:
       500 6vw/1.5 var(--font-family),
       sans-serif;
+    color: white;
   }
+}
+.title {
+  margin: 25px;
 }

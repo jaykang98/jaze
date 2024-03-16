@@ -1,8 +1,7 @@
 /* CriteriaSelector.module.css */
 .criteriaSelector {
-  width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  width: 100%;
 }

@@ -1,8 +1,14 @@
-/* TimestampSelector.module.css */
 .timestampSelector {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+}
+
+.timeLabel {
+  white-space: nowrap;
+  flex-shrink: 0;
+  flex-grow: 1;
+  font-weight: 500;
 }

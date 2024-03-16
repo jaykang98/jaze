@@ -12,17 +12,15 @@ const Input: React.FC<InputProps> = ({
   onChange,
 }) => {
   return (
-    <div className={styles.inputContainer}>
-      <input
-        id={id}
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        className={styles.inputField}
-        onChange={onChange}
-      />
-    </div>
+    <input
+      id={id}
+      type={type}
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      className={styles.inputField}
+      onChange={onChange}
+    />
   );
 };
 

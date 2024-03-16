@@ -16,7 +16,7 @@ const OptionList: React.FC<OptionListProps> = ({ options, id }) => {
         let visibleCount = 0;
 
         options.forEach((option, index) => {
-          const optionWidth = 100;
+          const optionWidth = 150;
           if (totalWidth + optionWidth <= containerWidth) {
             totalWidth += optionWidth;
             visibleCount++;
@@ -56,7 +56,7 @@ const OptionList: React.FC<OptionListProps> = ({ options, id }) => {
             key={index}
             onClick={(e) => {
               const parentRow = e.currentTarget.closest(
-                "div.timeSelectionRow, div.criteriaSelectionRow",
+                "div.timestampSelector, div.criteriaSelector",
               );
               if (parentRow) {
                 const input = parentRow.querySelector("input");
