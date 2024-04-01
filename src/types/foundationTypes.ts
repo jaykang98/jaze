@@ -9,13 +9,15 @@ export interface InputProps {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
-  icon?: IconDefinition;
+    icon?: IconDefinition;
+  dataType?:string;
 }
 export interface Option {
   label: string;
   key: string;
   dataType: SelectionType;
-  value: string;
+    value: string;
+    onClick?: () => void;
 }
 export interface OptionListProps {
   dataType: SelectionType;
@@ -28,5 +30,6 @@ export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   className?: string;
   label?: string | null;
-  disabled?: boolean;
+    disabled?: boolean;
+    dataType?: SelectionType;
 }

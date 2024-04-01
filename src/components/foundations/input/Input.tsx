@@ -9,17 +9,19 @@ const Input: React.FC<InputProps> = ({
   name,
   value,
   placeholder,
-  onChange,
+    onChange,
+  dataType,
 }) => {
   return (
     <input
-      id={id}
-      type={type}
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      className={styles.inputField}
-      onChange={onChange}
+          id={id}
+          type={type}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          className={styles.inputField}
+          onChange={onChange}
+          datatype={ dataType}
     />
   );
 };

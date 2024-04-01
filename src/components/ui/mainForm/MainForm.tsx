@@ -13,6 +13,13 @@ const MainForm: React.FC<MainFormProps> = ({
 }) => {
   const { albumData, artistData, trackData } = fetchUserData(userID);
   const [selectionType, setSelectionType] = useState<SelectionType>("artist");
+    const handleStartTimeSelect = (timestamp: string) => {
+        setFormData({ ...formData, startTimestamp: timestamp });
+    };
+
+    const handleEndTimeSelect = (timestamp: string) => {
+        setFormData({ ...formData, endTimestamp: timestamp });
+    };
 
   return (
     <form onSubmit={(e) => e.preventDefault()} id="GenerateVisForm">
@@ -27,9 +34,12 @@ const MainForm: React.FC<MainFormProps> = ({
       />
       <TimeStampSelector
         timestamp={formData.startTimestamp}
-        label="Start Time"
+              label="Start Time"
+              onOptionSelect={handleStartTimeSelect}
+
       />
-      <TimeStampSelector timestamp={formData.endTimestamp} label="End Time" />
+          <TimeStampSelector timestamp={formData.endTimestamp} label="End Time" onOptionSelect={handleEndTimeSelect}
+/>
       <Button type="submit">Submit</Button>
     </form>
   );

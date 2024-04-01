@@ -24,7 +24,7 @@ function App() {
       }
     }
 
-    if (!spotID) {
+    if (spotID!=null) {
       const code = urlParams.get("code");
       if (code) {
         handleSpotifyAuthCode(code);

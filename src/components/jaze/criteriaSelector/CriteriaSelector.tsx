@@ -36,7 +36,7 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
           albumData?.topalbums.album.map((album) => ({
             value: album.url,
             key: album.name,
-            dataType: "album",
+              datatype: "album",
           })) || [];
         break;
       case "artist":
@@ -44,7 +44,8 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
           artistData?.topartists.artist.map((artist) => ({
             value: artist.url,
             key: artist.name,
-            dataType: "artist",
+              datatype: "artist",
+
           })) || [];
         break;
       case "track":
@@ -52,7 +53,7 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
           trackData?.toptracks.track.map((track) => ({
             value: track.url,
               key: track.name,
-            dataType: "track",
+            datatype: "track",
           })) || [];
         break;
     }
@@ -77,24 +78,17 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
       ))}
     </select>
     );
-    const handleClick = (optionValue: string) => {
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            [selectionType]: optionValue 
-        }));
-    };
 
   return (
       <div className={styles.criteriaSelector}>
         {selectionElement}
         <Input
-                  id={selectionType }
-          type="text"
-          name={selectionType}
-          value={formData[selectionType] || ""}
-          onChange={handleInputChange}
-                  placeholder={`Enter ${selectionType}`}
-        />
+              id={selectionType}
+              dataType={selectionType}
+              name={selectionType}
+              value={formData[selectionType] || ""}
+              onChange={handleInputChange}
+              placeholder={`Enter ${selectionType}`} type={""}        />
         <OptionList options={options} dataType={selectionType} />
       </div>
   );

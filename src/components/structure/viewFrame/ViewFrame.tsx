@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import classNames from "classnames"; // Make sure to install classNames library
+import classNames from "classnames"; 
 import styles from "src/components/structure/viewFrame/ViewFrame.module.css";
 import ViewSection from "../viewSection/ViewSection";
 import { ViewFrameProps } from "types/structureTypes";

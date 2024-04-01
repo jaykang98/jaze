@@ -54,8 +54,9 @@ const OptionList: React.FC<OptionListProps> = ({ options, dataType }) => {
         {visibleOptions.map((option, index) => (
           <Button
                 key={index}
+                dataType={dataType}
                 onClick={(e) => {
-                    const input = document.querySelector(`input#${dataType}`) as HTMLInputElement;
+                    const input = document.querySelector(`input[datatype='${dataType}']`) as HTMLInputElement;
 
                     if (input) {
                         input.value = option.key;

@@ -21,8 +21,7 @@ let globalIsDecryptMode = false;
 
 const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const { setTitle } = useViewTitle();
-  const { startAuthFM, isFMAuthenticated, logFMOut, startAuthSpotify } =
-    useAuthenticator();
+    const { startAuthFM, isFMAuthenticated, logFMOut, startAuthSpotify } = useAuthenticator();
 
   useEffect(() => {
     setTitle("Settings");

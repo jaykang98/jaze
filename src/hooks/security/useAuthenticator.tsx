@@ -1,16 +1,27 @@
 import { useState, useEffect, useCallback } from "react";
 import { decryptData, encryptData, generateMD5 } from "./utils";
 import { generateRandomString } from "../utils/authHelpers";
+import { Buffer } from 'buffer';
 
 export const useAuthenticator = () => {
-  const handleSpotifyAuthCode = async (code: string) => {
+    let url = new URL(window.location.href);
+    url.search = "";
+    const callbackUrl = encodeURIComponent(url.toString());
+    const handleSpotifyAuthCode = async (code: string) => {
+        localStorage.setItem("spotifyCode", code);
     try {
-      const response = await fetch("/api/spotify-auth", {
+        const authBuffer = Buffer.from(`${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`).toString('base64');
+        const response = await fetch("https://accounts.spotify.com/api/token", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+            'Authorization': 'Basic ' + authBuffer,
+            'content-type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({
+            grant_type:'authorization_code',
+            code: code,
+            redirect_uri: callbackUrl
+        }),
       });
 
       if (!response.ok) {
@@ -59,7 +70,6 @@ export const useAuthenticator = () => {
   const startAuthSpotify = () => {
     const clientId = process.env.REACT_APP_SPOTIFY_CLIENTID;
     let url = new URL(window.location.href);
-    url.search = "";
     const callbackUrl = encodeURIComponent(url.toString());
     const scope = encodeURIComponent("user-read-private user-read-email");
     const state = generateRandomString(16);

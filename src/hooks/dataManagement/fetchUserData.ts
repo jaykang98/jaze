@@ -23,19 +23,17 @@ export const fetchUserData = (username: string) => {
   const [spotifyAccessToken, setSpotifyAccessToken] = useState<string | null>(
     null,
   );
-  const localStorageKey = `userData_${username}`;
+  const localStorageKey = `lastFMData_${username}`;
 
   useEffect(() => {
     const fetchSpotifyAccessToken = async () => {
-      // Your backend should handle this part securely
     };
 
     const fetchSpotifyData = async () => {
       if (!spotifyAccessToken) return;
-      // Use spotifyAccessToken to fetch data from Spotify
     };
 
-    const localStorageKey = `userData_${username}`;
+      const localStorageKey = `lastFMData_${username}`;
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -49,7 +47,7 @@ export const fetchUserData = (username: string) => {
           storedData = JSON.parse(processedDataStr);
         }
 
-        const [userInfo, userTopAlbums, userTopArtists, userTopTracks] =
+        const [userData, userAlbums, userArtists, userTracks] =
           await Promise.all([
             fetchAndProcessData("user.getinfo", { user: username }),
             fetchAndProcessData("user.getTopAlbums", {
@@ -66,16 +64,16 @@ export const fetchUserData = (username: string) => {
             }),
           ]);
 
-        setUserData(userInfo as UserData);
-        setAlbumData(userTopAlbums as AlbumData);
-        setArtistData(userTopArtists as ArtistData);
-        setTrackData(userTopTracks as TrackData);
+        setUserData(userData as UserData);
+        setAlbumData(userAlbums as AlbumData);
+        setArtistData(userArtists as ArtistData);
+        setTrackData(userTracks as TrackData);
 
         const dataToStore = JSON.stringify({
-          userData: userInfo,
-          albumData: userTopAlbums,
-          artistData: userTopArtists,
-          trackData: userTopTracks,
+          userData: userData,
+          albumData: userAlbums,
+          artistData: userArtists,
+          trackData: userTracks,
         });
 
         localStorage.setItem(
