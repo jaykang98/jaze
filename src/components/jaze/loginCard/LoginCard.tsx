@@ -2,15 +2,16 @@
 import React, { useState } from "react";
 import styles from "./LoginCard.module.css";
 import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData";
-import { useAuthenticator } from "../../../hooks/security/useAuthenticator";
-
+import { lastAuth } from "../../../hooks/authentication/lastAuth";
+import { spotAuth } from "../../../hooks/authentication/spotAuth";
 interface LoginCardProps {
   userID?: string;
 }
 
 const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
   const { userData, loading } = fetchUserData(userID);
-  const { logFMOut, startAuthFM, isFMAuthenticated } = useAuthenticator();
+    const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
+    const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
   const userImage = userData?.user?.image?.[0]["#text"];
   const [isHovered, setIsHovered] = useState(false);
 

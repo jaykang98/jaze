@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import { fetchAndProcessData } from "./fetchAndProcessData";
 import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
-import { decryptData, encryptData } from "../security/utils";
+import { decryptData, encryptData } from "../security/encryptionProtocol";
 
 const settings = {
-  isDecryptMode: false,
+    get enableDecryption() {
+        return localStorage.getItem('enableDecryption') === 'true';
+    },
+    set enableDecryption(value: boolean) {
+        localStorage.setItem('enableDecryption', String(value));
+    },
 };
+export const decryptionMode = (): boolean => settings.enableDecryption;
+export const setDecryptionMode = (): void => {settings.enableDecryption = !settings.enableDecryption;};
 
-export const getIsDecryptMode = () => settings.isDecryptMode;
-export const setIsDecryptMode = (mode: boolean) => {
-  settings.isDecryptMode = mode;
-};
 
 export const fetchUserData = (username: string) => {
     const [userData, setUserData] = useState<UserData | null>(null);
@@ -28,7 +31,7 @@ export const fetchUserData = (username: string) => {
                     const storedDataStr = localStorage.getItem(localStorageKey);
                     if (storedDataStr) {
                         try {
-                            const processedDataStr = settings.isDecryptMode ? decryptData(storedDataStr) : storedDataStr;
+                            const processedDataStr = settings.enableDecryption ? decryptData(storedDataStr) : storedDataStr;
                             const storedData = JSON.parse(processedDataStr);
 
                             if (storedData && storedData.userData && storedData.albumData && storedData.artistData && storedData.trackData) {
@@ -72,7 +75,7 @@ export const fetchUserData = (username: string) => {
                         trackData: userTracks,
                     });
 
-                    localStorage.setItem(localStorageKey,settings.isDecryptMode ? encryptData(dataToStore) : dataToStore);
+                    localStorage.setItem(localStorageKey, settings.enableDecryption ? encryptData(dataToStore) : dataToStore);
                 }
                 catch (error) {
                     console.error("Failed to fetch user data", error);

@@ -39,9 +39,7 @@ export const useSpotifyClient = (config: SpotifyApiConfig) => {
     });
   };
 
-  useEffect(() => {
-    fetchAccessToken();
-  }, []);
+  useEffect(() => {fetchAccessToken();}, []);
 
   const spotifyApiRequest = async <T = any>(
     endpoint: string,

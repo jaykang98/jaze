@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { encryptData, decryptData } from "../security/utils";
+import { encryptData, decryptData } from "../security/encryptionProtocol";
 
 interface UseLocalStorageReturn {
   setItem: (value: string) => void;

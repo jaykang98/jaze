@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   return (
     <header className={`${styles.header}`}>
       <h1>
-        <FontAwesomeIcon icon={faRadio} className={styles.icon} /> JaZe
+              <FontAwesomeIcon icon={faRadio} style={{ color: 'black' }} className={styles.icon} /> JaZe
       </h1>
     </header>
   );

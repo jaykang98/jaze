@@ -4,14 +4,14 @@ import "../../globals/textStyles.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import ViewConstructor from "./viewConstructor/ViewConstructor";
 import ErrorBoundary from "./ErrorBoundary";
-import { useAuthenticator } from "../../hooks/security/useAuthenticator";
-import Header from "../foundations/header/Header";
+import { lastAuth } from "../../hooks/authentication/lastAuth";
+import { spotAuth } from "../../hooks/authentication/spotAuth"; import Header from "../foundations/header/Header";
 import Footer from "../foundations/footer/Footer";
 import { ViewTitleProvider } from "../../contexts/ViewTitleContexts";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 function App() {
-    const { fetchFM, getLastFMUser, fetchSpotifyCode } =
-    useAuthenticator();
+    const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut,fetchSpotifyCode } = spotAuth();
+    const { startAuthFM, isFMAuthenticated, logFMOut,getLastFMUser,fetchFM } = lastAuth();
   const { getItem } = useLocalStorage("spotifyUserID");
   const spotID = { getItem };
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
         <div className="app">
           <Router>
             <ViewConstructor
-                          userID={getLastFMUser()}
+                userID={getLastFMUser()}
               onViewChange={() => {}}
             />
           </Router>

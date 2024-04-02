@@ -1,4 +1,4 @@
-// src/hooks/utils/SecurityUtils.ts
+// src/hooks/security/utils.ts
 import CryptoJS from "crypto-js";
 
 export const encryptData = (data: string): string => {
@@ -29,4 +29,15 @@ export const decryptData = (ciphertext: string): string | null => {
 
 export const generateMD5 = (data: string): string => {
   return CryptoJS.MD5(data).toString();
+};
+
+export const generateRandomString = (length: number): string => {
+    let result = "";
+    const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
 };
