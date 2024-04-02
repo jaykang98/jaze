@@ -2,8 +2,8 @@ export async function fetchData<T>(
   method: string,
   params: Record<string, string | number | boolean>,
 ): Promise<T> {
-  const apiKey = process.env.REACT_APP_APIKEY;
-  const baseUrl = process.env.REACT_APP_BASEURL;
+  const apiKey = process.env.REACT_APP_LASTFM_APIKEY;
+  const baseUrl = process.env.REACT_APP_LASTFM_BASEURL;
 
   if (!apiKey || !baseUrl) {
     throw new Error(

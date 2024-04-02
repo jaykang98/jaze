@@ -6,7 +6,7 @@ export const encryptData = (data: string): string => {
     console.log("DEBUG mode is enabled. Skipping encryption.");
     return data;
   }
-  return CryptoJS.AES.encrypt(data, process.env.REACT_APP_SECRETKEY).toString();
+  return CryptoJS.AES.encrypt(data, process.env.REACT_APP_LASTFM_SECRET).toString();
 };
 
 export const decryptData = (ciphertext: string): string | null => {
@@ -17,7 +17,7 @@ export const decryptData = (ciphertext: string): string | null => {
   try {
     const bytes = CryptoJS.AES.decrypt(
       ciphertext,
-      process.env.REACT_APP_SECRETKEY,
+      process.env.REACT_APP_LASTFM_SECRET,
     );
     const originalText = bytes.toString(CryptoJS.enc.Utf8);
     return originalText !== "" ? originalText : null;
