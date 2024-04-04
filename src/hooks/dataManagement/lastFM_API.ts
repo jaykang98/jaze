@@ -21,15 +21,3 @@ export async function fetchData<T>(
     catch (error) { console.error("Failed to fetch data:", error);  throw error;
     }
 }
-export interface FetchDataParams {
-  [key: string]: string | number | boolean;
-  user?: string;
-  artist?: string;
-  album?: string;
-  track?: string;
-  autocorrect?: number;
-  page?: number;
-  limit?: number;
-  period?: string;
-  extended?: number;
-}

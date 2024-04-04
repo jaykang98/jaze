@@ -10,8 +10,8 @@ import Footer from "../foundations/footer/Footer";
 import { ViewTitleProvider } from "../../contexts/ViewTitleContexts";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 function App() {
-    const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut,fetchSpotifyCode } = spotAuth();
-    const { startAuthFM, isFMAuthenticated, logFMOut,getLastFMUser,fetchFM } = lastAuth();
+    const { fetchSpotifyCode } = spotAuth();
+    const { getLastFMUser,fetchFM } = lastAuth();
   const { getItem } = useLocalStorage("spotifyUserID");
   const spotID = { getItem };
   useEffect(() => {

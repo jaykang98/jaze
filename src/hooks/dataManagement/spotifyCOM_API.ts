@@ -1,45 +1,15 @@
 import { useState, useEffect } from "react";
 import { SpotifyUserProfile } from "types/dataTypes";
-interface SpotifyApiConfig {
-  clientId: string;
-  clientSecret: string;
-}
 
 interface SpotifyAccessToken {
   token: string;
   expiresIn: number;
 }
 
-export const useSpotifyClient = (config: SpotifyApiConfig) => {
+export const useSpotifyClient = () => {
   const [accessToken, setAccessToken] = useState<SpotifyAccessToken | null>(
     null,
   );
-
-  const fetchAccessToken = async () => {
-    const authString = btoa(
-        `${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`,
-    );
-    const response = await fetch("https://accounts.spotify.com/api/token", {
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${authString}`,
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: "grant_type=client_credentials",
-    });
-
-    if (!response.ok) {
-      throw new Error("Spotify authentication failed");
-    }
-
-    const data = await response.json();
-    setAccessToken({
-      token: data.access_token,
-      expiresIn: data.expires_in,
-    });
-  };
-
-  useEffect(() => {fetchAccessToken();}, []);
 
   const spotifyApiRequest = async <T = any>(
     endpoint: string,

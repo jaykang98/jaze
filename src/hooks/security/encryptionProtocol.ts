@@ -11,7 +11,7 @@ export const encryptData = (data: string): string => {
 
 export const decryptData = (ciphertext: string): string | null => {
   if (process.env.REACT_APP_IS_DEBUG === "TRUE") {
-    console.log("DEBUG mode is enabled. Skipping decryption.");
+    console.log("DEBUG mode enabled. Skipping decryption.");
     return ciphertext;
   }
   try {
@@ -41,3 +41,13 @@ export const generateRandomString = (length: number): string => {
     }
     return result;
 };
+export const generateApiSignature = (
+    params: { [key: string]: string },
+    secret: string,
+) => {
+    const orderedParams = Object.keys(params)
+        .sort()
+        .map((key) => `${key}${params[key]}`)
+        .join("");
+    return generateMD5(`${orderedParams}${secret}`);
+}

@@ -1,21 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import { decryptData, encryptData, generateMD5, generateRandomString } from "../security/encryptionProtocol";
-import { Buffer } from 'buffer';
+import { decryptData, encryptData, generateApiSignature } from "../security/encryptionProtocol";
 
 export const lastAuth = () => {
     const baseUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
     const callbackUrl = encodeURIComponent(baseUrl);
 
-    const generateApiSignature = (
-        params: { [key: string]: string },
-        secret: string,
-    ) => {
-        const orderedParams = Object.keys(params)
-            .sort()
-            .map((key) => `${key}${params[key]}`)
-            .join("");
-        return generateMD5(`${orderedParams}${secret}`);
-    };
+;
 
     const [lastFMUserID, lastFMUserIDState] = useState<string | null>(null);
     const startAuthFM = () => {

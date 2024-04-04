@@ -6,17 +6,6 @@ export const spotAuth = () => {
     const baseUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
     const callbackUrl = encodeURIComponent(baseUrl);
 
-    const generateApiSignature = (
-        params: { [key: string]: string },
-        secret: string,
-    ) => {
-        const orderedParams = Object.keys(params)
-            .sort()
-            .map((key) => `${key}${params[key]}`)
-            .join("");
-        return generateMD5(`${orderedParams}${secret}`);
-    };
-
     const [spotifyUserID, spotifyIDState] = useState<string | null>(null);
     const startAuthSpotify = () => {
         const scope = encodeURIComponent("user-read-private user-read-email");
