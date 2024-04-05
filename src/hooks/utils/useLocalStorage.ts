@@ -7,10 +7,8 @@ interface UseLocalStorageReturn {
 }
 
 export const useLocalStorage = (key: string): UseLocalStorageReturn => {
-  const setItem = (value: string) => {
-    const encryptedValue = encryptData(value);
-    localStorage.setItem(key, encryptedValue);
-  };
+  const setItem = (value: string) => { 
+      localStorage.setItem(key, encryptData(value)); };
 
   const getItem = (): string | null => {
     const item = localStorage.getItem(key);

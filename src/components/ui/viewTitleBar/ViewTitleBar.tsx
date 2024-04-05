@@ -3,8 +3,8 @@ import styles from "./ViewTitleBar.module.css";
 import LoginCard from "../../jaze/loginCard/LoginCard";
 
 const ViewTitleBar: React.FC<{
-    title?: string;
-    userID?: string;
+  title?: string;
+  userID?: string;
 }> = ({ title, userID }) => {
   if (!title && !userID) {
     return <div></div>;

@@ -1,13 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
-import {
-  decryptData,
-  encryptData,
-  generateApiSignature,
-} from "../security/encryptionProtocol";
+import { decryptData, encryptData, generateApiSignature } from "../security/encryptionProtocol";
 import { reloadPage, currentPage } from "../security/urlHandler";
 
 export const lastAuth = () => {
-    const callbackUrl = encodeURIComponent(currentPage());
+  const callbackUrl = encodeURIComponent(currentPage());
 
   const [lastFMUserID, lastFMUserIDState] = useState<string | null>(null);
   const startAuthFM = () => {
@@ -36,15 +32,15 @@ export const lastAuth = () => {
         const encryptedUserID = encryptData(lastFMUserID);
         localStorage.setItem("lastFMUserID", encryptedUserID);
         lastFMUserIDState(lastFMUserID);
-          reloadPage();
+        reloadPage();
       }
     } catch (error) {
       console.error("Fetching session failed:", error);
     }
   };
   const logFMOut = useCallback(() => {
-      localStorage.removeItem("lastFMData");
-      localStorage.removeItem("lastFMUserID");
+    localStorage.removeItem("lastFMData");
+    localStorage.removeItem("lastFMUserID");
     lastFMUserIDState(null);
     reloadPage();
   }, []);

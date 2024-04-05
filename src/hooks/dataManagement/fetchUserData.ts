@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchAndProcessData } from "./fetchAndProcessData";
-import { UserData, AlbumData, ArtistData, TrackData } from "types/dataTypes";
+import { lastFMUser, AlbumData, ArtistData, TrackData } from "types/dataTypes";
 import { decryptData, encryptData } from "../security/encryptionProtocol";
 
 const settings = {
@@ -17,7 +17,7 @@ export const setDecryptionMode = (): void => {
 };
 
 export const fetchUserData = (username: string) => {
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData, setUserData] = useState<lastFMUser | null>(null);
   const [albumData, setAlbumData] = useState<AlbumData | null>(null);
   const [artistData, setArtistData] = useState<ArtistData | null>(null);
   const [trackData, setTrackData] = useState<TrackData | null>(null);
@@ -72,7 +72,7 @@ export const fetchUserData = (username: string) => {
               limit: 10,
             }),
           ]);
-        setUserData(userData as UserData);
+        setUserData(userData as lastFMUser);
         setAlbumData(userAlbums as AlbumData);
         setArtistData(userArtists as ArtistData);
         setTrackData(userTracks as TrackData);

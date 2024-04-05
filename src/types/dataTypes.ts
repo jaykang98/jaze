@@ -80,7 +80,7 @@ export type TrackData = {
   };
 };
 
-export interface UserData {
+export interface lastFMUser {
   user: {
     name: string;
     realname?: string;

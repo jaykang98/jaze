@@ -23,7 +23,7 @@ function App() {
       }
     }
 
-      if (!getSpotifyUser()) {
+    if (!getSpotifyUser()) {
       const code = urlParams.get("code");
       if (code) {
         fetchSpotifyCode(code);
