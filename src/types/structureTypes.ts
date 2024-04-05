@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { SelectionType } from "./dataTypes";
 
 export interface ViewConstructorProps {

@@ -10,8 +10,8 @@ interface LoginCardProps {
 
 const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
   const { userData, loading } = fetchUserData(userID);
-    const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
-    const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
+  const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
+  const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
   const userImage = userData?.user?.image?.[0]["#text"];
   const [isHovered, setIsHovered] = useState(false);
 

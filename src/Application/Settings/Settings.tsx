@@ -1,15 +1,6 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faKey,
-  faPalette,
-  faPenNib,
-  faCoffee,
-  faBug,
-  faTools,
-  faCompactDisc,
-} from "@fortawesome/free-solid-svg-icons";
+import {faUser,faKey,faPalette,faPenNib,faCoffee,faBug,faTools,faCompactDisc} from "@fortawesome/free-solid-svg-icons";
 import { lastAuth } from "../../hooks/authentication/lastAuth";
 import { spotAuth } from "../../hooks/authentication/spotAuth";
 import { ActivityConstructorProps } from "../../types/structureTypes";
@@ -17,158 +8,172 @@ import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
-import { setDecryptionMode, decryptionMode } from "../../hooks/dataManagement/fetchUserData"
+import {setDecryptionMode,decryptionMode} from "../../hooks/dataManagement/fetchUserData";
+import { reloadPage } from "../../hooks/security/urlHandler";
 
 const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
-    const { setTitle } = useViewTitle();
-    const {  startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
-    const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
-
-    useEffect(  () =>   {setTitle("Settings");}, [setTitle] );
-    const toggleGlobalIsDecryptMode = () => {
-        setDecryptionMode();
-        if (decryptionMode()) {
-            alert("Encryption enabled");
-        } else {
-            alert("Encryption disabled");
-        }
-        window.location.reload();
+  const { setTitle } = useViewTitle();
+  const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
+  const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
+    const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+        document.body.classList.toggle('dark-mode');
     };
-     
-    const firstNode = useMemo(
+  useEffect(() => {
+    setTitle("Settings");
+  }, [setTitle]);
+  const toggleGlobalIsDecryptMode = () => {
+    setDecryptionMode();
+    if (decryptionMode()) {
+      alert("Encryption enabled");
+    } else {
+      alert("Encryption disabled");
+    }
+      reloadPage();
+  };
+  const firstNode = useMemo(
     () => [
-        {
+      {
         displayLabel: "Last.FM Account",
         action: isFMAuthenticated() ? logFMOut : startAuthFM,
         actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
         icon: faUser,
         disabled: false,
-        },
-        {
+      },
+      {
         displayLabel: "Spotify Account",
         action: isSpotifyLoggedIn() ? logSpotifyOut : startAuthSpotify,
         actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
         icon: faCompactDisc,
-        },
-        {
+      },
+      {
         displayLabel: "Store Data Securely",
         action: toggleGlobalIsDecryptMode,
         actionLabel: !decryptionMode() ? "Encrypt Data" : "Decrypt Data",
         icon: faKey,
         disabled: false,
-        },
-        {
+      },
+    {
         displayLabel: "Current Theme Mode",
-        action: () => (document.body.style.backgroundColor = "Black"),
-        actionLabel: "Dark Mode",
+        action: toggleDarkMode,
+        actionLabel: isDarkMode ? "Light Mode" : "Dark Mode",
         icon: faPalette,
         disabled: false,
-        },
+    },
     ],
     [isFMAuthenticated, startAuthFM],
-    );
-    const settingsTableData = firstNode.map((option) => [
-        <FontAwesomeIcon key={`${option.displayLabel}-icon`} icon={option.icon} aria-hidden="true" />,
-        option.displayLabel,
-        <Button key={`${option.displayLabel}-button`} onClick={option.action} disabled={option.disabled}>
-            {option.actionLabel}
-        </Button>,
-    ]);
+  );
+  const settingsTableData = firstNode.map((option) => [
+    <FontAwesomeIcon
+      key={`${option.displayLabel}-icon`}
+      icon={option.icon}
+      aria-hidden="true"
+    />,
+    option.displayLabel,
+    <Button
+      key={`${option.displayLabel}-button`}
+      onClick={option.action}
+      disabled={option.disabled}
+    >
+      {option.actionLabel}
+    </Button>,
+  ]);
 
-    const secondNode = [
-        [<FontAwesomeIcon icon={faPenNib} />, "Author Name", "J Kang"],
-        [
-            <FontAwesomeIcon icon={faCoffee} />,
-            "Current Version",
-            "JaZe " + process.env.REACT_APP_VER,
-        ],
-        [
-            <FontAwesomeIcon icon={faBug} />,
-            "Report A Bug",
-            <Button
-                onClick={() =>
-                    window.open("mailto:admin@jklmnopea.com?subject=Bug Report")
-                }
-            >
-                Report
-            </Button>,
-        ],
-        [
-            <FontAwesomeIcon icon={faTools} />,
-            "Make Contributions",
-            <Button
-                onClick={() =>
-                    (window.location.href = "https://github.com/jaykang98/jaze")
-                }
-            >
-                Launch GitHub
-            </Button>,
-        ],
-        [
-            <FontAwesomeIcon icon={faCoffee} />,
-            "Support Open Source Software",
-            <Button
-                onClick={() =>
-                (window.location.href =
-                    "https://paypal.me/jklmnopea?country.x=US&locale.x=en_US")
-                }
-            >
-                $ Donate
-            </Button>,
-        ],
-    ];
+  const secondNode = [
+    [<FontAwesomeIcon icon={faPenNib} />, "Author Name", "J Kang"],
+    [
+      <FontAwesomeIcon icon={faCoffee} />,
+      "Current Version",
+      "JaZe " + process.env.REACT_APP_VER,
+    ],
+    [
+      <FontAwesomeIcon icon={faBug} />,
+      "Report A Bug",
+      <Button
+        onClick={() =>
+          window.open("mailto:admin@jklmnopea.com?subject=Bug Report")
+        }
+      >
+        Report
+      </Button>,
+    ],
+    [
+      <FontAwesomeIcon icon={faTools} />,
+      "Make Contributions",
+      <Button
+        onClick={() =>
+          (window.location.href = "https://github.com/jaykang98/jaze")
+        }
+      >
+        Launch GitHub
+      </Button>,
+    ],
+    [
+      <FontAwesomeIcon icon={faCoffee} />,
+      "Support Open Source Software",
+      <Button
+        onClick={() =>
+          (window.location.href =
+            "https://paypal.me/jklmnopea?country.x=US&locale.x=en_US")
+        }
+      >
+        $ Donate
+      </Button>,
+    ],
+  ];
 
-    return (
+  return (
     <DisplayGrid
-        title="Settings"
-        userID={userID}
-        viewFrames={[
+      title="Settings"
+      userID={userID}
+      viewFrames={[
         {
-            content: (
+          content: (
             <>
-                <p>
+              <p>
                 Adjust your preferences for a personalized experience. JaZe
                 offers a number of customization options, including Last.FM
                 login, disabling local encryption (faster, but less secure),
                 clearing all saved information, and dark mode. Enjoy!
-                </p>
-                <ul>
+              </p>
+              <ul>
                 <li>
-                    Use the Last.FM Authentication Framework to view data about
-                    your music
+                  Use the Last.FM Authentication Framework to view data about
+                  your music
                 </li>
                 <li>
-                    Store some of the data locally and securely to save on query
-                    requests
+                  Store some of the data locally and securely to save on query
+                  requests
                 </li>
                 <li>
-                    View your top ten musicians, albums, and tracks of all time.
-                    AND the number of scrobbles!
+                  View your top ten musicians, albums, and tracks of all time.
+                  AND the number of scrobbles!
                 </li>
                 <li>Create a Last.FM account from the click of a button</li>
                 <li>
-                    Enable DEBUG_MODE to view more information and disable
-                    encryption
+                  Enable DEBUG_MODE to view more information and disable
+                  encryption
                 </li>
                 <li>Quick links for quick actions!</li>
-                </ul>
+              </ul>
             </>
-            ),
-            viewWidth: 100,
+          ),
+          viewWidth: 100,
         },
         {
-            content: (
+          content: (
             <>
-                <h3>Customize JaZe</h3>
-                <DisplayTable data={settingsTableData} />
-                <DisplayTable data={secondNode} />
+              <h3>Customize JaZe</h3>
+              <DisplayTable data={settingsTableData} />
+              <DisplayTable data={secondNode} />
             </>
-            ),
-            viewWidth: 100,
+          ),
+          viewWidth: 100,
         },
-        ]}
+      ]}
     />
-    );
-    };
+  );
+};
 
 export default Settings;

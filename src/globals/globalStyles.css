@@ -33,3 +33,28 @@
     --font-size-base: 14px;
   }
 }
+
+.dark-mode {
+    --primary-bg-color: #1a1a2e;
+    --primary-text-color: #e5e5e5;
+    --header-bg-color: #16202a;
+    --header-text-color: #b8c6d6;
+    --footer-bg-color: #283a49;
+    --footer-text-color: #e5e5e5;
+    --sidebar-bg-color: #1d2d3e;
+    --secondary-accent-color-1: #537d8d;
+    --secondary-accent-color-2: #406672;
+    --text-highlight-color: #f3b669;
+    --error-color: #d3545d;
+    --warning-color: #e59a28;
+    --success-color: #418482;
+    --input-bg-color: #2e3b4a;
+    --input-border-color: #3e5060;
+}
+body {
+    background: black;
+    color: rgba(0,0,0,0.87);
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}

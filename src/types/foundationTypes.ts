@@ -5,24 +5,24 @@ export interface InputProps {
   id?: string;
   label?: string;
   type: string;
-  name: string;
+  name?: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-    icon?: IconDefinition;
-  dataType?:string;
+  placeholder?: string;
+  icon?: IconDefinition;
+  dataType?: string;
 }
 export interface Option {
   label: string;
   key: string;
   dataType: SelectionType;
-    value: string;
-    onClick?: () => void;
+  value: string;
+  onClick?: () => void;
 }
 export interface OptionListProps {
   dataType: SelectionType;
   options: Option[];
-    id?: string;
+  id?: string;
 }
 export interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -30,6 +30,6 @@ export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   className?: string;
   label?: string | null;
-    disabled?: boolean;
-    dataType?: SelectionType;
+  disabled?: boolean;
+  dataType?: SelectionType;
 }

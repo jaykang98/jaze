@@ -129,4 +129,9 @@ export interface SpotifyUserProfile {
   uri: string;
 }
 
-export type SelectionType = "artist" | "album" | "track" | "yearEnd" | "yearStart";
+export type SelectionType =
+  | "artist"
+  | "album"
+  | "track"
+  | "yearEnd"
+  | "yearStart";

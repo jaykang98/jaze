@@ -1,5 +1,3 @@
-// FileName: CriteriaSelectionRow.tsx
-
 import React, { useEffect, useState } from "react";
 import Input from "../../foundations/input/Input";
 import OptionList from "../../foundations/optionList/OptionList";
@@ -7,7 +5,7 @@ import { SelectionType } from "../../../types/structureTypes";
 import { Option } from "types/foundationTypes";
 import styles from "./CriteriaSelector.module.css";
 
-interface CriteriaSelectorProps {
+const CriteriaSelector: React.FC<{
   selectionType: SelectionType;
   setSelectionType: (value: SelectionType) => void;
   formData: { [key: string]: any };
@@ -15,9 +13,7 @@ interface CriteriaSelectorProps {
   albumData: any;
   artistData: any;
   trackData: any;
-}
-
-const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
+}> = ({
   selectionType,
   setSelectionType,
   formData,
@@ -27,7 +23,6 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
   trackData,
 }) => {
   const [options, setOptions] = useState<Option[]>([]);
-
   useEffect(() => {
     let newOptions: Option[] = [];
     switch (selectionType) {
@@ -36,7 +31,7 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
           albumData?.topalbums.album.map((album) => ({
             value: album.url,
             key: album.name,
-              datatype: "album",
+            datatype: "album",
           })) || [];
         break;
       case "artist":
@@ -44,15 +39,14 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
           artistData?.topartists.artist.map((artist) => ({
             value: artist.url,
             key: artist.name,
-              datatype: "artist",
-
+            datatype: "artist",
           })) || [];
         break;
       case "track":
         newOptions =
           trackData?.toptracks.track.map((track) => ({
             value: track.url,
-              key: track.name,
+            key: track.name,
             datatype: "track",
           })) || [];
         break;
@@ -60,37 +54,38 @@ const CriteriaSelector: React.FC<CriteriaSelectorProps> = ({
     setOptions(newOptions);
   }, [albumData, artistData, trackData, selectionType]);
 
-  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeCat = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newType = event.target.value as SelectionType;
     setSelectionType(newType);
   };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const changeCatButtons = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  const selectionElement = (
-    <select value={selectionType} onChange={handleTypeChange}>
+  const catSelector = (
+    <select value={selectionType} onChange={changeCat}>
       {["artist", "album", "track"].map((type) => (
         <option key={type} value={type} title="Criteria">
           {type.charAt(0).toUpperCase() + type.slice(1)}
         </option>
       ))}
     </select>
-    );
+  );
 
   return (
-      <div className={styles.criteriaSelector}>
-        {selectionElement}
-        <Input
-              id={selectionType}
-              dataType={selectionType}
-              name={selectionType}
-              value={formData[selectionType] || ""}
-              onChange={handleInputChange}
-              placeholder={`Enter ${selectionType}`} type={""}        />
-        <OptionList options={options} dataType={selectionType} />
-      </div>
+    <div className={styles.criteriaSelector}>
+      {catSelector}
+      <Input
+        id={selectionType}
+        dataType={selectionType}
+        name={selectionType}
+        value={formData[selectionType] || ""}
+        onChange={changeCatButtons}
+        placeholder={`Enter ${selectionType}`}
+        type={""}
+      />
+      <OptionList options={options} dataType={selectionType} />
+    </div>
   );
 };
 

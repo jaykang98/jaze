@@ -2,12 +2,10 @@ import React from "react";
 import styles from "./ViewTitleBar.module.css";
 import LoginCard from "../../jaze/loginCard/LoginCard";
 
-interface ViewTitleBarProps {
-  title?: string;
-  userID?: string;
-}
-
-const ViewTitleBar: React.FC<ViewTitleBarProps> = ({ title, userID }) => {
+const ViewTitleBar: React.FC<{
+    title?: string;
+    userID?: string;
+}> = ({ title, userID }) => {
   if (!title && !userID) {
     return <div></div>;
   }

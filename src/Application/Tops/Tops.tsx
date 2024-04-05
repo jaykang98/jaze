@@ -37,9 +37,11 @@ const Tops: React.FC<ActivityConstructorProps> = ({ userID }) => {
     isTable: boolean = false,
   ) => {
     const dataType =
-        type === "artist" ? data?.topartists :
-            type === "album" ? data?.topalbums :
-                data?.toptracks;
+      type === "artist"
+        ? data?.topartists
+        : type === "album"
+          ? data?.topalbums
+          : data?.toptracks;
     const items = dataType[type].slice(0, isTable ? 10 : 1);
 
     return isTable ? (

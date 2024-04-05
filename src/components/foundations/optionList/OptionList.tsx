@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
 import { OptionListProps } from "../../../types/foundationTypes";
 import Button from "../button/Button";
@@ -15,7 +14,7 @@ const OptionList: React.FC<OptionListProps> = ({ options, dataType }) => {
         let totalWidth = 0;
         let visibleCount = 0;
 
-        options.forEach((option, index) => {
+        options.forEach((_option, _index) => {
           const optionWidth = 150;
           if (totalWidth + optionWidth <= containerWidth) {
             totalWidth += optionWidth;
@@ -50,18 +49,19 @@ const OptionList: React.FC<OptionListProps> = ({ options, dataType }) => {
 
   if (options.length) {
     return (
-        <div ref={containerRef} className={styles.optionList}>
+      <div ref={containerRef} className={styles.optionList}>
         {visibleOptions.map((option, index) => (
           <Button
-                key={index}
-                dataType={dataType}
-                onClick={(e) => {
-                    const input = document.querySelector(`input[datatype='${dataType}']`) as HTMLInputElement;
-
-                    if (input) {
-                        input.value = option.key;
-                    }
-                }}
+            key={index}
+            dataType={dataType}
+            onClick={(_e) => {
+              const input = document.querySelector(
+                `input[datatype='${dataType}']`,
+              ) as HTMLInputElement;
+              if (input) {
+                input.value = option.key;
+              }
+            }}
           >
             {option.key}
           </Button>
