@@ -43,7 +43,8 @@ export const lastAuth = () => {
     }
   };
   const logFMOut = useCallback(() => {
-    localStorage.removeItem("lastFMUserID");
+      localStorage.removeItem("lastFMData");
+      localStorage.removeItem("lastFMUserID");
     lastFMUserIDState(null);
     reloadPage();
   }, []);

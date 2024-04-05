@@ -4,13 +4,11 @@ import { Buffer } from "buffer";
 import { currentPage, reloadPage } from "../security/urlHandler";
 
 export const spotAuth = () => {
-    const callbackUrl = encodeURIComponent(currentPage());
-
   const [spotifyUserID, spotifyIDState] = useState<string | null>(null);
   const startAuthSpotify = () => {
     const scope = encodeURIComponent("user-read-private user-read-email");
     const state = generateRandomString(16);
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENTID}&response_type=code&redirect_uri=${callbackUrl}&scope=${scope}&state=${state}`;
+      window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENTID}&response_type=code&redirect_uri=${encodeURIComponent(currentPage()) }&scope=${scope}&state=${state}`;
   };
     const fetchSpotifyCode = async (code: string) => {
         localStorage.setItem("spotifyCode", code);
@@ -19,13 +17,13 @@ export const spotAuth = () => {
             const response = await fetch("https://accounts.spotify.com/api/token", {
                 method: "POST",
                 headers: {
-                    Authorization: "Basic " + authBuffer,
-                    "content-type": "application/x-www-form-urlencoded",
+                    'Authorization': 'Basic ' + authBuffer,
+                    'content-type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
-                    grant_type: "authorization_code",
+                    grant_type: 'authorization_code',
                     code: code,
-                    redirect_uri: callbackUrl,
+                    redirect_uri: currentPage(),
                 }).toString(),
             });
 
@@ -60,8 +58,11 @@ export const spotAuth = () => {
     };
 
   const logSpotifyOut = useCallback(() => {
-      localStorage.removeItem("SpotifyUserID");
-      localStorage.removeItem("spotifyCode");
+    localStorage.removeItem("SpotifyUserID");
+    localStorage.removeItem("spotifyCode");
+    localStorage.removeItem("SpotifyAccessToken");
+    localStorage.removeItem("SpotifyRefreshToken");
+    localStorage.removeItem("SpotifyTokenExpiry");
     spotifyIDState(null);
     reloadPage();
   }, []);
