@@ -76,7 +76,7 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
 
   const renderUserInfo = () => {
       if (!lastFMUserData ) return null;
-      const { user } = lastFMUserData;
+    const { user } = lastFMUserData;
     const registrationDate = new Date(user.registered.unixtime * 1000);
     const yearsSinceRegistration =
       new Date().getFullYear() - registrationDate.getFullYear();
