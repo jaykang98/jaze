@@ -6,21 +6,21 @@ import { Option } from "types/foundationTypes";
 import styles from "./CriteriaSelector.module.css";
 
 const CriteriaSelector: React.FC<{
-    selectionType: SelectionType;
-    setSelectionType: (value: SelectionType) => void;
-    formData: { [key: string]: any };
-    setFormData: (value: { [key: string]: any }) => void;
-    albumData: any;
-    artistData: any;
-    trackData: any;
+  selectionType: SelectionType;
+  setSelectionType: (value: SelectionType) => void;
+  formData: { [key: string]: any };
+  setFormData: (value: { [key: string]: any }) => void;
+  albumData: any;
+  artistData: any;
+  trackData: any;
 }> = ({
-    selectionType,
-    setSelectionType,
-    formData,
-    setFormData,
-    albumData,
-    artistData,
-    trackData,
+  selectionType,
+  setSelectionType,
+  formData,
+  setFormData,
+  albumData,
+  artistData,
+  trackData,
 }) => {
   const [options, setOptions] = useState<Option[]>([]);
   useEffect(() => {
@@ -29,7 +29,7 @@ const CriteriaSelector: React.FC<{
       case "album":
         newOptions =
           albumData?.topalbums.album.map((album) => ({
-            value: album.url,
+            value: album.name,
             key: album.name,
             datatype: "album",
           })) || [];
@@ -37,7 +37,7 @@ const CriteriaSelector: React.FC<{
       case "artist":
         newOptions =
           artistData?.topartists.artist.map((artist) => ({
-            value: artist.url,
+            value: artist.name,
             key: artist.name,
             datatype: "artist",
           })) || [];
@@ -45,7 +45,7 @@ const CriteriaSelector: React.FC<{
       case "track":
         newOptions =
           trackData?.toptracks.track.map((track) => ({
-            value: track.url,
+            value: track.name,
             key: track.name,
             datatype: "track",
           })) || [];

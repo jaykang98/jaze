@@ -7,7 +7,11 @@ import Button from "../../foundations/button/Button";
 import CriteriaSelector from "../../jaze/criteriaSelector/CriteriaSelector";
 import Styles from "./MainForm.module.css";
 
-const MainForm: React.FC<MainFormProps> = ({ formData, setFormData, userID }) => {
+const MainForm: React.FC<MainFormProps> = ({
+  formData,
+  setFormData,
+  userID,
+}) => {
   const { albumData, artistData, trackData } = fetchUserData(userID);
   const [selectionType, setSelectionType] = useState<SelectionType>("artist");
   const handleStartTimeSelect = (timestamp: string) => {
@@ -17,9 +21,14 @@ const MainForm: React.FC<MainFormProps> = ({ formData, setFormData, userID }) =>
   const handleEndTimeSelect = (timestamp: string) => {
     setFormData({ ...formData, endTimestamp: timestamp });
   };
-
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(
+            `Selection Type: ${selectionType}, Start Time: ${formData.startTimestamp}, End Time: ${formData.endTimestamp}`
+        );
+    };
   return (
-    <form onSubmit={(e) => e.preventDefault()} id="GenerateVisForm">
+      <form onSubmit={handleSubmit} id="GenerateVisForm">
       <CriteriaSelector
         selectionType={selectionType}
         setSelectionType={setSelectionType}
@@ -39,7 +48,9 @@ const MainForm: React.FC<MainFormProps> = ({ formData, setFormData, userID }) =>
         label="End Time"
         onOptionSelect={handleEndTimeSelect}
       />
-      <Button type="submit">Submit</Button>
+      <Button type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

@@ -1,5 +1,5 @@
 // File: About.tsx
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGlobeAmericas,
@@ -12,10 +12,15 @@ import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
 
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
+import { useViewTitle } from "../../contexts/ViewTitleContexts";
 
 const LandingPage: React.FC<ActivityConstructorProps> = ({ userID }) => {
-  const { userData, artistData } = fetchUserData("j_aykang1");
+    const { setTitle } = useViewTitle();
 
+  const { userData } = fetchUserData("j_aykang1");
+    useEffect(() => {
+        setTitle("Landing Page");
+    }, [setTitle]);
   const renderUserInfo = () => {
     if (!userData || !userData.user) return null;
     const { user } = userData;
@@ -36,13 +41,13 @@ const LandingPage: React.FC<ActivityConstructorProps> = ({ userID }) => {
     const dataForDisplay = [
       [
         <span>
-          <FontAwesomeIcon icon={faUserCircle} /> Name
+          <FontAwesomeIcon icon={faUserCircle} /> Last.FM Username
         </span>,
         user.name,
       ],
       [
         <span>
-          <FontAwesomeIcon icon={faGlobeAmericas} /> Country
+          <FontAwesomeIcon icon={faGlobeAmericas} /> Location
         </span>,
         user.country,
       ],
@@ -81,7 +86,7 @@ const LandingPage: React.FC<ActivityConstructorProps> = ({ userID }) => {
   );
   const secondaryContent = (
     <div>
-      <h3>Old Favorites to Revisit</h3>
+      <h3>Welcome Back!</h3>
       This application generates visual representations of Last.FM data that you
       have scrobbled over time. Here are some basic facts from your Last.FM
       profile!

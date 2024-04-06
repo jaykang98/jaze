@@ -11,6 +11,7 @@ export interface InputProps {
   placeholder?: string;
   icon?: IconDefinition;
   dataType?: string;
+  style?: React.CSSProperties;
 }
 export interface Option {
   label: string;

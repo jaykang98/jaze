@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -17,65 +17,62 @@ import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
-import {
-  setDecryptionMode,
-  decryptionMode,
-} from "../../hooks/utils/useLocalStorage";
-import { reloadPage } from "../../hooks/security/urlHandler";
+import { config } from "../../globals/config";
 
 const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
-  const { setTitle } = useViewTitle();
-  const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
-  const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle("dark-mode");
-  };
-  useEffect(() => {
-    setTitle("Settings");
-  }, [setTitle]);
-  const toggleGlobalIsDecryptMode = () => {
-    setDecryptionMode();
-    if (decryptionMode()) {
-      alert("Encryption enabled");
-    } else {
-      alert("Encryption disabled");
-    }
-    reloadPage();
-  };
-  const firstNode = useMemo(
-    () => [
-      {
-        displayLabel: "Last.FM Account",
-        action: isFMAuthenticated() ? logFMOut : startAuthFM,
-        actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
-        icon: faUser,
-        disabled: false,
-      },
-      {
-        displayLabel: "Spotify Account",
-        action: isSpotifyLoggedIn() ? logSpotifyOut : startAuthSpotify,
-        actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
-        icon: faCompactDisc,
-      },
-      {
-        displayLabel: "Store Data Securely",
-        action: toggleGlobalIsDecryptMode,
-        actionLabel: !decryptionMode() ? "Encrypt Data" : "Decrypt Data",
-        icon: faKey,
-        disabled: false,
-      },
-      {
-        displayLabel: "Current Theme Mode",
-        action: toggleDarkMode,
-        actionLabel: isDarkMode ? "Light Mode" : "Dark Mode",
-        icon: faPalette,
-        disabled: false,
-      },
-    ],
-    [isFMAuthenticated, startAuthFM],
-  );
+    const { setTitle } = useViewTitle();
+    const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
+    const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
+    const { isDarkMode, toggleDarkMode, isDecrypted, toggleDecryptionMode } = config();
+    useEffect(() => {
+        setTitle("Settings");
+    }, [setTitle]);
+
+
+    const firstNode = useMemo(
+        () => [
+            {
+                displayLabel: "Last.FM Account",
+                action: !isFMAuthenticated() ? startAuthFM : logFMOut,
+                actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
+                icon: faUser,
+                disabled: false,
+            },
+            {
+                displayLabel: "Spotify Account",
+                action: !isSpotifyLoggedIn() ? startAuthSpotify : logSpotifyOut,
+                actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
+                icon: faCompactDisc,
+            },
+            {
+                displayLabel: "Store Data Securely",
+                action: toggleDecryptionMode,
+                actionLabel: isDecrypted ? "Encrypt Data" : "Decrypt Data",
+                icon: faKey,
+                disabled: false,
+            },
+            {
+                displayLabel: "Current Theme Mode",
+                action: toggleDarkMode,
+                actionLabel: isDarkMode ? "Light Mode" : "Dark Mode",
+                icon: faPalette,
+                disabled: false,
+            },
+        ],
+        [
+            isFMAuthenticated,
+            startAuthFM,
+            logFMOut,
+            isSpotifyLoggedIn,
+            startAuthSpotify,
+            logSpotifyOut,
+            isDecrypted,
+            toggleDecryptionMode,
+            isDarkMode,
+            toggleDarkMode,
+        ],
+    );
+
   const settingsTableData = firstNode.map((option) => [
     <FontAwesomeIcon
       key={`${option.displayLabel}-icon`}

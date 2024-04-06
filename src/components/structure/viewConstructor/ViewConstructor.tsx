@@ -10,7 +10,7 @@ import { useViewTitle } from "../../../contexts/ViewTitleContexts";
 const Main = lazy(() => import("../../../Application/Main/Main"));
 const Settings = lazy(() => import("../../../Application/Settings/Settings"));
 const Tops = lazy(() => import("../../../Application/Tops/Tops"));
-
+const LandingPage = lazy(() => import("../../../Application/LandingPage/LandingPage"));
 const ViewConstructor: React.FC<ViewConstructorProps> = ({
   lastFMUser,
   spotifyUser,
@@ -22,19 +22,13 @@ const ViewConstructor: React.FC<ViewConstructorProps> = ({
       <div className={styles.viewConstructor}>
         <Sidebar />
         <div>
-          <Suspense
-            fallback={
-              <div className={styles.viewModuleConstructor}>Loading...</div>
-            }
-          >
+            <Suspense fallback={<div className={styles.viewModuleConstructor}>Loading...</div>}>
             <div className={styles.viewModuleConstructor}>
               <ViewTitleBar title={title} userID={lastFMUser} />
               <Routes>
                 <Route path="/main" element={<Main userID={lastFMUser} />} />
-                <Route
-                  path="/settings"
-                  element={<Settings userID={lastFMUser} />}
-                />
+                <Route path="/" element={<LandingPage userID={lastFMUser} />} />
+                <Route path="/settings" element={<Settings userID={lastFMUser} />} />
                 <Route path="/tops" element={<Tops userID={lastFMUser} />} />
               </Routes>
             </div>
