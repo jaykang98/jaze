@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import styles from "./LoginCard.module.css";
 import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData";
 import { lastAuth } from "../../../hooks/authentication/lastAuth";
+import { useLocalStorage } from "../../../hooks/utils/useLocalStorage";
+
 interface LoginCardProps {
   userID?: string;
 }
 
 const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
-  const { userData, loading } = fetchUserData(userID);
+    const { loading } = fetchUserData(userID);
+    const { getItem } = useLocalStorage();
+    const userData = JSON.parse(getItem("lastFMData"));
   const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
   const userImage = userData?.user?.image?.[0]["#text"];
   const [isHovered, setIsHovered] = useState(false);
+    
 
   const handleAuthAction = () => {
     isFMAuthenticated() ? logFMOut() : startAuthFM();

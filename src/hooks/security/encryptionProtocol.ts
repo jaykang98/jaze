@@ -2,13 +2,13 @@
 import CryptoJS from "crypto-js";
 
 export const encryptData = (data: string): string => {
-  if (process.env.REACT_APP_IS_DEBUG === "TRUE") {
+  if (process.env.REACT_APP_IS_DEBUG) {
     console.log("DEBUG mode is enabled. Skipping encryption.");
     return data;
   }
   return CryptoJS.AES.encrypt(
     data,
-    process.env.REACT_APP_LASTFM_SECRET,
+      process.env.REACT_APP_LASTFM_SECRETKEY,
   ).toString();
 };
 
@@ -20,7 +20,7 @@ export const decryptData = (ciphertext: string): string | null => {
   try {
     const bytes = CryptoJS.AES.decrypt(
       ciphertext,
-      process.env.REACT_APP_LASTFM_SECRET,
+        process.env.REACT_APP_LASTFM_SECRETKEY,
     );
     const originalText = bytes.toString(CryptoJS.enc.Utf8);
     return originalText !== "" ? originalText : null;

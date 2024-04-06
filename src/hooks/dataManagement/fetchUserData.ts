@@ -4,26 +4,23 @@ import { lastFMUser, AlbumData, ArtistData, TrackData } from "types/dataTypes";
 import { useLocalStorage } from "../utils/useLocalStorage";
 
 export const fetchUserData = (username: string) => {
-  const [userData, setUserData] = useState<lastFMUser | null>(null);
-  const [albumData, setAlbumData] = useState<AlbumData | null>(null);
-  const [artistData, setArtistData] = useState<ArtistData | null>(null);
-  const [trackData, setTrackData] = useState<TrackData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+    const { getItem: getLastFMData, setItem: setLastFMData } = useLocalStorage();
+    const { setItem: setUserData, setItem: setAlbumData, setItem: setArtistData, setItem: setTrackData, getItem } = useLocalStorage();
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { getItem: getLastFMData } = useLocalStorage("lastFMData");
-        const storedDataStr = getLastFMData();
+          const storedDataStr = getLastFMData("lastFMData");
         if (storedDataStr) {
           const storedData = JSON.parse(storedDataStr);
           if (storedData) {
-            setUserData(storedData.userData);
-            setAlbumData(storedData.albumData);
-            setArtistData(storedData.artistData);
-            setTrackData(storedData.trackData);
+              getItem("lastFMUserData" );
+              getItem("lastFMAlbumData" );
+              getItem("lastFMArtistData" );
+              getItem("lastFMTrackData" );
             setLoading(false);
             return;
           }
@@ -46,10 +43,10 @@ export const fetchUserData = (username: string) => {
             }),
           ]);
 
-        setUserData(userData as lastFMUser);
-        setAlbumData(userAlbums as AlbumData);
-        setArtistData(userArtists as ArtistData);
-        setTrackData(userTracks as TrackData);
+          setUserData("lastFMUserData", JSON.stringify(userData));
+          setAlbumData("lastFMAlbumData", JSON.stringify(userAlbums));
+          setArtistData("lastFMArtistData", JSON.stringify(userArtists));
+          setTrackData("lastFMTrackData", JSON.stringify(userTracks));
 
         const dataToStore = JSON.stringify({
           userData: userData,
@@ -57,9 +54,9 @@ export const fetchUserData = (username: string) => {
           artistData: userArtists,
           trackData: userTracks,
         });
+          setLastFMData("lastFMData", dataToStore);
 
-        const { setItem: setLastFMData } = useLocalStorage("lastFMData");
-        setLastFMData(dataToStore);
+          
       } catch (error) {
         console.error("Failed to fetch user data", error);
         setError("Failed to fetch user data");
@@ -72,10 +69,6 @@ export const fetchUserData = (username: string) => {
   }, [username]);
 
   return {
-    userData,
-    albumData,
-    artistData,
-    trackData,
     error,
     loading,
   };

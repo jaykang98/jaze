@@ -16,14 +16,13 @@ export const spotAuth = () => {
         ];
 
         keys.forEach((key) => {
-            const { removeItem } = useLocalStorage(key);
-            removeItem();
+            const { removeItem } = useLocalStorage();
+            removeItem(key);
         });
 
         setSpotifyUserID(null);
         reloadPage();
     }, []);
-    const getSpotifyUser = useCallback(() => spotifyUserID, [spotifyUserID]);
     const isSpotifyLoggedIn = useCallback(
         () => spotifyUserID !== null,
         [spotifyUserID],
@@ -35,8 +34,8 @@ export const spotAuth = () => {
         window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENTID}&response_type=code&redirect_uri=${currentPage()}&scope=${scope}&state=${state}`;
     };
     const fetchSpotifyCode = async (code: string) => {
-        const { setItem } = useLocalStorage("spotifyCode");
-        setItem(code);
+        const { setItem: setSpotifyCode } = useLocalStorage();
+        setSpotifyCode("spotifyCode", code);
         try {
             const authBuffer = Buffer.from(
                 `${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`,
@@ -64,18 +63,14 @@ export const spotAuth = () => {
             const expiresIn = data.expires_in;
 
             if (accessToken) {
-                const { setItem: setAccessToken } =
-                    useLocalStorage("SpotifyAccessToken");
-                setAccessToken(accessToken);
+                const { setItem: setAccessToken } = useLocalStorage();
+                setAccessToken("SpotifyAccessToken",accessToken);
 
-                const { setItem: setRefreshToken } = useLocalStorage(
-                    "SpotifyRefreshToken",
-                );
-                setRefreshToken(refreshToken);
+                const { setItem: setRefreshToken } = useLocalStorage();
+                setRefreshToken("SpotifyRefreshToken",refreshToken);
 
-                const { setItem: setTokenExpiry } =
-                    useLocalStorage("SpotifyTokenExpiry");
-                setTokenExpiry(expiresIn.toString());
+                const { setItem: setTokenExpiry } = useLocalStorage();
+                setTokenExpiry("SpotifyTokenExpiry",expiresIn.toString());
 
                 const userProfile = await fetch("https://api.spotify.com/v1/me", {
                     headers: {
@@ -83,17 +78,17 @@ export const spotAuth = () => {
                     },
                 }).then((res) => res.json());
 
-                const { setItem: setSpotifyUserID } = useLocalStorage("SpotifyUserID");
-                setSpotifyUserID(userProfile.id);
+                const { setItem: setSpotifyUserID } = useLocalStorage();
+                setSpotifyUserID("SpotifyUserID",userProfile.id);
             }
         } catch (error) {
             console.error("Error handling Spotify auth code:", error);
         }
     };
-
+    const { getItem } = useLocalStorage();
+    const getSpotifyUser = getItem("SpotifyUserID");
     useEffect(() => {
-        const { getItem } = useLocalStorage("SpotifyUserID");
-        const localSpotifyUser = getItem();
+        const localSpotifyUser = getItem("SpotifyUserID");
         if (localSpotifyUser) {
             setSpotifyUserID(localSpotifyUser);
         }

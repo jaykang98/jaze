@@ -12,15 +12,21 @@ import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import { ActivityConstructorProps } from "../../types/structureTypes";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import AlbumCard from "../../components/jaze/albumCard/AlbumCard";
+import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 const Tops: React.FC<ActivityConstructorProps> = ({ userID }) => {
   const { setTitle } = useViewTitle();
+    const { getItem } = useLocalStorage();
 
   useEffect(() => {
     setTitle("Tops");
   }, [setTitle]);
+    const userData = JSON.parse(getItem("lastFMData"));
+    const albumData = JSON.parse(getItem("lastFMAlbumData"));
+    const artistData = JSON.parse(getItem("lastFMArtistData"));
+    const trackData = JSON.parse(getItem("lastFMTrackData"));
 
-  const { userData, albumData, artistData, trackData, error, loading } =
+  const { error, loading } =
     fetchUserData(userID);
 
   const formatNumber = (number: number) =>

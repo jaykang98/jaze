@@ -14,14 +14,14 @@ function App() {
   const { getLastFMUser, fetchFM } = lastAuth();
 
   useEffect(() => {
-    if (!getLastFMUser()) {
+    if (!getLastFMUser) {
       const token = new URLSearchParams(window.location.search).get("token");
       if (token) {
         fetchFM(token);
       }
     }
 
-    if (!getSpotifyUser()) {
+    if (!getSpotifyUser) {
       const code = new URLSearchParams(window.location.search).get("code");
       if (code) {
         fetchSpotifyCode(code);
@@ -36,8 +36,8 @@ function App() {
         <div className="app">
           <Router>
             <ViewConstructor
-              lastFMUser={getLastFMUser()}
-              spotifyUser={getSpotifyUser()}
+              lastFMUser={getLastFMUser}
+              spotifyUser={getSpotifyUser}
               onViewChange={() => {}}
             />
           </Router>

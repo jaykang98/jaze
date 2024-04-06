@@ -1,19 +1,22 @@
 // FileName: GenerateDataForm.tsx
 import React, { useState } from "react";
 import TimeStampSelector from "../../jaze/timestampSelector/TimestampSelector";
-import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData";
 import { MainFormProps, SelectionType } from "../../../types/structureTypes";
 import Button from "../../foundations/button/Button";
 import CriteriaSelector from "../../jaze/criteriaSelector/CriteriaSelector";
 import Styles from "./MainForm.module.css";
+import { useLocalStorage } from "../../../hooks/utils/useLocalStorage";
 
 const MainForm: React.FC<MainFormProps> = ({
   formData,
   setFormData,
   userID,
 }) => {
-  const { albumData, artistData, trackData } = fetchUserData(userID);
-  const [selectionType, setSelectionType] = useState<SelectionType>("artist");
+    const { getItem } = useLocalStorage();
+    const albumData = JSON.parse(getItem("lastFMAlbumData"));
+    const artistData = JSON.parse(getItem("lastFMArtistData"));
+    const trackData = JSON.parse(getItem("lastFMTrackData"));
+    const [selectionType, setSelectionType] = useState<SelectionType>("artist");
   const handleStartTimeSelect = (timestamp: string) => {
     setFormData({ ...formData, startTimestamp: timestamp });
   };
