@@ -4,15 +4,12 @@ export interface ViewConstructorProps {
   error?: Error | null;
   onViewChange?: any;
   activityName?: string;
-  lastFMUser: string | null;
-  spotifyUser: string | null;
 }
 
 export interface ActivityConstructorProps {
   error?: Error | null;
   onViewChange?: any;
   activityName?: string;
-  userID?: string | null;
 }
 
 export interface FormData {
@@ -27,7 +24,6 @@ export interface MainFormProps {
   setFormData: (
     formData: MainFormState | ((prevState: MainFormState) => MainFormState),
   ) => void;
-  userID?: string;
   selectionType: SelectionType;
 }
 export interface MainFormState {

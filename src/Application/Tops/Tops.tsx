@@ -14,16 +14,17 @@ import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import AlbumCard from "../../components/jaze/albumCard/AlbumCard";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
-const Tops: React.FC<ActivityConstructorProps> = ({ userID }) => {
+const Tops: React.FC<ActivityConstructorProps> = () => {
   const { setTitle } = useViewTitle();
     const { getItem } = useLocalStorage();
-
+    const lastFMUserData = JSON.parse(getItem("lastFMUserData"));
   useEffect(() => {
     setTitle("Tops");
   }, [setTitle]);
     const userData = JSON.parse(getItem("lastFMData"));
     const albumData = JSON.parse(getItem("lastFMAlbumData"));
     const artistData = JSON.parse(getItem("lastFMArtistData"));
+    const userID = getItem("lastFMUserID");
     const trackData = JSON.parse(getItem("lastFMTrackData"));
 
   const { error, loading } =
@@ -74,8 +75,8 @@ const Tops: React.FC<ActivityConstructorProps> = ({ userID }) => {
   if (error) return <div>Error: {error}</div>;
 
   const renderUserInfo = () => {
-    if (!userData || !userData.user) return null;
-    const { user } = userData;
+      if (!lastFMUserData ) return null;
+      const { user } = lastFMUserData;
     const registrationDate = new Date(user.registered.unixtime * 1000);
     const yearsSinceRegistration =
       new Date().getFullYear() - registrationDate.getFullYear();
@@ -115,7 +116,6 @@ const Tops: React.FC<ActivityConstructorProps> = ({ userID }) => {
     <>
       <DisplayGrid
         title="Top Stats"
-        userID={userID}
         viewFrames={[
           {
             content: (
@@ -158,9 +158,9 @@ const Tops: React.FC<ActivityConstructorProps> = ({ userID }) => {
                   key="userImage"
                   src={userImage}
                   alt="User"
-                  caption={userData.user.realname}
+                          caption={lastFMUserData.user.realname}
                 />
-                <h3>Who is {userData.user.name}???</h3>
+                      <h3>Who is {lastFMUserData.user.name}???</h3>
                 {renderUserInfo()}
               </>
             ),

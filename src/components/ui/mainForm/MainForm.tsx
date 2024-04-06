@@ -10,7 +10,6 @@ import { useLocalStorage } from "../../../hooks/utils/useLocalStorage";
 const MainForm: React.FC<MainFormProps> = ({
   formData,
   setFormData,
-  userID,
 }) => {
     const { getItem } = useLocalStorage();
     const albumData = JSON.parse(getItem("lastFMAlbumData"));

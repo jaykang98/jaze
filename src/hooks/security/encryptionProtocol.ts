@@ -13,18 +13,18 @@ export const encryptData = (data: string): string => {
 };
 
 export const decryptData = (ciphertext: string): string | null => {
-  if (process.env.REACT_APP_IS_DEBUG === "TRUE") {
+  if (process.env.REACT_APP_IS_DEBUG) {
     console.log("DEBUG mode enabled. Skipping decryption.");
     return ciphertext;
   }
-  try {
+    try {
     const bytes = CryptoJS.AES.decrypt(
-      ciphertext,
+        ciphertext,
         process.env.REACT_APP_LASTFM_SECRETKEY,
     );
     const originalText = bytes.toString(CryptoJS.enc.Utf8);
     return originalText !== "" ? originalText : null;
-  } catch (error) {
+    } catch (error) {
     console.error("Error during decryption:", error);
     return null;
   }

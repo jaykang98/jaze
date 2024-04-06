@@ -13,14 +13,15 @@ function App() {
   const { fetchSpotifyCode, getSpotifyUser } = spotAuth();
   const { getLastFMUser, fetchFM } = lastAuth();
 
-  useEffect(() => {
-    if (!getLastFMUser) {
+    useEffect(() => {
+    const token = new URLSearchParams(window.location.search).get("token");
+    if (getLastFMUser) {
       const token = new URLSearchParams(window.location.search).get("token");
-      if (token) {
-        fetchFM(token);
-      }
-    }
 
+    }
+    else if (token) {
+        fetchFM(token);
+    }
     if (!getSpotifyUser) {
       const code = new URLSearchParams(window.location.search).get("code");
       if (code) {
@@ -36,8 +37,6 @@ function App() {
         <div className="app">
           <Router>
             <ViewConstructor
-              lastFMUser={getLastFMUser}
-              spotifyUser={getSpotifyUser}
               onViewChange={() => {}}
             />
           </Router>
