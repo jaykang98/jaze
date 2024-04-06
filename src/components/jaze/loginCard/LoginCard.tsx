@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import styles from "./LoginCard.module.css";
-import { fetchUserData } from "../../../hooks/dataManagement/fetchUserData";
 import { lastAuth } from "../../../hooks/authentication/lastAuth";
-interface LoginCardProps {
-  userID?: string;
-}
+import { useLocalStorage } from "../../../hooks/utils/useLocalStorage";
 
-const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
-  const { userData, loading } = fetchUserData(userID);
-  const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
-  const userImage = userData?.user?.image?.[0]["#text"];
-  const [isHovered, setIsHovered] = useState(false);
+const LoginCard = () => {
+    const { getItem } = useLocalStorage();
+    const lastFMUserData = JSON.parse(getItem("lastFMUserData"));
+    const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
+    const lastFMUserID = getItem("lastFMUserID");
+    const userImage = lastFMUserData?.user?.image?.[0]["#text"];
+    const [isHovered, setIsHovered] = useState(false);
+    
 
   const handleAuthAction = () => {
     isFMAuthenticated() ? logFMOut() : startAuthFM();
@@ -24,11 +24,8 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
   };
 
   const overlayContent = () => {
-    if (loading) {
-      return "Loading...";
-    }
 
-    if (userID) {
+      if (lastFMUserID) {
       return isHovered ? (
         <>
           <div onClick={handleAuthAction} className={styles.overlayContent}>
@@ -57,22 +54,22 @@ const LoginCard: React.FC<LoginCardProps> = ({ userID }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className={styles.LoginCard}>
-        {userID && !isHovered && (
+              {lastFMUserID && !isHovered && (
           <div className={styles.userDetails}>
             <img src={userImage} alt="User" className={styles.userImage} />
             <div>
               <span className={styles.userRealName}>
                 {" "}
-                {userData?.user?.realname}
+                {lastFMUserData?.user?.realname}
               </span>
               <br />
-              <span className={styles.userName}>{userID}</span>
+                          <span className={styles.userName}>{lastFMUserID}</span>
               <br />
               <span className={styles.subText}>Logged In</span>
             </div>
           </div>
         )}
-        {!userID && !isHovered && (
+        {!lastFMUserID && !isHovered && (
           <div className={styles.userInfo}>
             <span>JaZe is more fun logged in!</span>
           </div>

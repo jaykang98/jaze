@@ -7,7 +7,7 @@ import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import styles from "src/globals/globalStyles.css";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 
-const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
+const Main: React.FC<ActivityConstructorProps> = () => {
   const [formData, setFormData] = useState<FormData>({
     selectionType: "track",
   });
@@ -22,7 +22,6 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
       formData={formData}
       setFormData={handleSetFormData}
       selectionType={formData.selectionType}
-      userID={userID}
     />
   );
   const mainContent = (
@@ -42,7 +41,6 @@ const Main: React.FC<ActivityConstructorProps> = ({ userID }) => {
   return (
     <DisplayGrid
       title={"Main"}
-      userID={userID}
       viewFrames={[
         {
           content: mainContent,
