@@ -4,9 +4,8 @@ import LoginCard from "../../jaze/loginCard/LoginCard";
 
 const ViewTitleBar: React.FC<{
   title?: string;
-  userID?: string;
-}> = ({ title, userID }) => {
-  if (!title && !userID) {
+}> = ({ title }) => {
+  if (!title ) {
     return <div></div>;
   }
 
@@ -14,7 +13,7 @@ const ViewTitleBar: React.FC<{
     <div className={styles.viewTitleBar}>
       <div>{title && <h1 className={styles.title}>{title}</h1>}</div>
       <div className={styles.loginCardContainer}>
-        {userID && <LoginCard userID={userID} />}
+        <LoginCard />
       </div>
     </div>
   );

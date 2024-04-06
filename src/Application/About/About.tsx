@@ -12,9 +12,12 @@ import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
 
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
+import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
-const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
-  const { userData, artistData } = fetchUserData(userID);
+const About: React.FC<ActivityConstructorProps> = () => {
+    const { getItem } = useLocalStorage();
+    const userData = JSON.parse(getItem("lastFMData"));
+    const artistData = JSON.parse(getItem("lastFMArtistData"));
 
   const renderUserInfo = () => {
     if (!userData || !userData.user) return null;
@@ -90,7 +93,6 @@ const About: React.FC<ActivityConstructorProps> = ({ userID }) => {
   return (
     <DisplayGrid
       title="About"
-      userID={userID}
       viewFrames={[
         {
           content: aboutDescription,

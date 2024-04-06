@@ -19,7 +19,7 @@ import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import { config } from "../../globals/config";
 
-const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
+const Settings: React.FC<ActivityConstructorProps> = () => {
     const { setTitle } = useViewTitle();
     const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
     const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
@@ -135,7 +135,6 @@ const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {
   return (
     <DisplayGrid
       title="Settings"
-      userID={userID}
       viewFrames={[
         {
           content: (

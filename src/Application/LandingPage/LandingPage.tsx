@@ -8,16 +8,16 @@ import {
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
 import { ActivityConstructorProps } from "../../types/structureTypes";
-import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
-
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
+import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
-const LandingPage: React.FC<ActivityConstructorProps> = ({ userID }) => {
+const LandingPage: React.FC<ActivityConstructorProps> = () => {
     const { setTitle } = useViewTitle();
+    const { getItem } = useLocalStorage();
+    const userData = JSON.parse(getItem("lastFMData"));
 
-  const { userData } = fetchUserData("j_aykang1");
     useEffect(() => {
         setTitle("Landing Page");
     }, [setTitle]);
@@ -96,7 +96,6 @@ const LandingPage: React.FC<ActivityConstructorProps> = ({ userID }) => {
   return (
     <DisplayGrid
       title="About"
-      userID={userID}
       viewFrames={[
         {
           content: aboutDescription,

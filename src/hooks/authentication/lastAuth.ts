@@ -1,14 +1,16 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import {
   generateApiSignature,
 } from "../security/encryptionProtocol";
 import { reloadPage, currentPage } from "../security/urlHandler";
 import { useLocalStorage } from "../utils/useLocalStorage";
-
+import { fetchUserData } from "../dataManagement/fetchUserData";
 export const lastAuth = () => {
   const callbackUrl = encodeURIComponent(currentPage());
+    const { removeItem: removeLastFMData, setItem: setLastFMUserID, setItem: setUserData, getItem  } = useLocalStorage();
+    const getLastFMUser = getItem("getLastFMUser");
+    const isFMAuthenticated = useCallback(() => getLastFMUser !== null, [getLastFMUser]);
 
-  const [lastFMUserID, lastFMUserIDState] = useState<string | null>(null);
   const startAuthFM = () => {
     window.location.href = `http://www.last.fm/api/auth/?api_key=${process.env.REACT_APP_LASTFM_APIKEY}&cb=${callbackUrl}`;
   };
@@ -19,7 +21,7 @@ export const lastAuth = () => {
                 method: "auth.getSession",
                 token: token,
             },
-            process.env.REACT_APP_LASTFM_SECRET!,
+            process.env.REACT_APP_LASTFM_SECRETKEY,
         );
 
         const sessionUrl = `${process.env.REACT_APP_LASTFM_BASEURL}?method=auth.getSession&api_key=${process.env.REACT_APP_LASTFM_APIKEY}&token=${token}&api_sig=${apiSig}&format=json`;
@@ -31,38 +33,18 @@ export const lastAuth = () => {
             const data = await response.json();
 
             if (data.session) {
-                const lastFMUserID = data.session.name;
-                const { setItem: setLastFMUserID } = useLocalStorage("lastFMUserID");
-                setLastFMUserID(lastFMUserID);
-                lastFMUserIDState(lastFMUserID);
-                reloadPage();
+                setLastFMUserID("lastFMUserID", data.session.name);
             }
         } catch (error) {
             console.error("Fetching session failed:", error);
         }
     };
 
-  const logFMOut = useCallback(() => {
-    const { removeItem: removeLastFMData } = useLocalStorage("lastFMData");
-    removeLastFMData();
+    const logFMOut = async() => {
+        removeLastFMData("lastFMUserID");
+        reloadPage();
+    };
 
-    const { removeItem: removeLastFMUserID } = useLocalStorage("lastFMUserID");
-    removeLastFMUserID();
-    lastFMUserIDState(null);
-    reloadPage();
-  }, []);
-  const getLastFMUser = useCallback(() => lastFMUserID, [lastFMUserID]);
-  const isFMAuthenticated = useCallback(
-    () => lastFMUserID !== null,
-    [lastFMUserID],
-  );
-    useEffect(() => {
-        const { getItem: getLastFMUser } = useLocalStorage("lastFMUserID");
-        const localLastFMUser = getLastFMUser();
-        if (localLastFMUser) {
-            lastFMUserIDState(localLastFMUser); 
-        }
-    }, []);
 
   return {
     startAuthFM,

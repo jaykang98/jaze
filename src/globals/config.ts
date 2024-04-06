@@ -3,18 +3,18 @@ import { useLocalStorage } from "../hooks/utils/useLocalStorage";
 
 export const config = () => {
     const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-    const { getItem, setItem } = useLocalStorage("isDecrypted");
-    const isDecrypted = getItem() === "true";
+    const [isDecrypted, setDecryptionMode] = useState<boolean>(true);
+    const { setItem } = useLocalStorage();
 
     const toggleDecryptionMode = useCallback(() => {
-        setItem(String(!isDecrypted));
-    }, [isDecrypted, setItem]);
+        setItem("isDecrypted", String(!isDecrypted));
+        setDecryptionMode(isDecrypted);
+    }, [setItem]);
+
 
     const toggleDarkMode = useCallback(() => {
-        const newIsDarkMode = !isDarkMode;
-        setIsDarkMode(newIsDarkMode);
+        setIsDarkMode(!isDarkMode);
         document.body.classList.toggle("dark-mode");
-        return newIsDarkMode;
     }, [isDarkMode]);
 
 

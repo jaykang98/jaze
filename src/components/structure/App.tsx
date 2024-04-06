@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../globals/globalStyles.css";
 import "../../globals/textStyles.css";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -9,25 +9,30 @@ import { spotAuth } from "../../hooks/authentication/spotAuth";
 import Header from "../foundations/header/Header";
 import Footer from "../foundations/footer/Footer";
 import { ViewTitleProvider } from "../../contexts/ViewTitleContexts";
+import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 function App() {
-  const { fetchSpotifyCode, getSpotifyUser } = spotAuth();
-  const { getLastFMUser, fetchFM } = lastAuth();
+    const { getItem } = useLocalStorage();
+    const { fetchFM } = lastAuth();
+    const { fetchSpotifyCode } = spotAuth();
 
-  useEffect(() => {
-    if (!getLastFMUser()) {
-      const token = new URLSearchParams(window.location.search).get("token");
-      if (token) {
+    const getLastFMUser = getItem("getLastFMUser");
+    const getSpotifyUser = getItem("getSpotifyUser");
+
+    const token = new URLSearchParams(window.location.search).get("token");
+    const code = new URLSearchParams(window.location.search).get("code");
+    if (getLastFMUser) {
+        return;
+    }
+    else if (token) {
         fetchFM(token);
-      }
     }
-
-    if (!getSpotifyUser()) {
-      const code = new URLSearchParams(window.location.search).get("code");
-      if (code) {
+    if (getSpotifyUser) {
+        return;
+    }
+    else if (code) {
         fetchSpotifyCode(code);
-      }
     }
-  }, [fetchFM, getLastFMUser, fetchSpotifyCode, getSpotifyUser]);
+    
 
   return (
     <ViewTitleProvider>
@@ -36,8 +41,6 @@ function App() {
         <div className="app">
           <Router>
             <ViewConstructor
-              lastFMUser={getLastFMUser()}
-              spotifyUser={getSpotifyUser()}
               onViewChange={() => {}}
             />
           </Router>

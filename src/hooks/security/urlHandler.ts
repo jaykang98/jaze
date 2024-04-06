@@ -1,6 +1,5 @@
 export const reloadPage = () => {
-  const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
-  window.location.href = newUrl;
+    window.location.href = currentPage();
 };
 
 export const currentPage = () => {
