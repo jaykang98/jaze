@@ -5,7 +5,7 @@ import LoginCard from "../../jaze/loginCard/LoginCard";
 const ViewTitleBar: React.FC<{
   title?: string;
 }> = ({ title }) => {
-  if (!title ) {
+  if (!title) {
     return <div></div>;
   }
 

@@ -17,61 +17,65 @@ import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
-import { config } from "../../globals/config";
+import { useConfig } from "../../globals/useConfig";
+import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 const Settings: React.FC<ActivityConstructorProps> = () => {
-    const { setTitle } = useViewTitle();
-    const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
-    const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
-    const { isDarkMode, toggleDarkMode, isDecrypted, toggleDecryptionMode } = config();
-    useEffect(() => {
-        setTitle("Settings");
-    }, [setTitle]);
+  const { getItem } = useLocalStorage();
+  const isDarkMode = getItem("isDarkMode");
+  const isDecrypted = getItem("isDecrypted");
 
+  const { setTitle } = useViewTitle();
+  const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
+  const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
+  const { toggleDarkMode, toggleDecryptionMode } = useConfig();
+  useEffect(() => {
+    setTitle("Settings");
+  }, [setTitle]);
 
-    const firstNode = useMemo(
-        () => [
-            {
-                displayLabel: "Last.FM Account",
-                action: !isFMAuthenticated() ? startAuthFM : logFMOut,
-                actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
-                icon: faUser,
-                disabled: false,
-            },
-            {
-                displayLabel: "Spotify Account",
-                action: !isSpotifyLoggedIn() ? startAuthSpotify : logSpotifyOut,
-                actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
-                icon: faCompactDisc,
-            },
-            {
-                displayLabel: "Store Data Securely",
-                action: toggleDecryptionMode,
-                actionLabel: isDecrypted ? "Encrypt Data" : "Decrypt Data",
-                icon: faKey,
-                disabled: false,
-            },
-            {
-                displayLabel: "Current Theme Mode",
-                action: toggleDarkMode,
-                actionLabel: isDarkMode ? "Light Mode" : "Dark Mode",
-                icon: faPalette,
-                disabled: false,
-            },
-        ],
-        [
-            isFMAuthenticated,
-            startAuthFM,
-            logFMOut,
-            isSpotifyLoggedIn,
-            startAuthSpotify,
-            logSpotifyOut,
-            isDecrypted,
-            toggleDecryptionMode,
-            isDarkMode,
-            toggleDarkMode,
-        ],
-    );
+  const firstNode = useMemo(
+    () => [
+      {
+        displayLabel: "Last.FM Account",
+        action: !isFMAuthenticated() ? startAuthFM : logFMOut,
+        actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
+        icon: faUser,
+        disabled: false,
+      },
+      {
+        displayLabel: "Spotify Account",
+        action: !isSpotifyLoggedIn() ? startAuthSpotify : logSpotifyOut,
+        actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
+        icon: faCompactDisc,
+      },
+      {
+        displayLabel: "Store Data Securely",
+        action: toggleDecryptionMode,
+        actionLabel: isDecrypted ? "Encrypt Data" : "Decrypt Data",
+        icon: faKey,
+        disabled: false,
+      },
+      {
+        displayLabel: "Current Theme Mode",
+        action: toggleDarkMode,
+        actionLabel: isDarkMode ? "Light Mode" : "Dark Mode",
+        icon: faPalette,
+        disabled: false,
+      },
+    ],
+    [
+      isFMAuthenticated,
+      startAuthFM,
+      logFMOut,
+      isSpotifyLoggedIn,
+      startAuthSpotify,
+      logSpotifyOut,
+      isDecrypted,
+      toggleDecryptionMode,
+      isDarkMode,
+      toggleDarkMode,
+    ],
+  );
 
   const settingsTableData = firstNode.map((option) => [
     <FontAwesomeIcon

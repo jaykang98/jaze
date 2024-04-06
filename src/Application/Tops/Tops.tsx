@@ -16,19 +16,18 @@ import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 const Tops: React.FC<ActivityConstructorProps> = () => {
   const { setTitle } = useViewTitle();
-    const { getItem } = useLocalStorage();
-    const lastFMUserData = JSON.parse(getItem("lastFMUserData"));
+  const { getItem } = useLocalStorage();
+  const lastFMUserData = JSON.parse(getItem("lastFMUserData"));
   useEffect(() => {
     setTitle("Tops");
   }, [setTitle]);
-    const userData = JSON.parse(getItem("lastFMData"));
-    const albumData = JSON.parse(getItem("lastFMAlbumData"));
-    const artistData = JSON.parse(getItem("lastFMArtistData"));
-    const userID = getItem("lastFMUserID");
-    const trackData = JSON.parse(getItem("lastFMTrackData"));
+  const userData = JSON.parse(getItem("lastFMData"));
+  const albumData = JSON.parse(getItem("lastFMAlbumData"));
+  const artistData = JSON.parse(getItem("lastFMArtistData"));
+  const userID = getItem("lastFMUserID");
+  const trackData = JSON.parse(getItem("lastFMTrackData"));
 
-  const { error, loading } =
-    fetchUserData(userID);
+  const { error, loading } = fetchUserData(userID);
 
   const formatNumber = (number: number) =>
     new Intl.NumberFormat().format(number);
@@ -75,7 +74,7 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
   if (error) return <div>Error: {error}</div>;
 
   const renderUserInfo = () => {
-      if (!lastFMUserData ) return null;
+    if (!lastFMUserData) return null;
     const { user } = lastFMUserData;
     const registrationDate = new Date(user.registered.unixtime * 1000);
     const yearsSinceRegistration =
@@ -158,9 +157,9 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
                   key="userImage"
                   src={userImage}
                   alt="User"
-                          caption={lastFMUserData.user.realname}
+                  caption={lastFMUserData.user.realname}
                 />
-                      <h3>Who is {lastFMUserData.user.name}???</h3>
+                <h3>Who is {lastFMUserData.user.name}???</h3>
                 {renderUserInfo()}
               </>
             ),

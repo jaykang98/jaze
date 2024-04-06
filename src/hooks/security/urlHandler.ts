@@ -1,5 +1,5 @@
 export const reloadPage = () => {
-    window.location.href = currentPage();
+  window.location.href = currentPage();
 };
 
 export const currentPage = () => {

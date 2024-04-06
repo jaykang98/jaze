@@ -2,11 +2,7 @@ import React from "react";
 import { ActivityConstructorProps } from "../../types/structureTypes";
 
 const TestBench: React.FC<ActivityConstructorProps> = () => {
-    return ( 
-        <>
-        </>
-        )
-       
-}
+  return <></>;
+};
 
 export default TestBench;

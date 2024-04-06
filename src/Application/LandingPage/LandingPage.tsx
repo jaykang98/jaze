@@ -14,13 +14,13 @@ import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 const LandingPage: React.FC<ActivityConstructorProps> = () => {
-    const { setTitle } = useViewTitle();
-    const { getItem } = useLocalStorage();
-    const userData = JSON.parse(getItem("lastFMData"));
+  const { setTitle } = useViewTitle();
+  const { getItem } = useLocalStorage();
+  const userData = JSON.parse(getItem("lastFMData"));
 
-    useEffect(() => {
-        setTitle("Landing Page");
-    }, [setTitle]);
+  useEffect(() => {
+    setTitle("Landing Page");
+  }, [setTitle]);
   const renderUserInfo = () => {
     if (!userData || !userData.user) return null;
     const { user } = userData;

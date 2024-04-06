@@ -4,13 +4,12 @@ import { lastAuth } from "../../../hooks/authentication/lastAuth";
 import { useLocalStorage } from "../../../hooks/utils/useLocalStorage";
 
 const LoginCard = () => {
-    const { getItem } = useLocalStorage();
-    const lastFMUserData = JSON.parse(getItem("lastFMUserData"));
-    const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
-    const lastFMUserID = getItem("lastFMUserID");
-    const userImage = lastFMUserData?.user?.image?.[0]["#text"];
-    const [isHovered, setIsHovered] = useState(false);
-    
+  const { getItem } = useLocalStorage();
+  const lastFMUserData = JSON.parse(getItem("lastFMUserData"));
+  const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
+  const lastFMUserID = getItem("lastFMUserID");
+  const userImage = lastFMUserData?.user?.image?.[0]["#text"];
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleAuthAction = () => {
     isFMAuthenticated() ? logFMOut() : startAuthFM();
@@ -24,8 +23,7 @@ const LoginCard = () => {
   };
 
   const overlayContent = () => {
-
-      if (lastFMUserID) {
+    if (lastFMUserID) {
       return isHovered ? (
         <>
           <div onClick={handleAuthAction} className={styles.overlayContent}>
@@ -54,7 +52,7 @@ const LoginCard = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className={styles.LoginCard}>
-              {lastFMUserID && !isHovered && (
+        {lastFMUserID && !isHovered && (
           <div className={styles.userDetails}>
             <img src={userImage} alt="User" className={styles.userImage} />
             <div>
@@ -63,7 +61,7 @@ const LoginCard = () => {
                 {lastFMUserData?.user?.realname}
               </span>
               <br />
-                          <span className={styles.userName}>{lastFMUserID}</span>
+              <span className={styles.userName}>{lastFMUserID}</span>
               <br />
               <span className={styles.subText}>Logged In</span>
             </div>

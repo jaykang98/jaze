@@ -15,9 +15,9 @@ import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 const About: React.FC<ActivityConstructorProps> = () => {
-    const { getItem } = useLocalStorage();
-    const userData = JSON.parse(getItem("lastFMData"));
-    const artistData = JSON.parse(getItem("lastFMArtistData"));
+  const { getItem } = useLocalStorage();
+  const userData = JSON.parse(getItem("lastFMData"));
+  const artistData = JSON.parse(getItem("lastFMArtistData"));
 
   const renderUserInfo = () => {
     if (!userData || !userData.user) return null;

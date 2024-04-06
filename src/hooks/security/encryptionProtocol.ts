@@ -8,7 +8,7 @@ export const encryptData = (data: string): string => {
   }
   return CryptoJS.AES.encrypt(
     data,
-      process.env.REACT_APP_LASTFM_SECRETKEY,
+    process.env.REACT_APP_LASTFM_SECRETKEY,
   ).toString();
 };
 
@@ -17,14 +17,14 @@ export const decryptData = (ciphertext: string): string | null => {
     console.log("DEBUG mode enabled. Skipping decryption.");
     return ciphertext;
   }
-    try {
+  try {
     const bytes = CryptoJS.AES.decrypt(
-        ciphertext,
-        process.env.REACT_APP_LASTFM_SECRETKEY,
+      ciphertext,
+      process.env.REACT_APP_LASTFM_SECRETKEY,
     );
     const originalText = bytes.toString(CryptoJS.enc.Utf8);
     return originalText !== "" ? originalText : null;
-    } catch (error) {
+  } catch (error) {
     console.error("Error during decryption:", error);
     return null;
   }
