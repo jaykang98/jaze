@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/jaze/static/css/main.90e2f64d.css",
-    "main.js": "/jaze/static/js/main.df1758a3.js",
-    "static/css/153.3d38170d.chunk.css": "/jaze/static/css/153.3d38170d.chunk.css",
-    "static/js/153.eddf7239.chunk.js": "/jaze/static/js/153.eddf7239.chunk.js",
-    "static/css/748.e4da20f4.chunk.css": "/jaze/static/css/748.e4da20f4.chunk.css",
-    "static/js/748.4619a024.chunk.js": "/jaze/static/js/748.4619a024.chunk.js",
-    "static/css/920.c14705a4.chunk.css": "/jaze/static/css/920.c14705a4.chunk.css",
-    "static/js/920.fe87bc09.chunk.js": "/jaze/static/js/920.fe87bc09.chunk.js",
+    "main.css": "/jaze/static/css/main.851bb220.css",
+    "main.js": "/jaze/static/js/main.ca4ca3c0.js",
+    "static/css/980.2e2b25e2.chunk.css": "/jaze/static/css/980.2e2b25e2.chunk.css",
+    "static/js/980.1651ac07.chunk.js": "/jaze/static/js/980.1651ac07.chunk.js",
+    "static/css/24.98f8c596.chunk.css": "/jaze/static/css/24.98f8c596.chunk.css",
+    "static/js/24.d56ef9c4.chunk.js": "/jaze/static/js/24.d56ef9c4.chunk.js",
+    "static/css/707.6960e848.chunk.css": "/jaze/static/css/707.6960e848.chunk.css",
+    "static/js/707.cbe95f6a.chunk.js": "/jaze/static/js/707.cbe95f6a.chunk.js",
     "static/media/Roboto-Italic.ttf": "/jaze/static/media/Roboto-Italic.87f3afe16a8c3c370634.ttf",
     "static/media/Roboto-Medium.ttf": "/jaze/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Thin.ttf": "/jaze/static/media/Roboto-Thin.a732a12eb07742232407.ttf",
@@ -15,17 +15,17 @@
     "static/media/Roboto-Black.ttf": "/jaze/static/media/Roboto-Black.cf56c1b149d0a5e8d7c6.ttf",
     "static/media/Roboto-Bold.ttf": "/jaze/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "index.html": "/jaze/index.html",
-    "main.90e2f64d.css.map": "/jaze/static/css/main.90e2f64d.css.map",
-    "main.df1758a3.js.map": "/jaze/static/js/main.df1758a3.js.map",
-    "153.3d38170d.chunk.css.map": "/jaze/static/css/153.3d38170d.chunk.css.map",
-    "153.eddf7239.chunk.js.map": "/jaze/static/js/153.eddf7239.chunk.js.map",
-    "748.e4da20f4.chunk.css.map": "/jaze/static/css/748.e4da20f4.chunk.css.map",
-    "748.4619a024.chunk.js.map": "/jaze/static/js/748.4619a024.chunk.js.map",
-    "920.c14705a4.chunk.css.map": "/jaze/static/css/920.c14705a4.chunk.css.map",
-    "920.fe87bc09.chunk.js.map": "/jaze/static/js/920.fe87bc09.chunk.js.map"
+    "main.851bb220.css.map": "/jaze/static/css/main.851bb220.css.map",
+    "main.ca4ca3c0.js.map": "/jaze/static/js/main.ca4ca3c0.js.map",
+    "980.2e2b25e2.chunk.css.map": "/jaze/static/css/980.2e2b25e2.chunk.css.map",
+    "980.1651ac07.chunk.js.map": "/jaze/static/js/980.1651ac07.chunk.js.map",
+    "24.98f8c596.chunk.css.map": "/jaze/static/css/24.98f8c596.chunk.css.map",
+    "24.d56ef9c4.chunk.js.map": "/jaze/static/js/24.d56ef9c4.chunk.js.map",
+    "707.6960e848.chunk.css.map": "/jaze/static/css/707.6960e848.chunk.css.map",
+    "707.cbe95f6a.chunk.js.map": "/jaze/static/js/707.cbe95f6a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.90e2f64d.css",
-    "static/js/main.df1758a3.js"
+    "static/css/main.851bb220.css",
+    "static/js/main.ca4ca3c0.js"
   ]
 }
