@@ -1,20 +1,7 @@
 import { useState, useEffect } from "react";
-import { fetchAndProcessData } from "./fetchAndProcessData";
+import { fetchAndProcessData } from "../apis/lastFM_API";
 import { lastFMUser, AlbumData, ArtistData, TrackData } from "types/dataTypes";
-import { decryptData, encryptData } from "../security/encryptionProtocol";
-
-const settings = {
-  get enableDecryption() {
-    return localStorage.getItem("enableDecryption") === "true";
-  },
-  set enableDecryption(value: boolean) {
-    localStorage.setItem("enableDecryption", String(value));
-  },
-};
-export const decryptionMode = (): boolean => settings.enableDecryption;
-export const setDecryptionMode = (): void => {
-  settings.enableDecryption = !settings.enableDecryption;
-};
+import { useLocalStorage } from "../utils/useLocalStorage";
 
 export const fetchUserData = (username: string) => {
   const [userData, setUserData] = useState<lastFMUser | null>(null);
@@ -25,34 +12,20 @@ export const fetchUserData = (username: string) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const localStorageKey = `lastFMData`;
     const fetchData = async () => {
       setLoading(true);
       try {
-        const storedDataStr = localStorage.getItem(localStorageKey);
+        const { getItem: getLastFMData } = useLocalStorage("lastFMData");
+        const storedDataStr = getLastFMData();
         if (storedDataStr) {
-          try {
-            const processedDataStr = settings.enableDecryption
-              ? decryptData(storedDataStr)
-              : storedDataStr;
-            const storedData = JSON.parse(processedDataStr);
-
-            if (
-              storedData &&
-              storedData.userData &&
-              storedData.albumData &&
-              storedData.artistData &&
-              storedData.trackData
-            ) {
-              setUserData(storedData.userData);
-              setAlbumData(storedData.albumData);
-              setArtistData(storedData.artistData);
-              setTrackData(storedData.trackData);
-              setLoading(false);
-              return;
-            }
-          } catch (error) {
-            console.error("Error parsing stored user data", error);
+          const storedData = JSON.parse(storedDataStr);
+          if (storedData) {
+            setUserData(storedData.userData);
+            setAlbumData(storedData.albumData);
+            setArtistData(storedData.artistData);
+            setTrackData(storedData.trackData);
+            setLoading(false);
+            return;
           }
         }
 
@@ -72,6 +45,7 @@ export const fetchUserData = (username: string) => {
               limit: 10,
             }),
           ]);
+
         setUserData(userData as lastFMUser);
         setAlbumData(userAlbums as AlbumData);
         setArtistData(userArtists as ArtistData);
@@ -84,10 +58,8 @@ export const fetchUserData = (username: string) => {
           trackData: userTracks,
         });
 
-        localStorage.setItem(
-          localStorageKey,
-          settings.enableDecryption ? encryptData(dataToStore) : dataToStore,
-        );
+        const { setItem: setLastFMData } = useLocalStorage("lastFMData");
+        setLastFMData(dataToStore);
       } catch (error) {
         console.error("Failed to fetch user data", error);
         setError("Failed to fetch user data");
@@ -99,5 +71,12 @@ export const fetchUserData = (username: string) => {
     fetchData();
   }, [username]);
 
-  return { userData, albumData, artistData, trackData, error, loading };
+  return {
+    userData,
+    albumData,
+    artistData,
+    trackData,
+    error,
+    loading,
+  };
 };

@@ -1,6 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import { decryptData, encryptData, generateApiSignature } from "../security/encryptionProtocol";
+import {
+  decryptData,
+  encryptData,
+  generateApiSignature,
+} from "../security/encryptionProtocol";
 import { reloadPage, currentPage } from "../security/urlHandler";
+import { useLocalStorage } from "../utils/useLocalStorage";
 
 export const lastAuth = () => {
   const callbackUrl = encodeURIComponent(currentPage());
@@ -30,7 +35,8 @@ export const lastAuth = () => {
       if (data.session) {
         const lastFMUserID = data.session.name;
         const encryptedUserID = encryptData(lastFMUserID);
-        localStorage.setItem("lastFMUserID", encryptedUserID);
+        const { setItem: setLastFMUserID } = useLocalStorage("lastFMUserID");
+        setLastFMUserID(encryptedUserID);
         lastFMUserIDState(lastFMUserID);
         reloadPage();
       }
@@ -39,8 +45,11 @@ export const lastAuth = () => {
     }
   };
   const logFMOut = useCallback(() => {
-    localStorage.removeItem("lastFMData");
-    localStorage.removeItem("lastFMUserID");
+    const { removeItem: removeLastFMData } = useLocalStorage("lastFMData");
+    removeLastFMData();
+
+    const { removeItem: removeLastFMUserID } = useLocalStorage("lastFMUserID");
+    removeLastFMUserID();
     lastFMUserIDState(null);
     reloadPage();
   }, []);
@@ -50,7 +59,8 @@ export const lastAuth = () => {
     [lastFMUserID],
   );
   useEffect(() => {
-    const localLastFMUser = localStorage.getItem("lastFMUserID");
+    const { getItem: getLastFMUser } = useLocalStorage("lastFMUserID");
+    const localLastFMUser = getLastFMUser();
     if (localLastFMUser) {
       const decryptedUserID = decryptData(localLastFMUser);
       lastFMUserIDState(decryptedUserID);

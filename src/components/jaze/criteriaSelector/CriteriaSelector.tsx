@@ -6,21 +6,21 @@ import { Option } from "types/foundationTypes";
 import styles from "./CriteriaSelector.module.css";
 
 const CriteriaSelector: React.FC<{
-  selectionType: SelectionType;
-  setSelectionType: (value: SelectionType) => void;
-  formData: { [key: string]: any };
-  setFormData: (value: { [key: string]: any }) => void;
-  albumData: any;
-  artistData: any;
-  trackData: any;
+    selectionType: SelectionType;
+    setSelectionType: (value: SelectionType) => void;
+    formData: { [key: string]: any };
+    setFormData: (value: { [key: string]: any }) => void;
+    albumData: any;
+    artistData: any;
+    trackData: any;
 }> = ({
-  selectionType,
-  setSelectionType,
-  formData,
-  setFormData,
-  albumData,
-  artistData,
-  trackData,
+    selectionType,
+    setSelectionType,
+    formData,
+    setFormData,
+    albumData,
+    artistData,
+    trackData,
 }) => {
   const [options, setOptions] = useState<Option[]>([]);
   useEffect(() => {

@@ -1,6 +1,15 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKey, faPalette, faPenNib, faCoffee, faBug, faTools, faCompactDisc } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faKey,
+  faPalette,
+  faPenNib,
+  faCoffee,
+  faBug,
+  faTools,
+  faCompactDisc,
+} from "@fortawesome/free-solid-svg-icons";
 import { lastAuth } from "../../hooks/authentication/lastAuth";
 import { spotAuth } from "../../hooks/authentication/spotAuth";
 import { ActivityConstructorProps } from "../../types/structureTypes";
@@ -8,7 +17,10 @@ import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
-import { setDecryptionMode, decryptionMode } from "../../hooks/dataManagement/fetchUserData";
+import {
+  setDecryptionMode,
+  decryptionMode,
+} from "../../hooks/utils/useLocalStorage";
 import { reloadPage } from "../../hooks/security/urlHandler";
 
 const Settings: React.FC<ActivityConstructorProps> = ({ userID }) => {

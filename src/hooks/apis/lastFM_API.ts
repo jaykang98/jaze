@@ -1,7 +1,7 @@
-export async function fetchData<T>(
+export const fetchAndProcessData = async <T>(
   method: string,
   params: Record<string, string | number | boolean>,
-): Promise<T> {
+): Promise<T> => {
   if (
     !process.env.REACT_APP_LASTFM_APIKEY ||
     !process.env.REACT_APP_LASTFM_BASEURL
@@ -18,6 +18,7 @@ export async function fetchData<T>(
   }).toString();
 
   const url = `${process.env.REACT_APP_LASTFM_BASEURL}?method=${method}&${queryParams}`;
+
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -25,7 +26,7 @@ export async function fetchData<T>(
     }
     return (await response.json()) as T;
   } catch (error) {
-    console.error("Failed to fetch data:", error);
+    console.error("Failed to fetch and process data:", error);
     throw error;
   }
-}
+};

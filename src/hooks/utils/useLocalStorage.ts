@@ -7,8 +7,9 @@ interface UseLocalStorageReturn {
 }
 
 export const useLocalStorage = (key: string): UseLocalStorageReturn => {
-  const setItem = (value: string) => { 
-      localStorage.setItem(key, encryptData(value)); };
+  const setItem = (value: string) => {
+    localStorage.setItem(key, encryptData(value));
+  };
 
   const getItem = (): string | null => {
     const item = localStorage.getItem(key);
@@ -20,4 +21,17 @@ export const useLocalStorage = (key: string): UseLocalStorageReturn => {
   };
 
   return { setItem, getItem, removeItem };
+};
+
+export const settings = {
+  get enableDecryption() {
+    return localStorage.getItem("enableDecryption") === "true";
+  },
+  set enableDecryption(value: boolean) {
+    localStorage.setItem("enableDecryption", String(value));
+  },
+};
+export const decryptionMode = (): boolean => settings.enableDecryption;
+export const setDecryptionMode = (): void => {
+  settings.enableDecryption = !settings.enableDecryption;
 };

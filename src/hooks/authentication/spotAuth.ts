@@ -6,16 +6,41 @@ import {
 } from "../security/encryptionProtocol";
 import { Buffer } from "buffer";
 import { currentPage, reloadPage } from "../security/urlHandler";
+import { useLocalStorage } from "../utils/useLocalStorage";
 
 export const spotAuth = () => {
   const [spotifyUserID, spotifyIDState] = useState<string | null>(null);
+  const logSpotifyOut = useCallback(() => {
+    const keys = [
+      "SpotifyUserID",
+      "spotifyCode",
+      "SpotifyAccessToken",
+      "SpotifyRefreshToken",
+      "SpotifyTokenExpiry",
+    ];
+
+    keys.forEach((key) => {
+      const { removeItem } = useLocalStorage(key);
+      removeItem();
+    });
+
+    spotifyIDState(null);
+    reloadPage();
+  }, []);
+  const getSpotifyUser = useCallback(() => spotifyUserID, [spotifyUserID]);
+  const isSpotifyLoggedIn = useCallback(
+    () => spotifyUserID !== null,
+    [spotifyUserID],
+  );
+
   const startAuthSpotify = () => {
     const scope = encodeURIComponent("user-read-private user-read-email");
     const state = generateRandomString(16);
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENTID}&response_type=code&redirect_uri=${encodeURIComponent(currentPage())}&scope=${scope}&state=${state}`;
+    window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENTID}&response_type=code&redirect_uri=${currentPage()}&scope=${scope}&state=${state}`;
   };
   const fetchSpotifyCode = async (code: string) => {
-    localStorage.setItem("spotifyCode", code);
+    const { setItem } = useLocalStorage("spotifyCode");
+    setItem(code);
     try {
       const authBuffer = Buffer.from(
         `${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`,
@@ -43,9 +68,19 @@ export const spotAuth = () => {
       const expiresIn = data.expires_in;
 
       if (accessToken) {
-        localStorage.setItem("SpotifyAccessToken", accessToken);
-        localStorage.setItem("SpotifyRefreshToken", refreshToken);
-        localStorage.setItem("SpotifyTokenExpiry", expiresIn.toString());
+        const { setItem: setAccessToken } =
+          useLocalStorage("SpotifyAccessToken");
+        setAccessToken(accessToken);
+
+        const { setItem: setRefreshToken } = useLocalStorage(
+          "SpotifyRefreshToken",
+        );
+        setRefreshToken(refreshToken);
+
+        const { setItem: setTokenExpiry } =
+          useLocalStorage("SpotifyTokenExpiry");
+        setTokenExpiry(expiresIn.toString());
+
         const userProfile = await fetch("https://api.spotify.com/v1/me", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -60,20 +95,6 @@ export const spotAuth = () => {
     }
   };
 
-  const logSpotifyOut = useCallback(() => {
-    localStorage.removeItem("SpotifyUserID");
-    localStorage.removeItem("spotifyCode");
-    localStorage.removeItem("SpotifyAccessToken");
-    localStorage.removeItem("SpotifyRefreshToken");
-    localStorage.removeItem("SpotifyTokenExpiry");
-    spotifyIDState(null);
-    reloadPage();
-  }, []);
-  const getSpotifyUser = useCallback(() => spotifyUserID, [spotifyUserID]);
-  const isSpotifyLoggedIn = useCallback(
-    () => spotifyUserID !== null,
-    [spotifyUserID],
-  );
   useEffect(() => {
     const localSpotifyUser = localStorage.getItem("SpotifyUserID");
     if (localSpotifyUser) {

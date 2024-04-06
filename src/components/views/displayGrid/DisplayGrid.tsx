@@ -1,5 +1,4 @@
 import React from "react";
-import TitleBar from "../../ui/viewTitleBar/ViewTitleBar";
 import ViewFrame from "../../structure/viewFrame/ViewFrame";
 import { ActivityConstructorProps } from "types/structureTypes";
 import Styles from "components/views/displayGrid/DisplayGrid.module.css";

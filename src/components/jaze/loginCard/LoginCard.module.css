@@ -1,116 +1,120 @@
 .LoginCardContainer {
-    position: relative;
-    display: flex;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .LoginCard {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    background: linear-gradient(to right, var(--secondary-accent-color-1), var(--secondary-accent-color-2));
-    text-align: center;
-    padding: 20px;
-    border-radius: 15px;
-    font-size: 16px;
-    color: black;
-    border: 2px solid var(--input-border-color);
-    box-shadow: var(--box-shadow);
-    min-width: 150px;
-    min-height: 75px;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  background: linear-gradient(
+    to right,
+    var(--secondary-accent-color-1),
+    var(--secondary-accent-color-2)
+  );
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 16px;
+  color: black;
+  border: 2px solid var(--input-border-color);
+  box-shadow: var(--box-shadow);
+  min-width: 150px;
+  min-height: 75px;
+  position: relative;
 }
 
 .userDetails {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .userImage {
-    border: 2px solid lightgrey;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-    user-select: none;
-    -webkit-user-select: none;
+  border: 2px solid lightgrey;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .userRealName {
-    flex-grow: 1;
-    text-align: right;
-    font-size:20px;
-    user-select: none;
-    -webkit-user-select: none;
-    color: white;
-    z-index: 2;
+  flex-grow: 1;
+  text-align: right;
+  font-size: 20px;
+  user-select: none;
+  -webkit-user-select: none;
+  color: white;
+  z-index: 2;
 }
 .userName {
-    color: white;
+  color: white;
 }
 
 .subText {
-    font-size: xx-small;
-    color: white;
-    justify-content: right;
-    align-content:flex-end;
+  font-size: xx-small;
+  color: white;
+  justify-content: right;
+  align-content: flex-end;
 }
 
 .LoginCardOverlay {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--secondary-accent-color-1-rgb), 0.9);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-    border-radius: 15px;
-    color: white;
-    min-width: 150px;
-    min-height: 75px;
-    overflow-x: hidden;
-    overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--secondary-accent-color-1-rgb), 0.9);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  border-radius: 15px;
+  color: white;
+  min-width: 150px;
+  min-height: 75px;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 .LoginCardContainer:hover .LoginCardOverlay {
-    opacity: 1;
-    cursor: pointer;
-    width: calc(100% - 20px);
+  opacity: 1;
+  cursor: pointer;
+  width: calc(100% - 20px);
 }
 
 .overlayContent {
-    padding: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {
-    .LoginCard {
-        padding: 15px;
-        flex-direction: column;
-        align-items: center;
-    }
+  .LoginCard {
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .userInfo {
-        text-align: center;
-        margin-top: 10px;
-    }
+  .userInfo {
+    text-align: center;
+    margin-top: 10px;
+  }
 
-    .userDetails {
-        flex-direction: column;
-        align-items: center;
-    }
+  .userDetails {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .userImage {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
+  .userImage {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }

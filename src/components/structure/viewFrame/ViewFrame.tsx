@@ -23,33 +23,32 @@ const ViewFrame: React.FC<ViewFrameProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [adjustedSplit, setAdjustedSplit] = useState(splitPercentage);
-  const validChildren = React.Children.toArray(children).slice(0, 2);
-  const isContentEmpty = isEmptyContent(validChildren);
+  const [firstChild, secondChild] = React.Children.toArray(children).slice(
+    0,
+    2,
+  );
+  const isContentEmpty = isEmptyContent([firstChild, secondChild]);
+
+  const adjustSplitPercentage = () => {
+    if (containerRef.current) {
+      const containerWidth = containerRef.current.offsetWidth;
+      const minChildWidth = 0;
+      const maxChildWidth = 1800;
+      let newSplit =
+        (Math.max(
+          minChildWidth,
+          Math.min(maxChildWidth, containerWidth * (splitPercentage / 100)),
+        ) /
+          containerWidth) *
+        100;
+      setAdjustedSplit(newSplit);
+    }
+  };
 
   useEffect(() => {
-    const adjustSplitPercentage = () => {
-      if (containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        const minChildWidth = 0;
-        const maxChildWidth = 1800;
-        let newSplit = splitPercentage;
-
-        if (containerWidth * (splitPercentage / 100) < minChildWidth) {
-          newSplit = (minChildWidth / containerWidth) * 100;
-        } else if (containerWidth * (splitPercentage / 100) > maxChildWidth) {
-          newSplit = (maxChildWidth / containerWidth) * 100;
-        }
-
-        setAdjustedSplit(newSplit);
-      }
-    };
-
     adjustSplitPercentage();
     window.addEventListener("resize", adjustSplitPercentage);
-
-    return () => {
-      window.removeEventListener("resize", adjustSplitPercentage);
-    };
+    return () => window.removeEventListener("resize", adjustSplitPercentage);
   }, [splitPercentage]);
 
   return (
@@ -60,10 +59,10 @@ const ViewFrame: React.FC<ViewFrameProps> = ({
       })}
     >
       <ViewSection style={{ width: `${adjustedSplit}%` }}>
-        {validChildren[0]}
+        {firstChild}
       </ViewSection>
       <ViewSection style={{ width: `${100 - adjustedSplit}%` }}>
-        {validChildren[1]}
+        {secondChild}
       </ViewSection>
     </div>
   );

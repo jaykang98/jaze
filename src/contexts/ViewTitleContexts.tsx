@@ -1,18 +1,10 @@
-// src/contexts/ViewTitleContext.tsx
 import React, { ReactNode, createContext, useContext, useState } from "react";
 
-interface ViewTitleContextType {
-  title: string;
-  setTitle: (title: string) => void;
-}
-interface ViewTitleProviderProps {
-  children: ReactNode;
-}
-const ViewTitleContext = createContext<ViewTitleContextType | undefined>(
-  undefined,
-);
+const ViewTitleContext = createContext<
+  { title: string; setTitle: (title: string) => void } | undefined
+>(undefined);
 
-export const ViewTitleProvider: React.FC<ViewTitleProviderProps> = ({
+export const ViewTitleProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [title, setTitle] = useState("");

@@ -10,7 +10,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       type = "button",
       className,
-      label,
       disabled = false,
       dataType,
     },

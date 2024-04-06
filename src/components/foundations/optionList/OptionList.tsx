@@ -59,7 +59,7 @@ const OptionList: React.FC<OptionListProps> = ({ options, dataType }) => {
                 `input[datatype='${dataType}']`,
               ) as HTMLInputElement;
               if (input) {
-                input.value = option.key;
+                input.value = option.value;
               }
             }}
           >

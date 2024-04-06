@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SelectionType } from "./dataTypes";
 
 export interface ViewConstructorProps {
   error?: Error | null;
   onViewChange?: any;
   activityName?: string;
-  userID: string | null;
+  lastFMUser: string | null;
+  spotifyUser: string | null;
 }
 
 export interface ActivityConstructorProps {
