@@ -19,7 +19,7 @@ export const fetchUserData = async (username: string) => {
       user: username,
       limit: 10,
     });
-
+      console.log(JSON.stringify(userData));
     setItem("lastFMUserData", JSON.stringify(userData));
     setItem("lastFMAlbumData", JSON.stringify(albumData));
     setItem("lastFMArtistData", JSON.stringify(artistData));
