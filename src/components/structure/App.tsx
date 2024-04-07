@@ -27,9 +27,9 @@ function App() {
     else if (JSON.parse(getItem("lastFMUserData"))?.user?.name == null) {
         fetchUserData(lastFMUserID);
     }
-    if (getItem("getSpotifyUser") == null) {
+    if (getItem("getSpotifyUser") == null && getItem("spotifyCode")==null) {
         const code = new URLSearchParams(window.location.search).get("code");
-        fetchSpotifyCode(code);
+        code!=null ? fetchSpotifyCode(code): "";
     }
 
   return (
