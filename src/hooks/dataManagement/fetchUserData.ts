@@ -9,8 +9,8 @@ export const fetchUserData = async (username: string) => {
 
       setLoading(true);
       try {
-        const storedDataStr = getItem("lastFMTrackData");
-          if (storedDataStr != null) {
+        const userData = JSON.parse(getItem("lastFMUserData"));
+          if (userData?.user?.name != null) {
               getItem("lastFMUserData");
               getItem("lastFMAlbumData");
               getItem("lastFMArtistData");
@@ -24,7 +24,6 @@ export const fetchUserData = async (username: string) => {
               setItem("lastFMArtistData", JSON.stringify(await Promise.resolve(fetchAndProcessData("user.getTopArtists", { user: username, limit: 10 }))));
               setItem("lastFMTrackData", JSON.stringify(await Promise.resolve(fetchAndProcessData("user.getTopTracks", { user: username, limit: 10 }))));
           }
-          
 
       } catch (error) {
         console.error("Failed to fetch user data", error);

@@ -10,28 +10,27 @@ import Header from "../foundations/header/Header";
 import Footer from "../foundations/footer/Footer";
 import { ViewTitleProvider } from "../../contexts/ViewTitleContexts";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
-import { useConfig } from "../../globals/useConfig";
+import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
 function App() {
-  const { isDarkMode, isDecrypted } = useConfig();
   const { getItem } = useLocalStorage();
   const { fetchFM } = lastAuth();
   const { fetchSpotifyCode } = spotAuth();
 
-  const getLastFMUser = getItem("getLastFMUser");
-  const getSpotifyUser = getItem("getSpotifyUser");
+    const lastFMUserID = getItem("lastFMUser");
 
-  const token = new URLSearchParams(window.location.search).get("token");
-  const code = new URLSearchParams(window.location.search).get("code");
-  if (getLastFMUser) {
-    return;
-  } else if (token) {
-    fetchFM(token);
-  }
-  if (getSpotifyUser) {
-    return;
-  } else if (code) {
-    fetchSpotifyCode(code);
-  }
+    if (lastFMUserID == null) {
+        const token = new URLSearchParams(window.location.search).get("token");
+        if (token) {
+            fetchFM(token);
+        }
+    }
+    else if (JSON.parse(getItem("lastFMUserData"))?.user?.name == null) {
+        fetchUserData(lastFMUserID);
+    }
+    if (getItem("getSpotifyUser") == null) {
+        const code = new URLSearchParams(window.location.search).get("code");
+        fetchSpotifyCode(code);
+    }
 
   return (
     <ViewTitleProvider>

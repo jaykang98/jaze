@@ -3,36 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\types\\dataTypes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\types\\dataTypes.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Tops\\Tops.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Application\\Tops\\Tops.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Settings\\Settings.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Application\\Settings\\Settings.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\dataManagement\\fetchUserData.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\hooks\\dataManagement\\fetchUserData.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\optionList\\OptionList.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\foundations\\optionList\\OptionList.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\ui\\mainForm\\MainForm.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\ui\\mainForm\\MainForm.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\About\\About.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Application\\About\\About.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\views\\displayGrid\\DisplayGrid.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\views\\displayGrid\\DisplayGrid.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Main\\Main.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Application\\Main\\Main.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\structure\\viewFrame\\ViewFrame.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\structure\\viewFrame\\ViewFrame.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\header\\Header.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\foundations\\header\\Header.module.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\authentication\\lastAuth.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\hooks\\authentication\\lastAuth.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\header\\Header.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\foundations\\header\\Header.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\apis\\spotifyCOM_API.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\hooks\\apis\\spotifyCOM_API.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\input\\Input.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\foundations\\input\\Input.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\apis\\lastFM_API.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\hooks\\apis\\lastFM_API.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\authentication\\spotAuth.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\hooks\\authentication\\spotAuth.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,9 +45,114 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 414,
-          "SelectedChildIndex": 25,
+          "DockedWidth": 289,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Tops.tsx",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Tops\\Tops.tsx",
+              "RelativeDocumentMoniker": "src\\Application\\Tops\\Tops.tsx",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Tops\\Tops.tsx",
+              "RelativeToolTip": "src\\Application\\Tops\\Tops.tsx",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAAEYAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-04-06T22:50:50.813Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainForm.tsx",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\ui\\mainForm\\MainForm.tsx",
+              "RelativeDocumentMoniker": "src\\components\\ui\\mainForm\\MainForm.tsx",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\ui\\mainForm\\MainForm.tsx",
+              "RelativeToolTip": "src\\components\\ui\\mainForm\\MainForm.tsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-04-07T00:30:45.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ViewFrame.tsx",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\structure\\viewFrame\\ViewFrame.tsx",
+              "RelativeDocumentMoniker": "src\\components\\structure\\viewFrame\\ViewFrame.tsx",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\structure\\viewFrame\\ViewFrame.tsx",
+              "RelativeToolTip": "src\\components\\structure\\viewFrame\\ViewFrame.tsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-04-07T00:30:36.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DisplayGrid.tsx",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\views\\displayGrid\\DisplayGrid.tsx",
+              "RelativeDocumentMoniker": "src\\components\\views\\displayGrid\\DisplayGrid.tsx",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\views\\displayGrid\\DisplayGrid.tsx",
+              "RelativeToolTip": "src\\components\\views\\displayGrid\\DisplayGrid.tsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-04-07T00:30:16.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "spotAuth.ts",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\authentication\\spotAuth.ts",
+              "RelativeDocumentMoniker": "src\\hooks\\authentication\\spotAuth.ts",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\authentication\\spotAuth.ts",
+              "RelativeToolTip": "src\\hooks\\authentication\\spotAuth.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-04-06T22:26:24.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "lastAuth.ts",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\authentication\\lastAuth.ts",
+              "RelativeDocumentMoniker": "src\\hooks\\authentication\\lastAuth.ts",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\authentication\\lastAuth.ts",
+              "RelativeToolTip": "src\\hooks\\authentication\\lastAuth.ts",
+              "ViewState": "AQIAABcAAAAAAAAAAAAQwCoAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-04-06T22:26:21.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "lastFM_API.ts",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\apis\\lastFM_API.ts",
+              "RelativeDocumentMoniker": "src\\hooks\\apis\\lastFM_API.ts",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\apis\\lastFM_API.ts",
+              "RelativeToolTip": "src\\hooks\\apis\\lastFM_API.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-04-06T22:25:13.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "spotifyCOM_API.ts",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\apis\\spotifyCOM_API.ts",
+              "RelativeDocumentMoniker": "src\\hooks\\apis\\spotifyCOM_API.ts",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\apis\\spotifyCOM_API.ts",
+              "RelativeToolTip": "src\\hooks\\apis\\spotifyCOM_API.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-04-06T22:02:45.718Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
@@ -141,111 +250,21 @@
               "Name": "ST:132:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Header.tsx",
-              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\header\\Header.tsx",
-              "RelativeDocumentMoniker": "src\\components\\foundations\\header\\Header.tsx",
-              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\header\\Header.tsx",
-              "RelativeToolTip": "src\\components\\foundations\\header\\Header.tsx",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-03-03T18:07:38.852Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OptionList.tsx",
-              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\optionList\\OptionList.tsx",
-              "RelativeDocumentMoniker": "src\\components\\foundations\\optionList\\OptionList.tsx",
-              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\optionList\\OptionList.tsx",
-              "RelativeToolTip": "src\\components\\foundations\\optionList\\OptionList.tsx",
-              "ViewState": "AQIAADIAAAAAAAAAAAAowD0AAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-03-03T17:49:56.932Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Input.tsx",
-              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\input\\Input.tsx",
-              "RelativeDocumentMoniker": "src\\components\\foundations\\input\\Input.tsx",
-              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\input\\Input.tsx",
-              "RelativeToolTip": "src\\components\\foundations\\input\\Input.tsx",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-03-03T18:07:38.082Z"
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Header.module.css",
-              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\header\\Header.module.css",
-              "RelativeDocumentMoniker": "src\\components\\foundations\\header\\Header.module.css",
-              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\components\\foundations\\header\\Header.module.css",
-              "RelativeToolTip": "src\\components\\foundations\\header\\Header.module.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-03-03T18:07:40.125Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Main.tsx",
-              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Main\\Main.tsx",
-              "RelativeDocumentMoniker": "src\\Application\\Main\\Main.tsx",
-              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Main\\Main.tsx",
-              "RelativeToolTip": "src\\Application\\Main\\Main.tsx",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAACUAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-03-03T18:10:20.954Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 352,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "dataTypes.ts",
-              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\types\\dataTypes.ts",
-              "RelativeDocumentMoniker": "src\\types\\dataTypes.ts",
-              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\types\\dataTypes.ts",
-              "RelativeToolTip": "src\\types\\dataTypes.ts",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-03-03T18:34:28.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "About.tsx",
-              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\About\\About.tsx",
-              "RelativeDocumentMoniker": "src\\Application\\About\\About.tsx",
-              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\About\\About.tsx",
-              "RelativeToolTip": "src\\Application\\About\\About.tsx",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAEYAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-03-03T18:26:25.392Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Settings.tsx",
-              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Settings\\Settings.tsx",
-              "RelativeDocumentMoniker": "src\\Application\\Settings\\Settings.tsx",
-              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\Application\\Settings\\Settings.tsx",
-              "RelativeToolTip": "src\\Application\\Settings\\Settings.tsx",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHoAAAAWAAAA",
+              "Title": "fetchUserData.ts",
+              "DocumentMoniker": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\dataManagement\\fetchUserData.ts",
+              "RelativeDocumentMoniker": "src\\hooks\\dataManagement\\fetchUserData.ts",
+              "ToolTip": "C:\\Users\\jules\\source\\repos\\jaykang98\\jaze\\src\\hooks\\dataManagement\\fetchUserData.ts",
+              "RelativeToolTip": "src\\hooks\\dataManagement\\fetchUserData.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-03-03T16:13:21.062Z"
+              "WhenOpened": "2024-04-06T17:03:57.675Z",
+              "EditorCaption": ""
             }
           ]
         }

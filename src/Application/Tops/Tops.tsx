@@ -6,11 +6,9 @@ import {
   faCalendarAlt,
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
-import { fetchUserData } from "../../hooks/dataManagement/fetchUserData";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import { ActivityConstructorProps } from "../../types/structureTypes";
-import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import AlbumCard from "../../components/jaze/albumCard/AlbumCard";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
@@ -21,13 +19,13 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
     const trackData = JSON.parse(getItem("lastFMTrackData"));
     const userData = JSON.parse(getItem("lastFMUserData"));
 
-  const formatNumber = (number: number) =>
+    const formatNumber = (number: number) =>
     new Intl.NumberFormat().format(number);
 
-  const getLargeImage = (images: Array<{ size: string; "#text": string }>) =>
+    const getLargeImage = (images: Array<{ size: string; "#text": string }>) =>
     images.find((image) => image.size === "large")?.["#text"] || "";
 
-  const userImage = userData?.user?.image?.[0]["#text"];
+    const userImage = userData?.user?.image?.[0]["#text"];
 
     const renderItemContent = (
         data: any,
@@ -127,9 +125,9 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
                   key="userImage"
                   src={userImage}
                   alt="User"
-                          caption={userData.user.realname}
+                          caption={userData?.user?.realname}
                 />
-                <h3>Who is {userData.user.name}???</h3>
+                <h3>Who is {userData?.user?.name}???</h3>
                 {renderUserInfo()}
               </>
             ),
