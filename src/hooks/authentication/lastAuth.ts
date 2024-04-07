@@ -19,8 +19,7 @@ export const lastAuth = (): lastAuthReturn => {
     }, [getItem]); 
 
     const startAuthFM = (): void => {
-        const callbackUrl = encodeURIComponent(currentPage());
-        window.location.href = `http://www.last.fm/api/auth/?api_key=${process.env.REACT_APP_LASTFM_APIKEY}&cb=${callbackUrl}`;
+        window.location.href = `http://www.last.fm/api/auth/?api_key=${process.env.REACT_APP_LASTFM_APIKEY}&cb=${encodeURIComponent(currentPage()) }`;
     };
 
     const fetchFM = async (token: string): Promise<void> => {
@@ -30,23 +29,20 @@ export const lastAuth = (): lastAuthReturn => {
             token: token,
         }, process.env.REACT_APP_LASTFM_SECRETKEY);
 
-        const sessionUrl = `${process.env.REACT_APP_LASTFM_BASEURL}?method=auth.getSession&api_key=${process.env.REACT_APP_LASTFM_APIKEY}&token=${token}&api_sig=${apiSig}&format=json`;
-
         try {
-            const response = await fetch(sessionUrl);
+            const response = await fetch(`${process.env.REACT_APP_LASTFM_BASEURL}?method=auth.getSession&api_key=${process.env.REACT_APP_LASTFM_APIKEY}&token=${token}&api_sig=${apiSig}&format=json`);
             if (!response.ok)
                 throw new Error(`Network response was not ok: ${response.statusText}`);
             const data = await response.json();
-
+            fetchUserData(data.session.name);
             if (data.session) {
                 setItem("lastFMUserID", data.session.name);
-                fetchUserData(data.session.name);
             }
+            
         } catch (error) {
             console.error("Fetching session failed:", error);
         }
-        reloadPage();
-        
+
     };
 
     const logFMOut = (): void => {
