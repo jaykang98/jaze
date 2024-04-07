@@ -1,5 +1,5 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import { SelectionType } from "./structureTypes";
+import { SelectionType } from "./dataTypes";
 
 export interface InputProps {
   id?: string;

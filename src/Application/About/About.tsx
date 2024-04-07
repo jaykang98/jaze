@@ -1,17 +1,11 @@
-// File: About.tsx
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGlobeAmericas,
-  faCalendarAlt,
-  faUserCircle,
-  faMusic,
-} from "@fortawesome/free-solid-svg-icons";
+import { faGlobeAmericas, faCalendarAlt, faUserCircle, faMusic } from "@fortawesome/free-solid-svg-icons";
 import { ActivityConstructorProps } from "../../types/structureTypes";
+import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
-import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 const About: React.FC<ActivityConstructorProps> = () => {
   const { getItem } = useLocalStorage();

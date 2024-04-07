@@ -1,11 +1,10 @@
-// src/components/Main.tsx
 import React, { useEffect, useState } from "react";
 import { FormData, ActivityConstructorProps } from "../../types/structureTypes";
+import { useViewTitle } from "../../contexts/ViewTitleContexts";
 
 import MainForm from "../../components/ui/mainForm/MainForm";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import styles from "src/globals/globalStyles.css";
-import { useViewTitle } from "../../contexts/ViewTitleContexts";
 
 const Main: React.FC<ActivityConstructorProps> = () => {
   const [formData, setFormData] = useState<FormData>({

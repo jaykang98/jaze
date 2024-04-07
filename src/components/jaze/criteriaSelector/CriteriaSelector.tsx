@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Input from "../../foundations/input/Input";
 import OptionList from "../../foundations/optionList/OptionList";
-import { SelectionType } from "../../../types/structureTypes";
 import { Option } from "types/foundationTypes";
 import styles from "./CriteriaSelector.module.css";
+import { SelectionType } from "../../../types/dataTypes";
 
 const CriteriaSelector: React.FC<{
   selectionType: SelectionType;

@@ -80,7 +80,7 @@ export type TrackData = {
   };
 };
 
-export interface lastFMUser {
+export type lastFMUser = {
   user: {
     name: string;
     realname?: string;
@@ -102,7 +102,7 @@ export interface lastFMUser {
     }>;
   };
 }
-export interface SpotifyUserProfile {
+export type SpotifyUserProfile = {
   country?: string;
   display_name?: string;
   email?: string;

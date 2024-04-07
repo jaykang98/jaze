@@ -32,8 +32,6 @@ export interface MainFormState {
   endTimestamp?: string;
   [key: string]: string | undefined;
 }
-
-export { SelectionType };
 export interface ViewSectionProps {
   children: React.ReactNode;
   style?: React.CSSProperties;

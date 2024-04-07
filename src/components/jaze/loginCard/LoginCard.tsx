@@ -1,26 +1,31 @@
 import React, { useState } from "react";
-import styles from "./LoginCard.module.css";
-import { lastAuth } from "../../../hooks/authentication/lastAuth";
 import { useLocalStorage } from "../../../hooks/utils/useLocalStorage";
+import styles from "./LoginCard.module.css";
+import JaZeAuth from "../../../hooks/authentication/jazeAuth";
 
 const LoginCard = () => {
-  const { getItem } = useLocalStorage();
-  const lastFMUserData = JSON.parse(getItem("lastFMUserData"));
-  const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
-  const lastFMUserID = getItem("lastFMUserID");
-  const userImage = lastFMUserData?.user?.image?.[0]["#text"];
-  const [isHovered, setIsHovered] = useState(false);
+    const { getItem } = useLocalStorage();
+    const [lastFmObject] = JaZeAuth();
+    const [isHovered, setIsHovered] = useState(false);
 
-  const handleAuthAction = () => {
+    const isFMAuthenticated = lastFmObject.isFMAuthenticated;
+    const startAuthFM = lastFmObject.startAuthFM;
+    const logFMOut = lastFmObject.logFMOut;
+
+    const lastFMUserData = JSON.parse(getItem("lastFMUserData"));
+    const lastFMUserID = getItem("lastFMUserID");
+    const userImage = lastFMUserData?.user?.image?.[0]["#text"];
+
+    const handleAuthAction = () => {
     isFMAuthenticated() ? logFMOut() : startAuthFM();
-  };
+    };
 
-  const handleCreateAccount = (
+    const handleCreateAccount = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
+    ) => {
     event.stopPropagation();
     window.location.href = "https://www.last.fm/join";
-  };
+    };
 
   const overlayContent = () => {
     if (lastFMUserID) {

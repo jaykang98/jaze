@@ -41,7 +41,7 @@ export const lastAuth = (): lastAuthReturn => {
 
             if (data.session) {
                 setItem("lastFMUserID", data.session.name);
-                await fetchUserData(data.session.name);
+                await fetchUserData("Last.FM", data.session.name);
             }
         } catch (error) {
             console.error("Fetching session failed:", error);

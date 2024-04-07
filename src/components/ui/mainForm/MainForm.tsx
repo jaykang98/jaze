@@ -1,11 +1,12 @@
 // FileName: GenerateDataForm.tsx
 import React, { useState } from "react";
 import TimeStampSelector from "../../jaze/timestampSelector/TimestampSelector";
-import { MainFormProps, SelectionType } from "../../../types/structureTypes";
+import { MainFormProps } from "../../../types/structureTypes";
 import Button from "../../foundations/button/Button";
 import CriteriaSelector from "../../jaze/criteriaSelector/CriteriaSelector";
 import Styles from "./MainForm.module.css";
 import { useLocalStorage } from "../../../hooks/utils/useLocalStorage";
+import { SelectionType } from "../../../types/dataTypes";
 
 const MainForm: React.FC<MainFormProps> = ({ formData, setFormData }) => {
   const { getItem } = useLocalStorage();

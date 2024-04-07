@@ -1,33 +1,33 @@
 import React, { useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faKey,
-  faPalette,
-  faPenNib,
-  faCoffee,
-  faBug,
-  faTools,
-  faCompactDisc,
-} from "@fortawesome/free-solid-svg-icons";
-import { lastAuth } from "../../hooks/authentication/lastAuth";
-import { spotAuth } from "../../hooks/authentication/spotAuth";
+import { faUser, faKey, faPalette, faPenNib, faCoffee, faBug, faTools, faCompactDisc } from "@fortawesome/free-solid-svg-icons";
 import { ActivityConstructorProps } from "../../types/structureTypes";
-import DisplayTable from "../../components/views/displayTable/DisplayTable";
-import Button from "../../components/foundations/button/Button";
-import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import { useConfig } from "../../globals/useConfig";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
-const Settings: React.FC<ActivityConstructorProps> = () => {
-  const { getItem } = useLocalStorage();
-  const isDecrypted = getItem("isDecrypted");
+import DisplayTable from "../../components/views/displayTable/DisplayTable";
+import Button from "../../components/foundations/button/Button";
+import JaZeAuth from "../../hooks/authentication/jazeAuth";
+import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 
-  const { setTitle } = useViewTitle();
-  const { startAuthSpotify, isSpotifyLoggedIn, logSpotifyOut } = spotAuth();
-  const { startAuthFM, isFMAuthenticated, logFMOut } = lastAuth();
-  const { toggleDarkMode, toggleDecryptionMode } = useConfig();
+const Settings: React.FC<ActivityConstructorProps> = () => {
+    const [lastFmObject, spotifyObject] = JaZeAuth();
+
+    const { getItem } = useLocalStorage();
+    const { toggleDarkMode, toggleDecryptionMode } = useConfig();
+    const { setTitle } = useViewTitle();
+
+    const isDecrypted = getItem("isDecrypted");
+
+    const isFMAuthenticated = lastFmObject.isFMAuthenticated;
+    const startAuthFM = lastFmObject.startAuthFM;
+    const logFMOut = lastFmObject.logFMOut;
+
+    const startAuthSpotify = spotifyObject.startAuthSpotify;
+    const logSpotifyOut = spotifyObject.logSpotifyOut;
+    const isSpotifyLoggedIn = spotifyObject.isSpotifyLoggedIn;
+
   useEffect(() => {
     setTitle("Settings");
   }, [setTitle]);

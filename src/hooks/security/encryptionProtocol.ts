@@ -44,6 +44,7 @@ export const generateRandomString = (length: number): string => {
   }
   return result;
 };
+
 export const generateApiSignature = (
   params: { [key: string]: string },
   secret: string,
