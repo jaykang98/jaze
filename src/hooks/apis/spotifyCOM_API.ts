@@ -1,16 +1,8 @@
-import { useState } from "react";
-import { SpotifyUserProfile } from "types/dataTypes";
-
-interface SpotifyAccessToken {
-  token: string;
-  expiresIn: number;
-}
+import { useLocalStorage } from "../utils/useLocalStorage";
 
 export const useSpotifyClient = () => {
-  const [accessToken, setAccessToken] = useState<SpotifyAccessToken | null>(
-    null,
-  );
-
+  const { getItem, setItem } = useLocalStorage();
+  const accessToken = getItem("SpotifyAccessToken");
   const spotifyApiRequest = async <T = any>(
     endpoint: string,
     options: RequestInit = {},
@@ -23,7 +15,7 @@ export const useSpotifyClient = () => {
       ...options,
       headers: {
         ...options.headers,
-        Authorization: `Bearer ${accessToken.token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
 
@@ -34,8 +26,8 @@ export const useSpotifyClient = () => {
     return response.json();
   };
 
-  const fetchCurrentUserProfile = async (): Promise<SpotifyUserProfile> => {
-    return spotifyApiRequest<SpotifyUserProfile>("/me");
+  const fetchCurrentUserProfile = async () => {
+    setItem("spotifyProfile", JSON.parse(await spotifyApiRequest("/me")));
   };
 
   return { spotifyApiRequest, fetchCurrentUserProfile };

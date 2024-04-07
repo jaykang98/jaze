@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserCircle,
@@ -13,31 +13,33 @@ import AlbumCard from "../../components/jaze/albumCard/AlbumCard";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 const Tops: React.FC<ActivityConstructorProps> = () => {
-    const { getItem } = useLocalStorage();
-    const albumData = JSON.parse(getItem("lastFMAlbumData"));
-    const artistData = JSON.parse(getItem("lastFMArtistData"));
-    const trackData = JSON.parse(getItem("lastFMTrackData"));
-    const userData = JSON.parse(getItem("lastFMUserData"));
+  const { getItem } = useLocalStorage();
+  const albumData = JSON.parse(getItem("lastFMAlbumData"));
+  const artistData = JSON.parse(getItem("lastFMArtistData"));
+  const trackData = JSON.parse(getItem("lastFMTrackData"));
+  const userData = JSON.parse(getItem("lastFMUserData"));
 
-    const formatNumber = (number: number) =>
+  const formatNumber = (number: number) =>
     new Intl.NumberFormat().format(number);
 
-    const getLargeImage = (images: Array<{ size: string; "#text": string }>) =>
+  const getLargeImage = (images: Array<{ size: string; "#text": string }>) =>
     images.find((image) => image.size === "large")?.["#text"] || "";
 
-    const userImage = userData?.user?.image?.[0]["#text"];
+  const userImage = userData?.user?.image?.[0]["#text"];
 
-    const renderItemContent = (
-        data: any,
-        type: "artist" | "album" | "track",
-        isTable: boolean = false,
-    ) => {
-        if (!data || data.length === 0) {
-            return <p>No {type} data available.</p>;
-        }
+  const renderItemContent = (
+    data: any,
+    type: "artist" | "album" | "track",
+    isTable: boolean = false,
+  ) => {
+    if (!data || data.length === 0) {
+      return <p>No {type} data available.</p>;
+    }
     const dataType =
-      type === "artist" ? data?.topartists
-        : type === "album" ? data?.topalbums
+      type === "artist"
+        ? data?.topartists
+        : type === "album"
+          ? data?.topalbums
           : data?.toptracks;
     const items = dataType[type].slice(0, isTable ? 10 : 1);
 
@@ -61,23 +63,45 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
     );
   };
 
+  const renderUserInfo = () => {
+    if (!userData || !userData.user) return <p>No data available.</p>;
 
-    const renderUserInfo = () => {
-        if (!userData || !userData.user) return <p>No data available.</p>;
+    const registrationDate = new Date(
+      userData.user.registered?.unixtime * 1000 || Date.now(),
+    );
+    const yearsSinceRegistration =
+      new Date().getFullYear() - registrationDate.getFullYear();
 
-        const registrationDate = new Date(userData.user.registered?.unixtime * 1000 || Date.now());
-        const yearsSinceRegistration = new Date().getFullYear() - registrationDate.getFullYear();
+    const dataForDisplay = [
+      [
+        <FontAwesomeIcon key="name-icon" icon={faUserCircle} />,
+        "Name",
+        userData.user.name,
+      ],
+      [
+        <FontAwesomeIcon key="country-icon" icon={faGlobeAmericas} />,
+        "Country",
+        userData.user.country,
+      ],
+      [
+        <FontAwesomeIcon key="user-since-icon" icon={faCalendarAlt} />,
+        "User Since",
+        registrationDate.toLocaleDateString(),
+      ],
+      [
+        <FontAwesomeIcon key="years-active-icon" icon={faCalendarAlt} />,
+        "Years Active",
+        `${yearsSinceRegistration} years`,
+      ],
+      [
+        <FontAwesomeIcon key="playcount-icon" icon={faMusic} />,
+        "Playcount",
+        formatNumber(userData.user.playcount),
+      ],
+    ];
 
-        const dataForDisplay = [
-            [<FontAwesomeIcon key="name-icon" icon={faUserCircle} />, "Name", userData.user.name],
-            [<FontAwesomeIcon key="country-icon" icon={faGlobeAmericas} />, "Country", userData.user.country],
-            [<FontAwesomeIcon key="user-since-icon" icon={faCalendarAlt} />, "User Since", registrationDate.toLocaleDateString()],
-            [<FontAwesomeIcon key="years-active-icon" icon={faCalendarAlt} />, "Years Active", `${yearsSinceRegistration} years`],
-            [<FontAwesomeIcon key="playcount-icon" icon={faMusic} />, "Playcount", formatNumber(userData.user.playcount)],
-        ];
-
-        return <DisplayTable data={dataForDisplay} />;
-    };
+    return <DisplayTable data={dataForDisplay} />;
+  };
 
   return (
     <>
@@ -125,7 +149,7 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
                   key="userImage"
                   src={userImage}
                   alt="User"
-                          caption={userData?.user?.realname}
+                  caption={userData?.user?.realname}
                 />
                 <h3>Who is {userData?.user?.name}???</h3>
                 {renderUserInfo()}

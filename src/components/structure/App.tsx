@@ -16,21 +16,20 @@ function App() {
   const { fetchFM } = lastAuth();
   const { fetchSpotifyCode } = spotAuth();
 
-    const lastFMUserID = getItem("lastFMUser");
+  const lastFMUserID = getItem("lastFMUser");
 
-    if (lastFMUserID == null) {
-        const token = new URLSearchParams(window.location.search).get("token");
-        if (token) {
-            fetchFM(token);
-        }
+  if (lastFMUserID == null) {
+    const token = new URLSearchParams(window.location.search).get("token");
+    if (token) {
+      fetchFM(token);
     }
-    else if (JSON.parse(getItem("lastFMUserData"))?.user?.name == null) {
-        fetchUserData(lastFMUserID);
-    }
-    if (getItem("getSpotifyUser") == null && getItem("spotifyCode")==null) {
-        const code = new URLSearchParams(window.location.search).get("code");
-        code!=null ? fetchSpotifyCode(code): "";
-    }
+  } else if (JSON.parse(getItem("lastFMUserData"))?.user?.name == null) {
+    fetchUserData(lastFMUserID);
+  }
+  if (getItem("getSpotifyUser") == null && getItem("spotifyCode") == null) {
+    const code = new URLSearchParams(window.location.search).get("code");
+    code != null ? fetchSpotifyCode(code) : "";
+  }
 
   return (
     <ViewTitleProvider>

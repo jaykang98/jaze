@@ -33,31 +33,31 @@ const Settings: React.FC<ActivityConstructorProps> = () => {
   }, [setTitle]);
 
   const firstNode = useMemo(
-      () => [
-          {
-              displayLabel: "Last.FM Account",
-              action: !isFMAuthenticated() ? startAuthFM : logFMOut,
-              actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
-              icon: faUser,
-              disabled: false,
-          },
-          {
-              displayLabel: "Spotify Account",
-              action: !isSpotifyLoggedIn() ? startAuthSpotify : logSpotifyOut,
-              actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
-              icon: faCompactDisc,
-          },
-          {
-              displayLabel: "Store Data Securely",
-              action: toggleDecryptionMode,
-              actionLabel: isDecrypted ? "Encrypt Data" : "Decrypt Data",
-              icon: faKey,
-              disabled: false,
-          },
-          {
-              displayLabel: "Current Theme Mode",
-              action: toggleDarkMode,
-              actionLabel: (getItem("isDarkMode") ? "Dark Mode" : "Light Mode"),
+    () => [
+      {
+        displayLabel: "Last.FM Account",
+        action: !isFMAuthenticated() ? startAuthFM : logFMOut,
+        actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
+        icon: faUser,
+        disabled: false,
+      },
+      {
+        displayLabel: "Spotify Account",
+        action: !isSpotifyLoggedIn() ? startAuthSpotify : logSpotifyOut,
+        actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
+        icon: faCompactDisc,
+      },
+      {
+        displayLabel: "Store Data Securely",
+        action: toggleDecryptionMode,
+        actionLabel: isDecrypted ? "Encrypt Data" : "Decrypt Data",
+        icon: faKey,
+        disabled: false,
+      },
+      {
+        displayLabel: "Current Theme Mode",
+        action: toggleDarkMode,
+        actionLabel: getItem("isDarkMode") ? "Dark Mode" : "Light Mode",
         icon: faPalette,
         disabled: false,
       },
