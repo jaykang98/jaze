@@ -5,100 +5,79 @@ import { currentPage, reloadPage } from "../security/urlHandler";
 import { useLocalStorage } from "../utils/useLocalStorage";
 
 export const spotAuth = () => {
-  const [spotifyUserID, setSpotifyUserID] = useState<string | null>(null);
-  const logSpotifyOut = useCallback(() => {
-    const keys = [
-      "SpotifyUserID",
-      "spotifyCode",
-      "SpotifyAccessToken",
-      "SpotifyRefreshToken",
-      "SpotifyTokenExpiry",
-    ];
+    const [spotifyUserID, setSpotifyUserID] = useState<string | null>(null);
+    const { getItem, setItem, removeItem } = useLocalStorage();
 
-    keys.forEach((key) => {
-      const { removeItem } = useLocalStorage();
-      removeItem(key);
-    });
+    const logSpotifyOut = useCallback(() => {
+        const keys = [
+            "SpotifyUserID",
+            "spotifyCode",
+            "SpotifyAccessToken",
+            "SpotifyRefreshToken",
+            "SpotifyTokenExpiry",
+        ];
 
-    setSpotifyUserID(null);
-    reloadPage();
-  }, []);
-  const isSpotifyLoggedIn = useCallback(
-    () => spotifyUserID !== null,
-    [spotifyUserID],
-  );
+        keys.forEach(key => removeItem(key));
 
-  const startAuthSpotify = () => {
-    const scope = encodeURIComponent("user-read-private user-read-email");
-    const state = generateRandomString(16);
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENTID}&response_type=code&redirect_uri=${currentPage()}&scope=${scope}&state=${state}`;
-  };
-  const fetchSpotifyCode = async (code: string) => {
-    const { setItem: setSpotifyCode } = useLocalStorage();
-    setSpotifyCode("spotifyCode", code);
-    try {
-      const authBuffer = Buffer.from(
-        `${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`,
-      ).toString("base64");
-      const response = await fetch("https://accounts.spotify.com/api/token", {
-        method: "POST",
-        headers: {
-          Authorization: "Basic " + authBuffer,
-          "content-type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          grant_type: "authorization_code",
-          code: code,
-          redirect_uri: currentPage(),
-        }).toString(),
-      });
+        setSpotifyUserID(null);
+        reloadPage();
+    }, [removeItem]);
 
-      if (!response.ok) {
-        throw new Error("Failed to exchange Spotify code for token");
-      }
+    const isSpotifyLoggedIn = useCallback(() => spotifyUserID !== null, [spotifyUserID]);
 
-      const data = await response.json();
-      const accessToken = data.access_token;
-      const refreshToken = data.refresh_token;
-      const expiresIn = data.expires_in;
+    const startAuthSpotify = () => {
+        const scope = encodeURIComponent("user-read-private user-read-email");
+        const state = generateRandomString(16);
+        window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENTID}&response_type=code&redirect_uri=${currentPage()}&scope=${scope}&state=${state}`;
+    };
 
-      if (accessToken) {
-        const { setItem: setAccessToken } = useLocalStorage();
-        setAccessToken("SpotifyAccessToken", accessToken);
+    const fetchSpotifyCode = async (code: string) => {
+        setItem("spotifyCode", code);
+        try {
+            const authBuffer = Buffer.from(`${process.env.REACT_APP_SPOTIFY_CLIENTID}:${process.env.REACT_APP_SPOTIFY_CLIENTSECRET}`).toString("base64");
+            const response = await fetch("https://accounts.spotify.com/api/token", {
+                method: "POST",
+                headers: {
+                    Authorization: "Basic " + authBuffer,
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                    grant_type: "authorization_code",
+                    code: code,
+                    redirect_uri: currentPage(),
+                }).toString(),
+            });
 
-        const { setItem: setRefreshToken } = useLocalStorage();
-        setRefreshToken("SpotifyRefreshToken", refreshToken);
+            if (!response.ok) {
+                throw new Error("Failed to exchange Spotify code for token");
+            }
 
-        const { setItem: setTokenExpiry } = useLocalStorage();
-        setTokenExpiry("SpotifyTokenExpiry", expiresIn.toString());
+            const data = await response.json();
+            const { access_token: accessToken, refresh_token: refreshToken, expires_in: expiresIn } = data;
 
-        const userProfile = await fetch("https://api.spotify.com/v1/me", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }).then((res) => res.json());
+            if (accessToken) {
+                setItem("SpotifyAccessToken", accessToken);
+                setItem("SpotifyRefreshToken", refreshToken);
+                setItem("SpotifyTokenExpiry", expiresIn.toString());
 
-        const { setItem: setSpotifyUserID } = useLocalStorage();
-        setSpotifyUserID("SpotifyUserID", userProfile.id);
-      }
-    } catch (error) {
-      console.error("Error handling Spotify auth code:", error);
-    }
-  };
-  const { getItem } = useLocalStorage();
-  const getSpotifyUser = getItem("SpotifyUserID");
-  useEffect(() => {
-    const localSpotifyUser = getItem("SpotifyUserID");
-    if (localSpotifyUser) {
-      setSpotifyUserID(localSpotifyUser);
-    }
-  }, []);
+                const userProfile = await fetch("https://api.spotify.com/v1/me", {
+                    headers: { Authorization: `Bearer ${accessToken}` },
+                }).then(res => res.json());
 
-  return {
-    startAuthSpotify,
-    fetchSpotifyCode,
-    logSpotifyOut,
-    getSpotifyUser,
-    isSpotifyLoggedIn,
-  };
+                setItem("SpotifyUserID", userProfile.id);
+                setSpotifyUserID(userProfile.id);
+            }
+        } catch (error) {
+            console.error("Error handling Spotify auth code:", error);
+        }
+    };
+
+    useEffect(() => {
+        const localSpotifyUser = getItem("SpotifyUserID");
+        if (localSpotifyUser) {
+            setSpotifyUserID(localSpotifyUser);
+        }
+    }, [getItem]);
+
+    return { startAuthSpotify, fetchSpotifyCode, logSpotifyOut, spotifyUserID, isSpotifyLoggedIn };
 };

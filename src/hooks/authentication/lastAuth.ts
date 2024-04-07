@@ -3,59 +3,65 @@ import { generateApiSignature } from "../security/encryptionProtocol";
 import { reloadPage, currentPage } from "../security/urlHandler";
 import { useLocalStorage } from "../utils/useLocalStorage";
 import { fetchUserData } from "../dataManagement/fetchUserData";
-export const lastAuth = () => {
-  const callbackUrl = encodeURIComponent(currentPage());
-  const {
-    removeItem: removeLastFMData,
-    setItem: setLastFMUserID,
-    setItem: setUserData,
-    getItem,
-  } = useLocalStorage();
-  const getLastFMUser = getItem("getLastFMUser");
-  const isFMAuthenticated = useCallback(
-    () => getLastFMUser !== null,
-    [getLastFMUser],
-  );
 
-  const startAuthFM = () => {
-    window.location.href = `http://www.last.fm/api/auth/?api_key=${process.env.REACT_APP_LASTFM_APIKEY}&cb=${callbackUrl}`;
-  };
-  const fetchFM = async (token: string) => {
-    const apiSig = generateApiSignature(
-      {
-        api_key: process.env.REACT_APP_LASTFM_APIKEY!,
-        method: "auth.getSession",
-        token: token,
-      },
-      process.env.REACT_APP_LASTFM_SECRETKEY,
-    );
+interface lastAuthReturn {
+    startAuthFM: () => void;
+    fetchFM: (token: string) => Promise<void>;
+    logFMOut: () => void;
+    isFMAuthenticated: () => boolean;
+}
+export const lastAuth = (): lastAuthReturn => {
+    const { getItem, setItem, removeItem } = useLocalStorage();
 
-    const sessionUrl = `${process.env.REACT_APP_LASTFM_BASEURL}?method=auth.getSession&api_key=${process.env.REACT_APP_LASTFM_APIKEY}&token=${token}&api_sig=${apiSig}&format=json`;
+    const isFMAuthenticated = useCallback(() => {
+        const lastFMUser = getItem("lastFMUserID");
+        return lastFMUser !== null;
+    }, [getItem]); 
 
-    try {
-      const response = await fetch(sessionUrl);
-      if (!response.ok)
-        throw new Error(`Network response was not ok: ${response.statusText}`);
-      const data = await response.json();
+    const startAuthFM = (): void => {
+        const callbackUrl = encodeURIComponent(currentPage());
+        window.location.href = `http://www.last.fm/api/auth/?api_key=${process.env.REACT_APP_LASTFM_APIKEY}&cb=${callbackUrl}`;
+    };
 
-      if (data.session) {
-        setLastFMUserID("lastFMUserID", data.session.name);
-      }
-    } catch (error) {
-      console.error("Fetching session failed:", error);
-    }
-  };
+    const fetchFM = async (token: string): Promise<void> => {
+        const apiSig = generateApiSignature({
+            api_key: process.env.REACT_APP_LASTFM_APIKEY!,
+            method: "auth.getSession",
+            token: token,
+        }, process.env.REACT_APP_LASTFM_SECRETKEY);
 
-  const logFMOut = async () => {
-    removeLastFMData("lastFMUserID");
-    reloadPage();
-  };
+        const sessionUrl = `${process.env.REACT_APP_LASTFM_BASEURL}?method=auth.getSession&api_key=${process.env.REACT_APP_LASTFM_APIKEY}&token=${token}&api_sig=${apiSig}&format=json`;
 
-  return {
-    startAuthFM,
-    fetchFM,
-    logFMOut,
-    getLastFMUser,
-    isFMAuthenticated,
-  };
+        try {
+            const response = await fetch(sessionUrl);
+            if (!response.ok)
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            const data = await response.json();
+
+            if (data.session) {
+                setItem("lastFMUserID", data.session.name);
+                fetchUserData(data.session.name);
+            }
+        } catch (error) {
+            console.error("Fetching session failed:", error);
+        }
+        reloadPage();
+        
+    };
+
+    const logFMOut = (): void => {
+        removeItem("lastFMUserID");
+        removeItem("lastFMAlbumData");
+        removeItem("lastFMArtistData");
+        removeItem("lastFMTrackData");
+        removeItem("lastFMUserData");
+        reloadPage();
+    };
+
+    return {
+        startAuthFM,
+        fetchFM,
+        logFMOut,
+        isFMAuthenticated,
+    };
 };
