@@ -3,6 +3,7 @@ import { generateRandomString } from "../security/encryptionProtocol";
 import { Buffer } from "buffer";
 import { currentPage, reloadPage } from "../security/urlHandler";
 import { useLocalStorage } from "../utils/useLocalStorage";
+import { fetchUserData } from "../dataManagement/fetchUserData";
 
 export const spotAuth = () => {
     const [spotifyUserID, setSpotifyUserID] = useState<string | null>(null);
@@ -60,11 +61,15 @@ export const spotAuth = () => {
                     throw new Error("Failed to fetch Spotify user profile.");
                 }
                 const userProfile = await profileResponse.json();
+                const response = JSON.stringify(userProfile);
+                await fetchUserData("Spotify", response);
 
                 setItem("SpotifyAccessToken", accessToken);
                 setItem("SpotifyRefreshToken", refreshToken);
                 setItem("SpotifyTokenExpiry", expiresIn.toString());
                 setItem("SpotifyUserID", userProfile.id);
+                setItem("SpotifyUserRealName", userProfile.display_name);
+                setItem("SpotifyUserData", JSON.stringify(userProfile));
                 setSpotifyUserID(userProfile.id);
             }
         } catch (error) {

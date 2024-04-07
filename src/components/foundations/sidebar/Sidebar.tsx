@@ -34,6 +34,11 @@ const Sidebar = () => {
       label: "Settings",
       icon: faCog,
     },
+    {
+      path: "/testBench",
+      label: "Test Bench",
+      icon: faCog,
+    },
   ];
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserCircle,
@@ -11,20 +11,26 @@ import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import { ActivityConstructorProps } from "../../types/structureTypes";
 import AlbumCard from "../../components/jaze/albumCard/AlbumCard";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
+import { useViewTitle } from "../../contexts/ViewTitleContexts";
 
 const Tops: React.FC<ActivityConstructorProps> = () => {
-  const { getItem } = useLocalStorage();
-  const albumData = JSON.parse(getItem("lastFMAlbumData"));
-  const artistData = JSON.parse(getItem("lastFMArtistData"));
-  const trackData = JSON.parse(getItem("lastFMTrackData"));
-  const userData = JSON.parse(getItem("lastFMUserData"));
+    const { getItem } = useLocalStorage();
+    const { setTitle } = useViewTitle();
 
-  const formatNumber = (number: number) =>
-    new Intl.NumberFormat().format(number);
+    const albumData = JSON.parse(getItem("lastFMAlbumData"));
+    const artistData = JSON.parse(getItem("lastFMArtistData"));
+    const trackData = JSON.parse(getItem("lastFMTrackData"));
+    const userData = JSON.parse(getItem("lastFMUserData"));
+    const userProfile = JSON.parse(getItem("SpotifyUserData"));
+    const totalScrobbles = parseInt(userData?.user?.playcount || '0', 10);
 
-  const getLargeImage = (images: Array<{ size: string; "#text": string }>) =>
-    images.find((image) => image.size === "large")?.["#text"] || "";
+    const formatNumber = (number: number) => new Intl.NumberFormat(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(number);
+    const formatPercent = (number: number) => new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(number);
+    useEffect(() => {
+        setTitle("Tops");
+    }, [setTitle]);
 
+  const getLargeImage = (images: Array<{ size: string; "#text": string }>) => images.find((image) => image.size === "large")?.["#text"] || "";
   const userImage = userData?.user?.image?.[0]["#text"];
 
   const renderItemContent = (
@@ -48,7 +54,8 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
         data={items.map((item: any, index: number) => [
           `${index + 1}`,
           item.name,
-          `${formatNumber(+item.playcount)} scrobbles`,
+            `${formatNumber(+item.playcount)} scrobbles (${formatPercent(+item.playcount / totalScrobbles * 100)}%)`,
+            ``,
         ])}
       />
     ) : (
@@ -69,8 +76,7 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
     const registrationDate = new Date(
       userData.user.registered?.unixtime * 1000 || Date.now(),
     );
-    const yearsSinceRegistration =
-      new Date().getFullYear() - registrationDate.getFullYear();
+
 
     const dataForDisplay = [
       [
@@ -86,18 +92,23 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
       [
         <FontAwesomeIcon key="user-since-icon" icon={faCalendarAlt} />,
         "User Since",
-        registrationDate.toLocaleDateString(),
+         `${new Date(userData.user.registered?.unixtime * 1000 || Date.now()).toLocaleDateString()}`,
       ],
       [
         <FontAwesomeIcon key="years-active-icon" icon={faCalendarAlt} />,
         "Years Active",
-        `${yearsSinceRegistration} years`,
+          `${new Date().getFullYear() - registrationDate.getFullYear() } years`,
       ],
       [
         <FontAwesomeIcon key="playcount-icon" icon={faMusic} />,
         "Playcount",
-        formatNumber(userData.user.playcount),
+          formatNumber(totalScrobbles),
       ],
+      [
+        <FontAwesomeIcon key="playcount-icon" icon={faMusic} />,
+        "Spotify Account",
+            <a href={userProfile.external_urls.spotify} key="spotify-link">{userProfile.display_name}</a>,
+        ],
     ];
 
     return <DisplayTable data={dataForDisplay} />;
