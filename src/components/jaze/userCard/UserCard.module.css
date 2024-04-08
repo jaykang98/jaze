@@ -1,9 +1,22 @@
-.albumCard {
+@keyframes gradientLoop {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.userCard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
+    background: linear-gradient(45deg, #1DB954, #9B59B6, #D51007);
+    background-size: 200% 200%;
+    animation: gradientLoop 5s ease infinite;
     padding: 25px 20px;
+    border: 1px black solid;
     border-radius: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: navajowhite;
@@ -13,23 +26,31 @@
     -ms-user-select: none;
     user-select: none;
 }
-.albumImage {
+
+.userImage {
+    padding-bottom: 10px;
     border-radius: 50%;
-    opacity: 0.8;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
-.caption {
-    padding-left:10px;
-  font-size: large;
-}
+
 .container {
-    padding-top: 10px;
+    padding-top:5px;
     display: flex;
     align-items: center;
     font-size: large;
     justify-content: flex-start;
     width: 100%;
 }
+
+.link {
+    padding-left:5px;
+    color: white;
+    text-decoration: none;
+}
+
+    .link:hover {
+        text-decoration: none;
+    }

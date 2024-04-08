@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faKey, faPalette, faPenNib, faCoffee, faBug, faTools, faCompactDisc } from "@fortawesome/free-solid-svg-icons";
+import {  faKey, faPalette, faPenNib, faCoffee, faBug, faTools } from "@fortawesome/free-solid-svg-icons";
 import { ActivityConstructorProps } from "../../types/structureTypes";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import { useConfig } from "../../globals/useConfig";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
-
+import { faLastfmSquare, faSpotify } from "@fortawesome/free-brands-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import JaZeAuth from "../../hooks/authentication/jazeAuth";
@@ -38,14 +39,14 @@ const Settings: React.FC<ActivityConstructorProps> = () => {
         displayLabel: "Last.FM Account",
         action: !isFMAuthenticated() ? startAuthFM : logFMOut,
         actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
-        icon: faUser,
+            icon: faLastfmSquare as IconProp,
         disabled: false,
       },
       {
         displayLabel: "Spotify Account",
         action: !isSpotifyLoggedIn() ? startAuthSpotify : logSpotifyOut,
         actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
-        icon: faCompactDisc,
+          icon: faSpotify as IconProp,
       },
       {
         displayLabel: "Store Data Securely",

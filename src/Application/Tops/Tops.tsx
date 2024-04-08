@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./Tops.module.css"
 import {
   faUserCircle,
   faGlobeAmericas,
   faCalendarAlt,
   faMusic,
+  faUsers,
+  faArrowAltCircleUp,
 } from "@fortawesome/free-solid-svg-icons";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
@@ -12,6 +15,9 @@ import { ActivityConstructorProps } from "../../types/structureTypes";
 import AlbumCard from "../../components/jaze/albumCard/AlbumCard";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
+import UserCard from "../../components/jaze/userCard/UserCard";
+import { faLastfmSquare, faSpotify } from "@fortawesome/free-brands-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Tops: React.FC<ActivityConstructorProps> = () => {
     const { getItem } = useLocalStorage();
@@ -31,7 +37,7 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
     }, [setTitle]);
 
   const getLargeImage = (images: Array<{ size: string; "#text": string }>) => images.find((image) => image.size === "large")?.["#text"] || "";
-  const userImage = userData?.user?.image?.[0]["#text"];
+    const userImage = userProfile?.images?.[1]?.url;
 
   const renderItemContent = (
     data: any,
@@ -77,13 +83,7 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
       userData.user.registered?.unixtime * 1000 || Date.now(),
     );
 
-
     const dataForDisplay = [
-      [
-        <FontAwesomeIcon key="name-icon" icon={faUserCircle} />,
-        "Name",
-        userData.user.name,
-      ],
       [
         <FontAwesomeIcon key="country-icon" icon={faGlobeAmericas} />,
         "Country",
@@ -92,23 +92,23 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
       [
         <FontAwesomeIcon key="user-since-icon" icon={faCalendarAlt} />,
         "User Since",
-         `${new Date(userData.user.registered?.unixtime * 1000 || Date.now()).toLocaleDateString()}`,
+          `${new Date(userData.user.registered?.unixtime * 1000 || Date.now()).toLocaleDateString()} (${new Date().getFullYear() - registrationDate.getFullYear() } years)`,
       ],
-      [
-        <FontAwesomeIcon key="years-active-icon" icon={faCalendarAlt} />,
-        "Years Active",
-          `${new Date().getFullYear() - registrationDate.getFullYear() } years`,
-      ],
-      [
-        <FontAwesomeIcon key="playcount-icon" icon={faMusic} />,
-        "Playcount",
+        [
+            <FontAwesomeIcon key="playcount-icon" icon={faArrowAltCircleUp} />,
+        "Total Scrobbles",
           formatNumber(totalScrobbles),
       ],
       [
+        <FontAwesomeIcon key="playcount-icon" icon={faUsers} />,
+        "Followers",
+          formatNumber(parseInt(userProfile?.followers?.total || '0', 10) + parseInt(userData?.user?.subscriber || '0', 10)),
+      ],
+      [
         <FontAwesomeIcon key="playcount-icon" icon={faMusic} />,
-        "Spotify Account",
-            <a href={userProfile.external_urls.spotify} key="spotify-link">{userProfile.display_name}</a>,
-        ],
+        "Total Scrobbles",
+          formatNumber(totalScrobbles),
+      ],
     ];
 
     return <DisplayTable data={dataForDisplay} />;
@@ -156,13 +156,11 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
           {
             content: (
               <>
-                <AlbumCard
+                <UserCard
                   key="userImage"
                   src={userImage}
                   alt="User"
-                  caption={userData?.user?.realname}
                 />
-                <h3>Who is {userData?.user?.name}???</h3>
                 {renderUserInfo()}
               </>
             ),
