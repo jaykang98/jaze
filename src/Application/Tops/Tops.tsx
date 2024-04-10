@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Tops.module.css"
 import {
-  faUserCircle,
   faGlobeAmericas,
   faCalendarAlt,
   faMusic,
@@ -16,8 +15,7 @@ import AlbumCard from "../../components/jaze/albumCard/AlbumCard";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import UserCard from "../../components/jaze/userCard/UserCard";
-import { faLastfmSquare, faSpotify } from "@fortawesome/free-brands-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { spotifySearch } from "../../hooks/dataManagement/search";
 
 const Tops: React.FC<ActivityConstructorProps> = () => {
     const { getItem } = useLocalStorage();
@@ -39,42 +37,45 @@ const Tops: React.FC<ActivityConstructorProps> = () => {
   const getLargeImage = (images: Array<{ size: string; "#text": string }>) => images.find((image) => image.size === "large")?.["#text"] || "";
     const userImage = userProfile?.images?.[1]?.url;
 
-  const renderItemContent = (
-    data: any,
-    type: "artist" | "album" | "track",
-    isTable: boolean = false,
-  ) => {
-    if (!data || data.length === 0) {
-      return <p>No {type} data available.</p>;
-    }
-    const dataType =
-      type === "artist"
-        ? data?.topartists
-        : type === "album"
-          ? data?.topalbums
-          : data?.toptracks;
-    const items = dataType[type].slice(0, isTable ? 10 : 1);
+    const renderItemContent = (
+        data: any,
+        type: "artist" | "album" | "track",
+        isTable: boolean = false,
+    ) => {
+        if (!data || data.length === 0) {
+            return <p>No {type} data available.</p>;
+        }
+        const dataType = type === "artist" ? data?.topartists :
+            type === "album" ? data?.topalbums :
+                data?.toptracks;
+        const items = dataType[type].slice(0, isTable ? 10 : 1);
 
-    return isTable ? (
-      <DisplayTable
-        data={items.map((item: any, index: number) => [
-          `${index + 1}`,
-          item.name,
-            `${formatNumber(+item.playcount)} scrobbles (${formatPercent(+item.playcount / totalScrobbles * 100)}%)`,
-            ``,
-        ])}
-      />
-    ) : (
-      items.map((item: any) => (
-        <AlbumCard
-          key={item.name}
-          src={getLargeImage(item.image)}
-          alt={item.name}
-          caption={item.name}
-        />
-      ))
-    );
-  };
+        const handleLinkClick = async (item: any, event: React.MouseEvent) => {
+            event.preventDefault();
+                window.location.href = await spotifySearch(type, item.name);
+        };
+
+        return isTable ? (
+            <DisplayTable
+                data={items.map((item: any, index: number) => [
+                    `${index + 1}`,
+                    <a href="#" onClick={(event) => handleLinkClick(item, event)} className={styles.link}>{item.name}</a>,
+                    <a href={item.url} className={styles.link}>{formatNumber(+item.playcount)} scrobbles ({formatPercent(+item.playcount / totalScrobbles * 100)}%)</a>,
+                ])}
+            />
+        ) : (
+            items.map((item: any) => (
+                <AlbumCard
+                    key={item.name}
+                    src={getLargeImage(item.image)}
+                    alt={item.name}
+                    caption={item.name}
+                    type={type}
+                />
+            ))
+        );
+    };
+
 
   const renderUserInfo = () => {
     if (!userData || !userData.user) return <p>No data available.</p>;

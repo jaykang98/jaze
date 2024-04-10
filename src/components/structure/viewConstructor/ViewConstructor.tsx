@@ -29,7 +29,7 @@ const ViewConstructor: React.FC<ViewConstructorProps> = () => {
             <div className={styles.viewModuleConstructor}>
               <ViewTitleBar title={title} />
               <Routes>
-                <Route path="/main" element={<Main />} />
+                              {/*<Route path="/main" element={<Main />} />*/}
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/tops" element={<Tops />} />

@@ -1,24 +1,22 @@
 .button {
-  background-color: var(--secondary-accent-color-1);
-  color: rgb(51, 51, 51);
-  border: 2px solid;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: var(--hover-transition);
-  display: inline-block;
-  min-height: 40px;
-  min-width: 100px;
-  max-width: 150px;
-  -webkit-user-select: none;
-  user-select: none;
-  font: 500 1vw/1 var(--font-family);
-  white-space: nowrap;
-  line-height: var(--line-height, 1.2);
-  height: 30px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
+    background-color: var(--secondary-accent-color-1);
+    color: rgb(51, 51, 51);
+    border: 2px solid;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: var(--hover-transition);
+    display: inline-block;
+    -webkit-user-select: none;
+    user-select: none;
+    font: 400 .75vw/1 var(--font-family);
+    white-space: nowrap;
+    line-height: var(--line-height, 1.2);
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .button:hover {
@@ -48,4 +46,7 @@
   50% {
     background-position: 100% 50%;
   }
+}
+.iconWithText {
+    padding-right: 10px;
 }

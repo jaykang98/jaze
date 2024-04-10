@@ -19,11 +19,11 @@ const SidebarButton = ({ label, path, icon }) => {
 
 const Sidebar = () => {
   const buttons = [
-    {
+   /* {
       path: "/main",
       label: "Main",
       icon: faHome,
-    },
+    },*/
     {
       path: "/tops",
       label: "Tops",
@@ -34,7 +34,7 @@ const Sidebar = () => {
       label: "Settings",
       icon: faCog,
     },
-    {
+      {
       path: "/testBench",
       label: "Test Bench",
       icon: faCog,

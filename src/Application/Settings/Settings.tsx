@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faKey, faPalette, faPenNib, faCoffee, faBug, faTools } from "@fortawesome/free-solid-svg-icons";
+import {  faKey, faPalette, faPenNib, faCoffee, faBug, faTools, faCashRegister, faMoneyBill, faMoneyBillWave, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { ActivityConstructorProps } from "../../types/structureTypes";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import { useConfig } from "../../globals/useConfig";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
-import { faLastfmSquare, faSpotify } from "@fortawesome/free-brands-svg-icons";
+import { faGit, faGithub, faGithubSquare, faLastfmSquare, faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
@@ -39,14 +39,14 @@ const Settings: React.FC<ActivityConstructorProps> = () => {
         displayLabel: "Last.FM Account",
         action: !isFMAuthenticated() ? startAuthFM : logFMOut,
         actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
-            icon: faLastfmSquare as IconProp,
+        icon: faLastfmSquare as IconProp,
         disabled: false,
       },
       {
         displayLabel: "Spotify Account",
         action: !isSpotifyLoggedIn() ? startAuthSpotify : logSpotifyOut,
         actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
-          icon: faSpotify as IconProp,
+        icon: faSpotify as IconProp,
       },
       {
         displayLabel: "Store Data Securely",
@@ -101,25 +101,16 @@ const Settings: React.FC<ActivityConstructorProps> = () => {
       "JaZe " + process.env.REACT_APP_VER,
     ],
     [
-      <FontAwesomeIcon icon={faBug} />,
-      "Report A Bug",
-      <Button
-        onClick={() =>
-          window.open("mailto:admin@jklmnopea.com?subject=Bug Report")
-        }
-      >
-        Report
-      </Button>,
-    ],
-    [
-      <FontAwesomeIcon icon={faTools} />,
-      "Make Contributions",
+    <FontAwesomeIcon icon={faGithub as IconDefinition} />,
+      "Contribute on GitHub",
       <Button
         onClick={() =>
           (window.location.href = "https://github.com/jaykang98/jaze")
         }
+          icon={faBug}
+
       >
-        Launch GitHub
+        Fix Bugs
       </Button>,
     ],
     [
@@ -128,10 +119,12 @@ const Settings: React.FC<ActivityConstructorProps> = () => {
       <Button
         onClick={() =>
           (window.location.href =
-            "https://paypal.me/jklmnopea?country.x=US&locale.x=en_US")
-        }
+              "https://paypal.me/jklmnopea?country.x=US&locale.x=en_US")
+
+          }
+        icon={faMoneyBillWave}
       >
-        $ Donate
+        Donate
       </Button>,
     ],
   ];

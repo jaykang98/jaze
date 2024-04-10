@@ -15,7 +15,7 @@ export const useSpotifyClient = () => {
       ...options,
       headers: {
         ...options.headers,
-        Authorization: `Bearer ${accessToken}`,
+          Authorization: `Authorization: Bearer ${accessToken}`,
       },
     });
 
@@ -28,7 +28,14 @@ export const useSpotifyClient = () => {
 
   const fetchCurrentUserProfile = async () => {
     setItem("spotifyProfile", JSON.parse(await spotifyApiRequest("/me")));
-  };
+    };
+    const fetchSpotifyData = async (inputType: string, queryString: string) => {
+        const q = encodeURIComponent(queryString);
+        const type = encodeURIComponent(inputType);
+        const response = await spotifyApiRequest(`/search?q=${q}&type=${type}`);
+        return response[inputType + 's']?.items[0]?.external_urls.spotify;    };
 
-  return { spotifyApiRequest, fetchCurrentUserProfile };
+
+
+    return { spotifyApiRequest, fetchCurrentUserProfile, fetchSpotifyData };
 };

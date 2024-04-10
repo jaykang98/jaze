@@ -1,5 +1,7 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { SelectionType } from "./dataTypes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export interface InputProps {
   id?: string;
@@ -32,5 +34,6 @@ export interface ButtonProps {
   className?: string;
   label?: string | null;
   disabled?: boolean;
-  dataType?: SelectionType;
+    dataType?: SelectionType;
+    icon?: typeof FontAwesomeIcon | IconProp;
 }
