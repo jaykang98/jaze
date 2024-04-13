@@ -1,5 +1,5 @@
 import React from "react";
-import { faCog, faAward, faHammer } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faAward, faHammer, faHeadphones } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Sidebar.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,6 +24,11 @@ const Sidebar = () => {
       path: "/tops",
       label: "Tops",
       icon: faAward,
+      },
+      {
+      path: "/Listen",
+          label: "Listen",
+      icon: faHeadphones,
     },
     {
       path: "/settings",

@@ -1,12 +1,11 @@
 import React from "react";
 import { faHome, faUser, faCog } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Sidebar.module.css";
 import Button from "../button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ToolbarButton = ({ label, onClick, icon }) => {
   return (
-    <Button className={styles.toolbarButton}>
+    <Button className="toolbarButton">
       <FontAwesomeIcon icon={icon} /> {label}
     </Button>
   );
@@ -33,7 +32,7 @@ const Toolbar = () => {
   ];
 
   return (
-    <aside className={styles.toolbarContainer}>
+    <div className="toolBar">
       {buttons.map((button, index) => (
         <ToolbarButton
           key={index}
@@ -42,7 +41,7 @@ const Toolbar = () => {
           label={button.label}
         />
       ))}
-    </aside>
+    </div>
   );
 };
 

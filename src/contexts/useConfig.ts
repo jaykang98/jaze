@@ -1,6 +1,5 @@
 import { useCallback, useState, useEffect } from "react";
 import { useLocalStorage } from "../hooks/utils/useLocalStorage";
-import { encryptData, decryptData } from "../hooks/security/encryptionProtocol";
 
 export const useConfig = () => {
   const { getItem, setItem } = useLocalStorage();

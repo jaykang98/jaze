@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { OptionListProps } from "../../../types/foundationTypes";
-import Button from "../button/Button";
+import Button from "../../foundations/button/Button";
 import styles from "./OptionList.module.css";
 
 const OptionList: React.FC<OptionListProps> = ({ options, dataType }) => {

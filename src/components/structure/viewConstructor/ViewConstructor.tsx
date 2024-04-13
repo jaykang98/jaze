@@ -1,13 +1,14 @@
 // src/components/layout/Container.tsx
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import Sidebar from "../../foundations/sidebar/Sidebar";
+import Sidebar from "../../jaze/sidebar/Sidebar";
 import styles from "./ViewConstructor.module.css";
 import { ViewConstructorProps } from "../../../types/structureTypes";
-import ViewTitleBar from "../../ui/viewTitleBar/ViewTitleBar";
+import ViewTitleBar from "../../jaze/viewTitleBar/ViewTitleBar";
 import { useViewTitle } from "../../../contexts/ViewTitleContexts";
+import Listen from "../../../Application/Listen/Listen";
 
-const Main = lazy(() => import("../../../Application/Main/Main"));
+//const Main = lazy(() => import("../../../Application/Main/Main"));
 const Settings = lazy(() => import("../../../Application/Settings/Settings"));
 const Tops = lazy(() => import("../../../Application/Tops/Tops"));
 const LandingPage = lazy(
@@ -36,6 +37,7 @@ const ViewConstructor: React.FC<ViewConstructorProps> = () => {
                 {/*<Route path="/main" element={<Main />} />*/}
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/Listen" element={<Listen />} />
                 <Route path="/tops" element={<Tops />} />
                 <Route path="/testBench" element={<TestBench />} />
               </Routes>

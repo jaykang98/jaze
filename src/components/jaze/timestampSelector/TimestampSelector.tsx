@@ -1,5 +1,5 @@
 import React from "react";
-import OptionList from "../../foundations/optionList/OptionList";
+import OptionList from "../optionList/OptionList";
 import Input from "../../foundations/input/Input";
 import { SelectionType } from "../../../types/dataTypes";
 import styles from "./TimestampSelector.module.css";

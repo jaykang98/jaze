@@ -1,7 +1,7 @@
 import React from "react";
-import ViewFrame from "../../structure/viewFrame/ViewFrame";
+import ViewFrame from "../../viewFrame/ViewFrame";
 import { ActivityConstructorProps } from "types/structureTypes";
-import Styles from "components/views/displayGrid/DisplayGrid.module.css";
+import Styles from "./DisplayGrid.module.css";
 interface ViewFrameInfo {
   content: React.ReactNode;
   viewWidth?: number;

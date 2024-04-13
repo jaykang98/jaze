@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Input from "../../foundations/input/Input";
-import OptionList from "../../foundations/optionList/OptionList";
+import OptionList from "../optionList/OptionList";
 import styles from "./CriteriaSelector.module.css";
 import { SelectionType } from "../../../types/dataTypes";
 import { Option } from "types/foundationTypes";

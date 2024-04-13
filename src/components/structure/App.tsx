@@ -1,6 +1,7 @@
 import React from "react";
 import "../../globals/globalStyles.css";
 import "../../globals/textStyles.css";
+import "../../globals/globalComponent.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import ViewConstructor from "./viewConstructor/ViewConstructor";
 import ErrorBoundary from "./ErrorBoundary";

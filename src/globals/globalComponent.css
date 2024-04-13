@@ -1,0 +1,149 @@
+:root {
+    --font-family: "Roboto", sans-serif;
+    --button-padding: 10px 20px;
+    --hover-transition: all 0.3s ease;
+    --animation-duration-short: 2s;
+    --animation-duration-long: 10s;
+    --border-radius-large: 40px;
+    --border-radius-small: 25px;
+    --border-width: 2px;
+    --default-text-color: rgb(51, 51, 51);
+}
+
+@keyframes gradientLoop {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Button styling */
+button {
+    background-color: var(--secondary-accent-color-1);
+    color: var(--default-text-color);
+    border: var(--border-width) solid;
+    border-radius: var(--border-radius-large);
+    cursor: pointer;
+    display: inline-block;
+    padding: var(--button-padding);
+    font: 400 0.75vw/1 var(--font-family);
+    white-space: nowrap;
+    line-height: var(--line-height, 1.2);
+    transition: var(--hover-transition);
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+}
+
+    button:hover {
+        background: linear-gradient(45deg, var(--secondary-accent-color-2), var(--primary-bg-color));
+        background-size: 200% 200%;
+        animation: gradientLoop var(--animation-duration-short) ease infinite;
+        color: white;
+        border-color: var(--button-hover-border-color, var(--input-border-color));
+        transition: none;
+    }
+
+    button:disabled {
+        background-color: var(--button-disabled-bg-color, #cccccc);
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+/* Footer styling */
+footer {
+    background-color: var(--footer-bg-color, #333);
+    color: var(--footer-text-color, #fff);
+    text-align: center;
+    font-size: var(--font-size-base, 0.625rem);
+    padding: var(--footer-padding, 1rem) 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: var(--default-margin, 10px);
+    margin-bottom: var(--default-margin, 0);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+}
+
+/* Header styling */
+header {
+    background: linear-gradient(45deg, var(--secondary-accent-color-1), var(--secondary-accent-color-2), var(--primary-text-color), var(--sidebar-bg-color));
+    background-size: 200% 200%;
+    animation: gradientLoop var(--animation-duration-long) ease infinite;
+    text-align: center;
+    vertical-align: middle;
+    position: sticky;
+    z-index: 100;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-small);
+    border: var(--border-width) solid transparent;
+    max-height: 10vw;
+    justify-content: space-between;
+    user-select: none;
+}
+
+    header h1 {
+        font: 700 6vw/1.5 var(--font-family);
+        background: linear-gradient(45deg, var(--secondary-accent-color-1), var(--secondary-accent-color-2), var(--primary-text-color), var(--sidebar-bg-color));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: white;
+        animation: gradientLoop var(--animation-duration-long) ease infinite;
+    }
+
+    header:hover {
+        background: var(--header-hover-bg-color, var(--input-bg-color));
+        border-color: var(--input-border-color);
+    }
+
+        header:hover h1, header:hover .icon {
+            background: inherit;
+            color: black;
+        }
+/* Input styling */
+input {
+    padding: var(--padding-small);
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    color: var(--primary-text-color);
+    background-color: var(--input-bg-color);
+    font-family: inherit;
+}
+
+    input:focus {
+        outline: none;
+        border-color: var(--secondary-accent-color-1);
+        box-shadow: 0 0 0 2px var(--secondary-accent-color-2);
+    }
+
+/* Sidebar styling */
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: var(--default-padding);
+    background-color: var(--sidebar-bg-color);
+    color: var(--primary-text-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--hover-transition);
+    margin-top: var(--default-margin);
+    width: 30vw;
+    max-height: 100%;
+    margin-right: var(--default-margin);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background: black;
+    color: rgba(0, 0, 0, 0.87);
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.tableIcon {
+    font-size: 1em;
+}
