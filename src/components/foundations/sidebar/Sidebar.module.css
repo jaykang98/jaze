@@ -18,10 +18,11 @@
 
 .sidebarButton {
   text-decoration: none;
-  font-size: large;
-  width: 90%;
-  padding: 10px;
+  font-size: xx-large;
+  padding-top: 30px;
+  padding-bottom: 30px;
   color: white;
+  width: 100%;
 }
 
 .sidebarButton:hover {
@@ -40,4 +41,7 @@
     padding: var(--default-padding) 0;
     justify-content: space-around;
   }
+}
+.sideButtonText {
+  padding-block-start: 1000px;
 }

@@ -1,133 +1,151 @@
 import React, { useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faKey, faPalette, faPenNib, faCoffee, faBug, faTools, faCashRegister, faMoneyBill, faMoneyBillWave, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import {
+  faKey,
+  faPalette,
+  faPenNib,
+  faCoffee,
+  faBug,
+  faMoneyBillWave,
+  IconDefinition,
+  faUser,
+  faBrush,
+  faLock,
+  faLockOpen,
+  faCodeMerge,
+} from "@fortawesome/free-solid-svg-icons";
 import { ActivityConstructorProps } from "../../types/structureTypes";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import { useConfig } from "../../globals/useConfig";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
-import { faGit, faGithub, faGithubSquare, faLastfmSquare, faSpotify } from "@fortawesome/free-brands-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {
+  faGithub,
+  faLastfmSquare,
+  faPaypal,
+  faSpotify,
+} from "@fortawesome/free-brands-svg-icons";
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import Button from "../../components/foundations/button/Button";
 import JaZeAuth from "../../hooks/authentication/jazeAuth";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 
 const Settings: React.FC<ActivityConstructorProps> = () => {
-    const [lastFmObject, spotifyObject] = JaZeAuth();
-
-    const { getItem } = useLocalStorage();
-    const { toggleDarkMode, toggleDecryptionMode } = useConfig();
-    const { setTitle } = useViewTitle();
-
-    const isDecrypted = getItem("isDecrypted");
-
-    const isFMAuthenticated = lastFmObject.isFMAuthenticated;
-    const startAuthFM = lastFmObject.startAuthFM;
-    const logFMOut = lastFmObject.logFMOut;
-
-    const startAuthSpotify = spotifyObject.startAuthSpotify;
-    const logSpotifyOut = spotifyObject.logSpotifyOut;
-    const isSpotifyLoggedIn = spotifyObject.isSpotifyLoggedIn;
+  const [lastUser, spotUser] = JaZeAuth();
+  const { getItem } = useLocalStorage();
+  const { toggleDarkMode, toggleDecryptionMode } = useConfig();
+  const { setTitle } = useViewTitle();
 
   useEffect(() => {
     setTitle("Settings");
   }, [setTitle]);
 
-  const firstNode = useMemo(
+  const settingsOptions = useMemo(
     () => [
       {
-        displayLabel: "Last.FM Account",
-        action: !isFMAuthenticated() ? startAuthFM : logFMOut,
-        actionLabel: !isFMAuthenticated() ? "Log In" : "Log Out",
-        icon: faLastfmSquare as IconProp,
-        disabled: false,
+        displayLabel: "Last.FM",
+        action: !lastUser.isFMAuthenticated()
+          ? lastUser.startAuthFM
+          : lastUser.logFMOut,
+        actionLabel: !lastUser.isFMAuthenticated() ? "Log In" : "Log Out",
+        icon: faLastfmSquare,
+        secondaryIcon: faUser,
       },
       {
-        displayLabel: "Spotify Account",
-        action: !isSpotifyLoggedIn() ? startAuthSpotify : logSpotifyOut,
-        actionLabel: !isSpotifyLoggedIn() ? "Log In" : "Log Out",
-        icon: faSpotify as IconProp,
+        displayLabel: "Spotify",
+        action: !spotUser.isSpotifyLoggedIn()
+          ? spotUser.startAuthSpotify
+          : spotUser.logSpotifyOut,
+        actionLabel: !spotUser.isSpotifyLoggedIn() ? "Log In" : "Log Out",
+        icon: faSpotify,
+        secondaryIcon: faUser,
       },
       {
-        displayLabel: "Store Data Securely",
+        displayLabel: "Encryption",
         action: toggleDecryptionMode,
-        actionLabel: isDecrypted ? "Encrypt Data" : "Decrypt Data",
+        actionLabel: getItem("isDecrypted") ? "Enable" : "Disable",
         icon: faKey,
-        disabled: false,
+        secondaryIcon: getItem("isDecrypted") ? faLock : faLockOpen,
       },
       {
-        displayLabel: "Current Theme Mode",
+        displayLabel: "Change Theme",
         action: toggleDarkMode,
         actionLabel: getItem("isDarkMode") ? "Dark Mode" : "Light Mode",
         icon: faPalette,
-        disabled: false,
+        secondaryIcon: faBrush,
       },
     ],
     [
-      isFMAuthenticated,
-      startAuthFM,
-      logFMOut,
-      isSpotifyLoggedIn,
-      startAuthSpotify,
-      logSpotifyOut,
-      isDecrypted,
+      lastUser.isFMAuthenticated(),
+      lastUser.startAuthFM,
+      lastUser.logFMOut,
+      spotUser.isSpotifyLoggedIn(),
+      spotUser.startAuthSpotify,
+      spotUser.logSpotifyOut,
       toggleDecryptionMode,
-      getItem,
+      getItem("isDecrypted"),
       toggleDarkMode,
+      getItem("isDarkMode"),
     ],
   );
 
-  const settingsTableData = firstNode.map((option) => [
-    <FontAwesomeIcon
-      key={`${option.displayLabel}-icon`}
-      icon={option.icon}
-      aria-hidden="true"
-    />,
-    option.displayLabel,
-    <Button
-      key={`${option.displayLabel}-button`}
-      onClick={option.action}
-      disabled={option.disabled}
-    >
-      {option.actionLabel}
-    </Button>,
-  ]);
-
-  const secondNode = [
-    [<FontAwesomeIcon icon={faPenNib} />, "Author Name", "J Kang"],
-    [
-      <FontAwesomeIcon icon={faCoffee} />,
-      "Current Version",
-      "JaZe " + process.env.REACT_APP_VER,
-    ],
-    [
-    <FontAwesomeIcon icon={faGithub as IconDefinition} />,
-      "Contribute on GitHub",
-      <Button
-        onClick={() =>
-          (window.location.href = "https://github.com/jaykang98/jaze")
-        }
-          icon={faBug}
-
-      >
-        Fix Bugs
-      </Button>,
-    ],
-    [
-      <FontAwesomeIcon icon={faCoffee} />,
-      "Support Open Source Software",
-      <Button
-        onClick={() =>
-          (window.location.href =
-              "https://paypal.me/jklmnopea?country.x=US&locale.x=en_US")
-
-          }
-        icon={faMoneyBillWave}
-      >
-        Donate
-      </Button>,
-    ],
+  const additionalSettings = [
+    {
+      displayLabel: "Author Name",
+      action: null,
+      actionLabel: "J Kang",
+      icon: faPenNib,
+      secondaryIcon: null,
+    },
+    {
+      displayLabel: "Current Version",
+      action: null,
+      actionLabel: `JaZe ${process.env.REACT_APP_VER}`,
+      icon: faCodeMerge,
+      secondaryIcon: null,
+    },
+    {
+      displayLabel: "GitHub",
+      action: () =>
+        (window.location.href = "https://github.com/jaykang98/jaze"),
+      actionLabel: "Fix Bugs",
+      icon: faGithub,
+      secondaryIcon: faBug,
+    },
+    {
+      displayLabel: "PayPal",
+      action: () =>
+        (window.location.href =
+          "https://paypal.me/jklmnopea?country.x=US&locale.x=en_US"),
+      actionLabel: "Donate",
+      icon: faPaypal,
+      secondaryIcon: faCoffee,
+    },
   ];
+
+  const formatTableData = (options) =>
+    options.map((option) => [
+      <FontAwesomeIcon
+        key={`${option.displayLabel}-icon`}
+        icon={option.icon}
+        className="tableIcon"
+      />,
+      <span key={`${option.displayLabel}-label`} style={{ fontSize: "150%" }}>
+        {option.displayLabel}
+      </span>,
+      option.action ? (
+        <Button
+          key={`${option.displayLabel}-button`}
+          onClick={option.action}
+          icon={option.secondaryIcon}
+        >
+          {option.actionLabel}
+        </Button>
+      ) : (
+        <span key={`${option.displayLabel}-label`} style={{ fontSize: "150%" }}>
+          {option.actionLabel}
+        </span>
+      ),
+    ]);
 
   return (
     <DisplayGrid
@@ -169,9 +187,10 @@ const Settings: React.FC<ActivityConstructorProps> = () => {
         {
           content: (
             <>
-              <h3>Customize JaZe</h3>
-              <DisplayTable data={settingsTableData} />
-              <DisplayTable data={secondNode} />
+              <h1>Customize</h1>
+              <h3>JaZe</h3>
+              <DisplayTable data={formatTableData(settingsOptions)} />
+              <DisplayTable data={formatTableData(additionalSettings)} />
             </>
           ),
           viewWidth: 100,

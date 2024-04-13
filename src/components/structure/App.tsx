@@ -11,33 +11,31 @@ import { ViewTitleProvider } from "../../contexts/ViewTitleContexts";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 function App() {
-    const { getItem } = useLocalStorage();
-    const [lastFmObject, spotifyObject] = JaZeAuth();
+  const { getItem } = useLocalStorage();
+  const [lastFmObject, spotifyObject] = JaZeAuth();
 
-    const fetchFM = lastFmObject.fetchFM;
-    const fetchSpotifyCode = spotifyObject.fetchSpotifyCode;
-    const lastFMUserID = getItem("lastFMUser");
+  const fetchFM = lastFmObject.fetchFM;
+  const fetchSpotifyCode = spotifyObject.fetchSpotifyCode;
+  const lastFMUserID = getItem("lastFMUser");
 
-    if (lastFMUserID == null) {
+  if (lastFMUserID == null) {
     const token = new URLSearchParams(window.location.search).get("token");
     if (token) {
-        fetchFM(token);
+      fetchFM(token);
     }
-    } 
-    if (getItem("getSpotifyUser") == null && getItem("spotifyCode") == null) {
+  }
+  if (getItem("getSpotifyUser") == null && getItem("spotifyCode") == null) {
     const code = new URLSearchParams(window.location.search).get("code");
     code != null ? fetchSpotifyCode(code) : "";
-    }
+  }
 
   return (
     <ViewTitleProvider>
       <ErrorBoundary>
         <Header />
-        <div className="app">
-          <Router>
-            <ViewConstructor/>
-          </Router>
-        </div>
+        <Router>
+          <ViewConstructor />
+        </Router>
         <Footer />
       </ErrorBoundary>
     </ViewTitleProvider>

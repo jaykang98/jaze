@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobeAmericas, faCalendarAlt, faUserCircle, faMusic } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGlobeAmericas,
+  faCalendarAlt,
+  faUserCircle,
+  faMusic,
+} from "@fortawesome/free-solid-svg-icons";
 import { ActivityConstructorProps } from "../../types/structureTypes";
 import { useViewTitle } from "../../contexts/ViewTitleContexts";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 
 import DisplayTable from "../../components/views/displayTable/DisplayTable";
 import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
-
 
 const LandingPage: React.FC<ActivityConstructorProps> = () => {
   const { setTitle } = useViewTitle();

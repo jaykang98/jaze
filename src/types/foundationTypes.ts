@@ -34,6 +34,6 @@ export interface ButtonProps {
   className?: string;
   label?: string | null;
   disabled?: boolean;
-    dataType?: SelectionType;
-    icon?: typeof FontAwesomeIcon | IconProp;
+  dataType?: SelectionType;
+  icon?: typeof FontAwesomeIcon | IconProp;
 }

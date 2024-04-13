@@ -1,6 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobeAmericas, faCalendarAlt, faUserCircle, faMusic } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGlobeAmericas,
+  faCalendarAlt,
+  faUserCircle,
+  faMusic,
+} from "@fortawesome/free-solid-svg-icons";
 import { ActivityConstructorProps } from "../../types/structureTypes";
 import { useLocalStorage } from "../../hooks/utils/useLocalStorage";
 

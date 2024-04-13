@@ -5,26 +5,23 @@ import DisplayGrid from "../../components/views/displayGrid/DisplayGrid";
 import { spotifySearch } from "../../hooks/dataManagement/search";
 
 const TestBench: React.FC<ActivityConstructorProps> = () => {
-    const { setTitle } = useViewTitle();
-    const search = spotifySearch("album","DAMN.");
-    useEffect(() => {
-        setTitle("Test Bench");
-    }, [setTitle]);
+  const { setTitle } = useViewTitle();
+  const search = spotifySearch("album", "DAMN.");
+  useEffect(() => {
+    setTitle("Test Bench");
+  }, [setTitle]);
 
-    return (
-        <DisplayGrid
-            title="Settings"
-            viewFrames={[
-                {
-                    content: (
-                        <>
-                        </>
-                    ),
-                    viewWidth: 100,
-                },
-            ]}
-        />
-    );
+  return (
+    <DisplayGrid
+      title="Settings"
+      viewFrames={[
+        {
+          content: <></>,
+          viewWidth: 100,
+        },
+      ]}
+    />
+  );
 };
 
 export default TestBench;

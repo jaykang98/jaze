@@ -101,7 +101,7 @@ export type lastFMUser = {
       "#text": string;
     }>;
   };
-}
+};
 export type SpotifyUserProfile = {
   country?: string;
   display_name?: string;
@@ -127,7 +127,7 @@ export type SpotifyUserProfile = {
   product?: string;
   type: string;
   uri: string;
-}
+};
 
 export type SelectionType =
   | "artist"

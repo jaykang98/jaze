@@ -1,36 +1,41 @@
 .albumCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: black;
-    padding: 25px 20px;
-    border-radius: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: navajowhite;
-    border: solid 2px white;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor:pointer;
+  display: flex;
+  flex-direction: column;
+  background-color: darkcyan;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: navajowhite;
+  border: solid 2px white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  height: 10vw;
+  width: 7vw;
+  text-overflow: ellipsis;
+  opacity: 1;
 }
 .albumImage {
-    border-radius: 50%;
-    opacity: 0.8;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  border-radius: 50%;
+  opacity: 0.8;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .caption {
-    padding-left:10px;
+  padding-left: 10px;
   font-size: large;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  text-overflow: ellipsis;
 }
 .container {
-    padding-top: 10px;
-    display: flex;
-    align-items: center;
-    font-size: large;
-    justify-content: flex-start;
-    width: 100%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
 }

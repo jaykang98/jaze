@@ -53,7 +53,7 @@
 
 h1 {
   font-size: calc(var(--font-size-xl) * 1.5);
-  font-weight: 700;
+  font-weight: 900;
   line-height: var(--line-height-tight);
   margin: 0;
   padding: 0;
@@ -61,24 +61,24 @@ h1 {
 
 h2 {
   font-size: var(--font-size-xl);
-  font-weight: 500;
+  font-weight: 700;
   line-height: var(--line-height-tight);
   margin: 0;
   padding: 0;
   text-align: left;
   vertical-align: middle;
+  font-size: 5vw;
 }
 
 h3 {
-  font-size: var(--font-size-l);
-  font-weight: 400;
-  line-height: var(--line-height);
+  font-size: 5vw;
+  font-weight: 500;
+  line-height: 0.8;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 p {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-}
-
-span {
 }

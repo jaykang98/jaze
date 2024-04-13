@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  faHome,
-  faUser,
-  faCog,
-  faAward,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCog, faAward, faHammer } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Sidebar.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,14 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const SidebarButton = ({ label, path, icon }) => {
   return (
     <Link to={path} className={styles.sidebarButton}>
-      <FontAwesomeIcon icon={icon} /> {label}
+      <FontAwesomeIcon icon={icon} className="tableIcon" />
+      <span className="styles.sideButtonText">{label}</span>
     </Link>
   );
 };
 
 const Sidebar = () => {
   const buttons = [
-   /* {
+    /* {
       path: "/main",
       label: "Main",
       icon: faHome,
@@ -34,10 +30,10 @@ const Sidebar = () => {
       label: "Settings",
       icon: faCog,
     },
-      {
+    {
       path: "/testBench",
       label: "Test Bench",
-      icon: faCog,
+      icon: faHammer,
     },
   ];
 

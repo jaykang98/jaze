@@ -10,6 +10,5 @@
   padding: var(--default-padding);
   background-color: var(--primary-bg-color);
   border-radius: var(--border-radius);
-  min-height: 100vw;
   margin-top: var(--default-margin);
 }
