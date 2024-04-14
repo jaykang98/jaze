@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/jaze/static/css/main.c296f172.css",
-    "main.js": "/jaze/static/js/main.8a4b09d5.js",
+    "main.css": "/jaze/static/css/main.9e208729.css",
+    "main.js": "/jaze/static/js/main.ab3bd733.js",
     "static/css/67.97747e0d.chunk.css": "/jaze/static/css/67.97747e0d.chunk.css",
-    "static/js/67.ad13512c.chunk.js": "/jaze/static/js/67.ad13512c.chunk.js",
-    "static/css/955.c0e9b34a.chunk.css": "/jaze/static/css/955.c0e9b34a.chunk.css",
-    "static/js/955.503ef7d4.chunk.js": "/jaze/static/js/955.503ef7d4.chunk.js",
+    "static/js/67.b84e437e.chunk.js": "/jaze/static/js/67.b84e437e.chunk.js",
+    "static/css/955.400216cf.chunk.css": "/jaze/static/css/955.400216cf.chunk.css",
+    "static/js/955.fb1cd0ac.chunk.js": "/jaze/static/js/955.fb1cd0ac.chunk.js",
     "static/css/28.97747e0d.chunk.css": "/jaze/static/css/28.97747e0d.chunk.css",
     "static/js/28.bc071d02.chunk.js": "/jaze/static/js/28.bc071d02.chunk.js",
     "static/css/220.417704c1.chunk.css": "/jaze/static/css/220.417704c1.chunk.css",
@@ -18,12 +18,12 @@
     "static/media/Roboto-Black.ttf": "/jaze/static/media/Roboto-Black.cf56c1b149d0a5e8d7c6.ttf",
     "static/media/Roboto-Bold.ttf": "/jaze/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "index.html": "/jaze/index.html",
-    "main.c296f172.css.map": "/jaze/static/css/main.c296f172.css.map",
-    "main.8a4b09d5.js.map": "/jaze/static/js/main.8a4b09d5.js.map",
+    "main.9e208729.css.map": "/jaze/static/css/main.9e208729.css.map",
+    "main.ab3bd733.js.map": "/jaze/static/js/main.ab3bd733.js.map",
     "67.97747e0d.chunk.css.map": "/jaze/static/css/67.97747e0d.chunk.css.map",
-    "67.ad13512c.chunk.js.map": "/jaze/static/js/67.ad13512c.chunk.js.map",
-    "955.c0e9b34a.chunk.css.map": "/jaze/static/css/955.c0e9b34a.chunk.css.map",
-    "955.503ef7d4.chunk.js.map": "/jaze/static/js/955.503ef7d4.chunk.js.map",
+    "67.b84e437e.chunk.js.map": "/jaze/static/js/67.b84e437e.chunk.js.map",
+    "955.400216cf.chunk.css.map": "/jaze/static/css/955.400216cf.chunk.css.map",
+    "955.fb1cd0ac.chunk.js.map": "/jaze/static/js/955.fb1cd0ac.chunk.js.map",
     "28.97747e0d.chunk.css.map": "/jaze/static/css/28.97747e0d.chunk.css.map",
     "28.bc071d02.chunk.js.map": "/jaze/static/js/28.bc071d02.chunk.js.map",
     "220.417704c1.chunk.css.map": "/jaze/static/css/220.417704c1.chunk.css.map",
@@ -31,7 +31,7 @@
     "782.5ff89fcf.chunk.js.map": "/jaze/static/js/782.5ff89fcf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c296f172.css",
-    "static/js/main.8a4b09d5.js"
+    "static/css/main.9e208729.css",
+    "static/js/main.ab3bd733.js"
   ]
 }
